@@ -2,5 +2,12 @@
 
 Command line tools for interfacing with Jenkins
 
-Command line tools to manage nodes, work with a simple pipeline, and add ssh credential to Jenkins.
+Relies on the python-jenkins library to interface with a Jenkins server.
+
+Command line tools to:
+ * manage nodes
+ * work with a simple pipeline
+ * add previously created ssh credential to Jenkins.
+
+
 
