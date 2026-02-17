@@ -107,14 +107,7 @@ def parse_arguments():
                 """
         )
     )
-    #parser_run.add_argument("--job", help="Pipeline name to run")
-    '''
-    conn = parser.add_argument_group("Jenkins connection (required)")
-    conn.add_argument("--url", required=True,
-                      help="Jenkins URL – MUST include scheme: http://localhost:8080 or https://ci.company.com")
-    conn.add_argument("--user", required=True, help="Jenkins username")
-    conn.add_argument("--token", required=True, help="Jenkins API token (from User → Configure → API Token)")
-    '''
+
     job_group = parser_run.add_argument_group("Job to trigger (required)")
     job_group.add_argument("--job", required=True,
                            help="Job name (supports folders: folder/subfolder/job-name)")
@@ -165,6 +158,34 @@ def parse_arguments():
     parser_check.add_argument("--verbose", "-v", action="store_true",
                         help="Show more details (triggered by, description, duration in seconds)")
 
+    # get-config
+    p_get = subparsers.add_parser(
+        "get-config",
+        parents=[parent_parser],
+        help="Download job config XML",
+        epilog=textwrap.dedent(""" \
+            Example:
+              %(prog)s MyJob --url http://jenkins:8080 --user jenkins-user --token 12345
+
+            """
+        )
+    )
+    p_get.add_argument("job", help="Job name")
+
+    # set-config
+    p_set = subparsers.add_parser(
+        "set-config",
+        parents=[parent_parser],
+        help="Upload job config XML",
+        epilog=textwrap.dedent(""" \
+            Example:
+              %(prog)s MyJob config.xml --url http://jenkins:8080 --user jenkins-user --token 12345
+
+            """
+        )
+    )
+    p_set.add_argument("job", help="Job name")
+    p_set.add_argument("file", help="XML file to upload")
 
     args = parser.parse_args()
 
@@ -198,6 +219,20 @@ if __name__=="__main__":
 
         ckpipeline = checkPipeline()
         ckpipeline.check_run(args)
+
+    elif args.command == "get-config":
+        print(f"Getting {args.url} for pipeline <{args.job}> config...")
+        from JenkinsTools.ConfigJob import ConfigJob
+
+        config_job = ConfigJob(args)
+        config_job.cmd_get_config()
+
+    elif args.command == "set-config":
+        print(f"Setting {args.url} for pipeline <{args.job}> config...")
+        from JenkinsTools.ConfigJob import ConfigJob
+
+        config_job = ConfigJob(args)
+        config_job.cmd_set_config()
 
 
     print("\n")
