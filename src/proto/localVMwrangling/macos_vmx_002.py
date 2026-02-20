@@ -72,7 +72,7 @@ def list_vms():
         print("(utmctl not available — macOS/UTM only?)")
 
 
-def start_vm(hyper: str, vm: str, headless: bool = True):
+def start_vm(hyper: str, vm: str, headless: bool = False):
     if hyper == "vmware":
         args = [VMRUN, "-T", "fusion", "start", vm, "nogui" if headless else "gui"]
         run(args)
@@ -87,9 +87,9 @@ def start_vm(hyper: str, vm: str, headless: bool = True):
         sys.exit(f"Unknown hypervisor: {hyper}")
 
 
-def stop_vm(hyper: str, vm: str):
+def stop_vm(hyper: str, vm: str, how: str = "hard"):
     if hyper == "vmware":
-        run([VMRUN, "stop", vm, "soft"])
+        run([VMRUN, "stop", vm, how])
     elif hyper == "virtualbox":
         run([VBOXMANAGE, "controlvm", vm, "acpipowerbutton"])
     elif hyper == "utm":
