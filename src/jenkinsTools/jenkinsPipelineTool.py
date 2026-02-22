@@ -159,6 +159,10 @@ def parse_arguments():
     parser_check.add_argument("--verbose", "-v", action="store_true",
                         help="Show more details (triggered by, description, duration in seconds)")
 
+    # Get full pipeline status dictionary
+    parser_check.add_argument("--get-full-run", action="store_true",
+                        help="Show full status details in json format")
+
     # get-config
     p_get = subparsers.add_parser(
         "get-config",
@@ -219,7 +223,10 @@ if __name__=="__main__":
         from JenkinsTools.CheckJenkinsPipelineRun import CheckJenkinsPipelineRun as checkPipeline
 
         ckpipeline = checkPipeline()
-        ckpipeline.check_run(args)
+        if args.get_full_run:
+            ckpipeline.get_full_run(args)
+        else:
+            ckpipeline.check_run(args)
 
     elif args.command == "get-config":
         print(f"Getting {args.url} for pipeline <{args.job}> config...")
@@ -236,7 +243,7 @@ if __name__=="__main__":
         config_job.cmd_set_config()
 
 
-    print("\n")
-    print(f"command: {args.command}")
-    print(f"args: {vars(args)}")
+    #print("\n")
+    #print(f"command: {args.command}")
+    #print(f"args: {vars(args)}")
   

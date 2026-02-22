@@ -7,6 +7,7 @@ Requires:
 """
 
 import argparse
+import json
 import sys
 import time
 from datetime import datetime
@@ -39,7 +40,7 @@ class CheckJenkinsPipelineRun():
             return f"{minutes}m {seconds}s"
         return f"{seconds}s"
 
-    def get_full_run(args):
+    def get_full_run(self, args):
         """
         """
         try:
