@@ -93,22 +93,22 @@ def parse_arguments():
         epilog=textwrap.dedent("""\
             Examples:
 
-              # Update only the label
+              # 1. Update only the label
               %(prog)s my-node \\
                   --url http://jenkins:8080 --user admin --token 12345 \\
                   --new_label "linux docker"
 
-              # Update remoteFS and executors
+              # 2. Update remoteFS and executors
               %(prog)s my-node \\
                   --url http://jenkins:8080 --user admin --token 12345 \\
                   --new_remoteFS /var/jenkins --new_numExecutors 4
 
-              # Update SSH launcher settings
+              # 3. Update SSH launcher settings
               %(prog)s my-node \\
                   --url http://jenkins:8080 --user admin --token 12345 \\
                   --new_host build01.example.com --new_port 22 --new_credentialsId ssh-creds
 
-              # Show this help again
+              # 4. Show this help again
               %(prog)s --help
             """
         )
