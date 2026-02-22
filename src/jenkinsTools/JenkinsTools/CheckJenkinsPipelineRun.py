@@ -39,6 +39,34 @@ class CheckJenkinsPipelineRun():
             return f"{minutes}m {seconds}s"
         return f"{seconds}s"
 
+    def get_full_run(args):
+        """
+        """
+        try:
+            server = jenkins.Jenkins(args.url, username=args.user, password=args.token)
+
+            # Quick auth check
+            server.get_whoami()
+
+            # Get job information
+            job_info = server.get_job_info(args.job, depth=1)
+
+            # Find the last build
+            last_build = job_info.get("lastBuild")
+            if not last_build:
+                print(f"No builds found for job '{args.job}' yet.", file=sys.stderr)
+                sys.exit(1)
+
+            print(f"{json.dumps(last_build, indent=4)}")
+
+        except JenkinsException as e:
+            print(f"\nJenkins API error: {e}", file=sys.stderr)
+            print("→ Check --url (must include http:// or https://), --user, --token, job name", file=sys.stderr)
+            sys.exit(3)
+        except Exception as e:
+            print(f"\nUnexpected error: {e}", file=sys.stderr)
+            sys.exit(4)
+
     def check_run(self, args):
         """
         """
@@ -99,19 +127,19 @@ class CheckJenkinsPipelineRun():
 
             # Exit code useful for scripts/CI
             if building:
-                sys.exit(2)          # still running → special code
+                sys.exit(6)          # still running → special code
             elif result == "SUCCESS":
                 sys.exit(0)
             else:
-                sys.exit(1)          # FAILURE, ABORTED, UNSTABLE, etc.
+                sys.exit(5)          # FAILURE, ABORTED, UNSTABLE, etc.
 
         except JenkinsException as e:
             print(f"\nJenkins API error: {e}", file=sys.stderr)
             print("→ Check --url (must include http:// or https://), --user, --token, job name", file=sys.stderr)
-            sys.exit(3)
+            sys.exit(7)
         except Exception as e:
             print(f"\nUnexpected error: {e}", file=sys.stderr)
-            sys.exit(4)
+            sys.exit(8)
 
   
 def parse_arguments():
