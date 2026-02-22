@@ -33,18 +33,19 @@ def parse_arguments():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=textwrap.dedent("""\
             Examples:
-              # Inline script
+              # 1. Inline script
               %(prog)s --url http://localhost:8080 --user admin --token ABC123 \\
                 --job-name test-inline --type inline --script "echo Hello from CLI!"
 
-              # From Git (Jenkinsfile in root)
+              # 2. From Git (Jenkinsfile in root)
               %(prog)s --url http://jenkins --user admin --token XYZ \\
                 --job-name my-app-ci --type scm \\
                 --repo https://github.com/company/app.git --branch main
 
-              # With custom Jenkinsfile path and credentials
+              # 3. With custom Jenkinsfile path and credentials
               %(prog)s ... --jenkinsfile ci/Jenkinsfile --credentials-id git-token
 
+              # 4. With scm, Jenkinsfile, branch and  creds
               %(prog)s --url http://localhost:8080 --user admin --token a212a654... \\
                --job-name ramdisk_redhat --type scm \\
                --repo https://github.com/company/app.git --branch main \\
@@ -84,26 +85,26 @@ def parse_arguments():
             epilog=textwrap.dedent("""\
         Examples (note: always include http:// or https:// in --url):
 
-        # 1. Basic trigger
-        %(prog)s --url http://localhost:8080 --user admin --token 116b8f2a... \\
+          # 1. Basic trigger
+          %(prog)s --url http://localhost:8080 --user admin --token 116b8f2a... \\
             --job nightly-tests
 
-        # 2. With parameters + real-time console output
-        %(prog)s --url http://jenkins:8080 --user <username> --token your-token-here \\
+          # 2. With parameters + real-time console output
+          %(prog)s --url http://jenkins:8080 --user <username> --token your-token-here \\
             --job deploy-service --follow \\
             --param ENVIRONMENT=staging --param VERSION=2.5.0 --param DRY_RUN=true
 
-        # 3. Job inside folder + remote trigger token
-        %(prog)s --url https://ci.company.com --user admin --token abc123... \\
+          # 3. Job inside folder + remote trigger token
+          %(prog)s --url https://ci.company.com --user admin --token abc123... \\
             --job "DevTeam/Mobile/Android/build" \\
             --token-build REMOTE_TRIGGER_KEY_2026 --follow
 
-        # 4. Using IP address (common for local network Jenkins)
-        %(prog)s --url http://192.168.1.150:8080 --user admin --token 11abcdef... \\
+          # 4. Using IP address (common for local network Jenkins)
+          %(prog)s --url http://192.168.1.150:8080 --user admin --token 11abcdef... \\
             --job smoke-test
 
-        # 5. Show this help
-        %(prog)s --help
+          # 5. Show this help
+          %(prog)s --help
                 """
         )
     )
@@ -130,20 +131,20 @@ def parse_arguments():
         epilog=textwrap.dedent("""\
             Examples:
 
-            # 1. Basic – check last build of a job
-            %(prog)s --url http://localhost:8080 --user admin --token 116b8f2a... \\
+              # 1. Basic – check last build of a job
+              %(prog)s --url http://localhost:8080 --user admin --token 116b8f2a... \\
                 --job nightly-tests
 
-            # 2. Job inside folder + more details
-            %(prog)s --url https://jenkins.company.com --user <username> --token your-token \\
+              # 2. Job inside folder + more details
+              %(prog)s --url https://jenkins.company.com --user <username> --token your-token \\
                 --job "DevTeam/Projects/Web/build-and-deploy" --verbose
 
-            # 3. Using IP address (common for local network Jenkins)
-            %(prog)s --url http://192.168.1.150:8080 --user admin --token 11abcdef... \\
+              # 3. Using IP address (common for local network Jenkins)
+              %(prog)s --url http://192.168.1.150:8080 --user admin --token 11abcdef... \\
                 --job smoke-test-pipeline --verbose
 
-            # 4. Show this help
-            %(prog)s --help
+              # 4. Show this help
+              %(prog)s --help
         """
         )
     )
