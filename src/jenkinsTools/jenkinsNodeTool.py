@@ -170,6 +170,10 @@ def parse_arguments():
 
     args = parser.parse_args()
 
+    if len(sys.argv) == 1:
+        parser.print_help()
+        sys.exit(1)
+
     print("Just before returning args...")
 
     return args
@@ -226,10 +230,8 @@ if __name__=="__main__":
         nm = NodeManage(args)
         print(nm.enable_node())
 
-
     print("\n")
     print(f"command: {args.command}")
     print(f"args: {vars(args)}")
-  
-    
-
+ 
+ 
