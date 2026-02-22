@@ -17,7 +17,7 @@ class CreateJenkinsPipeline():
     def __init__(self):
         """
         """
-        print("Initializing class")
+        # print("Initializing class")
 
     def get_pipeline_script(self, args):
         if args.script:

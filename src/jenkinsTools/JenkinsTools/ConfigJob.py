@@ -7,7 +7,7 @@ import textwrap
 class ConfigJob():
     def __init__(self, args):
         self.args = args
-        print(f"Initializing {self.__class__.__name__} class")
+        # print(f"Initializing {self.__class__.__name__} class")
 
 
     def get_jenkins(self):
@@ -22,7 +22,7 @@ class ConfigJob():
                 password = self.args.token
             )
 
-            print("Instantiated server...")
+            # print("Instantiated server...")
 
             # Quick connectivity check
             try:

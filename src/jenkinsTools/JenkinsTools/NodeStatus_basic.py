@@ -6,12 +6,12 @@ class NodeStatus():
 
     def __init__(self, args):
         self.args = args
-        print(f"Initializing {self.__class__.__name__} class")
+        # print(f"Initializing {self.__class__.__name__} class")
 
         try:
             self.server = jenkins.Jenkins(self.args.url, username=self.args.user, password=self.args.token)
 
-            print("Instanciated server...")
+            # print("Instanciated server...")
 
             # Quick connectivity check
             try:
