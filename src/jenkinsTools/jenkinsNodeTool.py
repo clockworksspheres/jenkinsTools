@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
 """
+import json
 import sys
 import textwrap
 import argparse
@@ -108,7 +109,7 @@ def parse_arguments():
                   --url http://jenkins:8080 --user admin --token 12345 \\
                   --new_host build01.example.com --new_port 22 --new_credentialsId ssh-creds
 
-              # 4. Show this help again
+              # Show this help again
               %(prog)s --help
             """
         )
@@ -174,7 +175,7 @@ def parse_arguments():
         parser.print_help()
         sys.exit(1)
 
-    print("Just before returning args...")
+    # print("Just before returning args...")
 
     return args
 
@@ -203,7 +204,7 @@ if __name__=="__main__":
     elif args.command == "get-node-info":
         from JenkinsTools.NodeStatus import NodeStatus
         ns = NodeStatus(args)
-        print(ns.get_node_info())
+        print(json.dumps(ns.get_node_info(), indent=4))
 
     elif args.command == "get-node-config":
         from JenkinsTools.NodeStatus import NodeStatus
@@ -230,8 +231,8 @@ if __name__=="__main__":
         nm = NodeManage(args)
         print(nm.enable_node())
 
-    print("\n")
-    print(f"command: {args.command}")
-    print(f"args: {vars(args)}")
+    # print("\n")
+    # print(f"command: {args.command}")
+    # print(f"args: {vars(args)}")
  
  
