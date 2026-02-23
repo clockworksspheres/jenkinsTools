@@ -5,8 +5,9 @@
 # amoung others... including
 # https://pyinstaller.org/en/stable/
 
-#if doesn't the packenv directory doesn't exist...
 pushd ..
+
+#if doesn't the packenv directory doesn't exist...
 directory="./packenv"
 actfile="./packenv/bin/activate"
 if [ ! -d "$directory" ]  || [ ! -f "$actfile" ] ; then
@@ -16,11 +17,10 @@ if [ ! -d "$directory" ]  || [ ! -f "$actfile" ] ; then
    pip install --upgrade pip
    pip install python-jenkins
    pip install PyInstaller
+else
+   source packenv/bin/activate
 fi
 
-source packenv/bin/activate
-
-# pushd ramdisk/ui; python3 compile_uifiles.py; popd
 cp BuildScripts/build.macos.NodeTool.spec jenkinsTools
 cp BuildScripts/build.macos.PipelineTool.spec jenkinsTools
 
