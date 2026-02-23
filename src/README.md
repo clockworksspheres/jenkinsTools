@@ -2,6 +2,10 @@
 
 # Three directories
 
+## BuildScripts
+
+pyinstaller onefile scripts
+
 ## docs
 
 Supporting documentation and notes that may be useful.
