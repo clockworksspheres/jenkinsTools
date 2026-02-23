@@ -17,12 +17,14 @@ if [ ! -d "$directory" ]  || [ ! -f "$actfile" ] ; then
    pip install --upgrade pip
    pip install python-jenkins
    pip install PyInstaller
+   pip install requests
 else
    source packenv/bin/activate
 fi
 
 cp BuildScripts/build.macos.NodeTool.spec jenkinsTools
 cp BuildScripts/build.macos.PipelineTool.spec jenkinsTools
+cp BuildScripts/build.macos.AddSshKeyTool.spec jenkinsTools
 
 pushd jenkinsTools
 
@@ -32,8 +34,14 @@ pyinstaller -y build.macos.NodeTool.spec
 pyinstaller --clean -y build.macos.PipelineTool.spec
 pyinstaller -y build.macos.PipelineTool.spec
 
+cp JenkinsTools/AddSshKeyCredential.py .
+pyinstaller --clean -y build.macos.AddSshKeyTool.spec
+pyinstaller -y build.macos.AddSshKeyTool.spec
+
 rm build.macos.NodeTool.spec
 rm build.macos.PipelineTool.spec
+rm build.macos.AddSshKeyTool.spec
+rm AddSshKeyCredential.py
 
 popd
 popd

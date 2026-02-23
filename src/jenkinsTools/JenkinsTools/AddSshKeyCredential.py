@@ -108,27 +108,23 @@ Notes:
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
 
-    parser.add_argument("--url", required=True, help="Jenkins base URL")
-    parser.add_argument("--jenkins-user", required=True, help="Jenkins username")
+    parser.add_argument("--url", help="Jenkins base URL")
+    parser.add_argument("--jenkins-user", help="Jenkins username")
     parser.add_argument(
         "--jenkins-token",
-        required=True,
         help="Jenkins API token or password",
     )
 
     parser.add_argument(
         "--credential-id",
-        required=True,
         help="Credential ID to create/update in Jenkins",
     )
     parser.add_argument(
         "--ssh-user",
-        required=True,
         help="SSH username (e.g. jenkins)",
     )
     parser.add_argument(
         "--private-key",
-        required=True,
         help="Path to existing SSH private key",
     )
     parser.add_argument(
@@ -142,6 +138,10 @@ Notes:
     )
 
     args = parser.parse_args()
+
+    if len(sys.argv) == 1:
+        parser.print_help()
+        sys.exit(1)
 
     keyWrangling = SshKeyWrangling()
 
