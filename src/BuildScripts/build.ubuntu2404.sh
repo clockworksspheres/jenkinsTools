@@ -8,41 +8,34 @@
 pushd ..
 
 #if doesn't the packenv directory doesn't exist...
-
 directory="./packenv"
 actfile="./packenv/bin/activate"
 if [ ! -d "$directory" ]  || [ ! -f "$actfile" ] ; then
    python3 -m venv packenv
-
    source packenv/bin/activate
 
-   pip install --upgrade pip 
-   pip install noaa-sdk
-   pip install pyqtgraph
-   pip install pyside6
-   pip install cachetools
+   pip install --upgrade pip
+   pip install python-jenkins
    pip install PyInstaller
-
-   #pip install --upgrade pip
-   #pip3 install PySide6 PyInstaller
-   #pip3 install --upgrade PyInstaller pyinstaller-hooks-contrib
-   #pip3 install packaging
 else
    source packenv/bin/activate
 fi
 
-cp BuildScripts/build.ubuntu2404.py312.onefile.spec wnp
+cp BuildScripts/build.rh-based.NodeTool.spec jenkinsTools
+cp BuildScripts/build.rh-based.PipelineTool.spec jenkinsTools
 
-pushd wnp
+pushd jenkinsTools
 
-pyinstaller --clean -y build.ubuntu2404.py312.onefile.spec
-pyinstaller -y build.ubuntu2404.py312.onefile.spec
-rm build.ubuntu2404.py312.onefile.spec
+pyinstaller --clean -y build.rh-based.NodeTool.spec
+pyinstaller -y build.rh-based.NodeTool.spec
 
+pyinstaller --clean -y build.rh-based.PipelineTool.spec
+pyinstaller -y build.rh-based.PipelineTool.spec
+
+rm build.rh-based.NodeTool.spec
+rm build.rh-based.PipelineTool.spec
 
 popd
-
 popd
 
-#../dist/ramdisk-setup
 
