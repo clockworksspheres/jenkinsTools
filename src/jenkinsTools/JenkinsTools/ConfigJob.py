@@ -62,7 +62,7 @@ class ConfigJob():
         """
         self.get_jenkins()
         try:
-            with open(args.file, "r") as f:
+            with open(self.args.file, "r") as f:
                 xml = f.read()
             self.server.reconfig_job(self.args.job, xml)
             print(f"Updated job '{self.args.job}'")

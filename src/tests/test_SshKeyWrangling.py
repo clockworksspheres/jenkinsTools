@@ -21,6 +21,8 @@ import xml.etree.ElementTree as ET
 appendDir = "/".join(os.path.abspath(os.path.dirname(__file__)).split('/')[:-1])
 sys.path.append(appendDir)
 sys.path.append('./..')
+sys.path.append('./../jenkinsTools')
+sys.path.append('./../jenkinsTools/JenkinsTools')
 
 # Adjust import path depending on your project structure
 try:

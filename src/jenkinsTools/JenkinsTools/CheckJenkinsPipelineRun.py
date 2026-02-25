@@ -13,12 +13,13 @@ import time
 from datetime import datetime
 import jenkins
 from jenkins import JenkinsException
+import requests
 
 
 class CheckJenkinsPipelineRun():
     """
     """
-    def __init__(self):
+    def __init__(self, **kwargs):
         """
         """
         print("Initialized class")
