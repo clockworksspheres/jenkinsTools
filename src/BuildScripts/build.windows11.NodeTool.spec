@@ -1,8 +1,8 @@
 # -*- mode: python ; coding: utf-8 -*-
 
 a = Analysis(
-    ['AddSshKeyCredential.py'],
-    pathex=['.'],
+    ['jenkinsNodeTool.py'],
+    pathex=['.', 'JenkinsTools'],
     binaries=[],
     datas=[],
     hiddenimports=[], 
@@ -20,7 +20,7 @@ exe = EXE(
     a.scripts,
     [],
     exclude_binaries=True,
-    name='jenkinsAddSshKeyTool',
+    name='jenkinsNodeTool',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
@@ -39,5 +39,5 @@ coll = COLLECT(
     strip=False,
     upx=True,
     upx_exclude=[],
-    name='jenkinsAddSshKeyTool',
+    name='jenkinsNodeTool',
 )
