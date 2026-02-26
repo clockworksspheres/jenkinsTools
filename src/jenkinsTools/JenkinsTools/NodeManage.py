@@ -50,16 +50,17 @@ class NodeManage:
     def enable_node(self):
         self.server.enable_node(self.args.name)
         print(f"Enabled node: {self.args.name}")
-
+    '''
     def add_node(self):
-        from AddJenkinsNode import AddJenkinsNode
-        jnode = AddJenkinsNode(self.args)
-        jnode.add_jenkins_node()
+        from JenkinsTools.AddJenkinsNode import AddJenkinsNode as addNode
+
+        add_node = addNode(self.args)
+        add_node.add_jenkins_node()
 
     def update_node(self):
         from update_node import cmd_update_node
         cmd_update_node(self.args)
-
+    '''
 
 # --------------------------------------------------------------------------- #
 # ARGPARSE SETUP

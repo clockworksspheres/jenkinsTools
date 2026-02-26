@@ -14,6 +14,12 @@ sys.path.append('./../jenkinsTools/JenkinsTools')
 from NodeManage import NodeManage, build_parser
 
 
+class Args:
+    url = "u"
+    user = "x"
+    token = "t"
+    name = "agent1" 
+
 class TestNodeManage(unittest.TestCase):
 
     # ---------------------------
@@ -56,7 +62,7 @@ class TestNodeManage(unittest.TestCase):
         with self.assertRaises(SystemExit):
             NodeManage(args)
 
-    """
+    
     # ---------------------------
     # delete_node()
     # ---------------------------
@@ -66,7 +72,7 @@ class TestNodeManage(unittest.TestCase):
         mock_jenkins.return_value = server
         server.get_whoami.return_value = {}
 
-        args = MagicMock(url="u", user="x", token="t", name="agent1")
+        args = Args() 
         nm = NodeManage(args)
 
         with patch("builtins.print") as mock_print:
@@ -83,7 +89,7 @@ class TestNodeManage(unittest.TestCase):
         mock_jenkins.return_value = server
         server.get_whoami.return_value = {}
 
-        args = MagicMock(url="u", user="x", token="t", name="agent1")
+        args = Args()
         nm = NodeManage(args)
 
         with patch("builtins.print") as mock_print:
@@ -100,14 +106,14 @@ class TestNodeManage(unittest.TestCase):
         mock_jenkins.return_value = server
         server.get_whoami.return_value = {}
 
-        args = MagicMock(url="u", user="x", token="t", name="agent1")
+        args = Args()
         nm = NodeManage(args)
 
         with patch("builtins.print") as mock_print:
             nm.enable_node()
             server.enable_node.assert_called_once_with("agent1")
             mock_print.assert_any_call("Enabled node: agent1")
-
+    '''
     # ---------------------------
     # add_node() — ensure AddJenkinsNode is invoked
     # ---------------------------
@@ -118,7 +124,7 @@ class TestNodeManage(unittest.TestCase):
         mock_jenkins.return_value = server
         server.get_whoami.return_value = {}
 
-        args = MagicMock(url="u", user="x", token="t", name="agent1")
+        args = Args()
         nm = NodeManage(args)
 
         nm.add_node()
@@ -136,13 +142,13 @@ class TestNodeManage(unittest.TestCase):
         mock_jenkins.return_value = server
         server.get_whoami.return_value = {}
 
-        args = MagicMock(url="u", user="x", token="t", name="agent1")
+        args = Args()
         nm = NodeManage(args)
 
         nm.update_node()
 
         mock_update.assert_called_once_with(args)
-    """
+    '''
 
     # ---------------------------
     # Argparse: ensure subcommands parse correctly
