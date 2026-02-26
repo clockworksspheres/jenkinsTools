@@ -82,7 +82,7 @@ def main():
 Examples:
 
   Add ~/.ssh/id_rsa as a Jenkins credential:
-    python add_ssh_key_credential.py \\
+    %(prog)s \\
       --url http://localhost:8080 \\
       --jenkins-user admin \\
       --jenkins-token API_TOKEN \\
@@ -91,7 +91,7 @@ Examples:
       --private-key ~/.ssh/id_rsa
 
   Add an encrypted SSH key:
-    python add_ssh_key_credential.py \\
+    %(prog)s \\
       --url http://jenkins:8080 \\
       --jenkins-user admin \\
       --jenkins-token API_TOKEN \\
@@ -108,23 +108,27 @@ Notes:
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
 
-    parser.add_argument("--url", help="Jenkins base URL")
-    parser.add_argument("--jenkins-user", help="Jenkins username")
+    parser.add_argument("--url", required=True, help="Jenkins base URL")
+    parser.add_argument("--jenkins-user", required=True, help="Jenkins username")
     parser.add_argument(
         "--jenkins-token",
+        required=True,
         help="Jenkins API token or password",
     )
 
     parser.add_argument(
         "--credential-id",
+        required=True,
         help="Credential ID to create/update in Jenkins",
     )
     parser.add_argument(
         "--ssh-user",
+        required=True,
         help="SSH username (e.g. jenkins)",
     )
     parser.add_argument(
         "--private-key",
+        required=True,
         help="Path to existing SSH private key",
     )
     parser.add_argument(

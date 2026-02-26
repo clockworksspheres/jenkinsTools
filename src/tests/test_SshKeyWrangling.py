@@ -67,7 +67,7 @@ fakekeydataherebase64encoded
     # ────────────────────────────────────────────────
     # add_ssh_private_key_credential
     # ────────────────────────────────────────────────
-    '''
+
     @patch("requests.post")
     def test_add_ssh_credential_success_no_passphrase(self, mock_post):
         fake_response = MagicMock()
@@ -103,7 +103,7 @@ fakekeydataherebase64encoded
         self.assertEqual(root.find("id").text, "deploy-key-github")
         self.assertEqual(root.find("username").text, "git")
         self.assertEqual(root.find("description").text, "SSH key for GitHub deployments")
-        self.assertEqual(root.find("passphrase").text, "")
+        self.assertEqual(root.find("passphrase").text, None)
 
         pk_source = root.find("privateKeySource")
         self.assertIsNotNone(pk_source)
@@ -115,7 +115,7 @@ fakekeydataherebase64encoded
             pk_source.find("privateKey").text,
             "-----BEGIN ... fake key content ... END-----"
         )
-    '''
+
     @patch("requests.post")
     def test_add_ssh_credential_with_passphrase(self, mock_post):
         fake_response = MagicMock()
@@ -160,7 +160,7 @@ fakekeydataherebase64encoded
         self.assertIn("Failed to create credential", err_msg)
         self.assertIn("403", err_msg)
         self.assertIn("Authentication failed", err_msg)
-    '''
+
     # ────────────────────────────────────────────────
     # main() / argparse smoke tests
     # ────────────────────────────────────────────────
@@ -174,7 +174,7 @@ fakekeydataherebase64encoded
         self.assertEqual(cm.exception.code, 0)
         output = mock_stdout.getvalue()
         self.assertIn("--credential-id", output)
-        self.assertIn("--private-key-file", output)
+        self.assertIn("--private-key", output)
         self.assertIn("Add an existing SSH private key", output)
 
     @patch("sys.argv", ["AddSshKeyCredential.py"])
@@ -185,7 +185,7 @@ fakekeydataherebase64encoded
             main()
         self.assertNotEqual(cm.exception.code, 0)
         self.assertIn("the following arguments are required", mock_stderr.getvalue())
-    '''
+
 
 if __name__ == "__main__":
     unittest.main()
