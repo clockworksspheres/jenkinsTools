@@ -5,11 +5,16 @@ import os
 
 #####
 # Include the parent project directory in the PYTHONPATH
-appendDir = "/".join(os.path.abspath(os.path.dirname(__file__)).split('/')[:-1])
-sys.path.append(appendDir)
-sys.path.append('./..')
-sys.path.append('./../jenkinsTools')
-sys.path.append('./../jenkinsTools/JenkinsTools')
+#appendDir = "/".join(os.path.abspath(os.path.dirname(__file__)).split('/')[:-1])
+#sys.path.append(appendDir)
+if sys.platform.lower().startswith("win32"):
+    sys.path.append(r'..')
+    sys.path.append(r'..\jenkinsTools')
+    sys.path.append(r'..\jenkinsTools\JenkinsTools')
+else:
+    sys.path.append('./..')
+    sys.path.append('./../jenkinsTools')
+    sys.path.append('./../jenkinsTools/JenkinsTools')
 
 from CreateJenkinsPipeline import CreateJenkinsPipeline
 
