@@ -63,7 +63,7 @@ class TestConfigJob(unittest.TestCase):
         with patch("builtins.print") as mock_print:
             cj.cmd_get_config()
             mock_print.assert_any_call("<xml>config</xml>")
-    """ 
+    '''
     # ---------------------------
     # cmd_get_config(): job not found
     # ---------------------------
@@ -72,14 +72,14 @@ class TestConfigJob(unittest.TestCase):
         server = MagicMock()
         mock_jenkins.return_value = server
         server.get_whoami.return_value = {}
-        server.get_job_config.side_effect = Exception("NotFound")
+        server.get_job_config.side_effect = Exception("SystemExit")
 
         args = MagicMock(url="u", user="x", token="t", job="MissingJob")
         cj = ConfigJob(args)
 
         with self.assertRaises(SystemExit):
             cj.cmd_get_config()
-    """
+    '''
     # ---------------------------
     # cmd_set_config(): success
     # ---------------------------
@@ -101,7 +101,6 @@ class TestConfigJob(unittest.TestCase):
                 server.reconfig_job.assert_called_once_with("MyJob", fake_xml)
                 mock_print.assert_any_call("Updated job 'MyJob'")
 
-    """
     # ---------------------------
     # cmd_set_config(): file missing
     # ---------------------------
@@ -117,7 +116,7 @@ class TestConfigJob(unittest.TestCase):
         with patch("builtins.open", side_effect=FileNotFoundError):
             with self.assertRaises(SystemExit):
                 cj.cmd_set_config()
-
+    '''
     # ---------------------------
     # cmd_set_config(): job not found
     # ---------------------------
@@ -126,6 +125,7 @@ class TestConfigJob(unittest.TestCase):
         server = MagicMock()
         mock_jenkins.return_value = server
         server.get_whoami.return_value = {}
+        with patch('server.reconfig_job') as mock_func:
         server.reconfig_job.side_effect = Exception("NotFound")
 
         args = MagicMock(url="u", user="x", token="t", job="MissingJob", file="config.xml")
@@ -134,7 +134,8 @@ class TestConfigJob(unittest.TestCase):
         with patch("builtins.open", mock_open(read_data="<xml/>")):
             with self.assertRaises(SystemExit):
                 cj.cmd_set_config()
-    """
+    '''
+
 
 if __name__ == "__main__":
     unittest.main()
