@@ -18,6 +18,7 @@ if [ ! -d "$directory" ]  || [ ! -f "$actfile" ] ; then
    pip install python-jenkins
    pip install PyInstaller
    pip install requests
+   pip install pytest
 else
    source packenv/bin/activate
 fi
