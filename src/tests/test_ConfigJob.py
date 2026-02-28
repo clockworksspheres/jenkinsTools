@@ -2,6 +2,7 @@ import unittest
 from unittest.mock import patch, MagicMock, mock_open
 import sys
 import os
+import jenkins
 
 #####
 # Include the parent project directory in the PYTHONPATH# 
@@ -68,7 +69,7 @@ class TestConfigJob(unittest.TestCase):
         with patch("builtins.print") as mock_print:
             cj.cmd_get_config()
             mock_print.assert_any_call("<xml>config</xml>")
-    '''
+    
     # ---------------------------
     # cmd_get_config(): job not found
     # ---------------------------
@@ -77,14 +78,16 @@ class TestConfigJob(unittest.TestCase):
         server = MagicMock()
         mock_jenkins.return_value = server
         server.get_whoami.return_value = {}
-        server.get_job_config.side_effect = Exception("SystemExit")
+        mock_jenkins.NotFoundException = jenkins.NotFoundException("NotFound")
+        # server.get_job_config.side_effect = Exception("SystemExit")
+        server.get_job_config.side_effect = jenkins.NotFoundException("Not Found")
 
         args = MagicMock(url="u", user="x", token="t", job="MissingJob")
         cj = ConfigJob(args)
 
         with self.assertRaises(SystemExit):
             cj.cmd_get_config()
-    '''
+    
     # ---------------------------
     # cmd_set_config(): success
     # ---------------------------
@@ -121,7 +124,7 @@ class TestConfigJob(unittest.TestCase):
         with patch("builtins.open", side_effect=FileNotFoundError):
             with self.assertRaises(SystemExit):
                 cj.cmd_set_config()
-    '''
+    
     # ---------------------------
     # cmd_set_config(): job not found
     # ---------------------------
@@ -130,8 +133,8 @@ class TestConfigJob(unittest.TestCase):
         server = MagicMock()
         mock_jenkins.return_value = server
         server.get_whoami.return_value = {}
-        with patch('server.reconfig_job') as mock_func:
-        server.reconfig_job.side_effect = Exception("NotFound")
+        mock_jenkins.NotFoundException = jenkins.NotFoundException("Not Found")
+        server.reconfig_job.side_effect = jenkins.NotFoundException("SystemExit")
 
         args = MagicMock(url="u", user="x", token="t", job="MissingJob", file="config.xml")
         cj = ConfigJob(args)
@@ -139,7 +142,7 @@ class TestConfigJob(unittest.TestCase):
         with patch("builtins.open", mock_open(read_data="<xml/>")):
             with self.assertRaises(SystemExit):
                 cj.cmd_set_config()
-    '''
+    
 
 
 if __name__ == "__main__":
