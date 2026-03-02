@@ -2,7 +2,8 @@
 
 Command line tools for interfacing with Jenkins
 
-Relies on the python-jenkins library to interface with a Jenkins server.
+Relies on the python-jenkins library to interface with a
+Jenkins server.
 
 Command line tools to:
  * manage nodes
