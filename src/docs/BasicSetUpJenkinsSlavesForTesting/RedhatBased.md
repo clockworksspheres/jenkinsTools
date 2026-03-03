@@ -1,6 +1,8 @@
 
 ## Additional packages to install
 
-pip install pytest
-pip install python-jenkins
-
+``` bash
+dnf install python3-pytest
+dnf install python3-virtualenv
+dnf install python3-pip
+```
