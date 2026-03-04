@@ -19,6 +19,7 @@ if [ ! -d "$directory" ]  || [ ! -f "$actfile" ] ; then
    pip install PyInstaller
    pip install requests
    pip install pytest
+   pip install pyside6
 else
    source packenv/bin/activate
 fi
