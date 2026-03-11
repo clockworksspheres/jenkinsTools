@@ -2,21 +2,14 @@ import unittest
 from unittest.mock import patch, MagicMock
 import sys
 import os
+from pathlib import Path
 
-#####
-# Include the parent project directory in the PYTHONPATH
-#appendDir = "/".join(os.path.abspath(os.path.dirname(__file__)).split('/')[:-1])
-#sys.path.append(appendDir)
-if sys.platform.lower().startswith("win32"):
-    sys.path.append(r'..')
-    sys.path.append(r'..\jenkinsTools')
-    sys.path.append(r'..\jenkinsTools\JenkinsTools')
-else:
-    sys.path.append('./..')
-    sys.path.append('./../jenkinsTools')
-    sys.path.append('./../jenkinsTools/JenkinsTools')
+# Get the parent directory of the current file's parent directory
+#  and add it to sys.path
+parent_dir = Path(__file__).parent.parent
+sys.path.append(str(parent_dir))
 
-from NodeStatus import NodeStatus, build_parser
+from JenkinsTools.NodeStatus import NodeStatus, build_parser
 
 
 class TestNodeStatus(unittest.TestCase):

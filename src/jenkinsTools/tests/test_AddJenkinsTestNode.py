@@ -2,6 +2,7 @@ import unittest
 from unittest.mock import patch, MagicMock
 import sys
 import os
+from pathlib import Path
 
 #####
 # Include the parent project directory in the PYTHONPATH
@@ -12,12 +13,20 @@ if sys.platform.lower().startswith("win32"):
     sys.path.append(r'..\jenkinsTools')
     sys.path.append(r'..\jenkinsTools\JenkinsTools')
 else:
+    # Get the parent directory of the current file's parent directory
+    #  and add it to sys.path
+    parent_dir = Path(__file__).parent.parent
+    sys.path.append(str(parent_dir))
+    parent_dir = Path(__file__).parent.parent
+    sys.path.append(str(parent_dir))
+    '''
     sys.path.append('./..')
     sys.path.append('./../jenkinsTools')
     sys.path.append('./../jenkinsTools/JenkinsTools')
+    '''
 
 # Import the module under test
-from AddJenkinsNode import AddJenkinsNode, parse_arguments
+from JenkinsTools.AddJenkinsNode import AddJenkinsNode, parse_arguments
 
 
 class TestAddJenkinsNode(unittest.TestCase):

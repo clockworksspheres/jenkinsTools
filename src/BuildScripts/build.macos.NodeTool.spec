@@ -31,7 +31,7 @@ exe = EXE(
     strip=True,
     upx=False,             # <-- No UPX = faster load
     upx_exclude=[],
-    runtime_tmpdir=None,   # <-- Uses system temp (fastest)
+    runtime_tmpdir="/tmp",   # <-- Uses system temp (fastest)
     console=True,
     disable_windowed_traceback=False,
     argv_emulation=False,

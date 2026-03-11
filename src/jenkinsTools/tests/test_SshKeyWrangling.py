@@ -15,26 +15,15 @@ import sys
 import requests
 from io import StringIO
 import xml.etree.ElementTree as ET
+from pathlib import Path
 
-#####
-# Include the parent project directory in the PYTHONPATH
-#appendDir = "/".join(os.path.abspath(os.path.dirname(__file__)).split('/')[:-1])
-#sys.path.append(appendDir)
-if sys.platform.lower().startswith("win32"):
-    sys.path.append(r'..')
-    sys.path.append(r'..\jenkinsTools')
-    sys.path.append(r'..\jenkinsTools\JenkinsTools')
-else:
-    sys.path.append('./..')
-    sys.path.append('./../jenkinsTools')
-    sys.path.append('./../jenkinsTools/JenkinsTools')
+# Get the parent directory of the current file's parent directory
+#  and add it to sys.path
+parent_dir = Path(__file__).parent.parent
+sys.path.append(str(parent_dir))
 
 # Adjust import path depending on your project structure
-try:
-    from jenkinsTools.JenkinsTools.AddSshKeyCredential import SshKeyWrangling
-except ImportError:
-    # If running from same directory or different structure
-    from AddSshKeyCredential import SshKeyWrangling
+from JenkinsTools.AddSshKeyCredential import SshKeyWrangling
 
 
 class TestSshKeyWrangling(unittest.TestCase):
@@ -174,7 +163,7 @@ fakekeydataherebase64encoded
     @patch("sys.stdout", new_callable=StringIO)
     def test_main_help_flag(self, mock_stdout):
         with self.assertRaises(SystemExit) as cm:
-            from jenkinsTools.JenkinsTools.AddSshKeyCredential import main
+            from JenkinsTools.AddSshKeyCredential import main
             main()
         self.assertEqual(cm.exception.code, 0)
         output = mock_stdout.getvalue()
@@ -186,7 +175,7 @@ fakekeydataherebase64encoded
     @patch("sys.stderr", new_callable=StringIO)
     def test_main_missing_required_args(self, mock_stderr):
         with self.assertRaises(SystemExit) as cm:
-            from jenkinsTools.JenkinsTools.AddSshKeyCredential import main
+            from JenkinsTools.AddSshKeyCredential import main
             main()
         self.assertNotEqual(cm.exception.code, 0)
         self.assertIn("the following arguments are required", mock_stderr.getvalue())
