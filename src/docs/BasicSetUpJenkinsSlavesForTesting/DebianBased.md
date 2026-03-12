@@ -9,3 +9,6 @@ sudo apt install python3-pip
 sudo apt install python3-venv
 ```
 
+## For remotely managing the jenkins server interface
+
+http://github.com/clockworksspheres/jenkinsTools.git
