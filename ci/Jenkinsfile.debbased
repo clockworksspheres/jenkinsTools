@@ -38,19 +38,22 @@ pipeline {
             parallel {
                 stage('Debian 13 Pipeline') {
                     agent { label 'debian' }
+                    environment {
+                        VENV = "../../packenv"
+                        QT_QPA_PLATFORM = "offscreen"
+                    }   
                     stages {
                         stage('debian 13 Test') { 
                             steps {
-                                dir('src/tests') {
+                                dir('src/jenkinsTools/tests') {
                                     echo '----------=====### Starting Tests ###=====----------'
                                     sh 'ls -l'
-                                    sh '''
-                                          . ../packenv/bin/activate
-                                          pip install python-jenkins
-                                          py.test --junit-xml test-reports/results.xml
-                                    '''
-                                    // sh '/Users/jenkins/.pyenv/shims/python ./test_run_commands.py'
-                                    //sleep 15
+                                    sh """ 
+                                        . ${VENV}/bin/activate
+                                        pip install pytest
+                                        sudo ${VENV}/bin/python -m pytest -v --junit-xml test-reports/results.xml
+                                        sudo chgrp -R sudo test-reports
+                                    """ 
                                     echo '----------=====### Finished Tests ###=====----------'
                                     junit 'test-reports/results.xml'
                                 }
@@ -60,19 +63,23 @@ pipeline {
                 }
                 stage('Ubuntu 2404 Pipeline') {
                     agent { label 'ubuntu' }
+                    environment {
+                        VENV = "../../packenv"
+                        QT_QPA_PLATFORM = "offscreen"
+                    }   
                     stages {
                         stage('Ubuntu 2404 Test') { 
                             steps {
-                                dir('src/tests') {
+                                dir('src/jenkinsTools/tests') {
                                     echo '----------=====### Starting Tests ###=====----------'
                                     sh 'ls -l'
-                                    sh '''
-                                          . ../packenv/bin/activate
-                                          pip install python-jenkins
-                                          py.test --junit-xml test-reports/results.xml
-                                    '''
-                                    // # sh '. ../packenv/bin/activate; pip install python-jenkins; py.test --junit-xml test-reports/results.xml'
-                                    // # sh 'py.test --junit-xml rhel-test-reports/rhel-results.xml test_*.py'
+                                    sh """ 
+                                        . ${VENV}/bin/activate
+                                        pip install pytest
+                                        sudo ${VENV}/bin/python -m pytest -v --junit-xml test-reports/results.xml
+                                        sudo chgrp -R sudo test-reports
+                                    """ 
+                                    echo '----------=====### Finished Tests ###=====----------'
                                     junit 'test-reports/results.xml'
                                 }
                             }
