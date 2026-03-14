@@ -23,24 +23,24 @@ else
    source packenv/bin/activate
 fi
 
-cp BuildScripts/build.ubuntu2404.NodeTool.spec jenkinsTools
-cp BuildScripts/build.ubuntu2404.PipelineTool.spec jenkinsTools
-cp BuildScripts/build.ubuntu2404.AddSshKeyTool.spec jenkinsTools
+cp BuildScripts/build.deb-based.NodeTool.spec jenkinsTools
+cp BuildScripts/build.deb-based.PipelineTool.spec jenkinsTools
+cp BuildScripts/build.deb-based.AddSshKeyTool.spec jenkinsTools
 
 pushd jenkinsTools
 
-pyinstaller --clean -y build.ubuntu2404.NodeTool.spec
-pyinstaller -y build.ubuntu2404.NodeTool.spec
+pyinstaller --clean -y build.deb-based.NodeTool.spec
+pyinstaller -y build.deb-based.NodeTool.spec
 
-pyinstaller --clean -y build.ubuntu2404.PipelineTool.spec
-pyinstaller -y build.ubuntu2404.PipelineTool.spec
+pyinstaller --clean -y build.deb-based.PipelineTool.spec
+pyinstaller -y build.deb-based.PipelineTool.spec
 
 cp JenkinsTools/AddSshKeyCredential.py .
-pyinstaller --clean -y build.ubuntu2404.AddSshKeyTool.spec
-pyinstaller -y build.ubuntu2404.AddSshKeyTool.spec
+pyinstaller --clean -y build.deb-based.AddSshKeyTool.spec
+pyinstaller -y build.deb-based.AddSshKeyTool.spec
 
-rm build.ubuntu2404.NodeTool.spec
-rm build.ubuntu2404.PipelineTool.spec
+rm build.deb-based.NodeTool.spec
+rm build.deb-based.PipelineTool.spec
 rm build.macos.AddSshKeyTool.spec
 rm AddSshKeyCredential.py
 
