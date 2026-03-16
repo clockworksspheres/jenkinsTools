@@ -59,8 +59,8 @@ pipeline {
                             steps {
                                 dir('src/jenkinsTools/tests') {
                                     echo '----------=====### Starting Tests ###=====----------'
-                                    sh 'ls -l'
-                                    sh """ 
+                                    sh """#!/bin/bash
+                                        ls -l 
                                         . ${VENV}/bin/activate
                                         pip install pytest
                                         sudo ${VENV}/bin/python -m pytest -v --junit-xml test-reports/results.xml
@@ -75,13 +75,17 @@ pipeline {
                 }
                 stage('Rocky 10 Pipeline') {
                     agent { label 'rocky10' }
+                    environment {
+                        VENV = "../../packenv"
+                        QT_QPA_PLATFORM = "offscreen"
+                    }   
                     stages {
                         stage('Rocky10 Test') { 
                             steps {
                                 dir('src/jenkinsTools/tests') {
                                     echo '----------=====### Starting Tests ###=====----------'
-                                    sh 'ls -l'
-                                    sh """ 
+                                    sh """#!/bin/bash
+                                        ls -l 
                                         . ${VENV}/bin/activate
                                         pip install pytest
                                         sudo ${VENV}/bin/python -m pytest -v --junit-xml test-reports/results.xml
@@ -96,13 +100,17 @@ pipeline {
                 }
                 stage('Alma Pipeline') {
                     agent { label 'alma' }
+                    environment {
+                        VENV = "../../packenv"
+                        QT_QPA_PLATFORM = "offscreen"
+                    }   
                     stages {
                         stage('alma Test') { 
                             steps {
                                 dir('src/jenkinsTools/tests') {
                                     echo '----------=====### Starting Tests ###=====----------'
-                                    sh 'ls -l'
-                                    sh """ 
+                                    sh """#!/bin/bash
+                                        ls -l 
                                         . ${VENV}/bin/activate
                                         pip install pytest
                                         sudo ${VENV}/bin/python -m pytest -v --junit-xml test-reports/results.xml
