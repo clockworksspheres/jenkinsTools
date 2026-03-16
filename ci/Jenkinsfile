@@ -63,8 +63,7 @@ pipeline {
                                         ls -l
                                         . ${VENV}/bin/activate
                                         pip install pytest python-jenkins
-                                        sudo ${VENV}/bin/python -m pytest -v --junit-xml test-reports/results.xml
-                                        sudo chgrp -R sudo test-reports
+                                        ${VENV}/bin/python -m pytest -v --junit-xml test-reports/results.xml
                                     """ 
                                     echo '----------=====### Finished Tests ###=====----------'
                                     junit 'test-reports/results.xml' 
@@ -88,8 +87,7 @@ pipeline {
                                         ls -l
                                         . ${VENV}/bin/activate
                                         pip install pytest python-jenkins
-                                        sudo ${VENV}/bin/python -m pytest -v --junit-xml test-reports/results.xml
-                                        sudo chgrp -R sudo test-reports
+                                        ${VENV}/bin/python -m pytest -v --junit-xml test-reports/results.xml
                                     """ 
                                     echo '----------=====### Finished Tests ###=====----------'
                                     junit 'test-reports/results.xml' 
@@ -113,8 +111,7 @@ pipeline {
                                         ls -l
                                         . ${VENV}/bin/activate
                                         pip install pytest python-jenkins
-                                        sudo ${VENV}/bin/python -m pytest -v --junit-xml test-reports/results.xml
-                                        sudo chgrp -R sudo test-reports
+                                        ${VENV}/bin/python -m pytest -v --junit-xml test-reports/results.xml
                                     """ 
                                     echo '----------=====### Finished Tests ###=====----------'
                                     junit 'test-reports/results.xml' 
