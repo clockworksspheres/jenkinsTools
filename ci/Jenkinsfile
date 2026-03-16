@@ -61,7 +61,7 @@ pipeline {
                                     echo '----------=====### Starting Tests ###=====----------'
                                     sh """ 
                                         ls -l
-                                        source ${VENV}/bin/activate
+                                        . ${VENV}/bin/activate
                                         pip install pytest python-jenkins
                                         ${VENV}/bin/python -m pytest -v --junit-xml test-reports/results.xml
                                     """ 
@@ -85,7 +85,7 @@ pipeline {
                                     echo '----------=====### Starting Tests ###=====----------'
                                     sh """ 
                                         ls -l
-                                        source ${VENV}/bin/activate
+                                        . ${VENV}/bin/activate
                                         pip install pytest python-jenkins
                                         ${VENV}/bin/python -m pytest -v --junit-xml test-reports/results.xml
                                     """ 
@@ -109,7 +109,7 @@ pipeline {
                                     echo '----------=====### Starting Tests ###=====----------'
                                     sh """ 
                                         ls -l
-                                        source ${VENV}/bin/activate
+                                        . ${VENV}/bin/activate
                                         pip install pytest python-jenkins
                                         ${VENV}/bin/python -m pytest -v --junit-xml test-reports/results.xml
                                     """ 
