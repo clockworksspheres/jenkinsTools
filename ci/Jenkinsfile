@@ -51,7 +51,7 @@ pipeline {
                 stage('macOS Pipeline') {
                     agent { label 'macos' }
                     environment {
-                        VENV = "../packenv"
+                        VENV = "../../packenv"
                         QT_QPA_PLATFORM = "offscreen"
                     }   
                     stages {
@@ -61,7 +61,7 @@ pipeline {
                                     echo '----------=====### Starting Tests ###=====----------'
                                     sh """ 
                                         ls -l
-                                        . ${VENV}/bin/activate
+                                        source ${VENV}/bin/activate
                                         pip install pytest python-jenkins
                                         ${VENV}/bin/python -m pytest -v --junit-xml test-reports/results.xml
                                     """ 
@@ -75,7 +75,7 @@ pipeline {
                 stage('Rocky 10 Pipeline') {
                     agent { label 'rocky10' }
                     environment {
-                        VENV = "../packenv"
+                        VENV = "../../packenv"
                         QT_QPA_PLATFORM = "offscreen"
                     }   
                     stages {
@@ -85,7 +85,7 @@ pipeline {
                                     echo '----------=====### Starting Tests ###=====----------'
                                     sh """ 
                                         ls -l
-                                        . ${VENV}/bin/activate
+                                        source ${VENV}/bin/activate
                                         pip install pytest python-jenkins
                                         ${VENV}/bin/python -m pytest -v --junit-xml test-reports/results.xml
                                     """ 
@@ -99,7 +99,7 @@ pipeline {
                 stage('Debian Pipeline') {
                     agent { label 'debian' }
                     environment {
-                        VENV = "../packenv"
+                        VENV = "../../packenv"
                         QT_QPA_PLATFORM = "offscreen"
                     }   
                     stages {
@@ -109,7 +109,7 @@ pipeline {
                                     echo '----------=====### Starting Tests ###=====----------'
                                     sh """ 
                                         ls -l
-                                        . ${VENV}/bin/activate
+                                        source ${VENV}/bin/activate
                                         pip install pytest python-jenkins
                                         ${VENV}/bin/python -m pytest -v --junit-xml test-reports/results.xml
                                     """ 
