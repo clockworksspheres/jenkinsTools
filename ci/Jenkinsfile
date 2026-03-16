@@ -59,7 +59,7 @@ pipeline {
                             steps {
                                 dir('src/jenkinsTools/tests') {
                                     echo '----------=====### Starting Tests ###=====----------'
-                                    sh """ 
+                                    sh """#!/bin/bash 
                                         ls -l
                                         . ${VENV}/bin/activate
                                         pip install pytest python-jenkins
