@@ -12,3 +12,6 @@ Command line tools to:
 
 A [clockworksspheres](https://clockworksspheres.github.io/) project.
 
+Can work in hand with the [clockworksspheres/vmm](https://clockworksspheres/vmm.git)
+project to manage test VM's for testing the cross platform nature of the tools
+

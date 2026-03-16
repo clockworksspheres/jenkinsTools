@@ -50,13 +50,21 @@ pipeline {
             parallel {
                 stage('macOS Pipeline') {
                     agent { label 'macos' }
+                    environment {
+                        VENV = "../../packenv"
+                        QT_QPA_PLATFORM = "offscreen"
+                    }   
                     stages {
                         stage('macOS Test') { 
                             steps {
                                 dir('src/jenkinsTools/tests') {
                                     echo '----------=====### Starting Tests ###=====----------'
-                                    sh 'ls -l'
-                                    sh '/opt/homebrew/bin/py.test --junit-xml test-reports/results.xml test_*.py'
+                                    sh """ 
+                                        . ${VENV}/bin/activate
+                                        pip install pytest python-jenkins
+                                        sudo ${VENV}/bin/python -m pytest -v --junit-xml test-reports/results.xml
+                                        sudo chgrp -R sudo test-reports
+                                    """ 
                                     echo '----------=====### Finished Tests ###=====----------'
                                     junit 'test-reports/results.xml' 
                                 }
@@ -66,15 +74,21 @@ pipeline {
                 }
                 stage('Rocky 10 Pipeline') {
                     agent { label 'rocky10' }
+                    environment {
+                        VENV = "../../packenv"
+                        QT_QPA_PLATFORM = "offscreen"
+                    }   
                     stages {
                         stage('Rocky10 Test') { 
                             steps {
                                 dir('src/jenkinsTools/tests') {
                                     echo '----------=====### Starting Tests ###=====----------'
-                                    sh 'ls -l'
-                                    sh 'sudo /usr/bin/py.test --junit-xml test-reports/results.xml test_*.py'
-                                    // sh '/Users/jenkins/.pyenv/shims/python ./test_run_commands.py'
-                                    //sleep 15
+                                    sh """ 
+                                        . ${VENV}/bin/activate
+                                        pip install pytest python-jenkins
+                                        sudo ${VENV}/bin/python -m pytest -v --junit-xml test-reports/results.xml
+                                        sudo chgrp -R sudo test-reports
+                                    """ 
                                     echo '----------=====### Finished Tests ###=====----------'
                                     junit 'test-reports/results.xml' 
                                 }
@@ -84,15 +98,21 @@ pipeline {
                 }
                 stage('Debian Pipeline') {
                     agent { label 'debian' }
+                    environment {
+                        VENV = "../../packenv"
+                        QT_QPA_PLATFORM = "offscreen"
+                    }   
                     stages {
                         stage('Debian Test') { 
                             steps {
                                 dir('src/jenkinsTools/tests') {
                                     echo '----------=====### Starting Tests ###=====----------'
-                                    sh 'ls -l'
-                                    sh 'sudo -E /usr/bin/py.test --junit-xml test-reports/results.xml test_*.py'
-                                    // sh '/Users/jenkins/.pyenv/shims/python ./test_run_commands.py'
-                                    //sleep 15
+                                    sh """ 
+                                        . ${VENV}/bin/activate
+                                        pip install pytest python-jenkins
+                                        sudo ${VENV}/bin/python -m pytest -v --junit-xml test-reports/results.xml
+                                        sudo chgrp -R sudo test-reports
+                                    """ 
                                     echo '----------=====### Finished Tests ###=====----------'
                                     junit 'test-reports/results.xml' 
                                 }
