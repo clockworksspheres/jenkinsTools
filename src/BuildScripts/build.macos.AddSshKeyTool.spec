@@ -35,7 +35,7 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    onefile=True,          # <-- You requested onefile
+    onedir=True,          # <-- You requested onefile
     noarchive=True,
 )
 
