@@ -8,8 +8,11 @@ http://github.com/clockworksspheres/jenkinsTools.git
 
 https://github.com/clockworksspheres/vmm.git
 
-On macOS, works with the following hypervisors currently:
+Designed for the following hypervisors currently:
 
 * UTM
-* VMware Fusion
+* HyperV
+* VMware Workstation & Fusion
 * Oracle VirtualBox
+
+Only type 2 hypervisors are supported on macOS at this time.
