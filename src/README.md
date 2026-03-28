@@ -31,8 +31,4 @@ is a place for prototyping churn of untested ideas and
 concepts that are intended to, but may or may not be
 integrated into the project.
 
-## tests
-
-Project related tests
-
 
