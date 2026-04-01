@@ -1,6 +1,6 @@
 # README.md
 
-# Three directories
+# Directories
 
 ## BuildScripts
 
@@ -20,7 +20,7 @@ A kanban board made with eisenban to track progress.
 
 after installing eisenban:
 
-```
+``` bash
 eisenban -t jenkinsToolsBoard
 ```
 

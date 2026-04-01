@@ -1,5 +1,6 @@
 import os
 import sys
+import ConfigParser
 
 from pathlib import Path
 
@@ -17,17 +18,19 @@ class ConfigFile():
         """
         self.jenkinsServer = ""
         self.jenkinsUser = ""
-        self.jenkinsFileName = ""
-        self.userHome = ""
+        self.jenkinsToken = ""
         self.filename = "config.py"
         self.getDefaultConfigPath()
         self.permissions = 0o600
-        self.userHome = ""
+        self.userHome = str(getUserHome())
 
     def saveConfig(self):
         """
         """
-        pass
+        with open(self.configFile "w") as f:
+            f.write(f"JENKINS_SERVER={self.jenkinsServer}")
+            f.write(f"JENKINS_USER={self.jenkinsUser}")
+            f.write(f"JENKINS_TOKEN={self.jenkinsToken}")
 
     def loadConfig(self):
         """
