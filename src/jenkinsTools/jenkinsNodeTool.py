@@ -231,8 +231,3 @@ if __name__=="__main__":
         nm = NodeManage(args)
         print(nm.enable_node())
 
-    # print("\n")
-    # print(f"command: {args.command}")
-    # print(f"args: {vars(args)}")
- 
- 

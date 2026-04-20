@@ -242,8 +242,3 @@ if __name__=="__main__":
         config_job = ConfigJob(args)
         config_job.cmd_set_config()
 
-
-    #print("\n")
-    #print(f"command: {args.command}")
-    #print(f"args: {vars(args)}")
-  
