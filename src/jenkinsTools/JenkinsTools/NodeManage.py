@@ -135,13 +135,19 @@ def main():
     nm = NodeManage(args)
 
     dispatch = {
+        "delete": nm.delete_node,
+        "disable": nm.disable_node,
+        "enable": nm.enable_node,
+    }
+    '''
+    dispatch = {
         "add": nm.add_node,
         "delete": nm.delete_node,
         "disable": nm.disable_node,
         "enable": nm.enable_node,
         "update": nm.update_node,
     }
-
+    '''
     dispatch[args.command]()
 
 

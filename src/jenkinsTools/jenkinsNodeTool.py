@@ -185,49 +185,49 @@ if __name__=="__main__":
 
     if args.command == "add":
         print(f"Adding {args.url} for node <{args.name}>...")
-        from JenkinsTools.AddJenkinsNode import AddJenkinsNode as addNode
+        from jenkinsTools.JenkinsTools.AddJenkinsNode import AddJenkinsNode as addNode
 
         add_node = addNode(args)
         add_node.add_jenkins_node()
 
     elif args.command == "update":
         print(f"Running {args.url} for pipeline <{args.name}>...")
-        from JenkinsTools.update_node import cmd_update_node
+        from jenkinsTools.JenkinsTools.update_node import cmd_update_node
 
         cmd_update_node(args)
 
     elif args.command == "get-nodes":
-        from JenkinsTools.NodeStatus import NodeStatus
+        from jenkinsTools.JenkinsTools.NodeStatus import NodeStatus
         ns = NodeStatus(args)
         print(ns.get_nodes())
 
     elif args.command == "get-node-info":
-        from JenkinsTools.NodeStatus import NodeStatus
+        from jenkinsTools.JenkinsTools.NodeStatus import NodeStatus
         ns = NodeStatus(args)
         print(json.dumps(ns.get_node_info(), indent=4))
 
     elif args.command == "get-node-config":
-        from JenkinsTools.NodeStatus import NodeStatus
+        from jenkinsTools.JenkinsTools.NodeStatus import NodeStatus
         ns = NodeStatus(args)
         print(ns.get_node_config())
 
     elif args.command == "node-exists":
-        from JenkinsTools.NodeStatus import NodeStatus
+        from jenkinsTools.JenkinsTools.NodeStatus import NodeStatus
         ns = NodeStatus(args)
         print(ns.node_exists())
 
     elif args.command == "delete":
-        from JenkinsTools.NodeManage import NodeManage
+        from jenkinsTools.JenkinsTools.NodeManage import NodeManage
         nm = NodeManage(args)
         print(nm.delete_node())
 
     elif args.command == "disable":
-        from JenkinsTools.NodeManage import NodeManage
+        from jenkinsTools.JenkinsTools.NodeManage import NodeManage
         nm = NodeManage(args)
         print(nm.disable_node())
 
     elif args.command == "enable":
-        from JenkinsTools.NodeManage import NodeManage
+        from jenkinsTools.JenkinsTools.NodeManage import NodeManage
         nm = NodeManage(args)
         print(nm.enable_node())
 

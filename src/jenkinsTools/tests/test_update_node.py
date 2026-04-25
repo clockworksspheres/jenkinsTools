@@ -10,7 +10,12 @@ from pathlib import Path
 parent_dir = Path(__file__).parent.parent
 sys.path.append(str(parent_dir))
 
-from JenkinsTools.update_node import cmd_update_node, build_parser
+current_dir = Path(__file__).parent
+sys.path.append(str(current_dir))
+
+print(str(parent_dir))
+
+from jenkinsTools.JenkinsTools.update_node import cmd_update_node, build_parser
 
 
 class TestUpdateNode(unittest.TestCase):
@@ -34,14 +39,15 @@ class TestUpdateNode(unittest.TestCase):
     # ---------------------------
     # Helper to run cmd_update_node with mocks
     # ---------------------------
-    @patch("jenkins.Jenkins")
-    def run_update(self, args, mock_jenkins):
-        server = MagicMock()
-        mock_jenkins.return_value = server
-        server.get_node_config.return_value = self.BASE_XML
+    # @patch("jenkins.Jenkins")
+    def run_update(self, args):
+        with patch("jenkins.Jenkins") as mock_jenkins:
+            server = MagicMock()
+            mock_jenkins.return_value = server
+            server.get_node_config.return_value = self.BASE_XML
 
-        cmd_update_node(args)
-        return server
+            cmd_update_node(args)
+            return server
 
     # ---------------------------
     # Test updating remoteFS
@@ -106,35 +112,45 @@ class TestUpdateNode(unittest.TestCase):
     # ---------------------------
     # Test adding label if missing
     # ---------------------------
-    @patch("jenkins.Jenkins")
-    def test_add_label_if_missing(self, mock_jenkins):
-        server = MagicMock()
-        mock_jenkins.return_value = server
+    def test_add_label_if_missing_two(self):
+        with patch("jenkins.Jenkins") as mock_jenkins:
+            server = MagicMock()
+            mock_jenkins.return_value = server
 
-        xml_no_label = """
+            #xml_no_label = """..."""
+            xml_no_label = """
 <slave>
     <remoteFS>/old/path</remoteFS>
     <numExecutors>2</numExecutors>
 </slave>
 """
-        server.get_node_config.return_value = xml_no_label
+            server.get_node_config.return_value = xml_no_label
 
-        args = MagicMock(
-            url="u", user="x", token="t", name="node",
-            new_remoteFS="",
-            new_numExecutors="",
-            new_label="addedlabel",
-            new_host="",
-            new_port="",
-            new_credentialsId=""
-        )
+            args = MagicMock(
+                url="u", user="x", token="t", name="node",
+                new_remoteFS="",
+                new_numExecutors="",
+                new_label="addedlabel",
+                new_host="",
+                new_port="",
+                new_credentialsId=""
+            )
 
-        cmd_update_node(args)
+            cmd_update_node(args)
 
-        xml = server.reconfig_node.call_args[0][1]
-        root = ET.fromstring(xml)
+            xml = server.reconfig_node.call_args[0][1]
+            root = ET.fromstring(xml)
 
-        self.assertEqual(root.find("label").text, "addedlabel")
+            self.assertEqual(root.find("label").text, "addedlabel")
+
+
+
+
+
+
+
+
+
 
     # ---------------------------
     # Test updating host

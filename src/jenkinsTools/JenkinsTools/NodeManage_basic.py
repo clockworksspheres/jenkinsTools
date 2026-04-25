@@ -1,3 +1,6 @@
+import sys
+import jenkins
+from jenkins import JenkinsException
 
 
 class NodeManage():
@@ -52,14 +55,14 @@ class NodeManage():
     def add_node(self):
         """
         """
-        from AddJenkinsNode import AddJenkinsNode
+        from jenkinsTools.JenkinsTools.AddJenkinsNode import AddJenkinsNode
         jnode = AddJenkinsNode(self.args)
         jnode.add_jenkins_node()
 
     def update_node(self):
         """
         """
-        from update_node import cmd_update_node
+        from jenkinsTools.JenkinsTools.update_node import cmd_update_node
         cmd_update_node(self.args)
 
         

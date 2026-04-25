@@ -15,7 +15,7 @@ class NodeStatus():
 
             # Quick connectivity check
             try:
-                server.get_whoami()
+                self.server.get_whoami()
             except Exception as e:
                 print("\nCannot connect to Jenkins!", file=sys.stderr)
                 print("Common causes:", file=sys.stderr)
@@ -33,16 +33,19 @@ class NodeStatus():
             print(f"\nUnexpected error: {e}", file=sys.stderr)
             sys.exit(1)
 
-    def assert_node_exists(self):
+    def assert_node_exists(self, name):
         """
         """
-        self.server.assert_node_exists(name, exception_message="node[%s] does not exist")
+        try:
+            self.server.assert_node_exists(self.args.name, exception_message="node[%s] does not exist")
+        except JenkinsException as e:
+            print(e)
 
     def node_exists(self):
         """
         """
         exists = False
-        exists = self.server.node_exists(name)
+        exists = self.server.node_exists(self.args.name)
         return exists
 
     def get_nodes(self):

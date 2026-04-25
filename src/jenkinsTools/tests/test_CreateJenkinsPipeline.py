@@ -9,7 +9,7 @@ from pathlib import Path
 parent_dir = Path(__file__).parent.parent
 sys.path.append(str(parent_dir))
 
-from JenkinsTools.CreateJenkinsPipeline import CreateJenkinsPipeline
+from jenkinsTools.JenkinsTools.CreateJenkinsPipeline import CreateJenkinsPipeline
 
 
 class TestCreateJenkinsPipeline(unittest.TestCase):

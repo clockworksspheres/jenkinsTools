@@ -10,7 +10,7 @@ from pathlib import Path
 parent_dir = Path(__file__).parent.parent
 sys.path.append(str(parent_dir))
 
-from JenkinsTools.ConfigJob import ConfigJob
+from jenkinsTools.JenkinsTools.ConfigJob import ConfigJob
 
 
 class TestConfigJob(unittest.TestCase):

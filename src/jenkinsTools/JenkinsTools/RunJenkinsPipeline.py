@@ -107,7 +107,7 @@ class RunJenkinsPipeline():
             print(f"→ View: {args.url}/job/{args.job.replace('/', '/job/')}/{build_number}")
 
             if args.follow:
-                success = follow_build_output(server, args.job, build_number, args.timeout)
+                success = self.follow_build_output(server, args.job, args.build_number, args.timeout)
                 if success is False:
                     sys.exit(1)
 

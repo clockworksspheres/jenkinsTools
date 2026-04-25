@@ -10,9 +10,6 @@ from io import StringIO
 from pylint.lint import Run
 from pylint.reporters.json_reporter import JSONReporter
 
-#from ramdisk.lib.loggers import CyLogger
-#from ramdisk.lib.loggers import LogPriority as lp
-
 
 # ---------------------------------------------------------------------------
 # Stream patching helper
@@ -59,26 +56,6 @@ class AjsonReporter(JSONReporter):
 # ---------------------------------------------------------------------------
 # Standalone function interface
 # ---------------------------------------------------------------------------
-"""
-def processFile(filename, compiledPackages="PyQt5,PyQt4"):
-    ""
-    Process a file using Pylint and return JSON text (pretty‑printed).
-    ""
-    out = StringIO()
-    reporter = AjsonReporter(out)
-
-    # exit=False is critical to avoid SystemExit under pytest
-    with _patch_streams(out):
-        Run(
-            [filename, "--extension-pkg-whitelist=" + compiledPackages],
-            reporter=reporter,
-            exit=False,
-        )
-
-    messages = reporter.get_messages()
-    return json.dumps(messages, indent=4)
-"""
-
 def processFile(filename, compiledPackages="PyQt5,PyQt4"):
     out = StringIO()
     reporter = AjsonReporter(out)
@@ -106,7 +83,7 @@ class PylintIface:
     def __init__(self, compiledPackages: str = "PySide6"):
         self.compiledPackages = compiledPackages
         self.args = ["--extension-pkg-whitelist=" + self.compiledPackages,
-                     "--ignored-modules=psutil,requests",
+                     "--ignored-modules=psutil,requests,pywin32,win32security,win32process,win32api",
                      "--ignore=__pycache__,.pytest_cache,.qtcreator"]
 
     @contextlib.contextmanager
@@ -146,5 +123,4 @@ class PylintIface:
         messages = reporter.get_messages()
         self.acquiredData[filename] = messages
         return messages   # <-- FIXED
-
 

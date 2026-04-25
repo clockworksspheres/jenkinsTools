@@ -26,7 +26,7 @@ else:
     '''
 
 # Import the module under test
-from JenkinsTools.AddJenkinsNode import AddJenkinsNode, parse_arguments
+from jenkinsTools.JenkinsTools.AddJenkinsNode import AddJenkinsNode, parse_arguments
 
 
 class TestAddJenkinsNode(unittest.TestCase):

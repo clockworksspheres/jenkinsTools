@@ -5,7 +5,6 @@ import ConfigParser
 from pathlib import Path
 
 
-
 class ConfigFile():
     """
     Class to manage a config file for the project.
@@ -19,18 +18,19 @@ class ConfigFile():
         self.jenkinsServer = ""
         self.jenkinsUser = ""
         self.jenkinsToken = ""
-        self.filename = "config.py"
+        self.filename = Path("config.py")
         self.getDefaultConfigPath()
         self.permissions = 0o600
-        self.userHome = str(getUserHome())
+        self.userHome = str(self.getUserHome())
 
     def saveConfig(self):
         """
         """
-        with open(self.configFile "w") as f:
-            f.write(f"JENKINS_SERVER={self.jenkinsServer}")
-            f.write(f"JENKINS_USER={self.jenkinsUser}")
-            f.write(f"JENKINS_TOKEN={self.jenkinsToken}")
+        if not self.filename.exists():
+            with open(self.filename, "w") as f:
+                f.write(f"JENKINS_SERVER={self.jenkinsServer}")
+                f.write(f"JENKINS_USER={self.jenkinsUser}")
+                f.write(f"JENKINS_TOKEN={self.jenkinsToken}")
 
     def loadConfig(self):
         """
@@ -99,13 +99,13 @@ class ConfigFile():
         """
         """
         return ""
-
+    '''
     def setJenkinsServer(self, token=""):
         """
         """
         if token and isinstance(token, str):
             self.jenkinsToken = token
-
+    '''
     def commitCursor(self):
         """
         Write the project variables to the config file.

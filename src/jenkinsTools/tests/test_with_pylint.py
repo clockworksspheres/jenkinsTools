@@ -1,6 +1,5 @@
 #!/usr/bin/env -S python -u
 
-
 import os
 import re
 import sys
@@ -10,14 +9,6 @@ import unittest
 from subprocess import Popen, PIPE
 from optparse import OptionParser
 from optparse import Option, OptionValueError
-
-'''
-mydir = os.path.dirname(os.path.abspath(__file__))
-parentdir = "/" + "/".join(mydir.split("/")[:-1])
-print(parentdir)
-sys.path.append(parentdir)
-'''
-
 from pathlib import Path
 
 # Get the parent directory of the current file's parent directory
@@ -25,10 +16,12 @@ from pathlib import Path
 parent_dir = Path(__file__).parent.parent
 sys.path.append(str(parent_dir))
 
-from tests.PylintIface import PylintIface, processFile
+current_dir = Path(__file__).parent
+sys.path.append(str(current_dir))
 
+# from vmm.tests.PylintIface import PylintIface, processFile
+from PylintIface import PylintIface, processFile
 
-dirPkgRoot = '..'
 
 excludeUnlessUid0 = ["environment.py"]
 
@@ -84,12 +77,13 @@ def genTestData(fileList=[], excludeFiles=[], excludeFromLines=[]):
                 #print myfile
                 jsonData = processFile(myfile)
                 jsonData = pIface.processFile(myfile)
-                print(json.dumps(jsonData, indent=4))
+                # print(json.dumps(jsonData, indent=4))
                 for item in jsonData:
                     # print(item[4])
                     try:
                         if item["category"] in ("error", "fatal"):
                             #print("Found: " + str(item[4]) + " (" + str(item[10]) + ") : " + str(item[2]))
+                            #print(json.dumps(jsonData, indent=4))
                             message = re.sub("'", "", item["message"])
                             #####
                             # Don't include json data that has a string from the
@@ -101,7 +95,7 @@ def genTestData(fileList=[], excludeFiles=[], excludeFromLines=[]):
                                 if re.search("%s"%searchItem, message):
                                     found = True
                             if not found:
-                                    test_case_data.append((myfile, item[10], message))
+                                    test_case_data.append((myfile, item["line"], message))
                     except KeyError:
                         print(traceback.format_exc())
         except AttributeError:
@@ -199,6 +193,7 @@ if __name__=="__main__":
     #print "Arguments: " + str(args)
     #print "Options  : " + str(opts)
 
+
     test_case_data = []
 
     if not opts.treeRoot and not opts.dirToCheck and not opts.doFiles and not opts.confFile:
@@ -265,7 +260,8 @@ if __name__=="__main__":
     if opts.dirToCheck:
         test_case_data = test_case_data + genTestData(getDirList(opts.dirToCheck), opts.excludeFiles, opts.excludeLinesWith)
     if opts.doFiles:
-        test_case_data = test_case_data + genTestData(opts.doFiles, opts.excludeFiles, opts.excludeLinesWith)
+        # test_case_data = test_case_data + genTestData(opts.doFiles, opts.excludeFiles, opts.excludeLinesWith)
+        test_case_data = genTestData(opts.doFiles, opts.excludeFiles, opts.excludeLinesWith)
 
     #for item in test_case_data:
     #    print item
@@ -277,12 +273,14 @@ if __name__=="__main__":
     for specificError in test_case_data:
         #print str(specificError)
         myfile, lineNum, text = specificError
-        test_name = "test_with_pylint_{0}_{1}_{2}".format("_".join("_".join(myfile.split("/")).split(".")), lineNum, "_".join("_".join(text.split(" ")).split("'")))
-        #print test_name
+        test_name = "test_with_pylint_{0}_line-{1}_{2}".format("_".join("_".join(myfile.split("/")).split(".")), lineNum, "_".join("_".join(text.split(" ")).split("'")))
+        print(test_name)
         error_case = pylint_test_template(*specificError)
         setattr(test_with_pylint, test_name, error_case)
 
-    test_suite.addTest(unittest.makeSuite(test_with_pylint))
+    # test_suite.addTest(unittest.makeSuite(test_with_pylint))
+    # unittest.defaultTestLoader.loadTestsFromTestCase(test_with_pylint)
+    test_suite.addTest(unittest.defaultTestLoader.loadTestsFromTestCase(test_with_pylint))   
     runner = unittest.TextTestRunner()
     testResults  = runner.run(test_suite)  # output goes to stderr
 

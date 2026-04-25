@@ -9,7 +9,7 @@ from pathlib import Path
 parent_dir = Path(__file__).parent.parent
 sys.path.append(str(parent_dir))
 
-from JenkinsTools.NodeStatus import NodeStatus, build_parser
+from jenkinsTools.JenkinsTools.NodeStatus import NodeStatus, build_parser
 
 
 class TestNodeStatus(unittest.TestCase):
