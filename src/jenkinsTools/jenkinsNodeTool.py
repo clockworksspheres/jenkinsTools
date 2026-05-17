@@ -192,7 +192,7 @@ if __name__=="__main__":
 
     elif args.command == "update":
         print(f"Running {args.url} for pipeline <{args.name}>...")
-        from jenkinsTools.JenkinsTools.update_node import cmd_update_node
+        from JenkinsTools.update_node import cmd_update_node
 
         cmd_update_node(args)
 
