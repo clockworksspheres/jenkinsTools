@@ -6,12 +6,11 @@ http://github.com/clockworksspheres/jenkinsTools.git
 
 ## for managing operating system VMs for cross platform projects on macOS and Windows
 
-https://github.com/clockworksspheres/vmm.git
+https://github.com/clockworksspheres/mvm.git
 
-Designed for the following hypervisors currently:
+Designed for the following hypervisors on macOS currently:
 
 * UTM
-* HyperV
 * VMware Workstation & Fusion
 * Oracle VirtualBox
 

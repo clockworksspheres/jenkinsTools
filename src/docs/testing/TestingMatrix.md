@@ -1,4 +1,6 @@
-# Testing Matrix for the vmm project
+# Testing Matrix for the mvm project
+
+These are the VM platforms that are available for testing if using the mvm project in the testing pipeline for this project.
 
 ## Testing Methods
 
