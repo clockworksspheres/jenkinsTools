@@ -20,6 +20,8 @@ if (!(Test-Path -Path ".\packenv" -PathType Container)) {
    .\packenv\Scripts\Activate.ps1
 
    #pip install --upgrade pip
+   pip install astroid
+   pip install pylint
    pip install --upgrade PyInstaller
    pip install python-jenkins
    pip install psutil

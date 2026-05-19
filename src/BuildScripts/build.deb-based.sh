@@ -15,6 +15,8 @@ if [ ! -d "$directory" ]  || [ ! -f "$actfile" ] ; then
    source packenv/bin/activate
 
    pip install --upgrade pip
+   pip install pylint
+   pip install astroid
    pip install python-jenkins
    pip install PyInstaller
    pip install requests
