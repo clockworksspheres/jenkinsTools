@@ -53,21 +53,19 @@ pipeline {
                     environment {
                         VENV = "../../packenv"
                         QT_QPA_PLATFORM = "offscreen"
-                    }   
+                    }
                     stages {
                         stage('macOS Test') { 
                             steps {
                                 dir('src/jenkinsTools/tests') {
                                     echo '----------=====### Starting Tests ###=====----------'
-                                    sh """#!/bin/bash 
+                                    sh """
                                         ls -l
-                                        VENV=../../packenv
-                                        source ${VENV}/bin/activate
-                                        ${VENV}/bin/pip install pytest python-jenkins
+                                        . ${VENV}/bin/activate
                                         ${VENV}/bin/python -m pytest -v --junit-xml test-reports/results.xml
-                                    """ 
+                                    """
                                     echo '----------=====### Finished Tests ###=====----------'
-                                    junit 'test-reports/results.xml' 
+                                    junit 'test-reports/results.xml'
                                 }
                             }
                         }
@@ -78,20 +76,19 @@ pipeline {
                     environment {
                         VENV = "../../packenv"
                         QT_QPA_PLATFORM = "offscreen"
-                    }   
+                    }
                     stages {
                         stage('Rocky10 Test') { 
                             steps {
                                 dir('src/jenkinsTools/tests') {
                                     echo '----------=====### Starting Tests ###=====----------'
-                                    sh """ 
+                                    sh """
                                         ls -l
                                         . ${VENV}/bin/activate
-                                        pip install pytest python-jenkins
                                         ${VENV}/bin/python -m pytest -v --junit-xml test-reports/results.xml
-                                    """ 
+                                    """
                                     echo '----------=====### Finished Tests ###=====----------'
-                                    junit 'test-reports/results.xml' 
+                                    junit 'test-reports/results.xml'
                                 }
                             }
                         }
@@ -102,20 +99,19 @@ pipeline {
                     environment {
                         VENV = "../../packenv"
                         QT_QPA_PLATFORM = "offscreen"
-                    }   
+                    }
                     stages {
                         stage('Debian Test') { 
                             steps {
                                 dir('src/jenkinsTools/tests') {
                                     echo '----------=====### Starting Tests ###=====----------'
-                                    sh """ 
+                                    sh """
                                         ls -l
                                         . ${VENV}/bin/activate
-                                        pip install pytest python-jenkins
                                         ${VENV}/bin/python -m pytest -v --junit-xml test-reports/results.xml
-                                    """ 
+                                    """
                                     echo '----------=====### Finished Tests ###=====----------'
-                                    junit 'test-reports/results.xml' 
+                                    junit 'test-reports/results.xml'
                                 }
                             }
                         }
