@@ -2,8 +2,7 @@
 
 Command line tools for interfacing with Jenkins
 
-Relies on the python-jenkins library to interface with a
-Jenkins server.
+Relies on the python-jenkins library to interface with a Jenkins server.
 
 Command line tools to:
  * manage nodes
@@ -12,6 +11,5 @@ Command line tools to:
 
 A [clockworksspheres](https://clockworksspheres.github.io/) project.
 
-Can work in hand with the [clockworksspheres/mvm](https://clockworksspheres/mvm.git)
-project to manage test VM's for testing the cross platform nature of the tools
+Can work in hand with the [clockworksspheres/mvm](https://clockworksspheres/mvm.git) project to manage test VM's for testing the cross platform nature of the tools
 
