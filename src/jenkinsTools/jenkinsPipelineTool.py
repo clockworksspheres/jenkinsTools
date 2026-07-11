@@ -206,21 +206,21 @@ if __name__=="__main__":
 
     if args.command == "create":
         print(f"Creating {args.url} for pipeline <{args.job_name}>...")
-        from jenkinsTools.JenkinsTools.CreateJenkinsPipeline import CreateJenkinsPipeline as createPipeline
+        from JenkinsTools.CreateJenkinsPipeline import CreateJenkinsPipeline as createPipeline
 
         cjp = createPipeline()
         cjp.create_jenkins_pipeline(args)
 
     elif args.command == "run":
         print(f"Running {args.url} for pipeline <{args.job}>...")
-        from jenkinsTools.JenkinsTools.RunJenkinsPipeline import RunJenkinsPipeline as runPipeline
+        from JenkinsTools.RunJenkinsPipeline import RunJenkinsPipeline as runPipeline
 
         rpipeline = runPipeline()
         rpipeline.controller(args)
 
     elif args.command == "check":
         print(f"Checking {args.url} for pipeline <{args.job}>...")
-        from jenkinsTools.JenkinsTools.CheckJenkinsPipelineRun import CheckJenkinsPipelineRun as checkPipeline
+        from JenkinsTools.CheckJenkinsPipelineRun import CheckJenkinsPipelineRun as checkPipeline
 
         ckpipeline = checkPipeline()
         if args.get_full_run:
@@ -230,14 +230,14 @@ if __name__=="__main__":
 
     elif args.command == "get-config":
         print(f"Getting {args.url} for pipeline <{args.job}> config...")
-        from jenkinsTools.JenkinsTools.ConfigJob import ConfigJob
+        from JenkinsTools.ConfigJob import ConfigJob
 
         config_job = ConfigJob(args)
         config_job.cmd_get_config()
 
     elif args.command == "set-config":
         print(f"Setting {args.url} for pipeline <{args.job}> config...")
-        from jenkinsTools.JenkinsTools.ConfigJob import ConfigJob
+        from JenkinsTools.ConfigJob import ConfigJob
 
         config_job = ConfigJob(args)
         config_job.cmd_set_config()
