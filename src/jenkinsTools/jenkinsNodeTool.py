@@ -185,7 +185,7 @@ if __name__=="__main__":
 
     if args.command == "add":
         print(f"Adding {args.url} for node <{args.name}>...")
-        from jenkinsTools.JenkinsTools.AddJenkinsNode import AddJenkinsNode as addNode
+        from JenkinsTools.AddJenkinsNode import AddJenkinsNode as addNode
 
         add_node = addNode(args)
         add_node.add_jenkins_node()
@@ -197,37 +197,37 @@ if __name__=="__main__":
         cmd_update_node(args)
 
     elif args.command == "get-nodes":
-        from jenkinsTools.JenkinsTools.NodeStatus import NodeStatus
+        from JenkinsTools.NodeStatus import NodeStatus
         ns = NodeStatus(args)
         print(ns.get_nodes())
 
     elif args.command == "get-node-info":
-        from jenkinsTools.JenkinsTools.NodeStatus import NodeStatus
+        from JenkinsTools.NodeStatus import NodeStatus
         ns = NodeStatus(args)
         print(json.dumps(ns.get_node_info(), indent=4))
 
     elif args.command == "get-node-config":
-        from jenkinsTools.JenkinsTools.NodeStatus import NodeStatus
+        from JenkinsTools.NodeStatus import NodeStatus
         ns = NodeStatus(args)
         print(ns.get_node_config())
 
     elif args.command == "node-exists":
-        from jenkinsTools.JenkinsTools.NodeStatus import NodeStatus
+        from JenkinsTools.NodeStatus import NodeStatus
         ns = NodeStatus(args)
         print(ns.node_exists())
 
     elif args.command == "delete":
-        from jenkinsTools.JenkinsTools.NodeManage import NodeManage
+        from JenkinsTools.NodeManage import NodeManage
         nm = NodeManage(args)
         print(nm.delete_node())
 
     elif args.command == "disable":
-        from jenkinsTools.JenkinsTools.NodeManage import NodeManage
+        from JenkinsTools.NodeManage import NodeManage
         nm = NodeManage(args)
         print(nm.disable_node())
 
     elif args.command == "enable":
-        from jenkinsTools.JenkinsTools.NodeManage import NodeManage
+        from JenkinsTools.NodeManage import NodeManage
         nm = NodeManage(args)
         print(nm.enable_node())
 
