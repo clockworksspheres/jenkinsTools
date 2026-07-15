@@ -8,7 +8,7 @@ Some of the testing is provided by a Jenkins pipeline, but most of the testing i
 
 ### Runs on
 
- | macOS Host | Windows Host | Linux Host
+[]() | macOS Host | Windows Host | Linux Host
  ---|------------|-------------|---------------
  UTM | Available | N/A | N/A
  HyperV | N/A | Available | N/A
@@ -19,7 +19,7 @@ Some of the testing is provided by a Jenkins pipeline, but most of the testing i
 
 ### Capabilities
 
-  | Hypervisor Type | Provides Emulation | provides HW Virtualization | Nested Virtualization 
+[]() | Hypervisor Type | Provides Emulation | provides HW Virtualization | Nested Virtualization 
  --- | --- | --- | --- | ---
  UTM | 2 | Yes | Yes | in some cases
  HyperV | 1 | ?? | Yes | Yes, only for Windows guests
@@ -32,7 +32,7 @@ Some of the testing is provided by a Jenkins pipeline, but most of the testing i
 
 Time has allowed for the following
 
- | macOS Host | Windows Host | Linux Host
+[]() | macOS Host | Windows Host | Linux Host
  ---|------------|-------------|---------------
 UTM | Yes | N/A | N/A
 HyperV | N/A | No | N/A
@@ -45,7 +45,7 @@ KVM | No | No | No
 
 Time has allowed for the following platform testing
 
- | macOS guest | Windows guest | Linux guest
+[]() | macOS guest | Windows guest | Linux guest
  ---|------------|-------------|---------------
 macOS | Yes | No | No
 Windows | Yes | Yes | No
@@ -58,7 +58,7 @@ Alma Linux | Yes | No | No
 
 Time has allowed for the following
 
- | macOS | Windows | Debian | Ubuntu | Rocky | Alma
+[]() | macOS | Windows | Debian | Ubuntu | Rocky | Alma
  ---| --- | --- | --- | --- | --- | ---
 UTM | Yes | Yes | Yes | No | No | No 
 HyperV | N/A | N/A | N/A | N/A | N/A | N/A
@@ -72,7 +72,7 @@ KVM | N/A | N/A | N/A | N/A | N/A | N/A
 Time has allowed for the following
 
 Virtualbox - Debian
-HyperV - Ubuntu
+</br>HyperV - Ubuntu
 
 ## As a Guest on Linux
 
