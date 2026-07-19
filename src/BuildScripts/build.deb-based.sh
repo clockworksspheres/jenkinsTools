@@ -5,24 +5,26 @@
 # amoung others... including
 # https://pyinstaller.org/en/stable/
 
+echo "----------===== ### =====----------"
+echo " ### starting Debian based build ###"
+
 pushd ..
 
 #if doesn't the packenv directory doesn't exist...
-directory="./packenv"
-actfile="./packenv/bin/activate"
-if [ ! -d "$directory" ]  || [ ! -f "$actfile" ] ; then
-   python3 -m venv packenv
-   source packenv/bin/activate
 
-   pip install --upgrade pip
-   pip install pylint
-   pip install astroid
-   pip install python-jenkins
-   pip install PyInstaller
-   pip install requests
-   pip install pytest
+directory="./projEnv"
+actfile="$directory/bin/activate"
+if [ ! -d "$directory" ]  || [ ! -f "$actfile" ] ; then
+
+   sudo apt install python-is-python3
+
+   python3 -m venv projEnv
+   source $actfile
+
+   pip install -r requirements.txt
+
 else
-   source packenv/bin/activate
+   source $actfile
 fi
 
 cp BuildScripts/build.deb-based.NodeTool.spec jenkinsTools

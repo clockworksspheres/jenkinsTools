@@ -8,22 +8,16 @@
 pushd ..
 
 #if doesn't the packenv directory doesn't exist...
-directory="./packenv"
-actfile="./packenv/bin/activate"
+directory="./projEnv"
+actfile="$directory/bin/activate"
 if [ ! -d "$directory" ]  || [ ! -f "$actfile" ] ; then
-   python3 -m venv packenv
-   source packenv/bin/activate
+   python3 -m venv $directory
+   source $actfile
 
-   pip install --upgrade pip
-   pip install astroid
-   pip install pylint
-   pip install python-jenkins
-   pip install PyInstaller
-   pip install requests
-   pip install pytest
-   pip install pyside6
+   pip install -r requirements.txt
+
 else
-   source packenv/bin/activate
+   source $actfile
 fi
 
 cp BuildScripts/build.macos.NodeTool.spec jenkinsTools
