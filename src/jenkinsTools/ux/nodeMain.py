@@ -76,14 +76,12 @@ class Widget(QWidget):
 
             print(str(action))
 
-            args = action
-
-            myargs = Namespace(**args)
-            print(f"Adding {myargs.url} for node <{myargs.name}>...")
+            args = Namespace(**action)
+            print(f"Adding {args.url} for node <{args.name}>...")
 
             from JenkinsTools.AddJenkinsNode import AddJenkinsNode
 
-            addNode = AddJenkinsNode(myargs)
+            addNode = AddJenkinsNode(args)
             addNode.add_jenkins_node()
 
         elif selected_text == "Update":
@@ -92,6 +90,9 @@ class Widget(QWidget):
             self.ui.DescriptionLineEdit.hide()
             self.ui.MethodLabel.hide()
             self.ui.MethodComboBox.hide()
+
+
+
         elif selected_text == "Get Nodes":
             self.ui.stackedWidget.setCurrentIndex(2)
             self.ui.DescriptionLineEdit.hide()
