@@ -27,6 +27,13 @@ class Widget(QWidget):
         self.ui.ActionComboBox.currentIndexChanged.connect(self.handleActionComboBoxChange)
         self.ui.MethodComboBox.currentIndexChanged.connect(self.handleMethodComboBoxChange)
 
+        # Button actions
+        self.ui.QuitPushButton.clicked.connect(self.close)
+        self.ui.RunPushButton.clicked.connect(self.runCommand)
+
+    def runCommand(self):
+        print(f"Running command '{self.ui.ActionComboBox.currentText()}'")
+
     def handleActionComboBoxChange(self):
 
         selected_text = self.ui.ActionComboBox.currentText()

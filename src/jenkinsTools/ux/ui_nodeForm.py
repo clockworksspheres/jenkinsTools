@@ -24,48 +24,48 @@ class Ui_Widget(object):
         if not Widget.objectName():
             Widget.setObjectName(u"Widget")
         Widget.resize(800, 600)
-        self.widget = QWidget(Widget)
-        self.widget.setObjectName(u"widget")
-        self.widget.setGeometry(QRect(30, 50, 741, 451))
-        self.gridLayout = QGridLayout(self.widget)
+        self.layoutWidget = QWidget(Widget)
+        self.layoutWidget.setObjectName(u"layoutWidget")
+        self.layoutWidget.setGeometry(QRect(30, 50, 741, 451))
+        self.gridLayout = QGridLayout(self.layoutWidget)
         self.gridLayout.setObjectName(u"gridLayout")
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
-        self.UrlLabel = QLabel(self.widget)
+        self.UrlLabel = QLabel(self.layoutWidget)
         self.UrlLabel.setObjectName(u"UrlLabel")
 
         self.gridLayout.addWidget(self.UrlLabel, 0, 0, 1, 1)
 
-        self.UrlLineEdit = QLineEdit(self.widget)
+        self.UrlLineEdit = QLineEdit(self.layoutWidget)
         self.UrlLineEdit.setObjectName(u"UrlLineEdit")
 
         self.gridLayout.addWidget(self.UrlLineEdit, 0, 1, 1, 1)
 
-        self.UsernameLabel = QLabel(self.widget)
+        self.UsernameLabel = QLabel(self.layoutWidget)
         self.UsernameLabel.setObjectName(u"UsernameLabel")
 
         self.gridLayout.addWidget(self.UsernameLabel, 1, 0, 1, 1)
 
-        self.UsernameLineEdit = QLineEdit(self.widget)
+        self.UsernameLineEdit = QLineEdit(self.layoutWidget)
         self.UsernameLineEdit.setObjectName(u"UsernameLineEdit")
 
         self.gridLayout.addWidget(self.UsernameLineEdit, 1, 1, 1, 1)
 
-        self.tokenLabel = QLabel(self.widget)
+        self.tokenLabel = QLabel(self.layoutWidget)
         self.tokenLabel.setObjectName(u"tokenLabel")
 
         self.gridLayout.addWidget(self.tokenLabel, 2, 0, 1, 1)
 
-        self.tokenLineEdit = QLineEdit(self.widget)
+        self.tokenLineEdit = QLineEdit(self.layoutWidget)
         self.tokenLineEdit.setObjectName(u"tokenLineEdit")
 
         self.gridLayout.addWidget(self.tokenLineEdit, 2, 1, 1, 1)
 
-        self.ActionLabel = QLabel(self.widget)
+        self.ActionLabel = QLabel(self.layoutWidget)
         self.ActionLabel.setObjectName(u"ActionLabel")
 
         self.gridLayout.addWidget(self.ActionLabel, 3, 0, 1, 1)
 
-        self.ActionComboBox = QComboBox(self.widget)
+        self.ActionComboBox = QComboBox(self.layoutWidget)
         self.ActionComboBox.addItem("")
         self.ActionComboBox.addItem("")
         self.ActionComboBox.addItem("")
@@ -80,19 +80,19 @@ class Ui_Widget(object):
 
         self.gridLayout.addWidget(self.ActionComboBox, 3, 1, 1, 1)
 
-        self.MethodLabel = QLabel(self.widget)
+        self.MethodLabel = QLabel(self.layoutWidget)
         self.MethodLabel.setObjectName(u"MethodLabel")
 
         self.gridLayout.addWidget(self.MethodLabel, 3, 2, 1, 1)
 
-        self.MethodComboBox = QComboBox(self.widget)
+        self.MethodComboBox = QComboBox(self.layoutWidget)
         self.MethodComboBox.addItem("")
         self.MethodComboBox.addItem("")
         self.MethodComboBox.setObjectName(u"MethodComboBox")
 
         self.gridLayout.addWidget(self.MethodComboBox, 3, 3, 1, 1)
 
-        self.stackedWidget = QStackedWidget(self.widget)
+        self.stackedWidget = QStackedWidget(self.layoutWidget)
         self.stackedWidget.setObjectName(u"stackedWidget")
         self.page = QWidget()
         self.page.setObjectName(u"page")
@@ -211,12 +211,12 @@ class Ui_Widget(object):
 
         self.gridLayout.addWidget(self.stackedWidget, 4, 0, 1, 5)
 
-        self.QuitPushButton = QPushButton(self.widget)
+        self.QuitPushButton = QPushButton(self.layoutWidget)
         self.QuitPushButton.setObjectName(u"QuitPushButton")
 
         self.gridLayout.addWidget(self.QuitPushButton, 5, 3, 1, 1)
 
-        self.RunPushButton = QPushButton(self.widget)
+        self.RunPushButton = QPushButton(self.layoutWidget)
         self.RunPushButton.setObjectName(u"RunPushButton")
 
         self.gridLayout.addWidget(self.RunPushButton, 5, 4, 1, 1)
@@ -238,14 +238,14 @@ class Ui_Widget(object):
         self.ActionLabel.setText(QCoreApplication.translate("Widget", u"Action", None))
         self.ActionComboBox.setItemText(0, QCoreApplication.translate("Widget", u"Add", None))
         self.ActionComboBox.setItemText(1, QCoreApplication.translate("Widget", u"Update", None))
-        self.ActionComboBox.setItemText(2, QCoreApplication.translate("Widget", u"Get Nodes", None))
-        self.ActionComboBox.setItemText(3, QCoreApplication.translate("Widget", u"Get Node Info", None))
-        self.ActionComboBox.setItemText(4, QCoreApplication.translate("Widget", u"Get Node Config", None))
+        self.ActionComboBox.setItemText(2, QCoreApplication.translate("Widget", u"Enable", None))
+        self.ActionComboBox.setItemText(3, QCoreApplication.translate("Widget", u"Disable", None))
+        self.ActionComboBox.setItemText(4, QCoreApplication.translate("Widget", u"Delete", None))
         self.ActionComboBox.setItemText(5, QCoreApplication.translate("Widget", u"Node Exists", None))
-        self.ActionComboBox.setItemText(6, QCoreApplication.translate("Widget", u"New Item", None))
-        self.ActionComboBox.setItemText(7, QCoreApplication.translate("Widget", u"Delete", None))
-        self.ActionComboBox.setItemText(8, QCoreApplication.translate("Widget", u"Disable", None))
-        self.ActionComboBox.setItemText(9, QCoreApplication.translate("Widget", u"Enable", None))
+        self.ActionComboBox.setItemText(6, QCoreApplication.translate("Widget", u"Get Nodes", None))
+        self.ActionComboBox.setItemText(7, QCoreApplication.translate("Widget", u"Get Node Info", None))
+        self.ActionComboBox.setItemText(8, QCoreApplication.translate("Widget", u"Get Node Config", None))
+        self.ActionComboBox.setItemText(9, QCoreApplication.translate("Widget", u"New Item", None))
 
         self.MethodLabel.setText(QCoreApplication.translate("Widget", u"Method", None))
         self.MethodComboBox.setItemText(0, QCoreApplication.translate("Widget", u"SSH", None))
