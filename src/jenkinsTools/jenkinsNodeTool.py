@@ -183,6 +183,9 @@ def parse_arguments():
 if __name__=="__main__":
     args = parse_arguments()
 
+    args_dict = vars(args)
+    print(str(args_dict))
+
     if args.command == "add":
         print(f"Adding {args.url} for node <{args.name}>...")
         from JenkinsTools.AddJenkinsNode import AddJenkinsNode as addNode

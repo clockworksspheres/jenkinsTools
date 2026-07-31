@@ -16,6 +16,7 @@ import argparse
 import sys
 import textwrap
 import jenkins
+from argparse import Namespace
 from jenkins import JenkinsException
 
 

@@ -1,6 +1,12 @@
 # This Python file uses the following encoding: utf-8
 import sys
 import re
+from argparse import Namespace
+
+from pathlib import Path
+
+parent_dir = Path(__file__).parent.parent
+sys.path.append(str(parent_dir))
 
 from PySide6.QtWidgets import QApplication, QWidget
 
@@ -29,10 +35,97 @@ class Widget(QWidget):
 
         # Button actions
         self.ui.QuitPushButton.clicked.connect(self.close)
-        self.ui.RunPushButton.clicked.connect(self.runCommand)
+        self.ui.RunPushButton.clicked.connect(self.runAction)
 
-    def runCommand(self):
+    def runAction(self):
         print(f"Running command '{self.ui.ActionComboBox.currentText()}'")
+
+        selected_text = self.ui.ActionComboBox.currentText()
+
+        print(f"selected text: '{selected_text}'")
+
+        action = {}
+
+        if selected_text == "Add":
+            action["url"] = self.ui.UrlLineEdit.text()
+            action["user"] = self.ui.UsernameLineEdit.text()
+            action["token"] = self.ui.tokenLineEdit.text()
+            action['name'] = self.ui.VmNameLineEdit.text()
+
+            if action["url"] and \
+               action["user"] and \
+               action["token"] and \
+               action["name"]:
+                print ("action acquired")
+            else:
+                raise ValueError
+            
+            action["method"] = self.ui.MethodComboBox.currentText()
+
+            if action["method"] == "SSH":
+                action["credentials_id"] = self.ui.JenkinsCredsIdLineEdit.text()
+                action["port"] = self.ui.PortLlineEdit.text()
+            elif action["method"] == "JNLP":
+                action[''] = self.ui.jvmOptionsLineEdit.text()
+
+            action["host"] = self.ui.HostnameOrIpLineEdit.text()
+            action["labels"] = self.ui.LabelsLineEdit.text()
+            action["executors"] = self.ui.ExecutorsLineEdit.text()
+            action["description"] = self.ui.DescriptionLineEdit.text()
+            action["remote_fs"] = self.ui.RemoteFsLineEdit.text()
+
+            print(str(action))
+
+            args = action
+
+            myargs = Namespace(**args)
+            print(f"Adding {myargs.url} for node <{myargs.name}>...")
+
+            from JenkinsTools.AddJenkinsNode import AddJenkinsNode
+
+            addNode = AddJenkinsNode(myargs)
+            addNode.add_jenkins_node()
+
+        elif selected_text == "Update":
+            self.ui.stackedWidget.setCurrentIndex(0)
+            self.ui.DescriptionLabel.hide()
+            self.ui.DescriptionLineEdit.hide()
+            self.ui.MethodLabel.hide()
+            self.ui.MethodComboBox.hide()
+        elif selected_text == "Get Nodes":
+            self.ui.stackedWidget.setCurrentIndex(2)
+            self.ui.DescriptionLineEdit.hide()
+            self.ui.MethodLabel.hide()
+        elif selected_text.strip() == "Get Node Info":
+            self.ui.stackedWidget.setCurrentIndex(3)
+            self.ui.DescriptionLineEdit.hide()
+            self.ui.MethodLabel.hide()
+        elif selected_text.strip() == "Get Node Config":
+            self.ui.stackedWidget.setCurrentIndex(3)
+            self.ui.DescriptionLineEdit.hide()
+            self.ui.MethodLabel.hide()
+        elif selected_text.strip() == "Node Exists":
+            self.ui.stackedWidget.setCurrentIndex(3)
+            self.ui.DescriptionLineEdit.hide()
+            self.ui.MethodLabel.hide()
+        elif selected_text.strip() == "New Item":
+            self.ui.stackedWidget.setCurrentIndex(3)
+            self.ui.DescriptionLineEdit.hide()
+            self.ui.MethodLabel.hide()
+        elif selected_text.strip() == "Delete":
+            self.ui.stackedWidget.setCurrentIndex(3)
+            self.ui.DescriptionLineEdit.hide()
+            self.ui.MethodLabel.hide()
+        elif selected_text.strip() == "Disable":
+            self.ui.stackedWidget.setCurrentIndex(3)
+            self.ui.DescriptionLineEdit.hide()
+            self.ui.MethodLabel.hide()
+        elif selected_text.strip() == "Enable":
+            self.ui.stackedWidget.setCurrentIndex(3)
+            self.ui.DescriptionLineEdit.hide()
+            self.ui.MethodLabel.hide()
+        else:
+            print("not a valid combobox value")
 
     def handleActionComboBoxChange(self):
 
@@ -100,10 +193,11 @@ class Widget(QWidget):
         else:
             print("not a valid comboBox value")
 
- 
 
 if __name__ == "__main__":
+    __package__ = "jenkinsTools.ux"
     app = QApplication(sys.argv)
     widget = Widget()
     widget.show()
     sys.exit(app.exec())
+
