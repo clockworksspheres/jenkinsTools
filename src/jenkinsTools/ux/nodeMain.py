@@ -1,6 +1,7 @@
 # This Python file uses the following encoding: utf-8
 import sys
 import re
+import json
 from argparse import Namespace
 
 from pathlib import Path
@@ -91,40 +92,246 @@ class Widget(QWidget):
             self.ui.MethodLabel.hide()
             self.ui.MethodComboBox.hide()
 
+            action["url"] = self.ui.UrlLineEdit.text()
+            action["user"] = self.ui.UsernameLineEdit.text()
+            action["token"] = self.ui.tokenLineEdit.text()
+            action['name'] = self.ui.VmNameLineEdit.text()
 
+            if action["url"] and \
+               action["user"] and \
+               action["token"] and \
+               action["name"]:
+                print ("action acquired")
+            else:
+                raise ValueError
+            
+            action["method"] = self.ui.MethodComboBox.currentText()
+
+            if action["method"] == "SSH":
+                action["credentials_id"] = self.ui.JenkinsCredsIdLineEdit.text()
+                action["port"] = self.ui.PortLlineEdit.text()
+            elif action["method"] == "JNLP":
+                action[''] = self.ui.jvmOptionsLineEdit.text()
+
+            action["host"] = self.ui.HostnameOrIpLineEdit.text()
+            action["labels"] = self.ui.LabelsLineEdit.text()
+            action["executors"] = self.ui.ExecutorsLineEdit.text()
+            action["description"] = self.ui.DescriptionLineEdit.text()
+            action["remote_fs"] = self.ui.RemoteFsLineEdit.text()
+
+            print(str(action))
+
+            args = Namespace(**action)
+            print(f"Adding {args.url} for node <{args.name}>...")
+
+            from JenkinsTools.AddJenkinsNode import AddJenkinsNode
+
+            addNode = AddJenkinsNode(args)
+            addNode.add_jenkins_node()
+
+            print(f"Running {args.url} for pipeline <{args.name}>...")
+            from JenkinsTools.update_node import cmd_update_node
+
+            cmd_update_node(args)
 
         elif selected_text == "Get Nodes":
             self.ui.stackedWidget.setCurrentIndex(2)
             self.ui.DescriptionLineEdit.hide()
             self.ui.MethodLabel.hide()
+
+            action["url"] = self.ui.UrlLineEdit.text()
+            action["user"] = self.ui.UsernameLineEdit.text()
+            action["token"] = self.ui.tokenLineEdit.text()
+
+            if action["url"] and \
+               action["user"] and \
+               action["token"]:
+                print ("action acquired")
+            else:
+                raise ValueError
+
+            print(str(action))
+
+            args = Namespace(**action)
+            print(f"Adding {args.url} for node <{args.name}>...")
+
+            from JenkinsTools.NodeStatus import NodeStatus
+            ns = NodeStatus(args)
+            print(ns.get_nodes())            
+
         elif selected_text.strip() == "Get Node Info":
             self.ui.stackedWidget.setCurrentIndex(3)
-            self.ui.DescriptionLineEdit.hide()
-            self.ui.MethodLabel.hide()
+
+            action["url"] = self.ui.UrlLineEdit.text()
+            action["user"] = self.ui.UsernameLineEdit.text()
+            action["token"] = self.ui.tokenLineEdit.text()
+            action['name'] = self.ui.VmNameLineEdit_3.text()
+
+            if action["url"] and \
+               action["user"] and \
+               action["token"] and \
+               action["name"]:
+                print ("action acquired")
+            else:
+                raise ValueError
+            
+            print(str(action))
+
+            args = Namespace(**action)
+            print(f"Adding {args.url} for node <{args.name}>...")
+
+            from JenkinsTools.NodeStatus import NodeStatus
+            ns = NodeStatus(args)
+            print(json.dumps(ns.get_node_info(), indent=4))
+
         elif selected_text.strip() == "Get Node Config":
             self.ui.stackedWidget.setCurrentIndex(3)
-            self.ui.DescriptionLineEdit.hide()
-            self.ui.MethodLabel.hide()
+
+            action["url"] = self.ui.UrlLineEdit.text()
+            action["user"] = self.ui.UsernameLineEdit.text()
+            action["token"] = self.ui.tokenLineEdit.text()
+            action['name'] = self.ui.VmNameLineEdit_3.text()
+
+            if action["url"] and \
+               action["user"] and \
+               action["token"] and \
+               action["name"]:
+                print ("action acquired")
+            else:
+                raise ValueError
+            
+            print(str(action))
+
+            args = Namespace(**action)
+            print(f"Adding {args.url} for node <{args.name}>...")
+
+            from JenkinsTools.NodeStatus import NodeStatus
+            ns = NodeStatus(args)
+            print(ns.get_node_config())
+
         elif selected_text.strip() == "Node Exists":
             self.ui.stackedWidget.setCurrentIndex(3)
-            self.ui.DescriptionLineEdit.hide()
-            self.ui.MethodLabel.hide()
+
+            action["url"] = self.ui.UrlLineEdit.text()
+            action["user"] = self.ui.UsernameLineEdit.text()
+            action["token"] = self.ui.tokenLineEdit.text()
+            action['name'] = self.ui.VmNameLineEdit_3.text()
+
+            if action["url"] and \
+               action["user"] and \
+               action["token"] and \
+               action["name"]:
+                print ("action acquired")
+            else:
+                raise ValueError
+            
+            print(str(action))
+
+            args = Namespace(**action)
+            print(f"Adding {args.url} for node <{args.name}>...")
+
+            from JenkinsTools.NodeStatus import NodeStatus
+            ns = NodeStatus(args)
+            print(ns.node_exists())
+
         elif selected_text.strip() == "New Item":
             self.ui.stackedWidget.setCurrentIndex(3)
-            self.ui.DescriptionLineEdit.hide()
-            self.ui.MethodLabel.hide()
+
+            action["url"] = self.ui.UrlLineEdit.text()
+            action["user"] = self.ui.UsernameLineEdit.text()
+            action["token"] = self.ui.tokenLineEdit.text()
+            action['name'] = self.ui.VmNameLineEdit_3.text()
+
+            if action["url"] and \
+               action["user"] and \
+               action["token"] and \
+               action["name"]:
+                print ("action acquired")
+            else:
+                raise ValueError
+            
+            print(str(action))
+
+            args = Namespace(**action)
+            print(f"Adding {args.url} for node <{args.name}>...")
+
+            raise Exception
+
         elif selected_text.strip() == "Delete":
             self.ui.stackedWidget.setCurrentIndex(3)
-            self.ui.DescriptionLineEdit.hide()
-            self.ui.MethodLabel.hide()
+
+            action["url"] = self.ui.UrlLineEdit.text()
+            action["user"] = self.ui.UsernameLineEdit.text()
+            action["token"] = self.ui.tokenLineEdit.text()
+            action['name'] = self.ui.VmNameLineEdit_3.text()
+
+            if action["url"] and \
+               action["user"] and \
+               action["token"] and \
+               action["name"]:
+                print ("action acquired")
+            else:
+                raise ValueError
+            
+            print(str(action))
+
+            args = Namespace(**action)
+            print(f"Adding {args.url} for node <{args.name}>...")
+
+            from JenkinsTools.NodeManage import NodeManage
+            nm = NodeManage(args)
+            print(nm.delete_node())
+
         elif selected_text.strip() == "Disable":
             self.ui.stackedWidget.setCurrentIndex(3)
-            self.ui.DescriptionLineEdit.hide()
-            self.ui.MethodLabel.hide()
+
+            action["url"] = self.ui.UrlLineEdit.text()
+            action["user"] = self.ui.UsernameLineEdit.text()
+            action["token"] = self.ui.tokenLineEdit.text()
+            action['name'] = self.ui.VmNameLineEdit_3.text()
+
+            if action["url"] and \
+               action["user"] and \
+               action["token"] and \
+               action["name"]:
+                print ("action acquired")
+            else:
+                raise ValueError
+            
+            print(str(action))
+
+            args = Namespace(**action)
+            print(f"Adding {args.url} for node <{args.name}>...")
+
+            from JenkinsTools.NodeManage import NodeManage
+            nm = NodeManage(args)
+            print(nm.disable_node())
+
         elif selected_text.strip() == "Enable":
             self.ui.stackedWidget.setCurrentIndex(3)
-            self.ui.DescriptionLineEdit.hide()
-            self.ui.MethodLabel.hide()
+
+            action["url"] = self.ui.UrlLineEdit.text()
+            action["user"] = self.ui.UsernameLineEdit.text()
+            action["token"] = self.ui.tokenLineEdit.text()
+            action['name'] = self.ui.VmNameLineEdit_3.text()
+
+            if action["url"] and \
+               action["user"] and \
+               action["token"] and \
+               action["name"]:
+                print ("action acquired")
+            else:
+                raise ValueError
+            
+            print(str(action))
+
+            args = Namespace(**action)
+            print(f"Adding {args.url} for node <{args.name}>...")
+
+            from JenkinsTools.NodeManage import NodeManage
+            nm = NodeManage(args)
+            print(nm.enable_node())
+
         else:
             print("not a valid combobox value")
 
