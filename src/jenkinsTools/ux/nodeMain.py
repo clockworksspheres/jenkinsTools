@@ -47,19 +47,24 @@ class nodeWidget(QWidget):
 
         action = {}
 
+        action["url"] = self.ui.UrlLineEdit.text()
+        action["user"] = self.ui.UsernameLineEdit.text()
+        action["token"] = self.ui.tokenLineEdit.text()
+
+        if action["url"] and \
+            action["user"] and \
+            action["token"]:
+            print ("action acquired")
+        else:
+            raise ValueError("url, user and token fields required.")
+
         if selected_text == "Add":
-            action["url"] = self.ui.UrlLineEdit.text()
-            action["user"] = self.ui.UsernameLineEdit.text()
-            action["token"] = self.ui.tokenLineEdit.text()
             action['name'] = self.ui.VmNameLineEdit.text()
 
-            if action["url"] and \
-               action["user"] and \
-               action["token"] and \
-               action["name"]:
-                print ("action acquired")
+            if action["name"]:
+                print ("name field acquired")
             else:
-                raise ValueError
+                raise ValueError("name field required for this action.")
             
             action["method"] = self.ui.MethodComboBox.currentText()
 
@@ -92,19 +97,13 @@ class nodeWidget(QWidget):
             self.ui.MethodLabel.hide()
             self.ui.MethodComboBox.hide()
 
-            action["url"] = self.ui.UrlLineEdit.text()
-            action["user"] = self.ui.UsernameLineEdit.text()
-            action["token"] = self.ui.tokenLineEdit.text()
             action['name'] = self.ui.VmNameLineEdit.text()
 
-            if action["url"] and \
-               action["user"] and \
-               action["token"] and \
-               action["name"]:
+            if action["name"]:
                 print ("action acquired")
             else:
-                raise ValueError
-            
+                raise ValueError("name field required for this action.")
+           
             action["method"] = self.ui.MethodComboBox.currentText()
 
             if action["method"] == "SSH":
@@ -139,17 +138,6 @@ class nodeWidget(QWidget):
             self.ui.DescriptionLineEdit.hide()
             self.ui.MethodLabel.hide()
 
-            action["url"] = self.ui.UrlLineEdit.text()
-            action["user"] = self.ui.UsernameLineEdit.text()
-            action["token"] = self.ui.tokenLineEdit.text()
-
-            if action["url"] and \
-               action["user"] and \
-               action["token"]:
-                print ("action acquired")
-            else:
-                raise ValueError
-
             print(str(action))
 
             args = Namespace(**action)
@@ -162,18 +150,12 @@ class nodeWidget(QWidget):
         elif selected_text.strip() == "Get Node Info":
             self.ui.stackedWidget.setCurrentIndex(3)
 
-            action["url"] = self.ui.UrlLineEdit.text()
-            action["user"] = self.ui.UsernameLineEdit.text()
-            action["token"] = self.ui.tokenLineEdit.text()
             action['name'] = self.ui.VmNameLineEdit_3.text()
 
-            if action["url"] and \
-               action["user"] and \
-               action["token"] and \
-               action["name"]:
+            if action["name"]:
                 print ("action acquired")
             else:
-                raise ValueError
+                raise ValueError("name field required for this action.")
             
             print(str(action))
 
@@ -187,18 +169,12 @@ class nodeWidget(QWidget):
         elif selected_text.strip() == "Get Node Config":
             self.ui.stackedWidget.setCurrentIndex(3)
 
-            action["url"] = self.ui.UrlLineEdit.text()
-            action["user"] = self.ui.UsernameLineEdit.text()
-            action["token"] = self.ui.tokenLineEdit.text()
             action['name'] = self.ui.VmNameLineEdit_3.text()
 
-            if action["url"] and \
-               action["user"] and \
-               action["token"] and \
-               action["name"]:
+            if action["name"]:
                 print ("action acquired")
             else:
-                raise ValueError
+                raise ValueError("name field required for this action.")
             
             print(str(action))
 
@@ -212,18 +188,12 @@ class nodeWidget(QWidget):
         elif selected_text.strip() == "Node Exists":
             self.ui.stackedWidget.setCurrentIndex(3)
 
-            action["url"] = self.ui.UrlLineEdit.text()
-            action["user"] = self.ui.UsernameLineEdit.text()
-            action["token"] = self.ui.tokenLineEdit.text()
             action['name'] = self.ui.VmNameLineEdit_3.text()
 
-            if action["url"] and \
-               action["user"] and \
-               action["token"] and \
-               action["name"]:
+            if action["name"]:
                 print ("action acquired")
             else:
-                raise ValueError
+                raise ValueError("name field required for this action.")
             
             print(str(action))
 
@@ -237,41 +207,29 @@ class nodeWidget(QWidget):
         elif selected_text.strip() == "New Item":
             self.ui.stackedWidget.setCurrentIndex(3)
 
-            action["url"] = self.ui.UrlLineEdit.text()
-            action["user"] = self.ui.UsernameLineEdit.text()
-            action["token"] = self.ui.tokenLineEdit.text()
             action['name'] = self.ui.VmNameLineEdit_3.text()
 
-            if action["url"] and \
-               action["user"] and \
-               action["token"] and \
-               action["name"]:
+            if action["name"]:
                 print ("action acquired")
             else:
-                raise ValueError
+                raise ValueError("name field required for this action.")
             
             print(str(action))
 
             args = Namespace(**action)
             print(f"Adding {args.url} for node <{args.name}>...")
 
-            raise Exception
+            raise Exception("Not yet implemented in the GUI...")
 
         elif selected_text.strip() == "Delete":
             self.ui.stackedWidget.setCurrentIndex(3)
 
-            action["url"] = self.ui.UrlLineEdit.text()
-            action["user"] = self.ui.UsernameLineEdit.text()
-            action["token"] = self.ui.tokenLineEdit.text()
             action['name'] = self.ui.VmNameLineEdit_3.text()
 
-            if action["url"] and \
-               action["user"] and \
-               action["token"] and \
-               action["name"]:
+            if action["name"]:
                 print ("action acquired")
             else:
-                raise ValueError
+                raise ValueError("name field required for this action.")
             
             print(str(action))
 
@@ -285,18 +243,12 @@ class nodeWidget(QWidget):
         elif selected_text.strip() == "Disable":
             self.ui.stackedWidget.setCurrentIndex(3)
 
-            action["url"] = self.ui.UrlLineEdit.text()
-            action["user"] = self.ui.UsernameLineEdit.text()
-            action["token"] = self.ui.tokenLineEdit.text()
             action['name'] = self.ui.VmNameLineEdit_3.text()
 
-            if action["url"] and \
-               action["user"] and \
-               action["token"] and \
-               action["name"]:
+            if action["name"]:
                 print ("action acquired")
             else:
-                raise ValueError
+                raise ValueError("name field required for this action.")
             
             print(str(action))
 
@@ -310,18 +262,12 @@ class nodeWidget(QWidget):
         elif selected_text.strip() == "Enable":
             self.ui.stackedWidget.setCurrentIndex(3)
 
-            action["url"] = self.ui.UrlLineEdit.text()
-            action["user"] = self.ui.UsernameLineEdit.text()
-            action["token"] = self.ui.tokenLineEdit.text()
             action['name'] = self.ui.VmNameLineEdit_3.text()
 
-            if action["url"] and \
-               action["user"] and \
-               action["token"] and \
-               action["name"]:
+            if action["name"]:
                 print ("action acquired")
             else:
-                raise ValueError
+                raise ValueError("name field required for this action.")
             
             print(str(action))
 

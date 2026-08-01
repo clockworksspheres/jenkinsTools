@@ -100,7 +100,7 @@ class AddJenkinsNode():
                 print("  • Firewall / network issue", file=sys.stderr)
                 print("  • Invalid --user or --token", file=sys.stderr)
                 print(f"\nError detail: {e}", file=sys.stderr)
-                sys.exit(1)
+                # sys.exit(1)
 
             if server.node_exists(self.args.name):
                 print(f"Node '{self.args.name}' already exists → skipping creation.")
@@ -129,10 +129,10 @@ class AddJenkinsNode():
 
         except JenkinsException as e:
             print(f"\nJenkins API error: {e}", file=sys.stderr)
-            sys.exit(1)
+            #sys.exit(1)
         except Exception as e:
             print(f"\nUnexpected error: {e}", file=sys.stderr)
-            sys.exit(1)
+            #sys.exit(1)
 
 
 def parse_arguments():

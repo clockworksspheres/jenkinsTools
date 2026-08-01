@@ -221,6 +221,12 @@ class Ui_Widget(object):
 
         self.gridLayout.addWidget(self.RunPushButton, 5, 4, 1, 1)
 
+        self.label = QLabel(Widget)
+        self.label.setObjectName(u"label")
+        self.label.setGeometry(QRect(340, 10, 141, 31))
+        font = QFont()
+        font.setPointSize(20)
+        self.label.setFont(font)
 
         self.retranslateUi(Widget)
 
@@ -270,5 +276,6 @@ class Ui_Widget(object):
         self.VmNamelabel_3.setText(QCoreApplication.translate("Widget", u"VM Name", None))
         self.QuitPushButton.setText(QCoreApplication.translate("Widget", u"quit", None))
         self.RunPushButton.setText(QCoreApplication.translate("Widget", u"run command", None))
+        self.label.setText(QCoreApplication.translate("Widget", u"jenkinsNodeTool", None))
     # retranslateUi
 
