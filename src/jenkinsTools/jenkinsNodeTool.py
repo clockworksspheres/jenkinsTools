@@ -6,6 +6,8 @@ import sys
 import textwrap
 import argparse
 
+from PySide6.QtWidgets import QApplication
+
 def parse_arguments():
     """
     """
@@ -13,18 +15,21 @@ def parse_arguments():
     # Parent parser with shared arguments
     parent_parser = argparse.ArgumentParser(add_help=False)
     parent_parser.add_argument(
-        "--url", required=True, help="Target resource URL"
+        "--url", default='', help="Jenkins server URL"
     )
 
     parent_parser.add_argument(
-        "--user", required=True, help="User to access the Jenkins server"
+        "--user", default='', help="User to access the Jenkins server"
     )
 
     parent_parser.add_argument(
-        "--token", required=True, help="User's token to access the Jenkins server"
+        "--token", default='', help="User's token to access the Jenkins server"
     )
 
     parser = argparse.ArgumentParser()
+
+    parser.add_argument("-g", "--gui", action='store_true', help="User's token to access the Jenkins server")
+
     subparsers = parser.add_subparsers(dest="command")
 
     # Subcommand: add
@@ -116,9 +121,9 @@ def parse_arguments():
     )
 
     update.add_argument('name', help='Jenkins node name')
-    update.add_argument('--url', required=True)
-    update.add_argument('--user', required=True)
-    update.add_argument('--token', required=True)
+    #update.add_argument('--url', help='URL of the server to connect to')
+    #update.add_argument('--user', help='Username needed to connect to the server')
+    #update.add_argument('--token', help='token required to connect to the server')
 
     update.add_argument('--new_label', default="", help='New label to set')
     update.add_argument('--new_remoteFS', default="", help='New remoteFS to set')
@@ -186,51 +191,69 @@ if __name__=="__main__":
     args_dict = vars(args)
     print(str(args_dict))
 
-    if args.command == "add":
-        print(f"Adding {args.url} for node <{args.name}>...")
-        from JenkinsTools.AddJenkinsNode import AddJenkinsNode as addNode
 
-        add_node = addNode(args)
-        add_node.add_jenkins_node()
+    try:
+        required = args.user and args.token and args.url
+    except:
+        required = False
+    
+    if required:
 
-    elif args.command == "update":
-        print(f"Running {args.url} for pipeline <{args.name}>...")
-        from JenkinsTools.update_node import cmd_update_node
+        if args.command == "add":
+            print(f"Adding {args.url} for node <{args.name}>...")
+            from JenkinsTools.AddJenkinsNode import AddJenkinsNode as addNode
 
-        cmd_update_node(args)
+            add_node = addNode(args)
+            add_node.add_jenkins_node()
 
-    elif args.command == "get-nodes":
-        from JenkinsTools.NodeStatus import NodeStatus
-        ns = NodeStatus(args)
-        print(ns.get_nodes())
+        elif args.command == "update":
+            print(f"Running {args.url} for pipeline <{args.name}>...")
+            from JenkinsTools.update_node import cmd_update_node
 
-    elif args.command == "get-node-info":
-        from JenkinsTools.NodeStatus import NodeStatus
-        ns = NodeStatus(args)
-        print(json.dumps(ns.get_node_info(), indent=4))
+            cmd_update_node(args)
 
-    elif args.command == "get-node-config":
-        from JenkinsTools.NodeStatus import NodeStatus
-        ns = NodeStatus(args)
-        print(ns.get_node_config())
+        elif args.command == "get-nodes":
+            from JenkinsTools.NodeStatus import NodeStatus
+            ns = NodeStatus(args)
+            print(ns.get_nodes())
 
-    elif args.command == "node-exists":
-        from JenkinsTools.NodeStatus import NodeStatus
-        ns = NodeStatus(args)
-        print(ns.node_exists())
+        elif args.command == "get-node-info":
+            from JenkinsTools.NodeStatus import NodeStatus
+            ns = NodeStatus(args)
+            print(json.dumps(ns.get_node_info(), indent=4))
 
-    elif args.command == "delete":
-        from JenkinsTools.NodeManage import NodeManage
-        nm = NodeManage(args)
-        print(nm.delete_node())
+        elif args.command == "get-node-config":
+            from JenkinsTools.NodeStatus import NodeStatus
+            ns = NodeStatus(args)
+            print(ns.get_node_config())
 
-    elif args.command == "disable":
-        from JenkinsTools.NodeManage import NodeManage
-        nm = NodeManage(args)
-        print(nm.disable_node())
+        elif args.command == "node-exists":
+            from JenkinsTools.NodeStatus import NodeStatus
+            ns = NodeStatus(args)
+            print(ns.node_exists())
 
-    elif args.command == "enable":
-        from JenkinsTools.NodeManage import NodeManage
-        nm = NodeManage(args)
-        print(nm.enable_node())
+        elif args.command == "delete":
+            from JenkinsTools.NodeManage import NodeManage
+            nm = NodeManage(args)
+            print(nm.delete_node())
 
+        elif args.command == "disable":
+            from JenkinsTools.NodeManage import NodeManage
+            nm = NodeManage(args)
+            print(nm.disable_node())
+
+        elif args.command == "enable":
+            from JenkinsTools.NodeManage import NodeManage
+            nm = NodeManage(args)
+            print(nm.enable_node())
+
+    elif args.gui and not args.command:
+        from ux.nodeMain import nodeWidget
+
+        app = QApplication(sys.argv)
+        widget = nodeWidget()
+        widget.show()
+        sys.exit(app.exec())
+
+    else:
+        print("Either launch the GUI (-g or --gui) or use required parameters --url, --user, and --token")
