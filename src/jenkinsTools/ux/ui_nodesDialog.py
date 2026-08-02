@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'nodeForm.ui'
+## Form generated from reading UI file 'nodesDialog.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.11.1
 ##
@@ -15,18 +15,18 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QComboBox, QGridLayout, QLabel,
-    QLineEdit, QPushButton, QSizePolicy, QStackedWidget,
-    QTextEdit, QWidget)
+from PySide6.QtWidgets import (QApplication, QComboBox, QDialog, QGridLayout,
+    QLabel, QLineEdit, QPushButton, QSizePolicy,
+    QStackedWidget, QTextEdit, QWidget)
 
-class Ui_Widget(object):
-    def setupUi(self, Widget):
-        if not Widget.objectName():
-            Widget.setObjectName(u"Widget")
-        Widget.resize(800, 600)
-        self.layoutWidget = QWidget(Widget)
+class Ui_Dialog(object):
+    def setupUi(self, Dialog):
+        if not Dialog.objectName():
+            Dialog.setObjectName(u"Dialog")
+        Dialog.resize(765, 520)
+        self.layoutWidget = QWidget(Dialog)
         self.layoutWidget.setObjectName(u"layoutWidget")
-        self.layoutWidget.setGeometry(QRect(30, 50, 741, 451))
+        self.layoutWidget.setGeometry(QRect(10, 50, 741, 451))
         self.gridLayout = QGridLayout(self.layoutWidget)
         self.gridLayout.setObjectName(u"gridLayout")
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
@@ -221,61 +221,61 @@ class Ui_Widget(object):
 
         self.gridLayout.addWidget(self.RunPushButton, 5, 4, 1, 1)
 
-        self.label = QLabel(Widget)
+        self.label = QLabel(Dialog)
         self.label.setObjectName(u"label")
-        self.label.setGeometry(QRect(340, 10, 141, 31))
+        self.label.setGeometry(QRect(320, 10, 141, 31))
         font = QFont()
         font.setPointSize(20)
         self.label.setFont(font)
 
-        self.retranslateUi(Widget)
+        self.retranslateUi(Dialog)
 
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(0)
 
 
-        QMetaObject.connectSlotsByName(Widget)
+        QMetaObject.connectSlotsByName(Dialog)
     # setupUi
 
-    def retranslateUi(self, Widget):
-        Widget.setWindowTitle(QCoreApplication.translate("Widget", u"Widget", None))
-        self.UrlLabel.setText(QCoreApplication.translate("Widget", u"URL", None))
-        self.UsernameLabel.setText(QCoreApplication.translate("Widget", u"username", None))
-        self.tokenLabel.setText(QCoreApplication.translate("Widget", u"token/password", None))
-        self.ActionLabel.setText(QCoreApplication.translate("Widget", u"Action", None))
-        self.ActionComboBox.setItemText(0, QCoreApplication.translate("Widget", u"Add", None))
-        self.ActionComboBox.setItemText(1, QCoreApplication.translate("Widget", u"Update", None))
-        self.ActionComboBox.setItemText(2, QCoreApplication.translate("Widget", u"Enable", None))
-        self.ActionComboBox.setItemText(3, QCoreApplication.translate("Widget", u"Disable", None))
-        self.ActionComboBox.setItemText(4, QCoreApplication.translate("Widget", u"Delete", None))
-        self.ActionComboBox.setItemText(5, QCoreApplication.translate("Widget", u"Node Exists", None))
-        self.ActionComboBox.setItemText(6, QCoreApplication.translate("Widget", u"Get Nodes", None))
-        self.ActionComboBox.setItemText(7, QCoreApplication.translate("Widget", u"Get Node Info", None))
-        self.ActionComboBox.setItemText(8, QCoreApplication.translate("Widget", u"Get Node Config", None))
-        self.ActionComboBox.setItemText(9, QCoreApplication.translate("Widget", u"New Item", None))
+    def retranslateUi(self, Dialog):
+        Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Dialog", None))
+        self.UrlLabel.setText(QCoreApplication.translate("Dialog", u"URL", None))
+        self.UsernameLabel.setText(QCoreApplication.translate("Dialog", u"username", None))
+        self.tokenLabel.setText(QCoreApplication.translate("Dialog", u"token/password", None))
+        self.ActionLabel.setText(QCoreApplication.translate("Dialog", u"Action", None))
+        self.ActionComboBox.setItemText(0, QCoreApplication.translate("Dialog", u"Add", None))
+        self.ActionComboBox.setItemText(1, QCoreApplication.translate("Dialog", u"Update", None))
+        self.ActionComboBox.setItemText(2, QCoreApplication.translate("Dialog", u"Enable", None))
+        self.ActionComboBox.setItemText(3, QCoreApplication.translate("Dialog", u"Disable", None))
+        self.ActionComboBox.setItemText(4, QCoreApplication.translate("Dialog", u"Delete", None))
+        self.ActionComboBox.setItemText(5, QCoreApplication.translate("Dialog", u"Node Exists", None))
+        self.ActionComboBox.setItemText(6, QCoreApplication.translate("Dialog", u"Get Nodes", None))
+        self.ActionComboBox.setItemText(7, QCoreApplication.translate("Dialog", u"Get Node Info", None))
+        self.ActionComboBox.setItemText(8, QCoreApplication.translate("Dialog", u"Get Node Config", None))
+        self.ActionComboBox.setItemText(9, QCoreApplication.translate("Dialog", u"New Item", None))
 
-        self.MethodLabel.setText(QCoreApplication.translate("Widget", u"Method", None))
-        self.MethodComboBox.setItemText(0, QCoreApplication.translate("Widget", u"SSH", None))
-        self.MethodComboBox.setItemText(1, QCoreApplication.translate("Widget", u"JNLP", None))
+        self.MethodLabel.setText(QCoreApplication.translate("Dialog", u"Method", None))
+        self.MethodComboBox.setItemText(0, QCoreApplication.translate("Dialog", u"SSH", None))
+        self.MethodComboBox.setItemText(1, QCoreApplication.translate("Dialog", u"JNLP", None))
 
-        self.VmNamelabel.setText(QCoreApplication.translate("Widget", u"VM Name", None))
-        self.RemoteFsLlabel.setText(QCoreApplication.translate("Widget", u"Remote Filesystem", None))
-        self.HostnameIpLabel.setText(QCoreApplication.translate("Widget", u"Hostname/IP", None))
-        self.JenkinsCredsLabel.setText(QCoreApplication.translate("Widget", u"Jenkins Credentials ID", None))
-        self.LabelsLabel.setText(QCoreApplication.translate("Widget", u"Labels", None))
-        self.ExecutorsLabel.setText(QCoreApplication.translate("Widget", u"Executors", None))
-        self.PortLabel.setText(QCoreApplication.translate("Widget", u"Port", None))
-        self.DescriptionLabel.setText(QCoreApplication.translate("Widget", u"Description", None))
-        self.PortLlineEdit.setText(QCoreApplication.translate("Widget", u"22", None))
-        self.RemoteFsLlabel_2.setText(QCoreApplication.translate("Widget", u"Remote Filesystem", None))
-        self.JenkinsCredsLabel_2.setText(QCoreApplication.translate("Widget", u"JVM Options", None))
-        self.HostnameIpLabel_2.setText(QCoreApplication.translate("Widget", u"Hostname/IP", None))
-        self.DescriptionLabel_2.setText(QCoreApplication.translate("Widget", u"Description", None))
-        self.VmNamelabel_2.setText(QCoreApplication.translate("Widget", u"VM Name", None))
-        self.LabelsLabel_2.setText(QCoreApplication.translate("Widget", u"Labels", None))
-        self.ExecutorsLabel_2.setText(QCoreApplication.translate("Widget", u"Executors", None))
-        self.VmNamelabel_3.setText(QCoreApplication.translate("Widget", u"VM Name", None))
-        self.QuitPushButton.setText(QCoreApplication.translate("Widget", u"quit", None))
-        self.RunPushButton.setText(QCoreApplication.translate("Widget", u"run command", None))
-        self.label.setText(QCoreApplication.translate("Widget", u"jenkinsNodeTool", None))
+        self.VmNamelabel.setText(QCoreApplication.translate("Dialog", u"VM Name", None))
+        self.RemoteFsLlabel.setText(QCoreApplication.translate("Dialog", u"Remote Filesystem", None))
+        self.HostnameIpLabel.setText(QCoreApplication.translate("Dialog", u"Hostname/IP", None))
+        self.JenkinsCredsLabel.setText(QCoreApplication.translate("Dialog", u"Jenkins Credentials ID", None))
+        self.LabelsLabel.setText(QCoreApplication.translate("Dialog", u"Labels", None))
+        self.ExecutorsLabel.setText(QCoreApplication.translate("Dialog", u"Executors", None))
+        self.PortLabel.setText(QCoreApplication.translate("Dialog", u"Port", None))
+        self.DescriptionLabel.setText(QCoreApplication.translate("Dialog", u"Description", None))
+        self.PortLlineEdit.setText(QCoreApplication.translate("Dialog", u"22", None))
+        self.RemoteFsLlabel_2.setText(QCoreApplication.translate("Dialog", u"Remote Filesystem", None))
+        self.JenkinsCredsLabel_2.setText(QCoreApplication.translate("Dialog", u"JVM Options", None))
+        self.HostnameIpLabel_2.setText(QCoreApplication.translate("Dialog", u"Hostname/IP", None))
+        self.DescriptionLabel_2.setText(QCoreApplication.translate("Dialog", u"Description", None))
+        self.VmNamelabel_2.setText(QCoreApplication.translate("Dialog", u"VM Name", None))
+        self.LabelsLabel_2.setText(QCoreApplication.translate("Dialog", u"Labels", None))
+        self.ExecutorsLabel_2.setText(QCoreApplication.translate("Dialog", u"Executors", None))
+        self.VmNamelabel_3.setText(QCoreApplication.translate("Dialog", u"VM Name", None))
+        self.QuitPushButton.setText(QCoreApplication.translate("Dialog", u"quit", None))
+        self.RunPushButton.setText(QCoreApplication.translate("Dialog", u"run command", None))
+        self.label.setText(QCoreApplication.translate("Dialog", u"jenkinsNodeTool", None))
     # retranslateUi
 

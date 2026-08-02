@@ -9,19 +9,23 @@ from pathlib import Path
 parent_dir = Path(__file__).parent.parent
 sys.path.append(str(parent_dir))
 
-from PySide6.QtWidgets import QApplication, QWidget
+from PySide6.QtWidgets import QApplication, QDialog
+from PySide6.QtCore import Qt
 
 # Important:
 # You need to run the following command to generate the ui_form.py file
 #     pyside6-uic form.ui -o ui_form.py, or
 #     pyside2-uic form.ui -o ui_form.py
-from .ui_nodeForm import Ui_Widget
+from ux.ui_nodesDialog import Ui_Dialog
 
-class nodeWidget(QWidget):
+class nodesDialog(QDialog):
     def __init__(self, parent=None):
         super().__init__(parent)
-        self.ui = Ui_Widget()
+        self.ui = Ui_Dialog()
         self.ui.setupUi(self)
+
+        # Set it up as a QDialog
+        self.setWindowFlag(Qt.Dialog, True)
 
         # Set current (default) page in the stacked widget
         self.ui.stackedWidget.setCurrentIndex(0)
