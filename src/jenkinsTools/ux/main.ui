@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QPushButton" name="sshCredsPushButton">
+    <property name="geometry">
+     <rect>
+      <x>560</x>
+      <y>130</y>
+      <width>221</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Add SSH creds</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="nodesPushButton">
+    <property name="geometry">
+     <rect>
+      <x>560</x>
+      <y>180</y>
+      <width>221</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Working with Jenkins Nodes</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pipelinesPushButton">
+    <property name="geometry">
+     <rect>
+      <x>560</x>
+      <y>230</y>
+      <width>221</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Working with Jenkins Pipelines</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="quitPushButton">
+    <property name="geometry">
+     <rect>
+      <x>680</x>
+      <y>290</y>
+      <width>100</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Quit</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="textEdit">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>40</y>
+      <width>511</width>
+      <height>441</height>
+     </rect>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuAction">
+    <property name="title">
+     <string>Action</string>
+    </property>
+    <addaction name="actionAdd_SSH_creds"/>
+    <addaction name="actionWorking_with_Jenkins_Nodes"/>
+    <addaction name="actionWorking_with_Jenkins_Pipelines"/>
+    <addaction name="separator"/>
+    <addaction name="actionQuit"/>
+   </widget>
+   <addaction name="menuAction"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionAdd_SSH_creds">
+   <property name="text">
+    <string>Add SSH creds</string>
+   </property>
+  </action>
+  <action name="actionWorking_with_Jenkins_Nodes">
+   <property name="text">
+    <string>Working with Jenkins Nodes</string>
+   </property>
+  </action>
+  <action name="actionWorking_with_Jenkins_Pipelines">
+   <property name="text">
+    <string>Working with Jenkins Pipelines</string>
+   </property>
+  </action>
+  <action name="actionQuit">
+   <property name="text">
+    <string>Quit</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
