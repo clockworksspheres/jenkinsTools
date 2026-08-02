@@ -16,8 +16,8 @@ import argparse
 import sys
 import textwrap
 import jenkins
-from argparse import Namespace
 from jenkins import JenkinsException
+from requests import ConnectionError
 
 
 class AddJenkinsNode():
@@ -92,6 +92,12 @@ class AddJenkinsNode():
             # Quick connectivity check
             try:
                 server.get_whoami()
+            except ConnectionError:
+                print("\nCannot connect to Jenkins!", file=sys.stderr)
+                print("  • Wrong --url (must be real address – not jenkins.example.com)", file=sys.stderr)
+                print("  • Jenkins not running / wrong port", file=sys.stderr)
+                print("  • Firewall / network issue", file=sys.stderr)
+
             except Exception as e:
                 print("\nCannot connect to Jenkins!", file=sys.stderr)
                 print("Common causes:", file=sys.stderr)
