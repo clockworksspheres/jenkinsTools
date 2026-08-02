@@ -59,26 +59,38 @@ class nodeWidget(QWidget):
             raise ValueError("url, user and token fields required.")
 
         if selected_text == "Add":
-            action['name'] = self.ui.VmNameLineEdit.text()
-
-            if action["name"]:
-                print ("name field acquired")
-            else:
-                raise ValueError("name field required for this action.")
-            
             action["method"] = self.ui.MethodComboBox.currentText()
 
             if action["method"] == "SSH":
+                action['name'] = self.ui.VmNameLineEdit.text()
+
+                if action["name"]:
+                    print ("name field acquired")
+                else:
+                    raise ValueError("name field required for this action.")
+            
                 action["credentials_id"] = self.ui.JenkinsCredsIdLineEdit.text()
                 action["port"] = self.ui.PortLlineEdit.text()
-            elif action["method"] == "JNLP":
-                action[''] = self.ui.jvmOptionsLineEdit.text()
+                action["host"] = self.ui.HostnameOrIpLineEdit.text()
+                action["labels"] = self.ui.LabelsLineEdit.text()
+                action["executors"] = self.ui.ExecutorsLineEdit.text()
+                action["description"] = self.ui.DescriptionLineEdit.text()
+                action["remote_fs"] = self.ui.RemoteFsLineEdit.text()
 
-            action["host"] = self.ui.HostnameOrIpLineEdit.text()
-            action["labels"] = self.ui.LabelsLineEdit.text()
-            action["executors"] = self.ui.ExecutorsLineEdit.text()
-            action["description"] = self.ui.DescriptionLineEdit.text()
-            action["remote_fs"] = self.ui.RemoteFsLineEdit.text()
+            elif action["method"] == "JNLP":
+                action['name'] = self.ui.VmNameLineEdit_2.text()
+
+                if action["name"]:
+                    print ("name field acquired")
+                else:
+                    raise ValueError("name field required for this action.")
+                
+                action['jvm_options'] = self.ui.JVMOptionsLineEdit.text()
+                action["host"] = self.ui.HostnameOrIpLineEdit_2.text()
+                action["labels"] = self.ui.LabelsLineEdit_2.text()
+                action["executors"] = self.ui.ExecutorsLineEdit_2.text()
+                action["description"] = self.ui.DescriptionLineEdit_2.text()
+                action["remote_fs"] = self.ui.RemoteFsLineEdit_2.text()
 
             print(str(action))
 
