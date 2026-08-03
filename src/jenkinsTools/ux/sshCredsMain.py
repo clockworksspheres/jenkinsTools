@@ -29,7 +29,12 @@ class SshCredsDialog(QDialog):
         self.ui.buttonBox.rejected.connect(self.reject)
 
         # connect comboBox actions to slots
-        self.ui.comboBox.connect(self.comboBoxActivate)
+        self.ui.comboBox.setCurrentIndex(0)
+        self.ui.comboBox.currentIndexChanged.connect(self.comboBoxActivate)
+
+        # hide fields based on default comboBox selection
+        self.ui.keyPassphraseLabel.hide()
+        self.ui.keyPassphraseLineEdit.hide()
 
     def onRunButtonClicked(self):
         print("Run button clicked")
@@ -40,9 +45,13 @@ class SshCredsDialog(QDialog):
 
         if text == "Add SSH key as credential":
             print("comboBox 'Add SSH key as credential' selected")
+            self.ui.keyPassphraseLabel.hide()
+            self.ui.keyPassphraseLineEdit.hide()
 
         elif text == "Add and encrypted SSH key as credential":
             print("comboBox 'Add and encrypted SSH key as credential' selected")
+            self.ui.keyPassphraseLabel.show()
+            self.ui.keyPassphraseLineEdit.show()
 
         else:
             raise ValueError("ComboBox selection out of bounds...")

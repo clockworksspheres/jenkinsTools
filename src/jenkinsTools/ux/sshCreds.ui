@@ -32,7 +32,7 @@
      <x>20</x>
      <y>70</y>
      <width>426</width>
-     <height>311</height>
+     <height>313</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout">
@@ -107,44 +107,44 @@
     <item row="5" column="1">
      <widget class="QLineEdit" name="sshUserLineEdit"/>
     </item>
-    <item row="6" column="0">
-     <widget class="QLabel" name="privateKeyLabel">
-      <property name="text">
-       <string>private key</string>
+    <item row="6" column="1">
+     <widget class="QLineEdit" name="descriptionLineEdit"/>
+    </item>
+    <item row="7" column="1">
+     <widget class="QLineEdit" name="privateKeyLineEdit">
+      <property name="echoMode">
+       <enum>QLineEdit::EchoMode::PasswordEchoOnEdit</enum>
       </property>
      </widget>
     </item>
-    <item row="6" column="1">
-     <widget class="QLineEdit" name="privateKeyLineEdit"/>
+    <item row="8" column="1">
+     <widget class="QLineEdit" name="keyPassphraseLineEdit"/>
     </item>
-    <item row="7" column="0">
+    <item row="9" column="1">
+     <widget class="QDialogButtonBox" name="buttonBox">
+      <property name="standardButtons">
+       <set>QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::Ok</set>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="0">
      <widget class="QLabel" name="keyPassphraseLabel">
       <property name="text">
        <string>key passphrase</string>
       </property>
      </widget>
     </item>
-    <item row="7" column="1">
-     <widget class="QLineEdit" name="keyPassphraseLineEdit">
-      <property name="echoMode">
-       <enum>QLineEdit::EchoMode::PasswordEchoOnEdit</enum>
+    <item row="7" column="0">
+     <widget class="QLabel" name="privateKeyLabel">
+      <property name="text">
+       <string>private key</string>
       </property>
      </widget>
     </item>
-    <item row="8" column="0">
+    <item row="6" column="0">
      <widget class="QLabel" name="descriptionLabel">
       <property name="text">
        <string>description</string>
-      </property>
-     </widget>
-    </item>
-    <item row="8" column="1">
-     <widget class="QLineEdit" name="descriptionLineEdit"/>
-    </item>
-    <item row="9" column="1">
-     <widget class="QDialogButtonBox" name="buttonBox">
-      <property name="standardButtons">
-       <set>QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::Ok</set>
       </property>
      </widget>
     </item>

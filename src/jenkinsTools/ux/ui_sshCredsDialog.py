@@ -29,7 +29,7 @@ class Ui_Dialog(object):
         self.titleLabel.setGeometry(QRect(150, 30, 121, 16))
         self.widget = QWidget(Dialog)
         self.widget.setObjectName(u"widget")
-        self.widget.setGeometry(QRect(20, 70, 426, 311))
+        self.widget.setGeometry(QRect(20, 70, 426, 313))
         self.gridLayout = QGridLayout(self.widget)
         self.gridLayout.setObjectName(u"gridLayout")
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
@@ -92,42 +92,42 @@ class Ui_Dialog(object):
 
         self.gridLayout.addWidget(self.sshUserLineEdit, 5, 1, 1, 1)
 
-        self.privateKeyLabel = QLabel(self.widget)
-        self.privateKeyLabel.setObjectName(u"privateKeyLabel")
-
-        self.gridLayout.addWidget(self.privateKeyLabel, 6, 0, 1, 1)
-
-        self.privateKeyLineEdit = QLineEdit(self.widget)
-        self.privateKeyLineEdit.setObjectName(u"privateKeyLineEdit")
-
-        self.gridLayout.addWidget(self.privateKeyLineEdit, 6, 1, 1, 1)
-
-        self.keyPassphraseLabel = QLabel(self.widget)
-        self.keyPassphraseLabel.setObjectName(u"keyPassphraseLabel")
-
-        self.gridLayout.addWidget(self.keyPassphraseLabel, 7, 0, 1, 1)
-
-        self.keyPassphraseLineEdit = QLineEdit(self.widget)
-        self.keyPassphraseLineEdit.setObjectName(u"keyPassphraseLineEdit")
-        self.keyPassphraseLineEdit.setEchoMode(QLineEdit.EchoMode.PasswordEchoOnEdit)
-
-        self.gridLayout.addWidget(self.keyPassphraseLineEdit, 7, 1, 1, 1)
-
-        self.descriptionLabel = QLabel(self.widget)
-        self.descriptionLabel.setObjectName(u"descriptionLabel")
-
-        self.gridLayout.addWidget(self.descriptionLabel, 8, 0, 1, 1)
-
         self.descriptionLineEdit = QLineEdit(self.widget)
         self.descriptionLineEdit.setObjectName(u"descriptionLineEdit")
 
-        self.gridLayout.addWidget(self.descriptionLineEdit, 8, 1, 1, 1)
+        self.gridLayout.addWidget(self.descriptionLineEdit, 6, 1, 1, 1)
+
+        self.privateKeyLineEdit = QLineEdit(self.widget)
+        self.privateKeyLineEdit.setObjectName(u"privateKeyLineEdit")
+        self.privateKeyLineEdit.setEchoMode(QLineEdit.EchoMode.PasswordEchoOnEdit)
+
+        self.gridLayout.addWidget(self.privateKeyLineEdit, 7, 1, 1, 1)
+
+        self.keyPassphraseLineEdit = QLineEdit(self.widget)
+        self.keyPassphraseLineEdit.setObjectName(u"keyPassphraseLineEdit")
+
+        self.gridLayout.addWidget(self.keyPassphraseLineEdit, 8, 1, 1, 1)
 
         self.buttonBox = QDialogButtonBox(self.widget)
         self.buttonBox.setObjectName(u"buttonBox")
         self.buttonBox.setStandardButtons(QDialogButtonBox.StandardButton.Cancel|QDialogButtonBox.StandardButton.Ok)
 
         self.gridLayout.addWidget(self.buttonBox, 9, 1, 1, 1)
+
+        self.keyPassphraseLabel = QLabel(self.widget)
+        self.keyPassphraseLabel.setObjectName(u"keyPassphraseLabel")
+
+        self.gridLayout.addWidget(self.keyPassphraseLabel, 8, 0, 1, 1)
+
+        self.privateKeyLabel = QLabel(self.widget)
+        self.privateKeyLabel.setObjectName(u"privateKeyLabel")
+
+        self.gridLayout.addWidget(self.privateKeyLabel, 7, 0, 1, 1)
+
+        self.descriptionLabel = QLabel(self.widget)
+        self.descriptionLabel.setObjectName(u"descriptionLabel")
+
+        self.gridLayout.addWidget(self.descriptionLabel, 6, 0, 1, 1)
 
 
         self.retranslateUi(Dialog)
@@ -146,8 +146,8 @@ class Ui_Dialog(object):
 
         self.credsIdLabel.setText(QCoreApplication.translate("Dialog", u"credentials ID", None))
         self.sshUserLabel.setText(QCoreApplication.translate("Dialog", u"ssh user", None))
-        self.privateKeyLabel.setText(QCoreApplication.translate("Dialog", u"private key", None))
         self.keyPassphraseLabel.setText(QCoreApplication.translate("Dialog", u"key passphrase", None))
+        self.privateKeyLabel.setText(QCoreApplication.translate("Dialog", u"private key", None))
         self.descriptionLabel.setText(QCoreApplication.translate("Dialog", u"description", None))
     # retranslateUi
 
