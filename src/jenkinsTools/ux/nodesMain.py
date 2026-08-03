@@ -23,9 +23,6 @@ class nodesDialog(QDialog):
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
 
-        # Set it up as a QDialog
-        self.setWindowFlag(Qt.Dialog, True)
-
         # Set current (default) page in the stacked widget
         self.ui.stackedWidget.setCurrentIndex(0)
 
