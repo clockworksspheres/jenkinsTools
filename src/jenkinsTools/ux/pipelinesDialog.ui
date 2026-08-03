@@ -1,0 +1,520 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>782</width>
+    <height>529</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>60</y>
+     <width>741</width>
+     <height>451</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="1" column="0">
+     <widget class="QLabel" name="UsernameLabel">
+      <property name="text">
+       <string>username</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QLineEdit" name="tokenLineEdit"/>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="tokenLabel">
+      <property name="text">
+       <string>token/password</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="ActionLabel">
+      <property name="text">
+       <string>Action</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QComboBox" name="ActionComboBox">
+      <item>
+       <property name="text">
+        <string>create</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>run</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>check</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>get-config</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>set-config</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="3" column="3">
+     <widget class="QComboBox" name="MethodComboBox">
+      <item>
+       <property name="text">
+        <string>scm</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>inline</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="5" column="3">
+     <widget class="QPushButton" name="QuitPushButton">
+      <property name="text">
+       <string>quit</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLineEdit" name="UsernameLineEdit"/>
+    </item>
+    <item row="5" column="4">
+     <widget class="QPushButton" name="RunPushButton">
+      <property name="text">
+       <string>run command</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="UrlLineEdit"/>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="UrlLabel">
+      <property name="text">
+       <string>URL</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="2">
+     <widget class="QLabel" name="MethodLabel">
+      <property name="text">
+       <string>Type</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0" colspan="5">
+     <widget class="QStackedWidget" name="stackedWidget">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="page">
+       <widget class="QLabel" name="jobNamelabel">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>60</y>
+          <width>121</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Job Name</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="descriptionLabel">
+        <property name="geometry">
+         <rect>
+          <x>380</x>
+          <y>150</y>
+          <width>121</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Description</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="repoLabel">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>90</y>
+          <width>121</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Repo</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="credsIdLabel">
+        <property name="geometry">
+         <rect>
+          <x>380</x>
+          <y>60</y>
+          <width>141</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Credentials ID</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="branchLabel">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>120</y>
+          <width>121</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Branch</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="jenkinsfileLabel">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>150</y>
+          <width>121</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Jenkinsfile</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="scriptLabel">
+        <property name="geometry">
+         <rect>
+          <x>380</x>
+          <y>90</y>
+          <width>141</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Script</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="scriptPathLabel">
+        <property name="geometry">
+         <rect>
+          <x>380</x>
+          <y>120</y>
+          <width>141</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Script Path</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="jobNameLineEdit">
+        <property name="geometry">
+         <rect>
+          <x>152</x>
+          <y>60</y>
+          <width>191</width>
+          <height>20</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="repoLineEdit">
+        <property name="geometry">
+         <rect>
+          <x>152</x>
+          <y>90</y>
+          <width>191</width>
+          <height>20</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="branchLineEdit">
+        <property name="geometry">
+         <rect>
+          <x>152</x>
+          <y>120</y>
+          <width>191</width>
+          <height>20</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="jenkinsfileLineEdit">
+        <property name="geometry">
+         <rect>
+          <x>152</x>
+          <y>150</y>
+          <width>191</width>
+          <height>20</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="credsIdLineEdit">
+        <property name="geometry">
+         <rect>
+          <x>550</x>
+          <y>60</y>
+          <width>171</width>
+          <height>16</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="scriptLlineEdit">
+        <property name="geometry">
+         <rect>
+          <x>550</x>
+          <y>90</y>
+          <width>171</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="scriptPathLineEdit">
+        <property name="geometry">
+         <rect>
+          <x>550</x>
+          <y>120</y>
+          <width>171</width>
+          <height>16</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="descriptionLineEdit">
+        <property name="geometry">
+         <rect>
+          <x>550</x>
+          <y>150</y>
+          <width>171</width>
+          <height>16</height>
+         </rect>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="page_2">
+       <widget class="QLineEdit" name="JobNameLineEdit_2">
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>50</y>
+          <width>351</width>
+          <height>20</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="HostnameIpLabel_2">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>90</y>
+          <width>141</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Follow console output</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="LabelsLineEdit_2">
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>120</y>
+          <width>351</width>
+          <height>20</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="JobNamelabel_2">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>50</y>
+          <width>91</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Job Name</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="LabelsLabel_2">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>120</y>
+          <width>91</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Parameters</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="ExecutorsLabel_2">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>150</y>
+          <width>91</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Token Build</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="ExecutorsLineEdit_2">
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>150</y>
+          <width>351</width>
+          <height>20</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="comboBox">
+        <property name="geometry">
+         <rect>
+          <x>160</x>
+          <y>80</y>
+          <width>103</width>
+          <height>32</height>
+         </rect>
+        </property>
+        <item>
+         <property name="text">
+          <string>no</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>yes</string>
+         </property>
+        </item>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="page_3">
+       <widget class="QTextEdit" name="GetNodesTextEdit">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>10</y>
+          <width>671</width>
+          <height>241</height>
+         </rect>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="page_4">
+       <widget class="QLabel" name="jobNamelabel_3">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>60</y>
+          <width>71</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Job Name</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="jobNameLineEdit_3">
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>60</y>
+          <width>181</width>
+          <height>20</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QTextEdit" name="GetNodeTextEdit">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>100</y>
+          <width>701</width>
+          <height>151</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="xmlFileLineEdit">
+        <property name="geometry">
+         <rect>
+          <x>452</x>
+          <y>60</y>
+          <width>261</width>
+          <height>21</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="xmlFileLabel">
+        <property name="geometry">
+         <rect>
+          <x>330</x>
+          <y>60</y>
+          <width>111</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>xml file to upload</string>
+        </property>
+       </widget>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>20</y>
+     <width>171</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>20</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Pipeline Node Tool</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
