@@ -13,6 +13,7 @@ from PySide6.QtCore import Qt
 
 from ux.nodesMain import nodesDialog
 from ux.ui_main import Ui_MainWindow
+from ux.sshCredsMain import SshCredsDialog
 
 class CustomDialog(QDialog):
     def __init__(self, parent=None):
@@ -87,7 +88,7 @@ class JenkinsToolsUi(QMainWindow):
     def openSshCredsWidget(self):
         # show message box with mounted data
         msg = "stub for opening SSH creds window"
-        dlg = CustomMessageDialog(self, msg)
+        dlg = SshCredsDialog(self)
         retval = dlg.exec()
         if retval:
             print("User clicked OK, dialog accepted")
