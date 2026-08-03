@@ -14,6 +14,7 @@ from PySide6.QtCore import Qt
 from ux.nodesMain import nodesDialog
 from ux.ui_main import Ui_MainWindow
 from ux.sshCredsMain import SshCredsDialog
+from ux.pipelinesMain import pipelinesDialog
 
 class CustomDialog(QDialog):
     def __init__(self, parent=None):
@@ -120,7 +121,7 @@ class JenkinsToolsUi(QMainWindow):
     def openPipelinesWidget(self):
         # show message box with mounted data
         msg = "stub for opening pipelines window"
-        dlg = CustomMessageDialog(self, msg)
+        dlg = pipelinesDialog(self)
         retval = dlg.exec()
         if retval:
             print("User clicked OK, dialog accepted")
