@@ -33,13 +33,189 @@ class pipelinesDialog(QDialog):
         # combo box actions
         self.ui.ActionComboBox.currentIndexChanged.connect(self.handleActionComboBoxChange)
         self.ui.MethodComboBox.currentIndexChanged.connect(self.handleMethodComboBoxChange)
+        self.ui.followComboBox.currentIndexChanged.connect(self.handleFollowComboBoxChange)
 
         # Button actions
         self.ui.QuitPushButton.clicked.connect(self.close)
         self.ui.RunPushButton.clicked.connect(self.runAction)
 
+        self.ui.MethodLabel.hide()
+        self.ui.MethodComboBox.hide()
+
+        self.ui.UrlLineEdit.setFocus()
+
+        self.setTabOrder(self.ui.UrlLineEdit, self.ui.UsernameLineEdit)
+        self.setTabOrder(self.ui.UsernameLineEdit, self.ui.tokenLineEdit)
+        self.setTabOrder(self.ui.tokenLineEdit, self.ui.ActionComboBox)
+        self.setTabOrder(self.ui.ActionComboBox, self.ui.MethodComboBox)
+        self.setTabOrder(self.ui.MethodComboBox, self.ui.jobNameLineEdit)
+        self.setTabOrder(self.ui.jobNameLineEdit, self.ui.repoLineEdit)
+        self.setTabOrder(self.ui.repoLineEdit, self.ui.branchLineEdit)
+        self.setTabOrder(self.ui.branchLineEdit, self.ui.jenkinsfileLineEdit)
+        self.setTabOrder(self.ui.jenkinsfileLineEdit, self.ui.credsIdLineEdit)
+        self.setTabOrder(self.ui.credsIdLineEdit, self.ui.scriptLineEdit)
+        self.setTabOrder(self.ui.scriptLineEdit, self.ui.scriptPathLineEdit)
+        self.setTabOrder(self.ui.scriptPathLineEdit, self.ui.descriptionLineEdit)
+        self.setTabOrder(self.ui.descriptionLineEdit, self.ui.UrlLineEdit)
+
     def runAction(self):
         print(f"Running command '{self.ui.ActionComboBox.currentText()}'")
+
+        selected_text = self.ui.ActionComboBox.currentText()
+
+        print(f"selected text: '{selected_text}'")
+
+        action = {}
+
+        action["url"] = self.ui.UrlLineEdit.text()
+        action["user"] = self.ui.UsernameLineEdit.text()
+        action["token"] = self.ui.tokenLineEdit.text()
+
+        if action["url"] and \
+           action["user"] and \
+           action["token"]:
+            print ("action acquired")
+        else:
+            raise ValueError("url, user and token fields required.")
+
+        if selected_text == "create":
+            self.ui.MethodLabel.hide()
+            self.ui.MethodComboBox.hide()
+
+            action["method"] = self.ui.MethodComboBox.currentText()
+            # if action["method"] == "scm":
+
+            # if validateJobNameLineEdit(self.ui.jobNameLineEdit.text()):
+            if self.ui.jobNameLineEdit.text():
+                action['job'] = self.ui.jobNameLineEdit.text()
+            if self.ui.repoLineEdit.text():
+                action['repo'] = self.ui.repoLineEdit.text()
+            if self.ui.branchLineEdit.text():
+                action['branch'] = self.ui.branchLineEdit.text()
+            if self.ui.jenkinsfileLineEdit.text():
+                action['jenkinsfile'] = self.ui.jenkinsfileLineEdit.text()
+            if self.ui.credsIdLineEdit.text():
+                action['credentials_id'] = self.ui.credsIdLineEdit.text()
+            if self.ui.descriptionLineEdit.text():
+                action['description'] = self.ui.descriptionLineEdit.text()
+
+            print(str(action))
+
+            args = Namespace(**action)
+            print(f"Adding {args.url} for node <{args.job}>...")
+
+            from JenkinsTools.CreateJenkinsPipeline import CreateJenkinsPipeline as createPipeline
+
+            cjp = createPipeline()
+            cjp.create_jenkins_pipeline(args)
+
+        elif selected_text == "run":
+
+            self.ui.MethodLabel.hide()
+            self.ui.MethodComboBox.hide()
+            self.ui.followLabel.hide()
+            self.ui.followLineEdit.hide()
+            
+            if self.ui.jobNameLineEdit_2.text():
+                action['job'] = self.ui.jobNameLineEdit_2.text()
+            else:
+                raise ValueError("job field required.")
+
+            action['follow'] = self.ui.followComboBox.currentText()
+
+            if self.ui.followComboBox.currentText() == "Yes":
+                action['follow'] = True
+            elif self.ui.followComboBox.currentText() == "No":
+                action['follow'] = False
+            else:
+                raise ValueError("follow variable out of bounds.")
+
+            if self.ui.parametersLineEdit_2.text():
+                action['param'] = self.ui.parametersLineEdit_2.text()
+
+            if self.ui.tokenBuildLineEdit_2.text():
+                action["token_build"] = self.ui.tokenBuildLineEdit_2.text()
+        
+            print(str(action))
+
+            args = Namespace(**action)
+            print(f"Adding {args.url} for node <{args.job}>...")
+
+            from JenkinsTools.RunJenkinsPipeline import RunJenkinsPipeline as runPipeline
+
+            rpipeline = runPipeline()
+            rpipeline.controller(args)
+
+        elif selected_text == "check":
+            self.ui.MethodLabel.hide()
+            self.ui.MethodComboBox.hide()
+
+            if self.ui.jobNameLineEdit_2.text():
+                action['job'] = self.ui.jobNameLineEdit_3.text()
+            else:
+                raise ValueError("job field required.")
+
+            if self.ui.followComboBox.currentText() == "Yes":
+                action['follow'] = True
+            elif self.ui.followComboBox.currentText() == "No":
+                action['follow'] = False
+            else:
+                raise ValueError("follow variable out of bounds.")
+
+            print(str(action))
+
+            args = Namespace(**action)
+            print(f"Adding {args.url} for node <{args.job}>...")
+            from JenkinsTools.CheckJenkinsPipelineRun import CheckJenkinsPipelineRun as checkPipeline
+
+            ckpipeline = checkPipeline()
+            ckpipeline.get_full_run(args)
+
+            '''
+            if args.get_full_run:
+                ckpipeline.get_full_run(args)
+            else:
+                ckpipeline.check_run(args)
+            '''
+
+        elif selected_text == "get-config":
+            self.ui.MethodLabel.hide()
+            self.ui.MethodComboBox.hide()
+
+            if self.ui.jobNameLineEdit_2.text():
+                action['job'] = self.ui.jobNameLineEdit_3.text()
+            else:
+                raise ValueError("job field required.")
+
+            print(str(action))
+
+            args = Namespace(**action)
+            print(f"Adding {args.url} for node <{args.job}>...")
+            from JenkinsTools.ConfigJob import ConfigJob
+
+            config_job = ConfigJob(args)
+            config_job.cmd_get_config()
+
+        elif selected_text == "set-config":
+            self.ui.MethodLabel.hide()
+            self.ui.MethodComboBox.hide()
+
+            if self.ui.jobNameLineEdit_2.text():
+                action['job'] = self.ui.jobNameLineEdit_3.text()
+            else:
+                raise ValueError("job field required.")
+
+            print(str(action))
+
+            args = Namespace(**action)
+            print(f"Adding {args.url} for node <{args.job}>...")
+            from JenkinsTools.ConfigJob import ConfigJob
+
+            config_job = ConfigJob(args)
+            config_job.cmd_set_config()
+
+        else:
+           print("not a valid combobox value")
 
     def handleActionComboBoxChange(self):
 
@@ -53,7 +229,18 @@ class pipelinesDialog(QDialog):
 
         print(f"selected text: '{selected_text}'")
 
+    def handleFollowComboBoxChange(self):
 
+        selected_text = self.ui.followComboBox.currentText()
+
+        print(f"selected text: '{selected_text}'")
+
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    dialog = pipelinesDialog()
+    dialog.show()
+    sys.exit(app.exec())
 
 
 
