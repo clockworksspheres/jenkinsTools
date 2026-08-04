@@ -135,14 +135,9 @@ class nodesDialog(QDialog):
             args = Namespace(**action)
             print(f"Adding {args.url} for node <{args.name}>...")
 
-            from JenkinsTools.AddJenkinsNode import AddJenkinsNode
-
-            addNode = AddJenkinsNode(args)
-            addNode.add_jenkins_node()
-
-            print(f"Running {args.url} for pipeline <{args.name}>...")
             from JenkinsTools.update_node import cmd_update_node
 
+            # THIS IS CORRECT - it's just a function call, unlike the other actions.
             cmd_update_node(args)
 
         elif selected_text == "Get Nodes":
@@ -363,7 +358,7 @@ class nodesDialog(QDialog):
 if __name__ == "__main__":
     __package__ = "jenkinsTools.ux"
     app = QApplication(sys.argv)
-    widget = nodeWidget()
-    widget.show()
+    dialog = nodeDialog()
+    dialog.show()
     sys.exit(app.exec())
 
