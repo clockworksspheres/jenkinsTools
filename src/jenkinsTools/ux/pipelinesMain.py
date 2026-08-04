@@ -39,9 +39,15 @@ class pipelinesDialog(QDialog):
         self.ui.QuitPushButton.clicked.connect(self.close)
         self.ui.RunPushButton.clicked.connect(self.runAction)
 
+        # Hiding functionality that doesn't yet do the right thing
         self.ui.MethodLabel.hide()
         self.ui.MethodComboBox.hide()
+        self.ui.scriptLabel.hide()
+        self.ui.scriptLineEdit.hide()
+        self.ui.scriptPathLabel.hide()
+        self.ui.scriptPathLineEdit.hide()
 
+        # Setting tab focus on first stacked widget
         self.ui.UrlLineEdit.setFocus()
 
         self.setTabOrder(self.ui.UrlLineEdit, self.ui.UsernameLineEdit)
@@ -111,11 +117,6 @@ class pipelinesDialog(QDialog):
 
         elif selected_text == "run":
 
-            self.ui.MethodLabel.hide()
-            self.ui.MethodComboBox.hide()
-            self.ui.followLabel.hide()
-            self.ui.followLineEdit.hide()
-            
             if self.ui.jobNameLineEdit_2.text():
                 action['job'] = self.ui.jobNameLineEdit_2.text()
             else:
@@ -147,10 +148,8 @@ class pipelinesDialog(QDialog):
             rpipeline.controller(args)
 
         elif selected_text == "check":
-            self.ui.MethodLabel.hide()
-            self.ui.MethodComboBox.hide()
 
-            if self.ui.jobNameLineEdit_2.text():
+            if self.ui.jobNameLineEdit_3.text():
                 action['job'] = self.ui.jobNameLineEdit_3.text()
             else:
                 raise ValueError("job field required.")
@@ -179,8 +178,6 @@ class pipelinesDialog(QDialog):
             '''
 
         elif selected_text == "get-config":
-            self.ui.MethodLabel.hide()
-            self.ui.MethodComboBox.hide()
 
             if self.ui.jobNameLineEdit_2.text():
                 action['job'] = self.ui.jobNameLineEdit_3.text()
@@ -197,8 +194,6 @@ class pipelinesDialog(QDialog):
             config_job.cmd_get_config()
 
         elif selected_text == "set-config":
-            self.ui.MethodLabel.hide()
-            self.ui.MethodComboBox.hide()
 
             if self.ui.jobNameLineEdit_2.text():
                 action['job'] = self.ui.jobNameLineEdit_3.text()
@@ -225,19 +220,102 @@ class pipelinesDialog(QDialog):
 
         if selected_text == "create":
             self.ui.stackedWidget.setCurrentIndex(0)
-            self.ui.DescriptionLabel.show()
-            self.ui.DescriptionLineEdit.show()
+            self.ui.MethodLabel.hide()
+            self.ui.MethodComboBox.hide()
+            self.ui.scriptLabel.hide()
+            self.ui.scriptLineEdit.hide()
+            self.ui.scriptPathLabel.hide()
+            self.ui.scriptPathLineEdit.hide()
+
+            # Setting tab focus on first stacked widget
+            self.ui.UrlLineEdit.setFocus()
+
+            self.setTabOrder(self.ui.UrlLineEdit, self.ui.UsernameLineEdit)
+            self.setTabOrder(self.ui.UsernameLineEdit, self.ui.tokenLineEdit)
+            self.setTabOrder(self.ui.tokenLineEdit, self.ui.ActionComboBox)
+            self.setTabOrder(self.ui.ActionComboBox, self.ui.MethodComboBox)
+            self.setTabOrder(self.ui.MethodComboBox, self.ui.jobNameLineEdit)
+            self.setTabOrder(self.ui.jobNameLineEdit, self.ui.repoLineEdit)
+            self.setTabOrder(self.ui.repoLineEdit, self.ui.branchLineEdit)
+            self.setTabOrder(self.ui.branchLineEdit, self.ui.jenkinsfileLineEdit)
+            self.setTabOrder(self.ui.jenkinsfileLineEdit, self.ui.credsIdLineEdit)
+            self.setTabOrder(self.ui.credsIdLineEdit, self.ui.descriptionLineEdit)
+            self.setTabOrder(self.ui.descriptionLineEdit, self.ui.scriptLineEdit)
+            self.setTabOrder(self.ui.scriptLineEdit, self.ui.scriptPathLineEdit)
+            self.setTabOrder(self.ui.scriptPathLineEdit, self.ui.UrlLineEdit)
 
         elif selected_text == "run":
             self.ui.stackedWidget.setCurrentIndex(1)
+            self.ui.MethodLabel.hide()
+            self.ui.MethodComboBox.hide()
+            self.ui.followLabel.hide()
+            self.ui.followComboBox.hide()
+            
+            # Setting tab focus on first stacked widget
+            self.ui.UrlLineEdit.setFocus()
+
+            self.setTabOrder(self.ui.UrlLineEdit, self.ui.UsernameLineEdit)
+            self.setTabOrder(self.ui.UsernameLineEdit, self.ui.tokenLineEdit)
+            self.setTabOrder(self.ui.tokenLineEdit, self.ui.JobNameLineEdit_2)
+            self.setTabOrder(self.ui.JobNameLineEdit_2, self.ui.followComboBox)
+            self.setTabOrder(self.ui.followComboBox, self.ui.parametersLineEdit_2)
+            self.setTabOrder(self.ui.parametersLineEdit_2, self.ui.tokenBuildLineEdit_2)
+            self.setTabOrder(self.ui.tokenBuildLineEdit_2, self.ui.UrlLineEdit)
 
         elif selected_text == "check":
             self.ui.stackedWidget.setCurrentIndex(3)
+            self.ui.MethodLabel.hide()
+            self.ui.MethodComboBox.hide()
+            self.ui.xmlFileLabel.hide()
+            self.ui.xmlFileLineEdit.hide()
+
+            # Setting tab focus on first stacked widget
+            self.ui.UrlLineEdit.setFocus()
+            self.ui.GetNodeTextEdit.setFocusPolicy(Qt.NoFocus)
+
+            self.setTabOrder(self.ui.UrlLineEdit, self.ui.UsernameLineEdit)
+            self.setTabOrder(self.ui.UsernameLineEdit, self.ui.tokenLineEdit)
+            self.setTabOrder(self.ui.tokenLineEdit, self.ui.jobNameLineEdit_3)
+            self.setTabOrder(self.ui.jobNameLineEdit_3, self.ui.UrlLineEdit)
+
 
         elif selected_text == "get-config":
             self.ui.stackedWidget.setCurrentIndex(3)
+            self.ui.MethodLabel.hide()
+            self.ui.MethodComboBox.hide()
+            self.ui.xmlFileLabel.hide()
+            self.ui.xmlFileLineEdit.hide()
+
+            # Setting tab focus on first stacked widget
+            self.ui.UrlLineEdit.setFocus()
+            self.ui.GetNodeTextEdit.setFocusPolicy(Qt.NoFocus)
+
+            self.setTabOrder(self.ui.UrlLineEdit, self.ui.UsernameLineEdit)
+            self.setTabOrder(self.ui.UsernameLineEdit, self.ui.tokenLineEdit)
+            self.setTabOrder(self.ui.tokenLineEdit, self.ui.ActionComboBox)
+            self.setTabOrder(self.ui.ActionComboBox, self.ui.MethodComboBox)
+            self.setTabOrder(self.ui.MethodComboBox, self.ui.jobNameLineEdit_3)
+            self.setTabOrder(self.ui.jobNameLineEdit_3, self.ui.UrlLineEdit)
+
         elif selected_text == "set-config":
             self.ui.stackedWidget.setCurrentIndex(3)
+            self.ui.MethodLabel.hide()
+            self.ui.MethodComboBox.hide()
+            self.ui.xmlFileLabel.show()
+            self.ui.xmlFileLineEdit.show()
+
+            # Setting tab focus on first stacked widget
+            self.ui.UrlLineEdit.setFocus()
+            self.ui.GetNodeTextEdit.setFocusPolicy(Qt.NoFocus)
+
+            self.setTabOrder(self.ui.UrlLineEdit, self.ui.UsernameLineEdit)
+            self.setTabOrder(self.ui.UsernameLineEdit, self.ui.tokenLineEdit)
+            self.setTabOrder(self.ui.tokenLineEdit, self.ui.ActionComboBox)
+            self.setTabOrder(self.ui.ActionComboBox, self.ui.MethodComboBox)
+            self.setTabOrder(self.ui.MethodComboBox, self.ui.jobNameLineEdit_3)
+            self.setTabOrder(self.ui.jobNameLineEdit_3, self.ui.xmlFileLineEdit)
+            self.setTabOrder(self.ui.xmlFileLineEdit, self.ui.UrlLineEdit)
+
         else:
             raise ValueError("Not a valid comboBox value")
 

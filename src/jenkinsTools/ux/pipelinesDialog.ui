@@ -26,7 +26,7 @@
     <item row="1" column="0">
      <widget class="QLabel" name="UsernameLabel">
       <property name="text">
-       <string>username</string>
+       <string>Username</string>
       </property>
      </widget>
     </item>
@@ -36,7 +36,7 @@
     <item row="2" column="0">
      <widget class="QLabel" name="tokenLabel">
       <property name="text">
-       <string>token/password</string>
+       <string>Token/Password</string>
       </property>
      </widget>
     </item>
@@ -127,7 +127,7 @@
     <item row="4" column="0" colspan="5">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="page">
        <widget class="QLabel" name="jobNamelabel">
@@ -147,7 +147,7 @@
         <property name="geometry">
          <rect>
           <x>380</x>
-          <y>150</y>
+          <y>90</y>
           <width>91</width>
           <height>16</height>
          </rect>
@@ -212,7 +212,7 @@
         <property name="geometry">
          <rect>
           <x>380</x>
-          <y>90</y>
+          <y>120</y>
           <width>91</width>
           <height>16</height>
          </rect>
@@ -225,7 +225,7 @@
         <property name="geometry">
          <rect>
           <x>380</x>
-          <y>120</y>
+          <y>150</y>
           <width>91</width>
           <height>16</height>
          </rect>
@@ -284,7 +284,7 @@
          </rect>
         </property>
        </widget>
-       <widget class="QLineEdit" name="scriptLineEdit">
+       <widget class="QLineEdit" name="descriptionLineEdit">
         <property name="geometry">
          <rect>
           <x>490</x>
@@ -297,7 +297,7 @@
          <string/>
         </property>
        </widget>
-       <widget class="QLineEdit" name="scriptPathLineEdit">
+       <widget class="QLineEdit" name="scriptLineEdit">
         <property name="geometry">
          <rect>
           <x>490</x>
@@ -307,7 +307,7 @@
          </rect>
         </property>
        </widget>
-       <widget class="QLineEdit" name="descriptionLineEdit">
+       <widget class="QLineEdit" name="scriptPathLineEdit">
         <property name="geometry">
          <rect>
           <x>490</x>
@@ -352,7 +352,7 @@
          </rect>
         </property>
        </widget>
-       <widget class="QLabel" name="JobNamelabel_2">
+       <widget class="QLabel" name="JobNameLabel_2">
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -435,7 +435,7 @@
        </widget>
       </widget>
       <widget class="QWidget" name="page_4">
-       <widget class="QLabel" name="jobNamelabel_3">
+       <widget class="QLabel" name="jobNameLabel_3">
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -511,7 +511,7 @@
     </font>
    </property>
    <property name="text">
-    <string>Pipeline Node Tool</string>
+    <string>jenkins Pipeline Tool</string>
    </property>
   </widget>
  </widget>
