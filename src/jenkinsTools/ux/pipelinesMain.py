@@ -14,7 +14,7 @@ from PySide6.QtCore import Qt
 
 # Important:
 # You need to run the following command to generate the ui_form.py file
-#     pyside6-uic form.ui -o ui_form.py
+#     pyside6-uic pipelinesDialog.ui -o ui_pipelinesDialog.py
 from ux.ui_pipelinesDialog import Ui_Dialog
 
 class pipelinesDialog(QDialog):
@@ -222,6 +222,24 @@ class pipelinesDialog(QDialog):
         selected_text = self.ui.ActionComboBox.currentText()
 
         print(f"selected text: '{selected_text}'")
+
+        if selected_text == "create":
+            self.ui.stackedWidget.setCurrentIndex(0)
+            self.ui.DescriptionLabel.show()
+            self.ui.DescriptionLineEdit.show()
+
+        elif selected_text == "run":
+            self.ui.stackedWidget.setCurrentIndex(1)
+
+        elif selected_text == "check":
+            self.ui.stackedWidget.setCurrentIndex(3)
+
+        elif selected_text == "get-config":
+            self.ui.stackedWidget.setCurrentIndex(3)
+        elif selected_text == "set-config":
+            self.ui.stackedWidget.setCurrentIndex(3)
+        else:
+            raise ValueError("Not a valid comboBox value")
 
     def handleMethodComboBoxChange(self):
 
