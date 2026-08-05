@@ -62,7 +62,9 @@ class pipelinesDialog(QDialog):
         self.setTabOrder(self.ui.credsIdLineEdit, self.ui.scriptLineEdit)
         self.setTabOrder(self.ui.scriptLineEdit, self.ui.scriptPathLineEdit)
         self.setTabOrder(self.ui.scriptPathLineEdit, self.ui.descriptionLineEdit)
-        self.setTabOrder(self.ui.descriptionLineEdit, self.ui.UrlLineEdit)
+        self.setTabOrder(self.ui.descriptionLineEdit, self.ui.RunPushButton)
+        self.setTabOrder(self.ui.RunPushButton, self.ui.QuitPushButton)
+        self.setTabOrder(self.ui.QuitPushButton, self.ui.UrlLineEdit)
 
     def runAction(self):
         print(f"Running command '{self.ui.ActionComboBox.currentText()}'")
