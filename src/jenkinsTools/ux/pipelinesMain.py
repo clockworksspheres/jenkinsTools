@@ -241,10 +241,12 @@ class pipelinesDialog(QDialog):
             self.setTabOrder(self.ui.repoLineEdit, self.ui.branchLineEdit)
             self.setTabOrder(self.ui.branchLineEdit, self.ui.jenkinsfileLineEdit)
             self.setTabOrder(self.ui.jenkinsfileLineEdit, self.ui.credsIdLineEdit)
-            self.setTabOrder(self.ui.credsIdLineEdit, self.ui.descriptionLineEdit)
-            self.setTabOrder(self.ui.descriptionLineEdit, self.ui.scriptLineEdit)
+            self.setTabOrder(self.ui.credsIdLineEdit, self.ui.scriptLineEdit)
             self.setTabOrder(self.ui.scriptLineEdit, self.ui.scriptPathLineEdit)
-            self.setTabOrder(self.ui.scriptPathLineEdit, self.ui.UrlLineEdit)
+            self.setTabOrder(self.ui.scriptPathLineEdit, self.ui.descriptionLineEdit)
+            self.setTabOrder(self.ui.descriptionLineEdit, self.ui.RunPushButton)
+            self.setTabOrder(self.ui.RunPushButton, self.ui.QuitPushButton)
+            self.setTabOrder(self.ui.QuitPushButton, self.ui.UrlLineEdit)
 
         elif selected_text == "run":
             self.ui.stackedWidget.setCurrentIndex(1)
@@ -258,11 +260,14 @@ class pipelinesDialog(QDialog):
 
             self.setTabOrder(self.ui.UrlLineEdit, self.ui.UsernameLineEdit)
             self.setTabOrder(self.ui.UsernameLineEdit, self.ui.tokenLineEdit)
-            self.setTabOrder(self.ui.tokenLineEdit, self.ui.JobNameLineEdit_2)
+            self.setTabOrder(self.ui.tokenLineEdit, self.ui.ActionComboBox)
+            self.setTabOrder(self.ui.ActionComboBox, self.ui.JobNameLineEdit_2)
             self.setTabOrder(self.ui.JobNameLineEdit_2, self.ui.followComboBox)
             self.setTabOrder(self.ui.followComboBox, self.ui.parametersLineEdit_2)
             self.setTabOrder(self.ui.parametersLineEdit_2, self.ui.tokenBuildLineEdit_2)
-            self.setTabOrder(self.ui.tokenBuildLineEdit_2, self.ui.UrlLineEdit)
+            self.setTabOrder(self.ui.tokenBuildLineEdit_2, self.ui.RunPushButton)
+            self.setTabOrder(self.ui.RunPushButton, self.ui.QuitPushButton)
+            self.setTabOrder(self.ui.QuitPushButton, self.ui.UrlLineEdit)
 
         elif selected_text == "check":
             self.ui.stackedWidget.setCurrentIndex(3)
@@ -277,8 +282,11 @@ class pipelinesDialog(QDialog):
 
             self.setTabOrder(self.ui.UrlLineEdit, self.ui.UsernameLineEdit)
             self.setTabOrder(self.ui.UsernameLineEdit, self.ui.tokenLineEdit)
-            self.setTabOrder(self.ui.tokenLineEdit, self.ui.jobNameLineEdit_3)
-            self.setTabOrder(self.ui.jobNameLineEdit_3, self.ui.UrlLineEdit)
+            self.setTabOrder(self.ui.tokenLineEdit, self.ui.ActionComboBox)
+            self.setTabOrder(self.ui.ActionComboBox, self.ui.jobNameLineEdit_3)
+            self.setTabOrder(self.ui.jobNameLineEdit_3, self.ui.RunPushButton)
+            self.setTabOrder(self.ui.RunPushButton, self.ui.QuitPushButton)
+            self.setTabOrder(self.ui.QuitPushButton, self.ui.UrlLineEdit)
 
 
         elif selected_text == "get-config":
@@ -295,9 +303,10 @@ class pipelinesDialog(QDialog):
             self.setTabOrder(self.ui.UrlLineEdit, self.ui.UsernameLineEdit)
             self.setTabOrder(self.ui.UsernameLineEdit, self.ui.tokenLineEdit)
             self.setTabOrder(self.ui.tokenLineEdit, self.ui.ActionComboBox)
-            self.setTabOrder(self.ui.ActionComboBox, self.ui.MethodComboBox)
-            self.setTabOrder(self.ui.MethodComboBox, self.ui.jobNameLineEdit_3)
-            self.setTabOrder(self.ui.jobNameLineEdit_3, self.ui.UrlLineEdit)
+            self.setTabOrder(self.ui.ActionComboBox, self.ui.jobNameLineEdit_3)
+            self.setTabOrder(self.ui.jobNameLineEdit_3, self.ui.RunPushButton)
+            self.setTabOrder(self.ui.RunPushButton, self.ui.QuitPushButton)
+            self.setTabOrder(self.ui.QuitPushButton, self.ui.UrlLineEdit)
 
         elif selected_text == "set-config":
             self.ui.stackedWidget.setCurrentIndex(3)
@@ -313,10 +322,11 @@ class pipelinesDialog(QDialog):
             self.setTabOrder(self.ui.UrlLineEdit, self.ui.UsernameLineEdit)
             self.setTabOrder(self.ui.UsernameLineEdit, self.ui.tokenLineEdit)
             self.setTabOrder(self.ui.tokenLineEdit, self.ui.ActionComboBox)
-            self.setTabOrder(self.ui.ActionComboBox, self.ui.MethodComboBox)
-            self.setTabOrder(self.ui.MethodComboBox, self.ui.jobNameLineEdit_3)
+            self.setTabOrder(self.ui.ActionComboBox, self.ui.jobNameLineEdit_3)
             self.setTabOrder(self.ui.jobNameLineEdit_3, self.ui.xmlFileLineEdit)
-            self.setTabOrder(self.ui.xmlFileLineEdit, self.ui.UrlLineEdit)
+            self.setTabOrder(self.ui.xmlFileLineEdit, self.ui.RunPushButton)
+            self.setTabOrder(self.ui.RunPushButton, self.ui.QuitPushButton)
+            self.setTabOrder(self.ui.QuitPushButton, self.ui.UrlLineEdit)
 
         else:
             raise ValueError("Not a valid comboBox value")
