@@ -8,6 +8,7 @@ import argparse
 
 from PySide6.QtWidgets import QApplication
 
+
 def parse_arguments():
     """
     """
@@ -248,10 +249,10 @@ if __name__=="__main__":
             print(nm.enable_node())
 
     elif args.gui and not args.command:
-        from ux.nodeMain import nodeWidget
+        from ux.nodesMain import nodesDialog
 
         app = QApplication(sys.argv)
-        widget = nodeWidget()
+        widget = nodesDialog()
         widget.show()
         sys.exit(app.exec())
 
