@@ -1,4 +1,6 @@
 import sys
+import traceback
+from argparse import Namespace
 
 from pathlib import Path
 
@@ -50,6 +52,68 @@ class SshCredsDialog(QDialog):
 
     def onRunButtonClicked(self):
         print("Run button clicked")
+
+        action = {}
+
+        action["url"] = self.ui.UrlLineEdit.text()
+        action["jenkins_user"] = self.ui.UsernameLineEdit.text()
+        action["jenkins_token"] = self.ui.tokenLineEdit.text()
+
+        if action["url"] and \
+           action["jenkins_user"] and \
+           action["jenkins_token"]:
+            print ("first three fields aquired")
+        else:
+            raise ValueError("url, user and token fields required.")
+
+        if self.ui.credsIdLineEdit.text():
+            action["credential_id"] = self.ui.credsIdLineEdit.text()
+        if self.ui.sshUserLineEdit.text():
+            action["ssh_user"] = self.ui.sshUserLineEdit.text()
+        if self.ui.descriptionLineEdit.text():
+            action["description"] = self.ui.descriptionLineEdit.text()
+        if self.ui.privateKeyLineEdit.text():
+            action["private_key"] = self.ui.privateKeyLineEdit.text()
+
+        text = self.ui.comboBox.currentText()
+
+        if text == "Add SSH key as credential":
+            print("non-encrypted key")
+            
+        elif text == "Add and encrypted SSH key as credential":
+            print("encrypted key")
+            if self.ui.keyPassphraseLineEdit.text():
+                action["key_passphrase"] = self.ui.keyPassphraseLineEdit.text()
+            else:
+                raise ValueError("Need a key passphrase")
+        else:
+            raise ValueError("Not a valid comboBox value")
+
+        print(str(action))
+
+        args = Namespace(**action)
+        print(f"Adding {args.url} for node <{args.ssh_user}>...")
+
+        from JenkinsTools.AddSshKeyCredential import SshKeyWrangling
+
+        keyWrangling = SshKeyWrangling()
+
+        try:
+            private_key = keyWrangling.load_private_key(args.private_key)
+            keyWrangling.add_ssh_private_key_credential(
+                jenkins_url=args.url,
+                jenkins_user=args.jenkins_user,
+                jenkins_token=args.jenkins_token,
+                credential_id=args.credential_id,
+                ssh_username=args.ssh_user,
+                private_key=args.private_key,
+                passphrase=args.key_passphrase,
+                description=args.description,
+            )
+        except Exception as e:
+            print(traceback.format_exc())
+        else:
+            print(f"Credential '{args.credential_id}' added to Jenkins successfully")
 
     def comboBoxActivate(self):
         print("Combo Box Activated")
