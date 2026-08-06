@@ -5,6 +5,8 @@ import sys
 import textwrap
 import argparse
 
+from PySide6.QtWidgets import QApplication
+
 
 def parse_arguments():
     """
@@ -25,6 +27,9 @@ def parse_arguments():
     )
 
     parser = argparse.ArgumentParser()
+
+    parser.add_argument("-g", "--gui", action='store_true', help="User's token to access the Jenkins server")
+
     subparsers = parser.add_subparsers(dest="command")
 
     # Subcommand: create
@@ -204,41 +209,58 @@ def parse_arguments():
 if __name__=="__main__":
     args = parse_arguments()
 
-    if args.command == "create":
-        print(f"Creating {args.url} for pipeline <{args.job_name}>...")
-        from JenkinsTools.CreateJenkinsPipeline import CreateJenkinsPipeline as createPipeline
+    try:
+        required = args.user and args.token and args.url
+    except:
+        required = False
+    
+    if args.gui:
+        from ux.pipelinesMain import pipelinesDialog
 
-        cjp = createPipeline()
-        cjp.create_jenkins_pipeline(args)
+        app = QApplication(sys.argv)
+        widget = pipelinesDialog()
+        widget.show()
+        sys.exit(app.exec())
+   
+    elif required == True:
 
-    elif args.command == "run":
-        print(f"Running {args.url} for pipeline <{args.job}>...")
-        from JenkinsTools.RunJenkinsPipeline import RunJenkinsPipeline as runPipeline
+        if args.command == "create":
+            print(f"Creating {args.url} for pipeline <{args.job_name}>...")
+            from JenkinsTools.CreateJenkinsPipeline import CreateJenkinsPipeline as createPipeline
 
-        rpipeline = runPipeline()
-        rpipeline.controller(args)
+            cjp = createPipeline()
+            cjp.create_jenkins_pipeline(args)
 
-    elif args.command == "check":
-        print(f"Checking {args.url} for pipeline <{args.job}>...")
-        from JenkinsTools.CheckJenkinsPipelineRun import CheckJenkinsPipelineRun as checkPipeline
+        elif args.command == "run":
+            print(f"Running {args.url} for pipeline <{args.job}>...")
+            from JenkinsTools.RunJenkinsPipeline import RunJenkinsPipeline as runPipeline
 
-        ckpipeline = checkPipeline()
-        if args.get_full_run:
-            ckpipeline.get_full_run(args)
-        else:
-            ckpipeline.check_run(args)
+            rpipeline = runPipeline()
+            rpipeline.controller(args)
 
-    elif args.command == "get-config":
-        print(f"Getting {args.url} for pipeline <{args.job}> config...")
-        from JenkinsTools.ConfigJob import ConfigJob
+        elif args.command == "check":
+            print(f"Checking {args.url} for pipeline <{args.job}>...")
+            from JenkinsTools.CheckJenkinsPipelineRun import CheckJenkinsPipelineRun as checkPipeline
 
-        config_job = ConfigJob(args)
-        config_job.cmd_get_config()
+            ckpipeline = checkPipeline()
+            if args.get_full_run:
+                ckpipeline.get_full_run(args)
+            else:
+                ckpipeline.check_run(args)
 
-    elif args.command == "set-config":
-        print(f"Setting {args.url} for pipeline <{args.job}> config...")
-        from JenkinsTools.ConfigJob import ConfigJob
+        elif args.command == "get-config":
+            print(f"Getting {args.url} for pipeline <{args.job}> config...")
+            from JenkinsTools.ConfigJob import ConfigJob
 
-        config_job = ConfigJob(args)
-        config_job.cmd_set_config()
+            config_job = ConfigJob(args)
+            config_job.cmd_get_config()
+
+        elif args.command == "set-config":
+            print(f"Setting {args.url} for pipeline <{args.job}> config...")
+            from JenkinsTools.ConfigJob import ConfigJob
+
+            config_job = ConfigJob(args)
+            config_job.cmd_set_config()
+    else:
+        print("Either launch the GUI (-g or --gui) or use required parameters --url, --user, and --token")
 
