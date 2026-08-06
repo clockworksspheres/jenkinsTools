@@ -36,6 +36,18 @@ class SshCredsDialog(QDialog):
         self.ui.keyPassphraseLabel.hide()
         self.ui.keyPassphraseLineEdit.hide()
 
+        # Set the tab order between fields, buttons and comboBox
+        self.setTabOrder(self.ui.UrlLineEdit, self.ui.UsernameLineEdit)
+        self.setTabOrder(self.ui.UsernameLineEdit, self.ui.tokenLineEdit)
+        self.setTabOrder(self.ui.tokenLineEdit, self.ui.comboBox)
+        self.setTabOrder(self.ui.comboBox, self.ui.credsIdLineEdit)
+        self.setTabOrder(self.ui.credsIdLineEdit, self.ui.sshUserLineEdit)
+        self.setTabOrder(self.ui.sshUserLineEdit, self.ui.descriptionLineEdit)
+        self.setTabOrder(self.ui.descriptionLineEdit, self.ui.privateKeyLineEdit)
+        self.setTabOrder(self.ui.privateKeyLineEdit, self.ui.keyPassphraseLineEdit)
+        self.setTabOrder(self.ui.keyPassphraseLineEdit, self.ui.buttonBox)
+        self.setTabOrder(self.ui.buttonBox, self.ui.UrlLineEdit)
+
     def onRunButtonClicked(self):
         print("Run button clicked")
 
