@@ -110,7 +110,7 @@ class SshCredsDialog(QDialog):
                 passphrase=args.key_passphrase,
                 description=args.description,
             )
-        except Exception as e:
+        except Exception:
             print(traceback.format_exc())
         else:
             print(f"Credential '{args.credential_id}' added to Jenkins successfully")
