@@ -16,9 +16,9 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
     QIcon, QImage, QKeySequence, QLinearGradient,
     QPainter, QPalette, QPixmap, QRadialGradient,
     QTransform)
-from PySide6.QtWidgets import (QApplication, QMainWindow, QMenu, QMenuBar,
-    QPushButton, QSizePolicy, QStatusBar, QTextEdit,
-    QWidget)
+from PySide6.QtWidgets import (QApplication, QGridLayout, QMainWindow, QMenu,
+    QMenuBar, QPushButton, QSizePolicy, QSpacerItem,
+    QStatusBar, QTextEdit, QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -35,21 +35,41 @@ class Ui_MainWindow(object):
         self.actionQuit.setObjectName(u"actionQuit")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
-        self.sshCredsPushButton = QPushButton(self.centralwidget)
+        self.widget = QWidget(self.centralwidget)
+        self.widget.setObjectName(u"widget")
+        self.widget.setGeometry(QRect(20, 80, 751, 441))
+        self.gridLayout = QGridLayout(self.widget)
+        self.gridLayout.setObjectName(u"gridLayout")
+        self.gridLayout.setContentsMargins(0, 0, 0, 0)
+        self.sshCredsPushButton = QPushButton(self.widget)
         self.sshCredsPushButton.setObjectName(u"sshCredsPushButton")
-        self.sshCredsPushButton.setGeometry(QRect(560, 130, 221, 32))
-        self.nodesPushButton = QPushButton(self.centralwidget)
-        self.nodesPushButton.setObjectName(u"nodesPushButton")
-        self.nodesPushButton.setGeometry(QRect(560, 180, 221, 32))
-        self.pipelinesPushButton = QPushButton(self.centralwidget)
-        self.pipelinesPushButton.setObjectName(u"pipelinesPushButton")
-        self.pipelinesPushButton.setGeometry(QRect(560, 230, 221, 32))
-        self.quitPushButton = QPushButton(self.centralwidget)
-        self.quitPushButton.setObjectName(u"quitPushButton")
-        self.quitPushButton.setGeometry(QRect(680, 290, 100, 32))
-        self.textEdit = QTextEdit(self.centralwidget)
+
+        self.gridLayout.addWidget(self.sshCredsPushButton, 1, 1, 1, 1)
+
+        self.textEdit = QTextEdit(self.widget)
         self.textEdit.setObjectName(u"textEdit")
-        self.textEdit.setGeometry(QRect(30, 40, 511, 441))
+
+        self.gridLayout.addWidget(self.textEdit, 0, 0, 6, 1)
+
+        self.quitPushButton = QPushButton(self.widget)
+        self.quitPushButton.setObjectName(u"quitPushButton")
+
+        self.gridLayout.addWidget(self.quitPushButton, 5, 1, 1, 1)
+
+        self.nodesPushButton = QPushButton(self.widget)
+        self.nodesPushButton.setObjectName(u"nodesPushButton")
+
+        self.gridLayout.addWidget(self.nodesPushButton, 2, 1, 1, 1)
+
+        self.pipelinesPushButton = QPushButton(self.widget)
+        self.pipelinesPushButton.setObjectName(u"pipelinesPushButton")
+
+        self.gridLayout.addWidget(self.pipelinesPushButton, 3, 1, 1, 1)
+
+        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.gridLayout.addItem(self.verticalSpacer, 4, 1, 1, 1)
+
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
@@ -80,9 +100,9 @@ class Ui_MainWindow(object):
         self.actionWorking_with_Jenkins_Pipelines.setText(QCoreApplication.translate("MainWindow", u"Working with Jenkins Pipelines", None))
         self.actionQuit.setText(QCoreApplication.translate("MainWindow", u"Quit", None))
         self.sshCredsPushButton.setText(QCoreApplication.translate("MainWindow", u"Add SSH creds", None))
+        self.quitPushButton.setText(QCoreApplication.translate("MainWindow", u"Quit", None))
         self.nodesPushButton.setText(QCoreApplication.translate("MainWindow", u"Working with Jenkins Nodes", None))
         self.pipelinesPushButton.setText(QCoreApplication.translate("MainWindow", u"Working with Jenkins Pipelines", None))
-        self.quitPushButton.setText(QCoreApplication.translate("MainWindow", u"Quit", None))
         self.menuAction.setTitle(QCoreApplication.translate("MainWindow", u"Action", None))
     # retranslateUi
 

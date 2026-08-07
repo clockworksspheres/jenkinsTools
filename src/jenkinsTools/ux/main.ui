@@ -14,67 +14,61 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="sshCredsPushButton">
+   <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>560</x>
-      <y>130</y>
-      <width>221</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Add SSH creds</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="nodesPushButton">
-    <property name="geometry">
-     <rect>
-      <x>560</x>
-      <y>180</y>
-      <width>221</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Working with Jenkins Nodes</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pipelinesPushButton">
-    <property name="geometry">
-     <rect>
-      <x>560</x>
-      <y>230</y>
-      <width>221</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Working with Jenkins Pipelines</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="quitPushButton">
-    <property name="geometry">
-     <rect>
-      <x>680</x>
-      <y>290</y>
-      <width>100</width>
-      <height>32</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Quit</string>
-    </property>
-   </widget>
-   <widget class="QTextEdit" name="textEdit">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>40</y>
-      <width>511</width>
+      <x>20</x>
+      <y>80</y>
+      <width>751</width>
       <height>441</height>
      </rect>
     </property>
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="1" column="1">
+      <widget class="QPushButton" name="sshCredsPushButton">
+       <property name="text">
+        <string>Add SSH creds</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0" rowspan="6">
+      <widget class="QTextEdit" name="textEdit"/>
+     </item>
+     <item row="5" column="1">
+      <widget class="QPushButton" name="quitPushButton">
+       <property name="text">
+        <string>Quit</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QPushButton" name="nodesPushButton">
+       <property name="text">
+        <string>Working with Jenkins Nodes</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QPushButton" name="pipelinesPushButton">
+       <property name="text">
+        <string>Working with Jenkins Pipelines</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <spacer name="verticalSpacer">
+       <property name="orientation">
+        <enum>Qt::Orientation::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
