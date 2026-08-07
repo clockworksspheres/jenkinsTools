@@ -28,7 +28,7 @@ def parse_arguments():
 
     parser = argparse.ArgumentParser()
 
-    parser.add_argument("-g", "--gui", action='store_true', help="User's token to access the Jenkins server")
+    parser.add_argument("-g", "--gui", action='store_true', help="Launch the program Graphical User Interface")
 
     subparsers = parser.add_subparsers(dest="command")
 
