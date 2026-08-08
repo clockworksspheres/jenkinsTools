@@ -10,3 +10,6 @@ eisenban -t jenkinsToolsBoard
 
 (yes the directory, not the contents)
 
+consoleDialog.py provides a mechanism to capture standard error and standard out and print it to a textBrowser.
+
+
