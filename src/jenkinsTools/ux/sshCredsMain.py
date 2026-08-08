@@ -22,6 +22,9 @@ class SshCredsDialog(QDialog):
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
 
+        # Set the window title
+        self.setWindowTitle("SSH creds wrangling")
+
         # rename the ok button to "Run"
         buttonBox = self.ui.buttonBox.button(QDialogButtonBox.Ok)
         buttonBox.setText("Run")
