@@ -137,3 +137,4 @@ class ConsoleDialog(QDialog):
     def append_html(self, html):
         self.console.append_html(html)
 
+

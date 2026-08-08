@@ -18,7 +18,7 @@ from ux.nodesMain import nodesDialog
 from ux.ui_main import Ui_MainWindow
 from ux.sshCredsMain import SshCredsDialog
 from ux.pipelinesMain import pipelinesDialog
-
+from ux.consoleDialog import ConsoleStream, ConsoleDialog
 
 class CustomDialog(QDialog):
     def __init__(self, parent=None):
@@ -113,15 +113,27 @@ class JenkinsToolsUi(QMainWindow):
 
         # self.ui.textBrowser.append("application started")
 
+        self.console_dialogs = []
+
+        # Shared stream that all open dialogs listen to
+        self.stream = ConsoleStream()
+
+        # Redirect stdout & stderr to our stream
+        sys.stdout = self.stream
+        sys.stderr = self.stream
+
     def openSshCredsDialog(self):
         # show message box with mounted data
         msg = "stub for opening SSH creds window"
         dlg = SshCredsDialog(self)
+        dlg.show()
+        """
         retval = dlg.exec()
         if retval:
             print("User clicked OK, dialog accepted")
         else:
             print("Dialog Rejected")
+        """
   
     def openNodesDialog(self):
 
@@ -129,12 +141,15 @@ class JenkinsToolsUi(QMainWindow):
         nodes = nodesDialog(self)
         nodes.setWindowTitle("Work with Jenkins Nodes")
 
+        # show non-modally - Don't block until closed
+        nodes.show()
+        """
         # 2. Show modally (Blocks until closed)
         result = nodes.exec()
 
         if result == QDialog.Accepted:
             print("User Accepted")
-
+        """
         '''
         #nodes.show()
         retval = nodes.exec()
@@ -149,14 +164,35 @@ class JenkinsToolsUi(QMainWindow):
         # show message box with mounted data
         msg = "stub for opening pipelines window"
         dlg = pipelinesDialog(self)
+        dlg.show()
+        """
         retval = dlg.exec()
         if retval:
             print("User clicked OK, dialog accepted")
         else:
             print("Dialog Rejected")
-
+        """
     def onRadioButtonClicked(self, checked):
+        dialog = ConsoleDialog(self, title=f"Console #{len(self.console_dialogs) + 1}")
 
+        # Connect this dialog to the shared stream
+        self.stream.text_emitted.connect(dialog.append_html)
+
+        # Disconnect when the dialog is closed (prevents errors later)
+        def on_finished():
+            try:
+                self.stream.text_emitted.disconnect(dialog.append_html)
+            except TypeError:
+                pass  # already disconnected
+            if dialog in self.console_dialogs:
+                self.console_dialogs.remove(dialog)
+
+        dialog.finished.connect(on_finished)
+
+        self.console_dialogs.append(dialog)
+        dialog.show()
+
+        """
         existing_item = self.ui.gridLayout.itemAtPosition(4,1)
         if existing_item:
             self.ui.gridLayout.removeItem(existing_item)
@@ -172,6 +208,8 @@ class JenkinsToolsUi(QMainWindow):
             ValueError("radio button state undefined....")
 
         self.adjustSize()
+        """
+
 
 if __name__=="__main__":
     app = QApplication(sys.argv)
