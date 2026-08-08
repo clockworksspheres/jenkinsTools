@@ -8,10 +8,10 @@ if __name__=="__main__":
 
     parser = argparse.ArgumentParser()
 
-    parser.add_argument("-g", "--gui", action='store_true', help="User's token to access the Jenkins server")
-    parser.add_argument("-s", "--ssh-creds", action='store_true', help="User's token to access the Jenkins server")
-    parser.add_argument("-n", "--nodes", action='store_true', help="User's token to access the Jenkins server")
-    parser.add_argument("-p", "--pipelines", action='store_true', help="User's token to access the Jenkins server")
+    parser.add_argument("-g", "--gui", action='store_true', help="Start the main GUI")
+    parser.add_argument("-s", "--ssh-creds", action='store_true', help="Start the SSH creds wrangling GUI")
+    parser.add_argument("-n", "--nodes", action='store_true', help="Start the jenkins nodes GUI")
+    parser.add_argument("-p", "--pipelines", action='store_true', help="start the jenkins pippelines GUI")
 
     args = parser.parse_args()
 
