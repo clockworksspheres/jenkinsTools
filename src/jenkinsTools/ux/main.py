@@ -74,6 +74,9 @@ class JenkinsToolsUi(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
+        # Set the window title
+        self.setWindowTitle("Jenkins Tools")
+
         # connect quit button and menu item
         self.ui.quitPushButton.clicked.connect(self.close)
         self.ui.actionQuit.triggered.connect(self.close)
