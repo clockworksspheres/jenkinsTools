@@ -100,6 +100,13 @@ class JenkinsToolsUi(QMainWindow):
 
         # Hide the textEdit and remove the virticleSpacer by default
         self.ui.textEdit.hide()
+        existing_item = self.ui.gridLayout.itemAtPosition(4,1)
+        if existing_item:
+            self.ui.gridLayout.removeItem(existing_item)
+        self.adjustSize()
+
+        # Connect the radio button signal to slot
+        self.ui.radioButton.clicked.connect(self.onRadioButtonClicked)
 
     def openSshCredsDialog(self):
         # show message box with mounted data
@@ -142,7 +149,24 @@ class JenkinsToolsUi(QMainWindow):
             print("User clicked OK, dialog accepted")
         else:
             print("Dialog Rejected")
-  
+
+    def onRadioButtonClicked(self, checked):
+
+        existing_item = self.ui.gridLayout.itemAtPosition(4,1)
+        if existing_item:
+            self.ui.gridLayout.removeItem(existing_item)
+
+        if checked:
+            self.ui.textEdit.show()
+            self.ui.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.MinimumExpanding, QSizePolicy.MinimumExpanding)
+            self.ui.gridLayout.addItem(self.ui.verticalSpacer, 4, 1)
+        elif not checked:
+            self.ui.textEdit.hide()
+            # self.adjustSize()
+        else:
+            ValueError("radio button state undefined....")
+
+        self.adjustSize()
 
 if __name__=="__main__":
     app = QApplication(sys.argv)

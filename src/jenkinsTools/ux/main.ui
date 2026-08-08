@@ -15,10 +15,46 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
+    <item row="1" column="0" rowspan="5">
+     <widget class="QTextEdit" name="textEdit">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="sizeIncrement">
+       <size>
+        <width>3</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="baseSize">
+       <size>
+        <width>3</width>
+        <height>0</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QRadioButton" name="radioButton">
+      <property name="text">
+       <string>Show debug messages</string>
+      </property>
+     </widget>
+    </item>
     <item row="3" column="1">
      <widget class="QPushButton" name="pipelinesPushButton">
       <property name="text">
        <string>Working with Jenkins Pipelines</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="1">
+     <widget class="QPushButton" name="quitPushButton">
+      <property name="text">
+       <string>Quit</string>
       </property>
      </widget>
     </item>
@@ -31,13 +67,16 @@
     </item>
     <item row="1" column="1">
      <widget class="QPushButton" name="sshCredsPushButton">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
       <property name="text">
        <string>Add SSH creds</string>
       </property>
      </widget>
-    </item>
-    <item row="1" column="0" rowspan="5">
-     <widget class="QTextEdit" name="textEdit"/>
     </item>
     <item row="4" column="1">
      <spacer name="verticalSpacer">
@@ -51,20 +90,6 @@
        </size>
       </property>
      </spacer>
-    </item>
-    <item row="5" column="1">
-     <widget class="QPushButton" name="quitPushButton">
-      <property name="text">
-       <string>Quit</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="1">
-     <widget class="QRadioButton" name="radioButton">
-      <property name="text">
-       <string>Show debug messages</string>
-      </property>
-     </widget>
     </item>
    </layout>
   </widget>

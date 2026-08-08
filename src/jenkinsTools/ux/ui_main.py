@@ -37,10 +37,32 @@ class Ui_MainWindow(object):
         self.centralwidget.setObjectName(u"centralwidget")
         self.gridLayout = QGridLayout(self.centralwidget)
         self.gridLayout.setObjectName(u"gridLayout")
+        self.textEdit = QTextEdit(self.centralwidget)
+        self.textEdit.setObjectName(u"textEdit")
+        sizePolicy = QSizePolicy(QSizePolicy.Policy.MinimumExpanding, QSizePolicy.Policy.MinimumExpanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.textEdit.sizePolicy().hasHeightForWidth())
+        self.textEdit.setSizePolicy(sizePolicy)
+        self.textEdit.setSizeIncrement(QSize(3, 0))
+        self.textEdit.setBaseSize(QSize(3, 0))
+
+        self.gridLayout.addWidget(self.textEdit, 1, 0, 5, 1)
+
+        self.radioButton = QRadioButton(self.centralwidget)
+        self.radioButton.setObjectName(u"radioButton")
+
+        self.gridLayout.addWidget(self.radioButton, 0, 1, 1, 1)
+
         self.pipelinesPushButton = QPushButton(self.centralwidget)
         self.pipelinesPushButton.setObjectName(u"pipelinesPushButton")
 
         self.gridLayout.addWidget(self.pipelinesPushButton, 3, 1, 1, 1)
+
+        self.quitPushButton = QPushButton(self.centralwidget)
+        self.quitPushButton.setObjectName(u"quitPushButton")
+
+        self.gridLayout.addWidget(self.quitPushButton, 5, 1, 1, 1)
 
         self.nodesPushButton = QPushButton(self.centralwidget)
         self.nodesPushButton.setObjectName(u"nodesPushButton")
@@ -49,27 +71,17 @@ class Ui_MainWindow(object):
 
         self.sshCredsPushButton = QPushButton(self.centralwidget)
         self.sshCredsPushButton.setObjectName(u"sshCredsPushButton")
+        sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.sshCredsPushButton.sizePolicy().hasHeightForWidth())
+        self.sshCredsPushButton.setSizePolicy(sizePolicy1)
 
         self.gridLayout.addWidget(self.sshCredsPushButton, 1, 1, 1, 1)
-
-        self.textEdit = QTextEdit(self.centralwidget)
-        self.textEdit.setObjectName(u"textEdit")
-
-        self.gridLayout.addWidget(self.textEdit, 1, 0, 5, 1)
 
         self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
         self.gridLayout.addItem(self.verticalSpacer, 4, 1, 1, 1)
-
-        self.quitPushButton = QPushButton(self.centralwidget)
-        self.quitPushButton.setObjectName(u"quitPushButton")
-
-        self.gridLayout.addWidget(self.quitPushButton, 5, 1, 1, 1)
-
-        self.radioButton = QRadioButton(self.centralwidget)
-        self.radioButton.setObjectName(u"radioButton")
-
-        self.gridLayout.addWidget(self.radioButton, 0, 1, 1, 1)
 
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
@@ -100,11 +112,11 @@ class Ui_MainWindow(object):
         self.actionWorking_with_Jenkins_Nodes.setText(QCoreApplication.translate("MainWindow", u"Working with Jenkins Nodes", None))
         self.actionWorking_with_Jenkins_Pipelines.setText(QCoreApplication.translate("MainWindow", u"Working with Jenkins Pipelines", None))
         self.actionQuit.setText(QCoreApplication.translate("MainWindow", u"Quit", None))
+        self.radioButton.setText(QCoreApplication.translate("MainWindow", u"Show debug messages", None))
         self.pipelinesPushButton.setText(QCoreApplication.translate("MainWindow", u"Working with Jenkins Pipelines", None))
+        self.quitPushButton.setText(QCoreApplication.translate("MainWindow", u"Quit", None))
         self.nodesPushButton.setText(QCoreApplication.translate("MainWindow", u"Working with Jenkins Nodes", None))
         self.sshCredsPushButton.setText(QCoreApplication.translate("MainWindow", u"Add SSH creds", None))
-        self.quitPushButton.setText(QCoreApplication.translate("MainWindow", u"Quit", None))
-        self.radioButton.setText(QCoreApplication.translate("MainWindow", u"Show debug messages", None))
         self.menuAction.setTitle(QCoreApplication.translate("MainWindow", u"Action", None))
     # retranslateUi
 
