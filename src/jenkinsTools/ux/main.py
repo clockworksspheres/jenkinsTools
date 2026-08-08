@@ -11,96 +11,13 @@ from PySide6.QtWidgets import (QApplication, QMainWindow,
                                QLabel, QDialogButtonBox,
                                QSizePolicy, QSpacerItem,
                                QTextBrowser)
-from PySide6.QtGui import QAction, QShortcut, QKeySequence
+from PySide6.QtGui import QAction, QShortcut, QKeySequence, QFont
 from PySide6.QtCore import Qt, QObject, Signal
 
 from ux.nodesMain import nodesDialog
 from ux.ui_main import Ui_MainWindow
 from ux.sshCredsMain import SshCredsDialog
 from ux.pipelinesMain import pipelinesDialog
-
-
-# ---------------------------------------------------------
-# URL detection for clickable links
-# ---------------------------------------------------------
-url_regex = re.compile(r"(https?://[^\s]+)")
-
-
-def linkify(text):
-    """Wrap URLs in <a> tags."""
-    def repl(m):
-        url = m.group(1)
-        return f'<a href="{url}">{url}</a>'
-    return url_regex.sub(repl, text)
-
-
-
-# ---------------------------------------------------------
-# Stream object (stdout/stderr redirection)
-# ---------------------------------------------------------
-class ConsoleStream(QObject):
-    text_emitted = Signal(str, str)  # html_text, raw_text
-
-    def __init__(self, logfile=None):
-        super().__init__()
-        self.logfile = logfile
-
-    def write(self, text):
-        if not text.strip():
-            return
-
-        html = linkify(text)
-        self.text_emitted.emit(html, text)
-
-        if self.logfile:
-            with open(self.logfile, "a", encoding="utf-8") as f:
-                f.write(text + "\n")
-
-    def flush(self):
-        pass
-
-
-# ---------------------------------------------------------
-# Simple QTextBrowser console
-# ---------------------------------------------------------
-class SimpleConsole(QTextBrowser):
-    def __init__(self):
-        super().__init__()
-
-        # Fixed-width font for proper alignment
-        self.font_size = 12
-        font = QFont("Menlo")  # macOS default monospace
-        font.setStyleHint(QFont.Monospace)
-        font.setFixedPitch(True)
-        font.setPointSize(self.font_size)
-        self.setFont(font)
-
-        self.setOpenExternalLinks(True)
-        self.setOpenLinks(True)
-
-    def append_html(self, html):
-        self.append(html)
-
-    def zoom_in(self):
-        self.font_size += 1
-        self._apply_font()
-
-    def zoom_out(self):
-        if self.font_size > 6:
-            self.font_size -= 1
-        self._apply_font()
-
-    def reset_zoom(self):
-        self.font_size = 12
-        self._apply_font()
-
-    def clear_console(self):
-        self.clear()
-
-    def _apply_font(self):
-        font = self.font()
-        font.setPointSize(self.font_size)
-        self.setFont(font)
 
 
 class CustomDialog(QDialog):
@@ -194,10 +111,7 @@ class JenkinsToolsUi(QMainWindow):
         # Connect the radio button signal to slot
         self.ui.radioButton.clicked.connect(self.onRadioButtonClicked)
 
-        self.ui.textBrowser.setOpenExternalLinks(True)
-        self.ui.textBrowser.setOpenLinks(True)
-
-
+        # self.ui.textBrowser.append("application started")
 
     def openSshCredsDialog(self):
         # show message box with mounted data
