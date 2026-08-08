@@ -127,13 +127,6 @@ class JenkinsToolsUi(QMainWindow):
         msg = "stub for opening SSH creds window"
         dlg = SshCredsDialog(self)
         dlg.show()
-        """
-        retval = dlg.exec()
-        if retval:
-            print("User clicked OK, dialog accepted")
-        else:
-            print("Dialog Rejected")
-        """
   
     def openNodesDialog(self):
 
@@ -141,7 +134,7 @@ class JenkinsToolsUi(QMainWindow):
         nodes = nodesDialog(self)
         nodes.setWindowTitle("Work with Jenkins Nodes")
 
-        # show non-modally - Don't block until closed
+        # 2. show non-modally - Don't block until closed
         nodes.show()
         """
         # 2. Show modally (Blocks until closed)
@@ -150,15 +143,6 @@ class JenkinsToolsUi(QMainWindow):
         if result == QDialog.Accepted:
             print("User Accepted")
         """
-        '''
-        #nodes.show()
-        retval = nodes.exec()
-        
-        if sys.platform.lower().startswith("darwin"):
-            nodes.raise_()
-            nodes.activateWindow()
-            print("\n ### NOTE: AttributeError not applicable here...")
-        '''
 
     def openPipelinesDialog(self):
         # show message box with mounted data
@@ -191,24 +175,6 @@ class JenkinsToolsUi(QMainWindow):
 
         self.console_dialogs.append(dialog)
         dialog.show()
-
-        """
-        existing_item = self.ui.gridLayout.itemAtPosition(4,1)
-        if existing_item:
-            self.ui.gridLayout.removeItem(existing_item)
-
-        if checked:
-            self.ui.textBrowser.show()
-            self.ui.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.MinimumExpanding, QSizePolicy.MinimumExpanding)
-            self.ui.gridLayout.addItem(self.ui.verticalSpacer, 4, 1)
-        elif not checked:
-            self.ui.textBrowser.hide()
-            # self.adjustSize()
-        else:
-            ValueError("radio button state undefined....")
-
-        self.adjustSize()
-        """
 
 
 if __name__=="__main__":
