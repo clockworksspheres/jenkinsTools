@@ -74,19 +74,27 @@ class JenkinsToolsUi(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
-        # connect quit button
+        # connect quit button and menu item
         self.ui.quitPushButton.clicked.connect(self.close)
+        self.ui.actionQuit.triggered.connect(self.close)
 
-        # connect ssh button
-        self.ui.sshCredsPushButton.clicked.connect(self.openSshCredsWidget)
+        # connect ssh button & menu
+        self.ui.sshCredsPushButton.clicked.connect(self.openSshCredsDialog)
+        self.ui.actionSSH_creds_wrangling.triggered.connect(self.openSshCredsDialog)
 
-        # connect nodes button
-        self.ui.nodesPushButton.clicked.connect(self.openNodesWidget)
+        # connect nodes button & menu
+        self.ui.nodesPushButton.clicked.connect(self.openNodesDialog)
+        self.ui.actionWorking_with_Jenkins_Nodes.triggered.connect(self.openNodesDialog)
 
-        # connect pipelines button
-        self.ui.pipelinesPushButton.clicked.connect(self.openPipelinesWidget)
+        # connect pipelines button & menu
+        self.ui.pipelinesPushButton.clicked.connect(self.openPipelinesDialog)
+        self.ui.actionWorking_with_Jenkins_Pipelines.triggered.connect(self.openPipelinesDialog)
 
-    def openSshCredsWidget(self):
+        # set textEdit to read only
+        self.ui.textEdit.setReadOnly(True)
+        # self.ui.textEdit.append("This line was added via code after setting it to read only...")
+
+    def openSshCredsDialog(self):
         # show message box with mounted data
         msg = "stub for opening SSH creds window"
         dlg = SshCredsDialog(self)
@@ -96,7 +104,7 @@ class JenkinsToolsUi(QMainWindow):
         else:
             print("Dialog Rejected")
   
-    def openNodesWidget(self):
+    def openNodesDialog(self):
 
         # 1.  Create a standard QDialog
         nodes = nodesDialog(self)
@@ -118,7 +126,7 @@ class JenkinsToolsUi(QMainWindow):
             print("\n ### NOTE: AttributeError not applicable here...")
         '''
 
-    def openPipelinesWidget(self):
+    def openPipelinesDialog(self):
         # show message box with mounted data
         msg = "stub for opening pipelines window"
         dlg = pipelinesDialog(self)

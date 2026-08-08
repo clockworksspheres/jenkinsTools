@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -84,7 +84,7 @@
     <property name="title">
      <string>Action</string>
     </property>
-    <addaction name="actionAdd_SSH_creds"/>
+    <addaction name="actionSSH_creds_wrangling"/>
     <addaction name="actionWorking_with_Jenkins_Nodes"/>
     <addaction name="actionWorking_with_Jenkins_Pipelines"/>
     <addaction name="separator"/>
@@ -93,7 +93,7 @@
    <addaction name="menuAction"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <action name="actionAdd_SSH_creds">
+  <action name="actionSSH_creds_wrangling">
    <property name="text">
     <string>Add SSH creds</string>
    </property>

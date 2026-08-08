@@ -25,8 +25,8 @@ class Ui_MainWindow(object):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(800, 600)
-        self.actionAdd_SSH_creds = QAction(MainWindow)
-        self.actionAdd_SSH_creds.setObjectName(u"actionAdd_SSH_creds")
+        self.actionSSH_creds_wrangling = QAction(MainWindow)
+        self.actionSSH_creds_wrangling.setObjectName(u"actionSSH_creds_wrangling")
         self.actionWorking_with_Jenkins_Nodes = QAction(MainWindow)
         self.actionWorking_with_Jenkins_Nodes.setObjectName(u"actionWorking_with_Jenkins_Nodes")
         self.actionWorking_with_Jenkins_Pipelines = QAction(MainWindow)
@@ -35,33 +35,33 @@ class Ui_MainWindow(object):
         self.actionQuit.setObjectName(u"actionQuit")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
-        self.widget = QWidget(self.centralwidget)
-        self.widget.setObjectName(u"widget")
-        self.widget.setGeometry(QRect(20, 80, 751, 441))
-        self.gridLayout = QGridLayout(self.widget)
+        self.layoutWidget = QWidget(self.centralwidget)
+        self.layoutWidget.setObjectName(u"layoutWidget")
+        self.layoutWidget.setGeometry(QRect(20, 80, 751, 441))
+        self.gridLayout = QGridLayout(self.layoutWidget)
         self.gridLayout.setObjectName(u"gridLayout")
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
-        self.sshCredsPushButton = QPushButton(self.widget)
+        self.sshCredsPushButton = QPushButton(self.layoutWidget)
         self.sshCredsPushButton.setObjectName(u"sshCredsPushButton")
 
         self.gridLayout.addWidget(self.sshCredsPushButton, 1, 1, 1, 1)
 
-        self.textEdit = QTextEdit(self.widget)
+        self.textEdit = QTextEdit(self.layoutWidget)
         self.textEdit.setObjectName(u"textEdit")
 
         self.gridLayout.addWidget(self.textEdit, 0, 0, 6, 1)
 
-        self.quitPushButton = QPushButton(self.widget)
+        self.quitPushButton = QPushButton(self.layoutWidget)
         self.quitPushButton.setObjectName(u"quitPushButton")
 
         self.gridLayout.addWidget(self.quitPushButton, 5, 1, 1, 1)
 
-        self.nodesPushButton = QPushButton(self.widget)
+        self.nodesPushButton = QPushButton(self.layoutWidget)
         self.nodesPushButton.setObjectName(u"nodesPushButton")
 
         self.gridLayout.addWidget(self.nodesPushButton, 2, 1, 1, 1)
 
-        self.pipelinesPushButton = QPushButton(self.widget)
+        self.pipelinesPushButton = QPushButton(self.layoutWidget)
         self.pipelinesPushButton.setObjectName(u"pipelinesPushButton")
 
         self.gridLayout.addWidget(self.pipelinesPushButton, 3, 1, 1, 1)
@@ -82,7 +82,7 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.menubar.addAction(self.menuAction.menuAction())
-        self.menuAction.addAction(self.actionAdd_SSH_creds)
+        self.menuAction.addAction(self.actionSSH_creds_wrangling)
         self.menuAction.addAction(self.actionWorking_with_Jenkins_Nodes)
         self.menuAction.addAction(self.actionWorking_with_Jenkins_Pipelines)
         self.menuAction.addSeparator()
@@ -95,7 +95,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
-        self.actionAdd_SSH_creds.setText(QCoreApplication.translate("MainWindow", u"Add SSH creds", None))
+        self.actionSSH_creds_wrangling.setText(QCoreApplication.translate("MainWindow", u"Add SSH creds", None))
         self.actionWorking_with_Jenkins_Nodes.setText(QCoreApplication.translate("MainWindow", u"Working with Jenkins Nodes", None))
         self.actionWorking_with_Jenkins_Pipelines.setText(QCoreApplication.translate("MainWindow", u"Working with Jenkins Pipelines", None))
         self.actionQuit.setText(QCoreApplication.translate("MainWindow", u"Quit", None))
