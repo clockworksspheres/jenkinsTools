@@ -7,7 +7,8 @@ sys.path.append(str(parent_dir))
 
 from PySide6.QtWidgets import (QApplication, QMainWindow,
                                QDialog, QVBoxLayout,
-                               QLabel, QDialogButtonBox)
+                               QLabel, QDialogButtonBox,
+                               QSizePolicy, QSpacerItem)
 from PySide6.QtGui import QAction, QShortcut, QKeySequence
 from PySide6.QtCore import Qt
 
@@ -96,6 +97,9 @@ class JenkinsToolsUi(QMainWindow):
         # set textEdit to read only
         self.ui.textEdit.setReadOnly(True)
         # self.ui.textEdit.append("This line was added via code after setting it to read only...")
+
+        # Hide the textEdit and remove the virticleSpacer by default
+        self.ui.textEdit.hide()
 
     def openSshCredsDialog(self):
         # show message box with mounted data

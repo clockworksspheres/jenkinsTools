@@ -17,8 +17,8 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
     QPainter, QPalette, QPixmap, QRadialGradient,
     QTransform)
 from PySide6.QtWidgets import (QApplication, QGridLayout, QMainWindow, QMenu,
-    QMenuBar, QPushButton, QSizePolicy, QSpacerItem,
-    QStatusBar, QTextEdit, QWidget)
+    QMenuBar, QPushButton, QRadioButton, QSizePolicy,
+    QSpacerItem, QStatusBar, QTextEdit, QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -40,31 +40,36 @@ class Ui_MainWindow(object):
         self.pipelinesPushButton = QPushButton(self.centralwidget)
         self.pipelinesPushButton.setObjectName(u"pipelinesPushButton")
 
-        self.gridLayout.addWidget(self.pipelinesPushButton, 2, 1, 1, 1)
-
-        self.quitPushButton = QPushButton(self.centralwidget)
-        self.quitPushButton.setObjectName(u"quitPushButton")
-
-        self.gridLayout.addWidget(self.quitPushButton, 4, 1, 1, 1)
-
-        self.textEdit = QTextEdit(self.centralwidget)
-        self.textEdit.setObjectName(u"textEdit")
-
-        self.gridLayout.addWidget(self.textEdit, 0, 0, 5, 1)
+        self.gridLayout.addWidget(self.pipelinesPushButton, 3, 1, 1, 1)
 
         self.nodesPushButton = QPushButton(self.centralwidget)
         self.nodesPushButton.setObjectName(u"nodesPushButton")
 
-        self.gridLayout.addWidget(self.nodesPushButton, 1, 1, 1, 1)
+        self.gridLayout.addWidget(self.nodesPushButton, 2, 1, 1, 1)
 
         self.sshCredsPushButton = QPushButton(self.centralwidget)
         self.sshCredsPushButton.setObjectName(u"sshCredsPushButton")
 
-        self.gridLayout.addWidget(self.sshCredsPushButton, 0, 1, 1, 1)
+        self.gridLayout.addWidget(self.sshCredsPushButton, 1, 1, 1, 1)
+
+        self.textEdit = QTextEdit(self.centralwidget)
+        self.textEdit.setObjectName(u"textEdit")
+
+        self.gridLayout.addWidget(self.textEdit, 1, 0, 5, 1)
 
         self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
-        self.gridLayout.addItem(self.verticalSpacer, 3, 1, 1, 1)
+        self.gridLayout.addItem(self.verticalSpacer, 4, 1, 1, 1)
+
+        self.quitPushButton = QPushButton(self.centralwidget)
+        self.quitPushButton.setObjectName(u"quitPushButton")
+
+        self.gridLayout.addWidget(self.quitPushButton, 5, 1, 1, 1)
+
+        self.radioButton = QRadioButton(self.centralwidget)
+        self.radioButton.setObjectName(u"radioButton")
+
+        self.gridLayout.addWidget(self.radioButton, 0, 1, 1, 1)
 
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
@@ -96,9 +101,10 @@ class Ui_MainWindow(object):
         self.actionWorking_with_Jenkins_Pipelines.setText(QCoreApplication.translate("MainWindow", u"Working with Jenkins Pipelines", None))
         self.actionQuit.setText(QCoreApplication.translate("MainWindow", u"Quit", None))
         self.pipelinesPushButton.setText(QCoreApplication.translate("MainWindow", u"Working with Jenkins Pipelines", None))
-        self.quitPushButton.setText(QCoreApplication.translate("MainWindow", u"Quit", None))
         self.nodesPushButton.setText(QCoreApplication.translate("MainWindow", u"Working with Jenkins Nodes", None))
         self.sshCredsPushButton.setText(QCoreApplication.translate("MainWindow", u"Add SSH creds", None))
+        self.quitPushButton.setText(QCoreApplication.translate("MainWindow", u"Quit", None))
+        self.radioButton.setText(QCoreApplication.translate("MainWindow", u"Show debug messages", None))
         self.menuAction.setTitle(QCoreApplication.translate("MainWindow", u"Action", None))
     # retranslateUi
 
