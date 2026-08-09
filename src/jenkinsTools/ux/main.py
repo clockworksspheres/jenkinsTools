@@ -16,6 +16,7 @@ from ux.sshCredsMain import SshCredsDialog
 from ux.pipelinesMain import pipelinesDialog
 from ux.consoleDialog import ConsoleStream, ConsoleDialog
 
+
 class CustomDialog(QDialog):
     def __init__(self, parent=None):
         """
@@ -104,8 +105,8 @@ class JenkinsToolsUi(QMainWindow):
             self.ui.gridLayout.removeItem(existing_item)
         self.adjustSize()
 
-        # Connect the radio button signal to slot
-        self.ui.radioButton.clicked.connect(self.onRadioButtonClicked)
+        # Connect the debug button signal to slot
+        self.ui.debugPushButton.clicked.connect(self.onDebugPushButtonClicked)
 
         # self.ui.textBrowser.append("application started")
 
@@ -152,7 +153,7 @@ class JenkinsToolsUi(QMainWindow):
         else:
             print("Dialog Rejected")
         """
-    def onRadioButtonClicked(self, checked):
+    def onDebugPushButtonClicked(self, checked):
         dialog = ConsoleDialog(self, title=f"Console #{len(self.console_dialogs) + 1}")
 
         # Connect this dialog to the shared stream
