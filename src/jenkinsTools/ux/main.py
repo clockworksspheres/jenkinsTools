@@ -94,12 +94,7 @@ class JenkinsToolsUi(QMainWindow):
         self.ui.pipelinesPushButton.clicked.connect(self.openPipelinesDialog)
         self.ui.actionWorking_with_Jenkins_Pipelines.triggered.connect(self.openPipelinesDialog)
 
-        # set textEdit to read only
-        self.ui.textBrowser.setReadOnly(True)
-        # self.ui.textEdit.append("This line was added via code after setting it to read only...")
-
         # Hide the textEdit and remove the virticleSpacer by default
-        self.ui.textBrowser.hide()
         existing_item = self.ui.gridLayout.itemAtPosition(4,1)
         if existing_item:
             self.ui.gridLayout.removeItem(existing_item)
@@ -107,8 +102,6 @@ class JenkinsToolsUi(QMainWindow):
 
         # Connect the debug button signal to slot
         self.ui.debugPushButton.clicked.connect(self.onDebugPushButtonClicked)
-
-        # self.ui.textBrowser.append("application started")
 
         self.console_dialogs = []
 
@@ -124,6 +117,7 @@ class JenkinsToolsUi(QMainWindow):
         msg = "stub for opening SSH creds window"
         dlg = SshCredsDialog(self)
         dlg.show()
+        self.raise_()
   
     def openNodesDialog(self):
 
@@ -133,6 +127,7 @@ class JenkinsToolsUi(QMainWindow):
 
         # 2. show non-modally - Don't block until closed
         nodes.show()
+        self.raise_()
         """
         # 2. Show modally (Blocks until closed)
         result = nodes.exec()
@@ -146,6 +141,7 @@ class JenkinsToolsUi(QMainWindow):
         msg = "stub for opening pipelines window"
         dlg = pipelinesDialog(self)
         dlg.show()
+        self.raise_()
         """
         retval = dlg.exec()
         if retval:
@@ -153,6 +149,7 @@ class JenkinsToolsUi(QMainWindow):
         else:
             print("Dialog Rejected")
         """
+
     def onDebugPushButtonClicked(self, checked):
         dialog = ConsoleDialog(self, title=f"Console #{len(self.console_dialogs) + 1}")
 
@@ -172,6 +169,7 @@ class JenkinsToolsUi(QMainWindow):
 
         self.console_dialogs.append(dialog)
         dialog.show()
+        self.raise_()
 
 
 if __name__=="__main__":
