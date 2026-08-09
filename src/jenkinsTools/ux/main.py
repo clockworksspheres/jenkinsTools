@@ -1,5 +1,4 @@
 import sys
-import re
 
 from pathlib import Path
 
@@ -8,11 +7,8 @@ sys.path.append(str(parent_dir))
 
 from PySide6.QtWidgets import (QApplication, QMainWindow,
                                QDialog, QVBoxLayout,
-                               QLabel, QDialogButtonBox,
-                               QSizePolicy, QSpacerItem,
-                               QTextBrowser)
-from PySide6.QtGui import QAction, QShortcut, QKeySequence, QFont
-from PySide6.QtCore import Qt, QObject, Signal
+                               QLabel, QDialogButtonBox)
+from PySide6.QtCore import Qt
 
 from ux.nodesMain import nodesDialog
 from ux.ui_main import Ui_MainWindow
