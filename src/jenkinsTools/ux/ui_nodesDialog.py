@@ -23,49 +23,15 @@ class Ui_Dialog(object):
     def setupUi(self, Dialog):
         if not Dialog.objectName():
             Dialog.setObjectName(u"Dialog")
-        Dialog.resize(765, 520)
-        self.layoutWidget = QWidget(Dialog)
-        self.layoutWidget.setObjectName(u"layoutWidget")
-        self.layoutWidget.setGeometry(QRect(10, 50, 741, 451))
-        self.gridLayout = QGridLayout(self.layoutWidget)
+        Dialog.resize(785, 522)
+        self.gridLayout = QGridLayout(Dialog)
         self.gridLayout.setObjectName(u"gridLayout")
-        self.gridLayout.setContentsMargins(0, 0, 0, 0)
-        self.UrlLabel = QLabel(self.layoutWidget)
-        self.UrlLabel.setObjectName(u"UrlLabel")
-
-        self.gridLayout.addWidget(self.UrlLabel, 0, 0, 1, 1)
-
-        self.UrlLineEdit = QLineEdit(self.layoutWidget)
-        self.UrlLineEdit.setObjectName(u"UrlLineEdit")
-
-        self.gridLayout.addWidget(self.UrlLineEdit, 0, 1, 1, 1)
-
-        self.UsernameLabel = QLabel(self.layoutWidget)
+        self.UsernameLabel = QLabel(Dialog)
         self.UsernameLabel.setObjectName(u"UsernameLabel")
 
-        self.gridLayout.addWidget(self.UsernameLabel, 1, 0, 1, 1)
+        self.gridLayout.addWidget(self.UsernameLabel, 2, 0, 1, 1)
 
-        self.UsernameLineEdit = QLineEdit(self.layoutWidget)
-        self.UsernameLineEdit.setObjectName(u"UsernameLineEdit")
-
-        self.gridLayout.addWidget(self.UsernameLineEdit, 1, 1, 1, 1)
-
-        self.tokenLabel = QLabel(self.layoutWidget)
-        self.tokenLabel.setObjectName(u"tokenLabel")
-
-        self.gridLayout.addWidget(self.tokenLabel, 2, 0, 1, 1)
-
-        self.tokenLineEdit = QLineEdit(self.layoutWidget)
-        self.tokenLineEdit.setObjectName(u"tokenLineEdit")
-
-        self.gridLayout.addWidget(self.tokenLineEdit, 2, 1, 1, 1)
-
-        self.ActionLabel = QLabel(self.layoutWidget)
-        self.ActionLabel.setObjectName(u"ActionLabel")
-
-        self.gridLayout.addWidget(self.ActionLabel, 3, 0, 1, 1)
-
-        self.ActionComboBox = QComboBox(self.layoutWidget)
+        self.ActionComboBox = QComboBox(Dialog)
         self.ActionComboBox.addItem("")
         self.ActionComboBox.addItem("")
         self.ActionComboBox.addItem("")
@@ -78,21 +44,56 @@ class Ui_Dialog(object):
         self.ActionComboBox.addItem("")
         self.ActionComboBox.setObjectName(u"ActionComboBox")
 
-        self.gridLayout.addWidget(self.ActionComboBox, 3, 1, 1, 1)
+        self.gridLayout.addWidget(self.ActionComboBox, 4, 1, 1, 1)
 
-        self.MethodLabel = QLabel(self.layoutWidget)
+        self.tokenLineEdit = QLineEdit(Dialog)
+        self.tokenLineEdit.setObjectName(u"tokenLineEdit")
+
+        self.gridLayout.addWidget(self.tokenLineEdit, 3, 1, 1, 1)
+
+        self.QuitPushButton = QPushButton(Dialog)
+        self.QuitPushButton.setObjectName(u"QuitPushButton")
+
+        self.gridLayout.addWidget(self.QuitPushButton, 6, 3, 1, 1)
+
+        self.UrlLabel = QLabel(Dialog)
+        self.UrlLabel.setObjectName(u"UrlLabel")
+
+        self.gridLayout.addWidget(self.UrlLabel, 1, 0, 1, 1)
+
+        self.RunPushButton = QPushButton(Dialog)
+        self.RunPushButton.setObjectName(u"RunPushButton")
+
+        self.gridLayout.addWidget(self.RunPushButton, 6, 4, 1, 1)
+
+        self.tokenLabel = QLabel(Dialog)
+        self.tokenLabel.setObjectName(u"tokenLabel")
+
+        self.gridLayout.addWidget(self.tokenLabel, 3, 0, 1, 1)
+
+        self.MethodLabel = QLabel(Dialog)
         self.MethodLabel.setObjectName(u"MethodLabel")
 
-        self.gridLayout.addWidget(self.MethodLabel, 3, 2, 1, 1)
+        self.gridLayout.addWidget(self.MethodLabel, 4, 2, 1, 1)
 
-        self.MethodComboBox = QComboBox(self.layoutWidget)
+        self.ActionLabel = QLabel(Dialog)
+        self.ActionLabel.setObjectName(u"ActionLabel")
+
+        self.gridLayout.addWidget(self.ActionLabel, 4, 0, 1, 1)
+
+        self.MethodComboBox = QComboBox(Dialog)
         self.MethodComboBox.addItem("")
         self.MethodComboBox.addItem("")
         self.MethodComboBox.setObjectName(u"MethodComboBox")
 
-        self.gridLayout.addWidget(self.MethodComboBox, 3, 3, 1, 1)
+        self.gridLayout.addWidget(self.MethodComboBox, 4, 3, 1, 1)
 
-        self.stackedWidget = QStackedWidget(self.layoutWidget)
+        self.UrlLineEdit = QLineEdit(Dialog)
+        self.UrlLineEdit.setObjectName(u"UrlLineEdit")
+
+        self.gridLayout.addWidget(self.UrlLineEdit, 1, 1, 1, 1)
+
+        self.stackedWidget = QStackedWidget(Dialog)
         self.stackedWidget.setObjectName(u"stackedWidget")
         self.page = QWidget()
         self.page.setObjectName(u"page")
@@ -209,24 +210,21 @@ class Ui_Dialog(object):
         self.GetNodeTextEdit.setGeometry(QRect(10, 100, 701, 151))
         self.stackedWidget.addWidget(self.page_4)
 
-        self.gridLayout.addWidget(self.stackedWidget, 4, 0, 1, 5)
+        self.gridLayout.addWidget(self.stackedWidget, 5, 0, 1, 5)
 
-        self.QuitPushButton = QPushButton(self.layoutWidget)
-        self.QuitPushButton.setObjectName(u"QuitPushButton")
+        self.UsernameLineEdit = QLineEdit(Dialog)
+        self.UsernameLineEdit.setObjectName(u"UsernameLineEdit")
 
-        self.gridLayout.addWidget(self.QuitPushButton, 5, 3, 1, 1)
-
-        self.RunPushButton = QPushButton(self.layoutWidget)
-        self.RunPushButton.setObjectName(u"RunPushButton")
-
-        self.gridLayout.addWidget(self.RunPushButton, 5, 4, 1, 1)
+        self.gridLayout.addWidget(self.UsernameLineEdit, 2, 1, 1, 1)
 
         self.label = QLabel(Dialog)
         self.label.setObjectName(u"label")
-        self.label.setGeometry(QRect(320, 10, 141, 31))
         font = QFont()
         font.setPointSize(20)
         self.label.setFont(font)
+
+        self.gridLayout.addWidget(self.label, 0, 1, 1, 1)
+
 
         self.retranslateUi(Dialog)
 
@@ -238,10 +236,7 @@ class Ui_Dialog(object):
 
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Dialog", None))
-        self.UrlLabel.setText(QCoreApplication.translate("Dialog", u"URL", None))
         self.UsernameLabel.setText(QCoreApplication.translate("Dialog", u"username", None))
-        self.tokenLabel.setText(QCoreApplication.translate("Dialog", u"token/password", None))
-        self.ActionLabel.setText(QCoreApplication.translate("Dialog", u"Action", None))
         self.ActionComboBox.setItemText(0, QCoreApplication.translate("Dialog", u"Add", None))
         self.ActionComboBox.setItemText(1, QCoreApplication.translate("Dialog", u"Update", None))
         self.ActionComboBox.setItemText(2, QCoreApplication.translate("Dialog", u"Enable", None))
@@ -253,7 +248,12 @@ class Ui_Dialog(object):
         self.ActionComboBox.setItemText(8, QCoreApplication.translate("Dialog", u"Get Node Config", None))
         self.ActionComboBox.setItemText(9, QCoreApplication.translate("Dialog", u"New Item", None))
 
+        self.QuitPushButton.setText(QCoreApplication.translate("Dialog", u"quit", None))
+        self.UrlLabel.setText(QCoreApplication.translate("Dialog", u"URL", None))
+        self.RunPushButton.setText(QCoreApplication.translate("Dialog", u"run command", None))
+        self.tokenLabel.setText(QCoreApplication.translate("Dialog", u"token/password", None))
         self.MethodLabel.setText(QCoreApplication.translate("Dialog", u"Method", None))
+        self.ActionLabel.setText(QCoreApplication.translate("Dialog", u"Action", None))
         self.MethodComboBox.setItemText(0, QCoreApplication.translate("Dialog", u"SSH", None))
         self.MethodComboBox.setItemText(1, QCoreApplication.translate("Dialog", u"JNLP", None))
 
@@ -274,8 +274,6 @@ class Ui_Dialog(object):
         self.LabelsLabel_2.setText(QCoreApplication.translate("Dialog", u"Labels", None))
         self.ExecutorsLabel_2.setText(QCoreApplication.translate("Dialog", u"Executors", None))
         self.VmNamelabel_3.setText(QCoreApplication.translate("Dialog", u"VM Name", None))
-        self.QuitPushButton.setText(QCoreApplication.translate("Dialog", u"quit", None))
-        self.RunPushButton.setText(QCoreApplication.translate("Dialog", u"run command", None))
-        self.label.setText(QCoreApplication.translate("Dialog", u"jenkinsNodeTool", None))
+        self.label.setText("")
     # retranslateUi
 

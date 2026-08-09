@@ -23,6 +23,9 @@ class nodesDialog(QDialog):
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
 
+        # Set the Window Title name
+        self.setWindowTitle("Jenkins Node Tool")
+
         # Set current (default) page in the stacked widget
         self.ui.stackedWidget.setCurrentIndex(0)
 
@@ -591,7 +594,7 @@ class nodesDialog(QDialog):
 if __name__ == "__main__":
     __package__ = "jenkinsTools.ux"
     app = QApplication(sys.argv)
-    dialog = nodeDialog()
+    dialog = nodesDialog()
     dialog.show()
     sys.exit(app.exec())
 

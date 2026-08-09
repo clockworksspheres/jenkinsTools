@@ -6,575 +6,559 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>765</width>
-    <height>520</height>
+    <width>785</width>
+    <height>522</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QWidget" name="layoutWidget">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>50</y>
-     <width>741</width>
-     <height>451</height>
-    </rect>
-   </property>
-   <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
-     <widget class="QLabel" name="UrlLabel">
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="2" column="0">
+    <widget class="QLabel" name="UsernameLabel">
+     <property name="text">
+      <string>username</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="1">
+    <widget class="QComboBox" name="ActionComboBox">
+     <item>
       <property name="text">
-       <string>URL</string>
+       <string>Add</string>
       </property>
-     </widget>
-    </item>
-    <item row="0" column="1">
-     <widget class="QLineEdit" name="UrlLineEdit"/>
-    </item>
-    <item row="1" column="0">
-     <widget class="QLabel" name="UsernameLabel">
+     </item>
+     <item>
       <property name="text">
-       <string>username</string>
+       <string>Update</string>
       </property>
-     </widget>
-    </item>
-    <item row="1" column="1">
-     <widget class="QLineEdit" name="UsernameLineEdit"/>
-    </item>
-    <item row="2" column="0">
-     <widget class="QLabel" name="tokenLabel">
+     </item>
+     <item>
       <property name="text">
-       <string>token/password</string>
+       <string>Enable</string>
       </property>
-     </widget>
-    </item>
-    <item row="2" column="1">
-     <widget class="QLineEdit" name="tokenLineEdit"/>
-    </item>
-    <item row="3" column="0">
-     <widget class="QLabel" name="ActionLabel">
+     </item>
+     <item>
       <property name="text">
-       <string>Action</string>
+       <string>Disable</string>
       </property>
-     </widget>
-    </item>
-    <item row="3" column="1">
-     <widget class="QComboBox" name="ActionComboBox">
-      <item>
-       <property name="text">
-        <string>Add</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Update</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Enable</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Disable</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Delete</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Node Exists</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Get Nodes</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Get Node Info</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Get Node Config</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>New Item</string>
-       </property>
-      </item>
-     </widget>
-    </item>
-    <item row="3" column="2">
-     <widget class="QLabel" name="MethodLabel">
+     </item>
+     <item>
       <property name="text">
-       <string>Method</string>
+       <string>Delete</string>
       </property>
-     </widget>
-    </item>
-    <item row="3" column="3">
-     <widget class="QComboBox" name="MethodComboBox">
-      <item>
-       <property name="text">
-        <string>SSH</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>JNLP</string>
-       </property>
-      </item>
-     </widget>
-    </item>
-    <item row="4" column="0" colspan="5">
-     <widget class="QStackedWidget" name="stackedWidget">
-      <property name="currentIndex">
-       <number>0</number>
+     </item>
+     <item>
+      <property name="text">
+       <string>Node Exists</string>
       </property>
-      <widget class="QWidget" name="page">
-       <widget class="QLabel" name="VmNamelabel">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>60</y>
-          <width>121</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>VM Name</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="RemoteFsLlabel">
-        <property name="geometry">
-         <rect>
-          <x>380</x>
-          <y>150</y>
-          <width>121</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Remote Filesystem</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="HostnameIpLabel">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>90</y>
-          <width>121</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Hostname/IP</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="JenkinsCredsLabel">
-        <property name="geometry">
-         <rect>
-          <x>380</x>
-          <y>60</y>
-          <width>141</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Jenkins Credentials ID</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="LabelsLabel">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>120</y>
-          <width>121</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Labels</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="ExecutorsLabel">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>150</y>
-          <width>121</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Executors</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="PortLabel">
-        <property name="geometry">
-         <rect>
-          <x>380</x>
-          <y>90</y>
-          <width>141</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Port</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="DescriptionLabel">
-        <property name="geometry">
-         <rect>
-          <x>380</x>
-          <y>120</y>
-          <width>141</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Description</string>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="VmNameLineEdit">
-        <property name="geometry">
-         <rect>
-          <x>152</x>
-          <y>60</y>
-          <width>191</width>
-          <height>20</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="HostnameOrIpLineEdit">
-        <property name="geometry">
-         <rect>
-          <x>152</x>
-          <y>90</y>
-          <width>191</width>
-          <height>20</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="LabelsLineEdit">
-        <property name="geometry">
-         <rect>
-          <x>152</x>
-          <y>120</y>
-          <width>191</width>
-          <height>20</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="ExecutorsLineEdit">
-        <property name="geometry">
-         <rect>
-          <x>152</x>
-          <y>150</y>
-          <width>191</width>
-          <height>20</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="JenkinsCredsIdLineEdit">
-        <property name="geometry">
-         <rect>
-          <x>550</x>
-          <y>60</y>
-          <width>171</width>
-          <height>16</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="PortLlineEdit">
-        <property name="geometry">
-         <rect>
-          <x>550</x>
-          <y>90</y>
-          <width>171</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>22</string>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="DescriptionLineEdit">
-        <property name="geometry">
-         <rect>
-          <x>550</x>
-          <y>120</y>
-          <width>171</width>
-          <height>16</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="RemoteFsLineEdit">
-        <property name="geometry">
-         <rect>
-          <x>550</x>
-          <y>150</y>
-          <width>171</width>
-          <height>16</height>
-         </rect>
-        </property>
-       </widget>
+     </item>
+     <item>
+      <property name="text">
+       <string>Get Nodes</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Get Node Info</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Get Node Config</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>New Item</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="3" column="1">
+    <widget class="QLineEdit" name="tokenLineEdit"/>
+   </item>
+   <item row="6" column="3">
+    <widget class="QPushButton" name="QuitPushButton">
+     <property name="text">
+      <string>quit</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="UrlLabel">
+     <property name="text">
+      <string>URL</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="4">
+    <widget class="QPushButton" name="RunPushButton">
+     <property name="text">
+      <string>run command</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLabel" name="tokenLabel">
+     <property name="text">
+      <string>token/password</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="2">
+    <widget class="QLabel" name="MethodLabel">
+     <property name="text">
+      <string>Method</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="0">
+    <widget class="QLabel" name="ActionLabel">
+     <property name="text">
+      <string>Action</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="3">
+    <widget class="QComboBox" name="MethodComboBox">
+     <item>
+      <property name="text">
+       <string>SSH</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>JNLP</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QLineEdit" name="UrlLineEdit"/>
+   </item>
+   <item row="5" column="0" colspan="5">
+    <widget class="QStackedWidget" name="stackedWidget">
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
+     <widget class="QWidget" name="page">
+      <widget class="QLabel" name="VmNamelabel">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>60</y>
+         <width>121</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>VM Name</string>
+       </property>
       </widget>
-      <widget class="QWidget" name="page_2">
-       <widget class="QLineEdit" name="JVMOptionsLineEdit">
-        <property name="geometry">
-         <rect>
-          <x>490</x>
-          <y>60</y>
-          <width>231</width>
-          <height>20</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QLabel" name="RemoteFsLlabel_2">
-        <property name="geometry">
-         <rect>
-          <x>350</x>
-          <y>150</y>
-          <width>121</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Remote Filesystem</string>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="VmNameLineEdit_2">
-        <property name="geometry">
-         <rect>
-          <x>152</x>
-          <y>60</y>
-          <width>171</width>
-          <height>20</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QLabel" name="JenkinsCredsLabel_2">
-        <property name="geometry">
-         <rect>
-          <x>350</x>
-          <y>60</y>
-          <width>121</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>JVM Options</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="HostnameIpLabel_2">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>90</y>
-          <width>91</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Hostname/IP</string>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="LabelsLineEdit_2">
-        <property name="geometry">
-         <rect>
-          <x>152</x>
-          <y>120</y>
-          <width>171</width>
-          <height>20</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="HostnameOrIpLineEdit_2">
-        <property name="geometry">
-         <rect>
-          <x>152</x>
-          <y>90</y>
-          <width>171</width>
-          <height>20</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QLabel" name="DescriptionLabel_2">
-        <property name="geometry">
-         <rect>
-          <x>350</x>
-          <y>120</y>
-          <width>121</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Description</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="VmNamelabel_2">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>60</y>
-          <width>91</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>VM Name</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="LabelsLabel_2">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>120</y>
-          <width>91</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Labels</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="ExecutorsLabel_2">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>150</y>
-          <width>91</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Executors</string>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="ExecutorsLineEdit_2">
-        <property name="geometry">
-         <rect>
-          <x>152</x>
-          <y>150</y>
-          <width>171</width>
-          <height>20</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="RemoteFsLineEdit_2">
-        <property name="geometry">
-         <rect>
-          <x>490</x>
-          <y>150</y>
-          <width>231</width>
-          <height>20</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="DescriptionLineEdit_2">
-        <property name="geometry">
-         <rect>
-          <x>490</x>
-          <y>120</y>
-          <width>231</width>
-          <height>20</height>
-         </rect>
-        </property>
-       </widget>
+      <widget class="QLabel" name="RemoteFsLlabel">
+       <property name="geometry">
+        <rect>
+         <x>380</x>
+         <y>150</y>
+         <width>121</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Remote Filesystem</string>
+       </property>
       </widget>
-      <widget class="QWidget" name="page_3">
-       <widget class="QTextEdit" name="GetNodesTextEdit">
-        <property name="geometry">
-         <rect>
-          <x>20</x>
-          <y>10</y>
-          <width>671</width>
-          <height>241</height>
-         </rect>
-        </property>
-       </widget>
+      <widget class="QLabel" name="HostnameIpLabel">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>90</y>
+         <width>121</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Hostname/IP</string>
+       </property>
       </widget>
-      <widget class="QWidget" name="page_4">
-       <widget class="QLabel" name="VmNamelabel_3">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>60</y>
-          <width>121</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>VM Name</string>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="VmNameLineEdit_3">
-        <property name="geometry">
-         <rect>
-          <x>152</x>
-          <y>60</y>
-          <width>131</width>
-          <height>20</height>
-         </rect>
-        </property>
-       </widget>
-       <widget class="QTextEdit" name="GetNodeTextEdit">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>100</y>
-          <width>701</width>
-          <height>151</height>
-         </rect>
-        </property>
-       </widget>
+      <widget class="QLabel" name="JenkinsCredsLabel">
+       <property name="geometry">
+        <rect>
+         <x>380</x>
+         <y>60</y>
+         <width>141</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Jenkins Credentials ID</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="LabelsLabel">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>120</y>
+         <width>121</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Labels</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="ExecutorsLabel">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>150</y>
+         <width>121</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Executors</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="PortLabel">
+       <property name="geometry">
+        <rect>
+         <x>380</x>
+         <y>90</y>
+         <width>141</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Port</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="DescriptionLabel">
+       <property name="geometry">
+        <rect>
+         <x>380</x>
+         <y>120</y>
+         <width>141</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Description</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="VmNameLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>152</x>
+         <y>60</y>
+         <width>191</width>
+         <height>20</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="HostnameOrIpLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>152</x>
+         <y>90</y>
+         <width>191</width>
+         <height>20</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="LabelsLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>152</x>
+         <y>120</y>
+         <width>191</width>
+         <height>20</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="ExecutorsLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>152</x>
+         <y>150</y>
+         <width>191</width>
+         <height>20</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="JenkinsCredsIdLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>550</x>
+         <y>60</y>
+         <width>171</width>
+         <height>16</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="PortLlineEdit">
+       <property name="geometry">
+        <rect>
+         <x>550</x>
+         <y>90</y>
+         <width>171</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>22</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="DescriptionLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>550</x>
+         <y>120</y>
+         <width>171</width>
+         <height>16</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="RemoteFsLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>550</x>
+         <y>150</y>
+         <width>171</width>
+         <height>16</height>
+        </rect>
+       </property>
       </widget>
      </widget>
-    </item>
-    <item row="5" column="3">
-     <widget class="QPushButton" name="QuitPushButton">
-      <property name="text">
-       <string>quit</string>
-      </property>
+     <widget class="QWidget" name="page_2">
+      <widget class="QLineEdit" name="JVMOptionsLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>490</x>
+         <y>60</y>
+         <width>231</width>
+         <height>20</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="RemoteFsLlabel_2">
+       <property name="geometry">
+        <rect>
+         <x>350</x>
+         <y>150</y>
+         <width>121</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Remote Filesystem</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="VmNameLineEdit_2">
+       <property name="geometry">
+        <rect>
+         <x>152</x>
+         <y>60</y>
+         <width>171</width>
+         <height>20</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="JenkinsCredsLabel_2">
+       <property name="geometry">
+        <rect>
+         <x>350</x>
+         <y>60</y>
+         <width>121</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>JVM Options</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="HostnameIpLabel_2">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>90</y>
+         <width>91</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Hostname/IP</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="LabelsLineEdit_2">
+       <property name="geometry">
+        <rect>
+         <x>152</x>
+         <y>120</y>
+         <width>171</width>
+         <height>20</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="HostnameOrIpLineEdit_2">
+       <property name="geometry">
+        <rect>
+         <x>152</x>
+         <y>90</y>
+         <width>171</width>
+         <height>20</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="DescriptionLabel_2">
+       <property name="geometry">
+        <rect>
+         <x>350</x>
+         <y>120</y>
+         <width>121</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Description</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="VmNamelabel_2">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>60</y>
+         <width>91</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>VM Name</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="LabelsLabel_2">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>120</y>
+         <width>91</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Labels</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="ExecutorsLabel_2">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>150</y>
+         <width>91</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Executors</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="ExecutorsLineEdit_2">
+       <property name="geometry">
+        <rect>
+         <x>152</x>
+         <y>150</y>
+         <width>171</width>
+         <height>20</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="RemoteFsLineEdit_2">
+       <property name="geometry">
+        <rect>
+         <x>490</x>
+         <y>150</y>
+         <width>231</width>
+         <height>20</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="DescriptionLineEdit_2">
+       <property name="geometry">
+        <rect>
+         <x>490</x>
+         <y>120</y>
+         <width>231</width>
+         <height>20</height>
+        </rect>
+       </property>
+      </widget>
      </widget>
-    </item>
-    <item row="5" column="4">
-     <widget class="QPushButton" name="RunPushButton">
-      <property name="text">
-       <string>run command</string>
-      </property>
+     <widget class="QWidget" name="page_3">
+      <widget class="QTextEdit" name="GetNodesTextEdit">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>10</y>
+         <width>671</width>
+         <height>241</height>
+        </rect>
+       </property>
+      </widget>
      </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>320</x>
-     <y>10</y>
-     <width>141</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>20</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>jenkinsNodeTool</string>
-   </property>
-  </widget>
+     <widget class="QWidget" name="page_4">
+      <widget class="QLabel" name="VmNamelabel_3">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>60</y>
+         <width>121</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>VM Name</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="VmNameLineEdit_3">
+       <property name="geometry">
+        <rect>
+         <x>152</x>
+         <y>60</y>
+         <width>131</width>
+         <height>20</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QTextEdit" name="GetNodeTextEdit">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>100</y>
+         <width>701</width>
+         <height>151</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QLineEdit" name="UsernameLineEdit"/>
+   </item>
+   <item row="0" column="1">
+    <widget class="QLabel" name="label">
+     <property name="font">
+      <font>
+       <pointsize>20</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </item>
+  </layout>
  </widget>
  <resources/>
  <connections/>
