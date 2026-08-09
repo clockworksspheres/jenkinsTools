@@ -5,6 +5,15 @@ import requests
 import os
 import sys
 
+from pathlib import Path
+
+parent_dir = Path(__file__).parent.parent
+sys.path.append(str(parent_dir))
+
+from PySide6.QtWidgets import QApplication
+
+from ux.sshCredsMain import SshCredsDialog
+
 
 class SshKeyWrangling():
     """
@@ -75,7 +84,7 @@ class SshKeyWrangling():
             )
 
 
-def main():
+def parseSshKeyWrangling():
     parser = argparse.ArgumentParser(
         description="Add an existing SSH private key as a Jenkins credential",
         epilog="""
@@ -108,27 +117,25 @@ Notes:
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
 
-    parser.add_argument("--url", required=True, help="Jenkins base URL")
-    parser.add_argument("--jenkins-user", required=True, help="Jenkins username")
+    parser.add_argument("-g", "--gui", action='store_true', help="Start the main sshKeyWrangling GUI")
+
+    parser.add_argument("--url", help="Jenkins base URL")
+    parser.add_argument("--jenkins-user", help="Jenkins username")
     parser.add_argument(
         "--jenkins-token",
-        required=True,
         help="Jenkins API token or password",
     )
 
     parser.add_argument(
         "--credential-id",
-        required=True,
         help="Credential ID to create/update in Jenkins",
     )
     parser.add_argument(
         "--ssh-user",
-        required=True,
         help="SSH username (e.g. jenkins)",
     )
     parser.add_argument(
         "--private-key",
-        required=True,
         help="Path to existing SSH private key",
     )
     parser.add_argument(
@@ -143,31 +150,43 @@ Notes:
 
     args = parser.parse_args()
 
-    if len(sys.argv) == 1:
-        parser.print_help()
-        sys.exit(1)
+    if len(sys.argv) == 1 or args.gui:
+        from ux.sshCredsMain import SshCredsDialog
+        app = QApplication(sys.argv)
+        dlg = SshCredsDialog()
+        dlg.show()
+        sys.exit(app.exec())
 
-    keyWrangling = SshKeyWrangling()
+    else:
 
-    try:
-        private_key = keyWrangling.load_private_key(args.private_key)
-        keyWrangling.add_ssh_private_key_credential(
-            jenkins_url=args.url,
-            jenkins_user=args.jenkins_user,
-            jenkins_token=args.jenkins_token,
-            credential_id=args.credential_id,
-            ssh_username=args.ssh_user,
-            private_key=private_key,
-            passphrase=args.key_passphrase,
-            description=args.description,
-        )
-    except Exception as e:
-        print(f"ERROR: {e}", file=sys.stderr)
-        sys.exit(1)
+        keyWrangling = SshKeyWrangling()
 
-    print(f"Credential '{args.credential_id}' added to Jenkins successfully")
+        if args.url and args.jenkins_user and args.jenkins_token and args.credential_id and args.ssh_user and args.private_key:
+
+            try:
+
+
+                private_key = keyWrangling.load_private_key(args.private_key)
+                keyWrangling.add_ssh_private_key_credential(
+                    jenkins_url=args.url,
+                    jenkins_user=args.jenkins_user,
+                    jenkins_token=args.jenkins_token,
+                    credential_id=args.credential_id,
+                    ssh_username=args.ssh_user,
+                    private_key=private_key,
+                    passphrase=args.key_passphrase,
+                    description=args.description,
+                )
+            except Exception as e:
+                parser.print_help()
+                print(f"\nERROR: {e}", file=sys.stderr)
+                sys.exit(1)
+            else:
+                print(f"Credential '{args.credential_id}' added to Jenkins successfully")
+        else:
+            parser.print_help()
 
 
 if __name__ == "__main__":
-    main()
+    parseSshKeyWrangling()
 
