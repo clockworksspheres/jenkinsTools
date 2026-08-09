@@ -343,6 +343,14 @@ class pipelinesDialog(QDialog):
 
         print(f"selected text: '{selected_text}'")
 
+    def closeEvent(self, event):
+        '''
+        Catch when the red x (exit) window button is clicked
+        '''
+        print("Dialog close event triggered.")
+        event.accept()  # Allow the dialog to close
+        # DO NOT call app.quit() or sys.exit() here
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

@@ -139,6 +139,15 @@ class SshCredsDialog(QDialog):
         else:
             raise ValueError("ComboBox selection out of bounds...")
 
+    def closeEvent(self, event):
+        '''
+        Catch when the red x (exit) window button is clicked
+        '''
+        print("Dialog close event triggered.")
+        event.accept()  # Allow the dialog to close
+        # DO NOT call app.quit() or sys.exit() here
+
+
 if __name__ == "__main__":
     __package__ = "jenkinsTools.ux"
     app = QApplication(sys.argv)

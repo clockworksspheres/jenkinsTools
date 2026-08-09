@@ -174,6 +174,10 @@ class JenkinsToolsUi(QMainWindow):
 
 if __name__=="__main__":
     app = QApplication(sys.argv)
+
+    # Ensure the app doesn't quit when the last window (dialog) is closed
+    # app.setQuitOnLastWindowClosed(False)
+
     widget = JenkinsToolsUi()
     widget.show()
     sys.exit(app.exec())
