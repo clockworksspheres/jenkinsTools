@@ -36,7 +36,7 @@ class pipelinesDialog(QDialog):
         self.ui.followComboBox.currentIndexChanged.connect(self.handleFollowComboBoxChange)
 
         # Button actions
-        self.ui.QuitPushButton.clicked.connect(self.close)
+        self.ui.closePushButton.clicked.connect(self.close)
         self.ui.RunPushButton.clicked.connect(self.runAction)
 
         # Hiding functionality that doesn't yet do the right thing
@@ -63,8 +63,8 @@ class pipelinesDialog(QDialog):
         self.setTabOrder(self.ui.scriptLineEdit, self.ui.scriptPathLineEdit)
         self.setTabOrder(self.ui.scriptPathLineEdit, self.ui.descriptionLineEdit)
         self.setTabOrder(self.ui.descriptionLineEdit, self.ui.RunPushButton)
-        self.setTabOrder(self.ui.RunPushButton, self.ui.QuitPushButton)
-        self.setTabOrder(self.ui.QuitPushButton, self.ui.UrlLineEdit)
+        self.setTabOrder(self.ui.RunPushButton, self.ui.closePushButton)
+        self.setTabOrder(self.ui.closePushButton, self.ui.UrlLineEdit)
 
     def runAction(self):
         print(f"Running command '{self.ui.ActionComboBox.currentText()}'")
@@ -245,8 +245,8 @@ class pipelinesDialog(QDialog):
             self.setTabOrder(self.ui.scriptLineEdit, self.ui.scriptPathLineEdit)
             self.setTabOrder(self.ui.scriptPathLineEdit, self.ui.descriptionLineEdit)
             self.setTabOrder(self.ui.descriptionLineEdit, self.ui.RunPushButton)
-            self.setTabOrder(self.ui.RunPushButton, self.ui.QuitPushButton)
-            self.setTabOrder(self.ui.QuitPushButton, self.ui.UrlLineEdit)
+            self.setTabOrder(self.ui.RunPushButton, self.ui.closePushButton)
+            self.setTabOrder(self.ui.closePushButton, self.ui.UrlLineEdit)
 
         elif selected_text == "run":
             self.ui.stackedWidget.setCurrentIndex(1)
@@ -266,8 +266,8 @@ class pipelinesDialog(QDialog):
             self.setTabOrder(self.ui.followComboBox, self.ui.parametersLineEdit_2)
             self.setTabOrder(self.ui.parametersLineEdit_2, self.ui.tokenBuildLineEdit_2)
             self.setTabOrder(self.ui.tokenBuildLineEdit_2, self.ui.RunPushButton)
-            self.setTabOrder(self.ui.RunPushButton, self.ui.QuitPushButton)
-            self.setTabOrder(self.ui.QuitPushButton, self.ui.UrlLineEdit)
+            self.setTabOrder(self.ui.RunPushButton, self.ui.closePushButton)
+            self.setTabOrder(self.ui.closePushButton, self.ui.UrlLineEdit)
 
         elif selected_text == "check":
             self.ui.stackedWidget.setCurrentIndex(3)
@@ -285,8 +285,8 @@ class pipelinesDialog(QDialog):
             self.setTabOrder(self.ui.tokenLineEdit, self.ui.ActionComboBox)
             self.setTabOrder(self.ui.ActionComboBox, self.ui.jobNameLineEdit_3)
             self.setTabOrder(self.ui.jobNameLineEdit_3, self.ui.RunPushButton)
-            self.setTabOrder(self.ui.RunPushButton, self.ui.QuitPushButton)
-            self.setTabOrder(self.ui.QuitPushButton, self.ui.UrlLineEdit)
+            self.setTabOrder(self.ui.RunPushButton, self.ui.closePushButton)
+            self.setTabOrder(self.ui.closePushButton, self.ui.UrlLineEdit)
 
 
         elif selected_text == "get-config":
@@ -305,8 +305,8 @@ class pipelinesDialog(QDialog):
             self.setTabOrder(self.ui.tokenLineEdit, self.ui.ActionComboBox)
             self.setTabOrder(self.ui.ActionComboBox, self.ui.jobNameLineEdit_3)
             self.setTabOrder(self.ui.jobNameLineEdit_3, self.ui.RunPushButton)
-            self.setTabOrder(self.ui.RunPushButton, self.ui.QuitPushButton)
-            self.setTabOrder(self.ui.QuitPushButton, self.ui.UrlLineEdit)
+            self.setTabOrder(self.ui.RunPushButton, self.ui.closePushButton)
+            self.setTabOrder(self.ui.closePushButton, self.ui.UrlLineEdit)
 
         elif selected_text == "set-config":
             self.ui.stackedWidget.setCurrentIndex(3)
@@ -325,8 +325,8 @@ class pipelinesDialog(QDialog):
             self.setTabOrder(self.ui.ActionComboBox, self.ui.jobNameLineEdit_3)
             self.setTabOrder(self.ui.jobNameLineEdit_3, self.ui.xmlFileLineEdit)
             self.setTabOrder(self.ui.xmlFileLineEdit, self.ui.RunPushButton)
-            self.setTabOrder(self.ui.RunPushButton, self.ui.QuitPushButton)
-            self.setTabOrder(self.ui.QuitPushButton, self.ui.UrlLineEdit)
+            self.setTabOrder(self.ui.RunPushButton, self.ui.closePushButton)
+            self.setTabOrder(self.ui.closePushButton, self.ui.UrlLineEdit)
 
         else:
             raise ValueError("Not a valid comboBox value")
