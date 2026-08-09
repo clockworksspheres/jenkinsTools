@@ -51,10 +51,10 @@ class Ui_Dialog(object):
 
         self.gridLayout.addWidget(self.tokenLineEdit, 3, 1, 1, 1)
 
-        self.QuitPushButton = QPushButton(Dialog)
-        self.QuitPushButton.setObjectName(u"QuitPushButton")
+        self.closePushButton = QPushButton(Dialog)
+        self.closePushButton.setObjectName(u"closePushButton")
 
-        self.gridLayout.addWidget(self.QuitPushButton, 6, 3, 1, 1)
+        self.gridLayout.addWidget(self.closePushButton, 6, 3, 1, 1)
 
         self.UrlLabel = QLabel(Dialog)
         self.UrlLabel.setObjectName(u"UrlLabel")
@@ -248,7 +248,7 @@ class Ui_Dialog(object):
         self.ActionComboBox.setItemText(8, QCoreApplication.translate("Dialog", u"Get Node Config", None))
         self.ActionComboBox.setItemText(9, QCoreApplication.translate("Dialog", u"New Item", None))
 
-        self.QuitPushButton.setText(QCoreApplication.translate("Dialog", u"quit", None))
+        self.closePushButton.setText(QCoreApplication.translate("Dialog", u"close", None))
         self.UrlLabel.setText(QCoreApplication.translate("Dialog", u"URL", None))
         self.RunPushButton.setText(QCoreApplication.translate("Dialog", u"run command", None))
         self.tokenLabel.setText(QCoreApplication.translate("Dialog", u"token/password", None))

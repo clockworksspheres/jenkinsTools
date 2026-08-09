@@ -38,11 +38,31 @@ class nodesDialog(QDialog):
         self.ui.MethodComboBox.currentIndexChanged.connect(self.handleMethodComboBoxChange)
 
         # Button actions
-        self.ui.QuitPushButton.clicked.connect(self.close)
+        self.ui.closePushButton.clicked.connect(self.close)
         self.ui.RunPushButton.clicked.connect(self.runAction)
 
         # Set focus on the URL LineEdit
         self.ui.UrlLineEdit.setFocus()
+
+        # Setting tab focus on first stacked widget
+        self.ui.UrlLineEdit.setFocus()
+
+        self.setTabOrder(self.ui.UrlLineEdit, self.ui.UsernameLineEdit)
+        self.setTabOrder(self.ui.UsernameLineEdit, self.ui.tokenLineEdit)
+        self.setTabOrder(self.ui.tokenLineEdit, self.ui.ActionComboBox)
+        self.setTabOrder(self.ui.ActionComboBox, self.ui.MethodComboBox)
+        self.setTabOrder(self.ui.MethodComboBox, self.ui.VmNameLineEdit)
+        self.setTabOrder(self.ui.VmNameLineEdit, self.ui.HostnameOrIpLineEdit)
+        self.setTabOrder(self.ui.HostnameOrIpLineEdit, self.ui.LabelsLineEdit)
+        self.setTabOrder(self.ui.LabelsLineEdit, self.ui.ExecutorsLineEdit)
+        self.setTabOrder(self.ui.ExecutorsLineEdit, self.ui.JenkinsCredsIdLineEdit)
+        self.setTabOrder(self.ui.JenkinsCredsIdLineEdit, self.ui.PortLlineEdit)
+        self.setTabOrder(self.ui.PortLlineEdit, self.ui.DescriptionLineEdit)
+        self.setTabOrder(self.ui.DescriptionLineEdit, self.ui.RemoteFsLineEdit)
+        self.setTabOrder(self.ui.RemoteFsLineEdit, self.ui.RunPushButton)
+        self.setTabOrder(self.ui.RunPushButton, self.ui.closePushButton)
+        self.setTabOrder(self.ui.closePushButton, self.ui.UrlLineEdit)
+
 
     def runAction(self):
         print(f"Running command '{self.ui.ActionComboBox.currentText()}'")
@@ -324,8 +344,8 @@ class nodesDialog(QDialog):
                 self.setTabOrder(self.ui.PortLlineEdit, self.ui.DescriptionLineEdit)
                 self.setTabOrder(self.ui.DescriptionLineEdit, self.ui.RemoteFsLineEdit)
                 self.setTabOrder(self.ui.RemoteFsLineEdit, self.ui.RunPushButton)
-                self.setTabOrder(self.ui.RunPushButton, self.ui.QuitPushButton)
-                self.setTabOrder(self.ui.QuitPushButton, self.ui.UrlLineEdit)
+                self.setTabOrder(self.ui.RunPushButton, self.ui.closePushButton)
+                self.setTabOrder(self.ui.closePushButton, self.ui.UrlLineEdit)
 
             if self.ui.MethodComboBox.currentText() == "JNLP":
                 self.setTabOrder(self.ui.UrlLineEdit, self.ui.UsernameLineEdit)
@@ -340,8 +360,8 @@ class nodesDialog(QDialog):
                 self.setTabOrder(self.ui.JVMOptionsLineEdit, self.ui.DescriptionLineEdit_2)
                 self.setTabOrder(self.ui.DescriptionLineEdit_2, self.ui.RemoteFsLineEdit_2)
                 self.setTabOrder(self.ui.RemoteFsLineEdit_2, self.ui.RunPushButton)
-                self.setTabOrder(self.ui.RunPushButton, self.ui.QuitPushButton)
-                self.setTabOrder(self.ui.QuitPushButton, self.ui.UrlLineEdit)
+                self.setTabOrder(self.ui.RunPushButton, self.ui.closePushButton)
+                self.setTabOrder(self.ui.closePushButton, self.ui.UrlLineEdit)
 
         elif selected_text == "Update":
            # Set focus on the URL LineEdit
@@ -366,8 +386,8 @@ class nodesDialog(QDialog):
             self.setTabOrder(self.ui.PortLlineEdit, self.ui.DescriptionLineEdit)
             self.setTabOrder(self.ui.DescriptionLineEdit, self.ui.RemoteFsLineEdit)
             self.setTabOrder(self.ui.RemoteFsLineEdit, self.ui.RunPushButton)
-            self.setTabOrder(self.ui.RunPushButton, self.ui.QuitPushButton)
-            self.setTabOrder(self.ui.QuitPushButton, self.ui.UrlLineEdit)
+            self.setTabOrder(self.ui.RunPushButton, self.ui.closePushButton)
+            self.setTabOrder(self.ui.closePushButton, self.ui.UrlLineEdit)
 
         elif selected_text == "Get Nodes":
            # Set focus on the URL LineEdit
@@ -392,8 +412,8 @@ class nodesDialog(QDialog):
             self.setTabOrder(self.ui.JVMOptionsLineEdit, self.ui.DescriptionLineEdit_2)
             self.setTabOrder(self.ui.DescriptionLineEdit_2, self.ui.RemoteFsLineEdit_2)
             self.setTabOrder(self.ui.RemoteFsLineEdit_2, self.ui.RunPushButton)
-            self.setTabOrder(self.ui.RunPushButton, self.ui.QuitPushButton)
-            self.setTabOrder(self.ui.QuitPushButton, self.ui.UrlLineEdit)
+            self.setTabOrder(self.ui.RunPushButton, self.ui.closePushButton)
+            self.setTabOrder(self.ui.closePushButton, self.ui.UrlLineEdit)
 
         elif selected_text.strip() == "Get Node Info":
            # Set focus on the URL LineEdit
@@ -412,8 +432,8 @@ class nodesDialog(QDialog):
             self.setTabOrder(self.ui.ActionComboBox, self.ui.MethodComboBox)
             self.setTabOrder(self.ui.MethodComboBox, self.ui.VmNameLineEdit_3)
             self.setTabOrder(self.ui.VmNameLineEdit_3, self.ui.RunPushButton)
-            self.setTabOrder(self.ui.RunPushButton, self.ui.QuitPushButton)
-            self.setTabOrder(self.ui.QuitPushButton, self.ui.UrlLineEdit)
+            self.setTabOrder(self.ui.RunPushButton, self.ui.closePushButton)
+            self.setTabOrder(self.ui.closePushButton, self.ui.UrlLineEdit)
 
         elif selected_text.strip() == "Get Node Config":
            # Set focus on the URL LineEdit
@@ -432,8 +452,8 @@ class nodesDialog(QDialog):
             self.setTabOrder(self.ui.ActionComboBox, self.ui.MethodComboBox)
             self.setTabOrder(self.ui.MethodComboBox, self.ui.VmNameLineEdit_3)
             self.setTabOrder(self.ui.VmNameLineEdit_3, self.ui.RunPushButton)
-            self.setTabOrder(self.ui.RunPushButton, self.ui.QuitPushButton)
-            self.setTabOrder(self.ui.QuitPushButton, self.ui.UrlLineEdit)
+            self.setTabOrder(self.ui.RunPushButton, self.ui.closePushButton)
+            self.setTabOrder(self.ui.closePushButton, self.ui.UrlLineEdit)
 
         elif selected_text.strip() == "Node Exists":
            # Set focus on the URL LineEdit
@@ -452,8 +472,8 @@ class nodesDialog(QDialog):
             self.setTabOrder(self.ui.ActionComboBox, self.ui.MethodComboBox)
             self.setTabOrder(self.ui.MethodComboBox, self.ui.VmNameLineEdit_3)
             self.setTabOrder(self.ui.VmNameLineEdit_3, self.ui.RunPushButton)
-            self.setTabOrder(self.ui.RunPushButton, self.ui.QuitPushButton)
-            self.setTabOrder(self.ui.QuitPushButton, self.ui.UrlLineEdit)
+            self.setTabOrder(self.ui.RunPushButton, self.ui.closePushButton)
+            self.setTabOrder(self.ui.closePushButton, self.ui.UrlLineEdit)
 
         elif selected_text.strip() == "New Item":
            # Set focus on the URL LineEdit
@@ -472,8 +492,8 @@ class nodesDialog(QDialog):
             self.setTabOrder(self.ui.ActionComboBox, self.ui.MethodComboBox)
             self.setTabOrder(self.ui.MethodComboBox, self.ui.VmNameLineEdit_3)
             self.setTabOrder(self.ui.VmNameLineEdit_3, self.ui.RunPushButton)
-            self.setTabOrder(self.ui.RunPushButton, self.ui.QuitPushButton)
-            self.setTabOrder(self.ui.QuitPushButton, self.ui.UrlLineEdit)
+            self.setTabOrder(self.ui.RunPushButton, self.ui.closePushButton)
+            self.setTabOrder(self.ui.closePushButton, self.ui.UrlLineEdit)
 
         elif selected_text.strip() == "Delete":
            # Set focus on the URL LineEdit
@@ -491,8 +511,8 @@ class nodesDialog(QDialog):
             self.setTabOrder(self.ui.ActionComboBox, self.ui.MethodComboBox)
             self.setTabOrder(self.ui.MethodComboBox, self.ui.VmNameLineEdit_3)
             self.setTabOrder(self.ui.VmNameLineEdit_3, self.ui.RunPushButton)
-            self.setTabOrder(self.ui.RunPushButton, self.ui.QuitPushButton)
-            self.setTabOrder(self.ui.QuitPushButton, self.ui.UrlLineEdit)
+            self.setTabOrder(self.ui.RunPushButton, self.ui.closePushButton)
+            self.setTabOrder(self.ui.closePushButton, self.ui.UrlLineEdit)
 
         elif selected_text.strip() == "Disable":
            # Set focus on the URL LineEdit
@@ -511,8 +531,8 @@ class nodesDialog(QDialog):
             self.setTabOrder(self.ui.ActionComboBox, self.ui.MethodComboBox)
             self.setTabOrder(self.ui.MethodComboBox, self.ui.VmNameLineEdit_3)
             self.setTabOrder(self.ui.VmNameLineEdit_3, self.ui.RunPushButton)
-            self.setTabOrder(self.ui.RunPushButton, self.ui.QuitPushButton)
-            self.setTabOrder(self.ui.QuitPushButton, self.ui.UrlLineEdit)
+            self.setTabOrder(self.ui.RunPushButton, self.ui.closePushButton)
+            self.setTabOrder(self.ui.closePushButton, self.ui.UrlLineEdit)
 
         elif selected_text.strip() == "Enable":
            # Set focus on the URL LineEdit
@@ -531,8 +551,8 @@ class nodesDialog(QDialog):
             self.setTabOrder(self.ui.ActionComboBox, self.ui.MethodComboBox)
             self.setTabOrder(self.ui.MethodComboBox, self.ui.VmNameLineEdit_3)
             self.setTabOrder(self.ui.VmNameLineEdit_3, self.ui.RunPushButton)
-            self.setTabOrder(self.ui.RunPushButton, self.ui.QuitPushButton)
-            self.setTabOrder(self.ui.QuitPushButton, self.ui.UrlLineEdit)
+            self.setTabOrder(self.ui.RunPushButton, self.ui.closePushButton)
+            self.setTabOrder(self.ui.closePushButton, self.ui.UrlLineEdit)
 
         else:
             print("Not a valid comboBox value")
@@ -562,8 +582,8 @@ class nodesDialog(QDialog):
             self.setTabOrder(self.ui.PortLlineEdit, self.ui.DescriptionLineEdit)
             self.setTabOrder(self.ui.DescriptionLineEdit, self.ui.RemoteFsLineEdit)
             self.setTabOrder(self.ui.RemoteFsLineEdit, self.ui.RunPushButton)
-            self.setTabOrder(self.ui.RunPushButton, self.ui.QuitPushButton)
-            self.setTabOrder(self.ui.QuitPushButton, self.ui.UrlLineEdit)
+            self.setTabOrder(self.ui.RunPushButton, self.ui.closePushButton)
+            self.setTabOrder(self.ui.closePushButton, self.ui.UrlLineEdit)
 
         elif re.match("JNLP", selected_text):
            # Set focus on the URL LineEdit
@@ -583,8 +603,8 @@ class nodesDialog(QDialog):
             self.setTabOrder(self.ui.JVMOptionsLineEdit, self.ui.DescriptionLineEdit_2)
             self.setTabOrder(self.ui.DescriptionLineEdit_2, self.ui.RemoteFsLineEdit_2)
             self.setTabOrder(self.ui.RemoteFsLineEdit_2, self.ui.RunPushButton)
-            self.setTabOrder(self.ui.RunPushButton, self.ui.QuitPushButton)
-            self.setTabOrder(self.ui.QuitPushButton, self.ui.UrlLineEdit)
+            self.setTabOrder(self.ui.RunPushButton, self.ui.closePushButton)
+            self.setTabOrder(self.ui.closePushButton, self.ui.UrlLineEdit)
 
 
         else:

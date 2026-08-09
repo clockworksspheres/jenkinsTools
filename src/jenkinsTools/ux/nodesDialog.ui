@@ -79,9 +79,9 @@
     <widget class="QLineEdit" name="tokenLineEdit"/>
    </item>
    <item row="6" column="3">
-    <widget class="QPushButton" name="QuitPushButton">
+    <widget class="QPushButton" name="closePushButton">
      <property name="text">
-      <string>quit</string>
+      <string>close</string>
      </property>
     </widget>
    </item>
