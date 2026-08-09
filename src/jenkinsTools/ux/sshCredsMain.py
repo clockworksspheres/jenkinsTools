@@ -29,6 +29,10 @@ class SshCredsDialog(QDialog):
         buttonBox = self.ui.buttonBox.button(QDialogButtonBox.Ok)
         buttonBox.setText("Run")
 
+        # rename the cancel button to close
+        buttonbox = self.ui.buttonBox.button(QDialogButtonBox.Cancel)
+        buttonbox.setText("Close")
+
         # Connect buttonbox signals to slots
         self.ui.buttonBox.accepted.connect(self.onRunButtonClicked)
         self.ui.buttonBox.rejected.connect(self.reject)
