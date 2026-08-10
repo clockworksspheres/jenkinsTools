@@ -9,7 +9,7 @@ from pathlib import Path
 parent_dir = Path(__file__).parent.parent
 sys.path.append(str(parent_dir))
 
-from PySide6.QtWidgets import QApplication, QDialog
+from PySide6.QtWidgets import QApplication, QDialog, QFileDialog
 from PySide6.QtCore import Qt
 
 # Important:
@@ -38,6 +38,7 @@ class pipelinesDialog(QDialog):
         # Button actions
         self.ui.closePushButton.clicked.connect(self.close)
         self.ui.RunPushButton.clicked.connect(self.runAction)
+        self.ui.xmlFilePushButton.clicked.connect(self.getXmlFileLocation)
 
         # Hiding functionality that doesn't yet do the right thing
         self.ui.MethodLabel.hide()
@@ -273,7 +274,7 @@ class pipelinesDialog(QDialog):
             self.ui.stackedWidget.setCurrentIndex(3)
             self.ui.MethodLabel.hide()
             self.ui.MethodComboBox.hide()
-            self.ui.xmlFileLabel.hide()
+            self.ui.xmlFilePushButton.hide()
             self.ui.xmlFileLineEdit.hide()
 
             # Setting tab focus on first stacked widget
@@ -293,7 +294,7 @@ class pipelinesDialog(QDialog):
             self.ui.stackedWidget.setCurrentIndex(3)
             self.ui.MethodLabel.hide()
             self.ui.MethodComboBox.hide()
-            self.ui.xmlFileLabel.hide()
+            self.ui.xmlFilePushButton.hide()
             self.ui.xmlFileLineEdit.hide()
 
             # Setting tab focus on first stacked widget
@@ -312,7 +313,7 @@ class pipelinesDialog(QDialog):
             self.ui.stackedWidget.setCurrentIndex(3)
             self.ui.MethodLabel.hide()
             self.ui.MethodComboBox.hide()
-            self.ui.xmlFileLabel.show()
+            self.ui.xmlFilePushButton.show()
             self.ui.xmlFileLineEdit.show()
 
             # Setting tab focus on first stacked widget
@@ -342,6 +343,17 @@ class pipelinesDialog(QDialog):
         selected_text = self.ui.followComboBox.currentText()
 
         print(f"selected text: '{selected_text}'")
+
+    def getXmlFileLocation(self):
+        filePath, _ = QFileDialog.getOpenFileName(
+            self,
+            "Open File",
+            "",
+            "All Files (*);;Text Files (*.txt)"
+        )
+
+        if filePath:
+            self.ui.xmlFileLineEdit.setText(filePath)
 
     def closeEvent(self, event):
         '''

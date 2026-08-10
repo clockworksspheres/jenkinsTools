@@ -263,30 +263,30 @@ class Ui_Dialog(object):
         self.page_3.setObjectName(u"page_3")
         self.gridLayout_5 = QGridLayout(self.page_3)
         self.gridLayout_5.setObjectName(u"gridLayout_5")
-        self.jobNameLabel_3 = QLabel(self.page_3)
-        self.jobNameLabel_3.setObjectName(u"jobNameLabel_3")
+        self.GetNodeTextEdit = QTextEdit(self.page_3)
+        self.GetNodeTextEdit.setObjectName(u"GetNodeTextEdit")
 
-        self.gridLayout_5.addWidget(self.jobNameLabel_3, 0, 0, 1, 1)
+        self.gridLayout_5.addWidget(self.GetNodeTextEdit, 1, 0, 1, 4)
 
         self.jobNameLineEdit_3 = QLineEdit(self.page_3)
         self.jobNameLineEdit_3.setObjectName(u"jobNameLineEdit_3")
 
         self.gridLayout_5.addWidget(self.jobNameLineEdit_3, 0, 1, 1, 1)
 
-        self.xmlFileLabel = QLabel(self.page_3)
-        self.xmlFileLabel.setObjectName(u"xmlFileLabel")
-
-        self.gridLayout_5.addWidget(self.xmlFileLabel, 0, 2, 1, 1)
-
         self.xmlFileLineEdit = QLineEdit(self.page_3)
         self.xmlFileLineEdit.setObjectName(u"xmlFileLineEdit")
 
         self.gridLayout_5.addWidget(self.xmlFileLineEdit, 0, 3, 1, 1)
 
-        self.GetNodeTextEdit = QTextEdit(self.page_3)
-        self.GetNodeTextEdit.setObjectName(u"GetNodeTextEdit")
+        self.jobNameLabel_3 = QLabel(self.page_3)
+        self.jobNameLabel_3.setObjectName(u"jobNameLabel_3")
 
-        self.gridLayout_5.addWidget(self.GetNodeTextEdit, 1, 0, 1, 4)
+        self.gridLayout_5.addWidget(self.jobNameLabel_3, 0, 0, 1, 1)
+
+        self.xmlFilePushButton = QPushButton(self.page_3)
+        self.xmlFilePushButton.setObjectName(u"xmlFilePushButton")
+
+        self.gridLayout_5.addWidget(self.xmlFilePushButton, 0, 2, 1, 1)
 
         self.stackedWidget.addWidget(self.page_3)
 
@@ -345,7 +345,7 @@ class Ui_Dialog(object):
         self.tokenBuildLabel_2.setText(QCoreApplication.translate("Dialog", u"Token Build", None))
         self.parametersLabel_2.setText(QCoreApplication.translate("Dialog", u"Parameters", None))
         self.jobNameLabel_3.setText(QCoreApplication.translate("Dialog", u"Job Name", None))
-        self.xmlFileLabel.setText(QCoreApplication.translate("Dialog", u"xml file to upload", None))
+        self.xmlFilePushButton.setText(QCoreApplication.translate("Dialog", u"xml file to upload", None))
         self.closePushButton.setText(QCoreApplication.translate("Dialog", u"close", None))
         self.RunPushButton.setText(QCoreApplication.translate("Dialog", u"run command", None))
     # retranslateUi
