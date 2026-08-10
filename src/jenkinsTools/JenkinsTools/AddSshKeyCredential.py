@@ -4,6 +4,7 @@ import xml.etree.ElementTree as ET
 import requests
 import os
 import sys
+import traceback
 
 from pathlib import Path
 
@@ -179,7 +180,7 @@ Notes:
                 )
             except Exception as e:
                 parser.print_help()
-                print(f"\nERROR: {e}", file=sys.stderr)
+                print(traceback.format_exc())
                 sys.exit(1)
             else:
                 print(f"Credential '{args.credential_id}' added to Jenkins successfully")
