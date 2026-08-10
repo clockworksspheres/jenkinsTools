@@ -17,7 +17,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QAbstractButton, QApplication, QComboBox, QDialog,
     QDialogButtonBox, QGridLayout, QLabel, QLineEdit,
-    QSizePolicy, QWidget)
+    QPushButton, QSizePolicy, QWidget)
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
@@ -26,11 +26,6 @@ class Ui_Dialog(object):
         Dialog.resize(460, 363)
         self.gridLayout = QGridLayout(Dialog)
         self.gridLayout.setObjectName(u"gridLayout")
-        self.privateKeyLabel = QLabel(Dialog)
-        self.privateKeyLabel.setObjectName(u"privateKeyLabel")
-
-        self.gridLayout.addWidget(self.privateKeyLabel, 7, 0, 1, 1)
-
         self.UsernameLabel = QLabel(Dialog)
         self.UsernameLabel.setObjectName(u"UsernameLabel")
 
@@ -127,6 +122,11 @@ class Ui_Dialog(object):
 
         self.gridLayout.addWidget(self.tokenLineEdit, 2, 1, 1, 1)
 
+        self.privateKeyPushButton = QPushButton(Dialog)
+        self.privateKeyPushButton.setObjectName(u"privateKeyPushButton")
+
+        self.gridLayout.addWidget(self.privateKeyPushButton, 7, 0, 1, 1)
+
 
         self.retranslateUi(Dialog)
 
@@ -135,7 +135,6 @@ class Ui_Dialog(object):
 
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Dialog", None))
-        self.privateKeyLabel.setText(QCoreApplication.translate("Dialog", u"private key", None))
         self.UsernameLabel.setText(QCoreApplication.translate("Dialog", u"Jenkins username", None))
         self.comboBox.setItemText(0, QCoreApplication.translate("Dialog", u"Add SSH key as credential", None))
         self.comboBox.setItemText(1, QCoreApplication.translate("Dialog", u"Add and encrypted SSH key as credential", None))
@@ -147,5 +146,6 @@ class Ui_Dialog(object):
         self.keyPassphraseLabel.setText(QCoreApplication.translate("Dialog", u"key passphrase", None))
         self.UrlLabel.setText(QCoreApplication.translate("Dialog", u"URL", None))
         self.credsIdLabel.setText(QCoreApplication.translate("Dialog", u"credentials ID", None))
+        self.privateKeyPushButton.setText(QCoreApplication.translate("Dialog", u"Private Key File", None))
     # retranslateUi
 

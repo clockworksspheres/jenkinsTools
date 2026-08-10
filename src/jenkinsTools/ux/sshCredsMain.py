@@ -7,7 +7,7 @@ from pathlib import Path
 parent_dir = Path(__file__).parent.parent
 sys.path.append(str(parent_dir))
 
-from PySide6.QtWidgets import QApplication, QDialog, QDialogButtonBox
+from PySide6.QtWidgets import QApplication, QDialog, QDialogButtonBox, QFileDialog
 from PySide6.QtCore import Qt
 
 # Important:
@@ -40,6 +40,9 @@ class SshCredsDialog(QDialog):
         # connect comboBox actions to slots
         self.ui.comboBox.setCurrentIndex(0)
         self.ui.comboBox.currentIndexChanged.connect(self.comboBoxActivate)
+
+        # Connect Private Key File button 'on clicked' to slot
+        self.ui.privateKeyPushButton.clicked.connect(self.getPKFileLocation)
 
         # hide fields based on default comboBox selection
         self.ui.keyPassphraseLabel.hide()
@@ -138,6 +141,17 @@ class SshCredsDialog(QDialog):
 
         else:
             raise ValueError("ComboBox selection out of bounds...")
+
+    def getPKFileLocation(self):
+        filePath, _ = QFileDialog.getOpenFileName(
+            self,
+            "Open File",
+            "",
+            "All Files (*);;Text Files (*.txt)"
+        )
+
+        if filePath:
+            self.ui.privateKeyLineEdit.setText(filePath)
 
     def closeEvent(self, event):
         '''

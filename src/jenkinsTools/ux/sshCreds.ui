@@ -14,13 +14,6 @@
    <string>Dialog</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="7" column="0">
-    <widget class="QLabel" name="privateKeyLabel">
-     <property name="text">
-      <string>private key</string>
-     </property>
-    </widget>
-   </item>
    <item row="1" column="0">
     <widget class="QLabel" name="UsernameLabel">
      <property name="text">
@@ -130,6 +123,13 @@
     <widget class="QLineEdit" name="tokenLineEdit">
      <property name="echoMode">
       <enum>QLineEdit::EchoMode::PasswordEchoOnEdit</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="0">
+    <widget class="QPushButton" name="privateKeyPushButton">
+     <property name="text">
+      <string>Private Key File</string>
      </property>
     </widget>
    </item>
