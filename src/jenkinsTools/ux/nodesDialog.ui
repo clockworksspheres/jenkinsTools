@@ -68,11 +68,6 @@
        <string>Get Node Config</string>
       </property>
      </item>
-     <item>
-      <property name="text">
-       <string>New Item</string>
-      </property>
-     </item>
     </widget>
    </item>
    <item row="3" column="1">
@@ -140,7 +135,7 @@
    <item row="5" column="0" colspan="5">
     <widget class="QStackedWidget" name="stackedWidget">
      <property name="currentIndex">
-      <number>2</number>
+      <number>3</number>
      </property>
      <widget class="QWidget" name="page">
       <layout class="QGridLayout" name="gridLayout_2">

@@ -17,6 +17,7 @@ from PySide6.QtCore import Qt
 #     pyside6-uic form.ui -o ui_form.py
 from ux.ui_nodesDialog import Ui_Dialog
 
+
 class nodesDialog(QDialog):
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -62,7 +63,6 @@ class nodesDialog(QDialog):
         self.setTabOrder(self.ui.RemoteFsLineEdit, self.ui.RunPushButton)
         self.setTabOrder(self.ui.RunPushButton, self.ui.closePushButton)
         self.setTabOrder(self.ui.closePushButton, self.ui.UrlLineEdit)
-
 
     def runAction(self):
         print(f"Running command '{self.ui.ActionComboBox.currentText()}'")
@@ -236,23 +236,6 @@ class nodesDialog(QDialog):
             from JenkinsTools.NodeStatus import NodeStatus
             ns = NodeStatus(args)
             print(ns.node_exists())
-
-        elif selected_text.strip() == "New Item":
-            self.ui.stackedWidget.setCurrentIndex(3)
-
-            action['name'] = self.ui.VmNameLineEdit_3.text()
-
-            if action["name"]:
-                print ("action acquired")
-            else:
-                raise ValueError("name field required for this action.")
-            
-            print(str(action))
-
-            args = Namespace(**action)
-            print(f"Adding {args.url} for node <{args.name}>...")
-
-            raise Exception("Not yet implemented in the GUI...")
 
         elif selected_text.strip() == "Delete":
             self.ui.stackedWidget.setCurrentIndex(3)
@@ -454,25 +437,6 @@ class nodesDialog(QDialog):
             self.setTabOrder(self.ui.closePushButton, self.ui.UrlLineEdit)
 
         elif selected_text.strip() == "Node Exists":
-           # Set focus on the URL LineEdit
-            self.ui.UrlLineEdit.setFocus()
-
-            self.ui.stackedWidget.setCurrentIndex(3)
-            self.ui.DescriptionLineEdit.hide()
-
-            self.ui.MethodLabel.hide()
-            self.ui.MethodComboBox.hide()
-
-            self.setTabOrder(self.ui.UrlLineEdit, self.ui.UsernameLineEdit)
-            self.setTabOrder(self.ui.UsernameLineEdit, self.ui.tokenLineEdit)
-            self.setTabOrder(self.ui.tokenLineEdit, self.ui.ActionComboBox)
-            self.setTabOrder(self.ui.ActionComboBox, self.ui.MethodComboBox)
-            self.setTabOrder(self.ui.MethodComboBox, self.ui.VmNameLineEdit_3)
-            self.setTabOrder(self.ui.VmNameLineEdit_3, self.ui.RunPushButton)
-            self.setTabOrder(self.ui.RunPushButton, self.ui.closePushButton)
-            self.setTabOrder(self.ui.closePushButton, self.ui.UrlLineEdit)
-
-        elif selected_text.strip() == "New Item":
            # Set focus on the URL LineEdit
             self.ui.UrlLineEdit.setFocus()
 

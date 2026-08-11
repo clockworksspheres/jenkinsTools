@@ -41,7 +41,6 @@ class Ui_Dialog(object):
         self.ActionComboBox.addItem("")
         self.ActionComboBox.addItem("")
         self.ActionComboBox.addItem("")
-        self.ActionComboBox.addItem("")
         self.ActionComboBox.setObjectName(u"ActionComboBox")
 
         self.gridLayout.addWidget(self.ActionComboBox, 4, 1, 1, 1)
@@ -339,7 +338,7 @@ class Ui_Dialog(object):
 
         self.retranslateUi(Dialog)
 
-        self.stackedWidget.setCurrentIndex(2)
+        self.stackedWidget.setCurrentIndex(3)
 
 
         QMetaObject.connectSlotsByName(Dialog)
@@ -357,7 +356,6 @@ class Ui_Dialog(object):
         self.ActionComboBox.setItemText(6, QCoreApplication.translate("Dialog", u"Get Nodes", None))
         self.ActionComboBox.setItemText(7, QCoreApplication.translate("Dialog", u"Get Node Info", None))
         self.ActionComboBox.setItemText(8, QCoreApplication.translate("Dialog", u"Get Node Config", None))
-        self.ActionComboBox.setItemText(9, QCoreApplication.translate("Dialog", u"New Item", None))
 
         self.closePushButton.setText(QCoreApplication.translate("Dialog", u"close", None))
         self.UrlLabel.setText(QCoreApplication.translate("Dialog", u"URL", None))
