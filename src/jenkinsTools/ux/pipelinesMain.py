@@ -39,13 +39,14 @@ class pipelinesDialog(QDialog):
         self.ui.closePushButton.clicked.connect(self.close)
         self.ui.RunPushButton.clicked.connect(self.runAction)
         self.ui.xmlFilePushButton.clicked.connect(self.getXmlFileLocation)
+        self.ui.scriptPathPushButton.clicked.connect(self.getScriptPath)
 
         # Hiding functionality that doesn't yet do the right thing
         self.ui.MethodLabel.hide()
         self.ui.MethodComboBox.hide()
-        self.ui.scriptLabel.hide()
+        self.ui.scriptPathPushButton.hide()
         self.ui.scriptLineEdit.hide()
-        self.ui.scriptPathLabel.hide()
+        self.ui.scriptPathPushButton.hide()
         self.ui.scriptPathLineEdit.hide()
 
         # Setting tab focus on first stacked widget
@@ -225,7 +226,7 @@ class pipelinesDialog(QDialog):
             self.ui.stackedWidget.setCurrentIndex(0)
             self.ui.MethodLabel.hide()
             self.ui.MethodComboBox.hide()
-            self.ui.scriptLabel.hide()
+            self.ui.scriptPathPushButton.hide()
             self.ui.scriptLineEdit.hide()
             self.ui.scriptPathLabel.hide()
             self.ui.scriptPathLineEdit.hide()
@@ -279,7 +280,7 @@ class pipelinesDialog(QDialog):
 
             # Setting tab focus on first stacked widget
             self.ui.UrlLineEdit.setFocus()
-            self.ui.GetNodeTextEdit.setFocusPolicy(Qt.NoFocus)
+            #self.ui.GetNodeTextEdit.setFocusPolicy(Qt.NoFocus)
 
             self.setTabOrder(self.ui.UrlLineEdit, self.ui.UsernameLineEdit)
             self.setTabOrder(self.ui.UsernameLineEdit, self.ui.tokenLineEdit)
@@ -299,7 +300,7 @@ class pipelinesDialog(QDialog):
 
             # Setting tab focus on first stacked widget
             self.ui.UrlLineEdit.setFocus()
-            self.ui.GetNodeTextEdit.setFocusPolicy(Qt.NoFocus)
+            #self.ui.GetNodeTextEdit.setFocusPolicy(Qt.NoFocus)
 
             self.setTabOrder(self.ui.UrlLineEdit, self.ui.UsernameLineEdit)
             self.setTabOrder(self.ui.UsernameLineEdit, self.ui.tokenLineEdit)
@@ -318,7 +319,7 @@ class pipelinesDialog(QDialog):
 
             # Setting tab focus on first stacked widget
             self.ui.UrlLineEdit.setFocus()
-            self.ui.GetNodeTextEdit.setFocusPolicy(Qt.NoFocus)
+            #self.ui.GetNodeTextEdit.setFocusPolicy(Qt.NoFocus)
 
             self.setTabOrder(self.ui.UrlLineEdit, self.ui.UsernameLineEdit)
             self.setTabOrder(self.ui.UsernameLineEdit, self.ui.tokenLineEdit)
@@ -354,6 +355,17 @@ class pipelinesDialog(QDialog):
 
         if filePath:
             self.ui.xmlFileLineEdit.setText(filePath)
+
+    def getScriptPath(self):
+        filePath, _ = QFileDialog.getOpenFileName(
+            self,
+            "Open File",
+            "",
+            "All Files (*);;Text Files (*.txt)"
+        )
+
+        if filePath:
+            self.ui.scriptPathLineEdit.setText(filePath)
 
     def closeEvent(self, event):
         '''

@@ -17,7 +17,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QComboBox, QDialog, QGridLayout,
     QLabel, QLineEdit, QPushButton, QSizePolicy,
-    QSpacerItem, QStackedWidget, QTextEdit, QWidget)
+    QSpacerItem, QStackedWidget, QTextBrowser, QWidget)
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
@@ -291,30 +291,33 @@ class Ui_Dialog(object):
         self.page_3.setObjectName(u"page_3")
         self.gridLayout_4 = QGridLayout(self.page_3)
         self.gridLayout_4.setObjectName(u"gridLayout_4")
-        self.GetNodesTextEdit = QTextEdit(self.page_3)
-        self.GetNodesTextEdit.setObjectName(u"GetNodesTextEdit")
+        self.GetNodesTextBrowser = QTextBrowser(self.page_3)
+        self.GetNodesTextBrowser.setObjectName(u"GetNodesTextBrowser")
 
-        self.gridLayout_4.addWidget(self.GetNodesTextEdit, 0, 0, 1, 1)
+        self.gridLayout_4.addWidget(self.GetNodesTextBrowser, 0, 0, 1, 1)
 
         self.stackedWidget.addWidget(self.page_3)
         self.page_4 = QWidget()
         self.page_4.setObjectName(u"page_4")
         self.gridLayout_5 = QGridLayout(self.page_4)
         self.gridLayout_5.setObjectName(u"gridLayout_5")
-        self.VmNamelabel_3 = QLabel(self.page_4)
-        self.VmNamelabel_3.setObjectName(u"VmNamelabel_3")
-
-        self.gridLayout_5.addWidget(self.VmNamelabel_3, 0, 0, 1, 1)
-
         self.VmNameLineEdit_3 = QLineEdit(self.page_4)
         self.VmNameLineEdit_3.setObjectName(u"VmNameLineEdit_3")
 
         self.gridLayout_5.addWidget(self.VmNameLineEdit_3, 0, 1, 1, 1)
 
-        self.GetNodeTextEdit = QTextEdit(self.page_4)
-        self.GetNodeTextEdit.setObjectName(u"GetNodeTextEdit")
+        self.VmNamelabel_3 = QLabel(self.page_4)
+        self.VmNamelabel_3.setObjectName(u"VmNamelabel_3")
 
-        self.gridLayout_5.addWidget(self.GetNodeTextEdit, 1, 0, 1, 2)
+        self.gridLayout_5.addWidget(self.VmNamelabel_3, 0, 0, 1, 1)
+
+        self.verticalSpacer_9 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.gridLayout_5.addItem(self.verticalSpacer_9, 1, 0, 1, 1)
+
+        self.verticalSpacer_10 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.gridLayout_5.addItem(self.verticalSpacer_10, 1, 1, 1, 1)
 
         self.stackedWidget.addWidget(self.page_4)
 
@@ -336,7 +339,7 @@ class Ui_Dialog(object):
 
         self.retranslateUi(Dialog)
 
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(2)
 
 
         QMetaObject.connectSlotsByName(Dialog)

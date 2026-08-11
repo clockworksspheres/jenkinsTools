@@ -17,7 +17,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QComboBox, QDialog, QGridLayout,
     QLabel, QLineEdit, QPushButton, QSizePolicy,
-    QSpacerItem, QStackedWidget, QTextEdit, QWidget)
+    QSpacerItem, QStackedWidget, QTextBrowser, QWidget)
 
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
@@ -97,101 +97,101 @@ class Ui_Dialog(object):
         self.page.setObjectName(u"page")
         self.gridLayout_2 = QGridLayout(self.page)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
-        self.credsIdLineEdit = QLineEdit(self.page)
-        self.credsIdLineEdit.setObjectName(u"credsIdLineEdit")
+        self.scriptLabel = QLabel(self.page)
+        self.scriptLabel.setObjectName(u"scriptLabel")
 
-        self.gridLayout_2.addWidget(self.credsIdLineEdit, 0, 3, 1, 1)
+        self.gridLayout_2.addWidget(self.scriptLabel, 2, 2, 1, 1)
 
-        self.jobNameLineEdit = QLineEdit(self.page)
-        self.jobNameLineEdit.setObjectName(u"jobNameLineEdit")
+        self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
-        self.gridLayout_2.addWidget(self.jobNameLineEdit, 0, 1, 1, 1)
-
-        self.descriptionLabel = QLabel(self.page)
-        self.descriptionLabel.setObjectName(u"descriptionLabel")
-
-        self.gridLayout_2.addWidget(self.descriptionLabel, 1, 2, 1, 1)
-
-        self.branchLineEdit = QLineEdit(self.page)
-        self.branchLineEdit.setObjectName(u"branchLineEdit")
-
-        self.gridLayout_2.addWidget(self.branchLineEdit, 2, 1, 1, 1)
+        self.gridLayout_2.addItem(self.verticalSpacer_2, 4, 1, 1, 1)
 
         self.jenkinsfileLabel = QLabel(self.page)
         self.jenkinsfileLabel.setObjectName(u"jenkinsfileLabel")
 
         self.gridLayout_2.addWidget(self.jenkinsfileLabel, 3, 0, 1, 1)
 
-        self.descriptionLineEdit = QLineEdit(self.page)
-        self.descriptionLineEdit.setObjectName(u"descriptionLineEdit")
-
-        self.gridLayout_2.addWidget(self.descriptionLineEdit, 1, 3, 1, 1)
-
-        self.repoLabel = QLabel(self.page)
-        self.repoLabel.setObjectName(u"repoLabel")
-
-        self.gridLayout_2.addWidget(self.repoLabel, 1, 0, 1, 1)
-
         self.jenkinsfileLineEdit = QLineEdit(self.page)
         self.jenkinsfileLineEdit.setObjectName(u"jenkinsfileLineEdit")
 
         self.gridLayout_2.addWidget(self.jenkinsfileLineEdit, 3, 1, 1, 1)
 
-        self.scriptLabel = QLabel(self.page)
-        self.scriptLabel.setObjectName(u"scriptLabel")
+        self.descriptionLineEdit = QLineEdit(self.page)
+        self.descriptionLineEdit.setObjectName(u"descriptionLineEdit")
 
-        self.gridLayout_2.addWidget(self.scriptLabel, 2, 2, 1, 1)
+        self.gridLayout_2.addWidget(self.descriptionLineEdit, 1, 3, 1, 1)
 
-        self.credsIdLabel = QLabel(self.page)
-        self.credsIdLabel.setObjectName(u"credsIdLabel")
+        self.credsIdLineEdit = QLineEdit(self.page)
+        self.credsIdLineEdit.setObjectName(u"credsIdLineEdit")
 
-        self.gridLayout_2.addWidget(self.credsIdLabel, 0, 2, 1, 1)
-
-        self.scriptPathLabel = QLabel(self.page)
-        self.scriptPathLabel.setObjectName(u"scriptPathLabel")
-
-        self.gridLayout_2.addWidget(self.scriptPathLabel, 3, 2, 1, 1)
-
-        self.jobNamelabel = QLabel(self.page)
-        self.jobNamelabel.setObjectName(u"jobNamelabel")
-
-        self.gridLayout_2.addWidget(self.jobNamelabel, 0, 0, 1, 1)
-
-        self.branchLabel = QLabel(self.page)
-        self.branchLabel.setObjectName(u"branchLabel")
-
-        self.gridLayout_2.addWidget(self.branchLabel, 2, 0, 1, 1)
+        self.gridLayout_2.addWidget(self.credsIdLineEdit, 0, 3, 1, 1)
 
         self.repoLineEdit = QLineEdit(self.page)
         self.repoLineEdit.setObjectName(u"repoLineEdit")
 
         self.gridLayout_2.addWidget(self.repoLineEdit, 1, 1, 1, 1)
 
-        self.scriptLineEdit = QLineEdit(self.page)
-        self.scriptLineEdit.setObjectName(u"scriptLineEdit")
+        self.jobNameLineEdit = QLineEdit(self.page)
+        self.jobNameLineEdit.setObjectName(u"jobNameLineEdit")
 
-        self.gridLayout_2.addWidget(self.scriptLineEdit, 2, 3, 1, 1)
+        self.gridLayout_2.addWidget(self.jobNameLineEdit, 0, 1, 1, 1)
+
+        self.repoLabel = QLabel(self.page)
+        self.repoLabel.setObjectName(u"repoLabel")
+
+        self.gridLayout_2.addWidget(self.repoLabel, 1, 0, 1, 1)
+
+        self.descriptionLabel = QLabel(self.page)
+        self.descriptionLabel.setObjectName(u"descriptionLabel")
+
+        self.gridLayout_2.addWidget(self.descriptionLabel, 1, 2, 1, 1)
 
         self.scriptPathLineEdit = QLineEdit(self.page)
         self.scriptPathLineEdit.setObjectName(u"scriptPathLineEdit")
 
         self.gridLayout_2.addWidget(self.scriptPathLineEdit, 3, 3, 1, 1)
 
+        self.credsIdLabel = QLabel(self.page)
+        self.credsIdLabel.setObjectName(u"credsIdLabel")
+
+        self.gridLayout_2.addWidget(self.credsIdLabel, 0, 2, 1, 1)
+
+        self.scriptLineEdit = QLineEdit(self.page)
+        self.scriptLineEdit.setObjectName(u"scriptLineEdit")
+
+        self.gridLayout_2.addWidget(self.scriptLineEdit, 2, 3, 1, 1)
+
         self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
         self.gridLayout_2.addItem(self.verticalSpacer, 4, 0, 1, 1)
 
-        self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+        self.branchLineEdit = QLineEdit(self.page)
+        self.branchLineEdit.setObjectName(u"branchLineEdit")
 
-        self.gridLayout_2.addItem(self.verticalSpacer_2, 4, 1, 1, 1)
+        self.gridLayout_2.addWidget(self.branchLineEdit, 2, 1, 1, 1)
+
+        self.verticalSpacer_4 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.gridLayout_2.addItem(self.verticalSpacer_4, 4, 3, 1, 1)
+
+        self.branchLabel = QLabel(self.page)
+        self.branchLabel.setObjectName(u"branchLabel")
+
+        self.gridLayout_2.addWidget(self.branchLabel, 2, 0, 1, 1)
+
+        self.jobNamelabel = QLabel(self.page)
+        self.jobNamelabel.setObjectName(u"jobNamelabel")
+
+        self.gridLayout_2.addWidget(self.jobNamelabel, 0, 0, 1, 1)
 
         self.verticalSpacer_3 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
         self.gridLayout_2.addItem(self.verticalSpacer_3, 4, 2, 1, 1)
 
-        self.verticalSpacer_4 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+        self.scriptPathPushButton = QPushButton(self.page)
+        self.scriptPathPushButton.setObjectName(u"scriptPathPushButton")
 
-        self.gridLayout_2.addItem(self.verticalSpacer_4, 4, 3, 1, 1)
+        self.gridLayout_2.addWidget(self.scriptPathPushButton, 3, 2, 1, 1)
 
         self.stackedWidget.addWidget(self.page)
         self.page1 = QWidget()
@@ -253,40 +253,43 @@ class Ui_Dialog(object):
         self.page_2.setObjectName(u"page_2")
         self.gridLayout_4 = QGridLayout(self.page_2)
         self.gridLayout_4.setObjectName(u"gridLayout_4")
-        self.GetNodesTextEdit_2 = QTextEdit(self.page_2)
-        self.GetNodesTextEdit_2.setObjectName(u"GetNodesTextEdit_2")
+        self.GetNodeTextBrowser = QTextBrowser(self.page_2)
+        self.GetNodeTextBrowser.setObjectName(u"GetNodeTextBrowser")
 
-        self.gridLayout_4.addWidget(self.GetNodesTextEdit_2, 0, 0, 1, 1)
+        self.gridLayout_4.addWidget(self.GetNodeTextBrowser, 0, 0, 1, 1)
 
         self.stackedWidget.addWidget(self.page_2)
         self.page_3 = QWidget()
         self.page_3.setObjectName(u"page_3")
         self.gridLayout_5 = QGridLayout(self.page_3)
         self.gridLayout_5.setObjectName(u"gridLayout_5")
-        self.GetNodeTextEdit = QTextEdit(self.page_3)
-        self.GetNodeTextEdit.setObjectName(u"GetNodeTextEdit")
+        self.jobNameLabel_3 = QLabel(self.page_3)
+        self.jobNameLabel_3.setObjectName(u"jobNameLabel_3")
 
-        self.gridLayout_5.addWidget(self.GetNodeTextEdit, 1, 0, 1, 4)
-
-        self.jobNameLineEdit_3 = QLineEdit(self.page_3)
-        self.jobNameLineEdit_3.setObjectName(u"jobNameLineEdit_3")
-
-        self.gridLayout_5.addWidget(self.jobNameLineEdit_3, 0, 1, 1, 1)
+        self.gridLayout_5.addWidget(self.jobNameLabel_3, 0, 0, 1, 1)
 
         self.xmlFileLineEdit = QLineEdit(self.page_3)
         self.xmlFileLineEdit.setObjectName(u"xmlFileLineEdit")
 
         self.gridLayout_5.addWidget(self.xmlFileLineEdit, 0, 3, 1, 1)
 
-        self.jobNameLabel_3 = QLabel(self.page_3)
-        self.jobNameLabel_3.setObjectName(u"jobNameLabel_3")
+        self.jobNameLineEdit_3 = QLineEdit(self.page_3)
+        self.jobNameLineEdit_3.setObjectName(u"jobNameLineEdit_3")
 
-        self.gridLayout_5.addWidget(self.jobNameLabel_3, 0, 0, 1, 1)
+        self.gridLayout_5.addWidget(self.jobNameLineEdit_3, 0, 1, 1, 1)
 
         self.xmlFilePushButton = QPushButton(self.page_3)
         self.xmlFilePushButton.setObjectName(u"xmlFilePushButton")
 
         self.gridLayout_5.addWidget(self.xmlFilePushButton, 0, 2, 1, 1)
+
+        self.verticalSpacer_7 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.gridLayout_5.addItem(self.verticalSpacer_7, 1, 0, 1, 1)
+
+        self.verticalSpacer_8 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.gridLayout_5.addItem(self.verticalSpacer_8, 1, 2, 1, 1)
 
         self.stackedWidget.addWidget(self.page_3)
 
@@ -305,7 +308,7 @@ class Ui_Dialog(object):
 
         self.retranslateUi(Dialog)
 
-        self.stackedWidget.setCurrentIndex(3)
+        self.stackedWidget.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(Dialog)
@@ -328,15 +331,15 @@ class Ui_Dialog(object):
         self.MethodComboBox.setItemText(0, QCoreApplication.translate("Dialog", u"scm", None))
         self.MethodComboBox.setItemText(1, QCoreApplication.translate("Dialog", u"inline", None))
 
-        self.descriptionLabel.setText(QCoreApplication.translate("Dialog", u"Description", None))
+        self.scriptLabel.setText(QCoreApplication.translate("Dialog", u"Script", None))
         self.jenkinsfileLabel.setText(QCoreApplication.translate("Dialog", u"Jenkinsfile", None))
         self.descriptionLineEdit.setText("")
         self.repoLabel.setText(QCoreApplication.translate("Dialog", u"Repo", None))
-        self.scriptLabel.setText(QCoreApplication.translate("Dialog", u"Script", None))
+        self.descriptionLabel.setText(QCoreApplication.translate("Dialog", u"Description", None))
         self.credsIdLabel.setText(QCoreApplication.translate("Dialog", u"Credentials ID", None))
-        self.scriptPathLabel.setText(QCoreApplication.translate("Dialog", u"Script Path", None))
-        self.jobNamelabel.setText(QCoreApplication.translate("Dialog", u"Job Name", None))
         self.branchLabel.setText(QCoreApplication.translate("Dialog", u"Branch", None))
+        self.jobNamelabel.setText(QCoreApplication.translate("Dialog", u"Job Name", None))
+        self.scriptPathPushButton.setText(QCoreApplication.translate("Dialog", u"Script Path", None))
         self.followLabel.setText(QCoreApplication.translate("Dialog", u"Follow console output", None))
         self.JobNameLabel_2.setText(QCoreApplication.translate("Dialog", u"Job Name", None))
         self.followComboBox.setItemText(0, QCoreApplication.translate("Dialog", u"no", None))

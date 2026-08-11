@@ -392,7 +392,7 @@ class nodesDialog(QDialog):
         elif selected_text == "Get Nodes":
            # Set focus on the URL LineEdit
             self.ui.UrlLineEdit.setFocus()
-            self.ui.GetNodesTextEdit.setFocusPolicy(Qt.NoFocus)
+            self.ui.GetNodesTextBrowser.setFocusPolicy(Qt.NoFocus)
 
             self.ui.stackedWidget.setCurrentIndex(2)
             self.ui.DescriptionLineEdit.hide()
@@ -418,7 +418,6 @@ class nodesDialog(QDialog):
         elif selected_text.strip() == "Get Node Info":
            # Set focus on the URL LineEdit
             self.ui.UrlLineEdit.setFocus()
-            self.ui.GetNodeTextEdit.setFocusPolicy(Qt.NoFocus)
 
             self.ui.stackedWidget.setCurrentIndex(3)
             self.ui.DescriptionLineEdit.hide()
@@ -438,7 +437,6 @@ class nodesDialog(QDialog):
         elif selected_text.strip() == "Get Node Config":
            # Set focus on the URL LineEdit
             self.ui.UrlLineEdit.setFocus()
-            self.ui.GetNodeTextEdit.setFocusPolicy(Qt.NoFocus)
 
             self.ui.stackedWidget.setCurrentIndex(3)
             self.ui.DescriptionLineEdit.hide()
@@ -458,7 +456,6 @@ class nodesDialog(QDialog):
         elif selected_text.strip() == "Node Exists":
            # Set focus on the URL LineEdit
             self.ui.UrlLineEdit.setFocus()
-            self.ui.GetNodeTextEdit.setFocusPolicy(Qt.NoFocus)
 
             self.ui.stackedWidget.setCurrentIndex(3)
             self.ui.DescriptionLineEdit.hide()
@@ -478,7 +475,6 @@ class nodesDialog(QDialog):
         elif selected_text.strip() == "New Item":
            # Set focus on the URL LineEdit
             self.ui.UrlLineEdit.setFocus()
-            self.ui.GetNodeTextEdit.setFocusPolicy(Qt.NoFocus)
 
             self.ui.stackedWidget.setCurrentIndex(3)
             self.ui.DescriptionLineEdit.hide()
@@ -498,7 +494,6 @@ class nodesDialog(QDialog):
         elif selected_text.strip() == "Delete":
            # Set focus on the URL LineEdit
             self.ui.UrlLineEdit.setFocus()
-            self.ui.GetNodeTextEdit.setFocusPolicy(Qt.NoFocus)
 
             self.ui.stackedWidget.setCurrentIndex(3)
 
@@ -517,7 +512,6 @@ class nodesDialog(QDialog):
         elif selected_text.strip() == "Disable":
            # Set focus on the URL LineEdit
             self.ui.UrlLineEdit.setFocus()
-            self.ui.GetNodeTextEdit.setFocusPolicy(Qt.NoFocus)
 
             self.ui.stackedWidget.setCurrentIndex(3)
             self.ui.DescriptionLineEdit.hide()
@@ -537,7 +531,6 @@ class nodesDialog(QDialog):
         elif selected_text.strip() == "Enable":
            # Set focus on the URL LineEdit
             self.ui.UrlLineEdit.setFocus()
-            self.ui.GetNodeTextEdit.setFocusPolicy(Qt.NoFocus)
 
             self.ui.stackedWidget.setCurrentIndex(3)
             self.ui.DescriptionLineEdit.hide()
