@@ -71,7 +71,11 @@
     </widget>
    </item>
    <item row="3" column="1">
-    <widget class="QLineEdit" name="tokenLineEdit"/>
+    <widget class="QLineEdit" name="tokenLineEdit">
+     <property name="echoMode">
+      <enum>QLineEdit::EchoMode::PasswordEchoOnEdit</enum>
+     </property>
+    </widget>
    </item>
    <item row="6" column="3">
     <widget class="QPushButton" name="closePushButton">
@@ -119,12 +123,12 @@
     <widget class="QComboBox" name="MethodComboBox">
      <item>
       <property name="text">
-       <string>SSH</string>
+       <string>ssh</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>JNLP</string>
+       <string>jnlp</string>
       </property>
      </item>
     </widget>

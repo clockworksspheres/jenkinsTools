@@ -53,17 +53,25 @@ class AddJenkinsNode():
         Create SSH agent (controller connects to agent)
         """
         print("Before launcher params setup")
+
         launcher_params = {
             'host': self.args.host,
             'port': str(self.args.port),
             'credentialsId': self.args.credentials_id,
+            # Optional but commonly useful:
             'jvmOptions': self.args.jvm_options or '',
-            'javaPath': '',
-            'prefixStartSlaveCmd': '',
-            'suffixStartSlaveCmd': '',
+            #'javaPath': '',
+            #'prefixStartSlaveCmd': '',
+            #'suffixStartSlaveCmd': '',
             'launchTimeoutSeconds': '60',
             'maxNumRetries': '10',
             'retryWaitTime': '10',
+            # Strongly recommended for modern Jenkins (avoids host-key prompts)
+            'sshHostKeyVerificationStrategy': {
+                'stapler-class': 'hudson.plugins.sshslaves.verifiers.NonVerifyingKeyVerificationStrategy'
+                # or 'hudson.plugins.sshslaves.verifiers.KnownHostsFileKeyVerificationStrategy'
+                # or 'hudson.plugins.sshslaves.verifiers.ManuallyTrustedKeyVerificationStrategy'
+            },
         }
         print("After launcher params setup")
 
@@ -196,8 +204,8 @@ def parse_arguments():
 
     # ─── Launch method ──────────────────────────────────────────────────────
     launch = parser.add_argument_group("Launch method")
-    launch.add_argument("--method", choices=["jnlp", "ssh"], default="jnlp",
-                        help="jnlp = inbound (agent connects to Jenkins) | ssh = outbound (Jenkins connects)")
+    launch.add_argument("--method", choices=["jnlp", "ssh"], default="ssh",
+                        help="jnlp = inbound (agent connects to Jenkins) | ssh = outbound (Jenkins connects), default=ssh")
 
     # ─── SSH-specific options ───────────────────────────────────────────────
     ssh = parser.add_argument_group("SSH options (only used when --method=ssh)")
@@ -217,6 +225,8 @@ def parse_arguments():
             missing.append("--credentials-id")
         if missing:
             parser.error(f"--method ssh requires: {', '.join(missing)}")
+        if not args.jvm_options:
+            args.jvm_options = ""
 
     print("Just before returning args...")
 

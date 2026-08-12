@@ -87,7 +87,9 @@ class nodesDialog(QDialog):
         if selected_text == "Add":
             action["method"] = self.ui.MethodComboBox.currentText()
 
-            if action["method"] == "SSH":
+            print(f"Method: {action["method"]}")
+
+            if action["method"] == "ssh":
                 action['name'] = self.ui.VmNameLineEdit.text()
 
                 if action["name"]:
@@ -102,8 +104,9 @@ class nodesDialog(QDialog):
                 action["executors"] = self.ui.ExecutorsLineEdit.text()
                 action["description"] = self.ui.DescriptionLineEdit.text()
                 action["remote_fs"] = self.ui.RemoteFsLineEdit.text()
+                action["jvm_options"] = ""
 
-            elif action["method"] == "JNLP":
+            elif action["method"] == "jnlp":
                 action['name'] = self.ui.VmNameLineEdit_2.text()
 
                 if action["name"]:
@@ -144,10 +147,10 @@ class nodesDialog(QDialog):
            
             action["method"] = self.ui.MethodComboBox.currentText()
 
-            if action["method"] == "SSH":
+            if action["method"] == "ssh":
                 action["credentials_id"] = self.ui.JenkinsCredsIdLineEdit.text()
                 action["port"] = self.ui.PortLlineEdit.text()
-            elif action["method"] == "JNLP":
+            elif action["method"] == "jnlp":
                 action[''] = self.ui.jvmOptionsLineEdit.text()
 
             action["host"] = self.ui.HostnameOrIpLineEdit.text()
@@ -313,7 +316,7 @@ class nodesDialog(QDialog):
             self.ui.MethodLabel.show()
             self.ui.MethodComboBox.show()
 
-            if self.ui.MethodComboBox.currentText() == "SSH":
+            if self.ui.MethodComboBox.currentText() == "ssh":
                 self.setTabOrder(self.ui.UrlLineEdit, self.ui.UsernameLineEdit)
                 self.setTabOrder(self.ui.UsernameLineEdit, self.ui.tokenLineEdit)
                 self.setTabOrder(self.ui.tokenLineEdit, self.ui.ActionComboBox)
@@ -330,7 +333,7 @@ class nodesDialog(QDialog):
                 self.setTabOrder(self.ui.RunPushButton, self.ui.closePushButton)
                 self.setTabOrder(self.ui.closePushButton, self.ui.UrlLineEdit)
 
-            if self.ui.MethodComboBox.currentText() == "JNLP":
+            if self.ui.MethodComboBox.currentText() == "jnlp":
                 self.setTabOrder(self.ui.UrlLineEdit, self.ui.UsernameLineEdit)
                 self.setTabOrder(self.ui.UsernameLineEdit, self.ui.tokenLineEdit)
                 self.setTabOrder(self.ui.tokenLineEdit, self.ui.ActionComboBox)
@@ -520,7 +523,7 @@ class nodesDialog(QDialog):
 
         print(f"selected text: '{selected_text}'")
 
-        if re.match("SSH", selected_text):
+        if re.match("ssh", selected_text):
            # Set focus on the URL LineEdit
             self.ui.UrlLineEdit.setFocus()
 
@@ -542,7 +545,7 @@ class nodesDialog(QDialog):
             self.setTabOrder(self.ui.RunPushButton, self.ui.closePushButton)
             self.setTabOrder(self.ui.closePushButton, self.ui.UrlLineEdit)
 
-        elif re.match("JNLP", selected_text):
+        elif re.match("jnlp", selected_text):
            # Set focus on the URL LineEdit
             self.ui.UrlLineEdit.setFocus()
 

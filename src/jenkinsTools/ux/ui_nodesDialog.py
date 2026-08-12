@@ -47,6 +47,7 @@ class Ui_Dialog(object):
 
         self.tokenLineEdit = QLineEdit(Dialog)
         self.tokenLineEdit.setObjectName(u"tokenLineEdit")
+        self.tokenLineEdit.setEchoMode(QLineEdit.EchoMode.PasswordEchoOnEdit)
 
         self.gridLayout.addWidget(self.tokenLineEdit, 3, 1, 1, 1)
 
@@ -363,8 +364,8 @@ class Ui_Dialog(object):
         self.tokenLabel.setText(QCoreApplication.translate("Dialog", u"token/password", None))
         self.MethodLabel.setText(QCoreApplication.translate("Dialog", u"Method", None))
         self.ActionLabel.setText(QCoreApplication.translate("Dialog", u"Action", None))
-        self.MethodComboBox.setItemText(0, QCoreApplication.translate("Dialog", u"SSH", None))
-        self.MethodComboBox.setItemText(1, QCoreApplication.translate("Dialog", u"JNLP", None))
+        self.MethodComboBox.setItemText(0, QCoreApplication.translate("Dialog", u"ssh", None))
+        self.MethodComboBox.setItemText(1, QCoreApplication.translate("Dialog", u"jnlp", None))
 
         self.JenkinsCredsLabel.setText(QCoreApplication.translate("Dialog", u"Jenkins Credentials ID", None))
         self.ExecutorsLabel.setText(QCoreApplication.translate("Dialog", u"Executors", None))
