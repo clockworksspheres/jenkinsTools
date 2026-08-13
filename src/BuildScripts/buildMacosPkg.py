@@ -65,7 +65,7 @@ Examples:
 
     args = parser.parse_args()
 
-    if not (1 <= len(args.files) <= 3):
+    if not (1 <= len(args.files) <= 5):
         print("Error: You must specify between 1 and 3 files.")
         sys.exit(1)
 
