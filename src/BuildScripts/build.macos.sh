@@ -20,11 +20,15 @@ else
    source $actfile
 fi
 
+cp BuildScripts/build.macos.ToolsGui.spec jenkinsTools
 cp BuildScripts/build.macos.NodeTool.spec jenkinsTools
 cp BuildScripts/build.macos.PipelineTool.spec jenkinsTools
-cp BuildScripts/build.macos.AddSshKeyTool.spec jenkinsTools
+cp BuildScripts/build.macos.SshKeyWrangling.spec jenkinsTools
 
 pushd jenkinsTools
+
+pyinstaller --clean -y build.macos.ToolsGui.spec
+pyinstaller -y build.macos.ToolsGui.spec
 
 pyinstaller --clean -y build.macos.NodeTool.spec
 pyinstaller -y build.macos.NodeTool.spec
@@ -32,13 +36,13 @@ pyinstaller -y build.macos.NodeTool.spec
 pyinstaller --clean -y build.macos.PipelineTool.spec
 pyinstaller -y build.macos.PipelineTool.spec
 
-cp JenkinsTools/AddSshKeyCredential.py .
-pyinstaller --clean -y build.macos.AddSshKeyTool.spec
-pyinstaller -y build.macos.AddSshKeyTool.spec
+pyinstaller --clean -y build.macos.SshKeyWrangling.spec
+pyinstaller -y build.macos.SshKeyWrangling.spec
 
+rm build.macos.ToolsGui.spec
 rm build.macos.NodeTool.spec
 rm build.macos.PipelineTool.spec
-rm build.macos.AddSshKeyTool.spec
+rm build.macos.SshKeyWrangling.spec
 rm AddSshKeyCredential.py
 
 popd

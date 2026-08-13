@@ -8,7 +8,6 @@ import argparse
 
 from PySide6.QtWidgets import QApplication
 
-
 def parse_arguments():
     """
     """
@@ -191,7 +190,6 @@ if __name__=="__main__":
 
     args_dict = vars(args)
     print(str(args_dict))
-
 
     try:
         required = args.user and args.token and args.url

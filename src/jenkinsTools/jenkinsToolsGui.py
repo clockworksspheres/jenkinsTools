@@ -18,7 +18,7 @@ if __name__=="__main__":
     args = parser.parse_args()
 
     if len(sys.argv) == 1 or args.gui:
-            
+
         from ux.main import JenkinsToolsUi
 
         app = QApplication(sys.argv)
