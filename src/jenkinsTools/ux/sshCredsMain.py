@@ -7,8 +7,9 @@ from pathlib import Path
 parent_dir = Path(__file__).parent.parent
 sys.path.append(str(parent_dir))
 
-from PySide6.QtWidgets import QApplication, QDialog, QDialogButtonBox, QFileDialog
+from PySide6.QtWidgets import QApplication, QDialog, QDialogButtonBox, QFileDialog, QLineEdit
 from PySide6.QtCore import Qt
+from PySide6.QtGui import QIcon, QAction
 
 # Important:
 # You need to run the following command to generate the ui_form.py file
@@ -59,6 +60,38 @@ class SshCredsDialog(QDialog):
         self.setTabOrder(self.ui.privateKeyLineEdit, self.ui.keyPassphraseLineEdit)
         self.setTabOrder(self.ui.keyPassphraseLineEdit, self.ui.buttonBox)
         self.setTabOrder(self.ui.buttonBox, self.ui.UrlLineEdit)
+
+        ################################################
+        # set up the token dialog box as a password box
+        self.ui.tokenLineEdit.setEchoMode(QLineEdit.EchoMode.Password)
+
+        # load icons (ensure these files exist in your project)
+        icon_show = QIcon("icons/eye_open.png")
+        icon_hide = QIcon("icons/eye_closed.png")
+
+        # Create the toggle action
+        self.toggle_action = QAction(icon_hide, "Toggle Password", self.ui.tokenLineEdit)
+        self.toggle_action.setCheckable(True)
+
+        # Add to the RIGHT side of the EXISTING line edit
+        self.ui.tokenLineEdit.addAction(self.toggle_action, QLineEdit.TrailingPosition)
+
+        # Connect the signal
+        self.toggle_action.toggled.connect(lambda checked: self.toggle_token_visibility(self.ui.tokenLineEdit, checked, icon_hide, icon_show))
+
+        ################################################
+        # set up the key passphrase dialog box as a password box
+        self.ui.keyPassphraseLineEdit.setEchoMode(QLineEdit.EchoMode.Password)
+
+        # Create the toggle action
+        self.toggle_key_action = QAction(icon_hide, "Toggle Password", self.ui.keyPassphraseLineEdit)
+        self.toggle_key_action.setCheckable(True)
+
+        # Add to the RIGHT side of the EXISTING line edit
+        self.ui.keyPassphraseLineEdit.addAction(self.toggle_key_action, QLineEdit.TrailingPosition)
+
+        # Connect the signal
+        self.toggle_key_action.toggled.connect(lambda checked: self.toggle_keypass_visibility(self.ui.keyPassphraseLineEdit, checked, icon_hide, icon_show))
 
     def onRunButtonClicked(self):
         print("Run button clicked")
@@ -152,6 +185,28 @@ class SshCredsDialog(QDialog):
 
         if filePath:
             self.ui.privateKeyLineEdit.setText(filePath)
+
+    def toggle_token_visibility(self, line_edit, checked, icon_show, icon_hide):
+        if checked:
+            # Show password (Normal makes text visible)
+            # Use NoEcho if you strictly want it invisible but still "active"
+            line_edit.setEchoMode(QLineEdit.EchoMode.Normal) 
+            self.toggle_action.setIcon(icon_hide)
+        else:
+            # Hide password
+            line_edit.setEchoMode(QLineEdit.EchoMode.Password)
+            self.toggle_action.setIcon(icon_show)
+
+    def toggle_keypass_visibility(self, line_edit, checked, icon_show, icon_hide):
+        if checked:
+            # Show password (Normal makes text visible)
+            # Use NoEcho if you strictly want it invisible but still "active"
+            line_edit.setEchoMode(QLineEdit.EchoMode.Normal) 
+            self.toggle_key_action.setIcon(icon_hide)
+        else:
+            # Hide password
+            line_edit.setEchoMode(QLineEdit.EchoMode.Password)
+            self.toggle_key_action.setIcon(icon_show)
 
     def closeEvent(self, event):
         '''

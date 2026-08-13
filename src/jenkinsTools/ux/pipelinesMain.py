@@ -9,8 +9,9 @@ from pathlib import Path
 parent_dir = Path(__file__).parent.parent
 sys.path.append(str(parent_dir))
 
-from PySide6.QtWidgets import QApplication, QDialog, QFileDialog
+from PySide6.QtWidgets import QApplication, QDialog, QFileDialog, QLineEdit
 from PySide6.QtCore import Qt
+from PySide6.QtGui import QIcon, QAction
 
 # Important:
 # You need to run the following command to generate the ui_form.py file
@@ -69,6 +70,27 @@ class pipelinesDialog(QDialog):
         self.setTabOrder(self.ui.scriptPathLineEdit, self.ui.RunPushButton)
         self.setTabOrder(self.ui.RunPushButton, self.ui.closePushButton)
         self.setTabOrder(self.ui.closePushButton, self.ui.UrlLineEdit)
+
+        #####
+        # set up the token dialog box as a password box
+        self.ui.tokenLineEdit.setEchoMode(QLineEdit.EchoMode.Password)
+
+        # load icons (ensure these files exist in your project)
+        icon_show = QIcon("icons/eye_open.png")
+        icon_hide = QIcon("icons/eye_closed.png")
+
+        # Create the toggle action
+        self.toggle_action = QAction(icon_hide, "Toggle Password", self.ui.tokenLineEdit)
+        self.toggle_action.setCheckable(True)
+
+        # Add to the RIGHT side of the EXISTING line edit
+        self.ui.tokenLineEdit.addAction(self.toggle_action, QLineEdit.TrailingPosition)
+
+        # Set the tokenLineEdit to 
+        self.ui.tokenLineEdit.setEchoMode(QLineEdit.EchoMode.Password)
+
+        # Connect the signal
+        self.toggle_action.toggled.connect(lambda checked: self.toggle_visibility(self.ui.tokenLineEdit, checked, icon_hide, icon_show))
 
     def runAction(self):
         print(f"Running command '{self.ui.ActionComboBox.currentText()}'")
@@ -370,6 +392,17 @@ class pipelinesDialog(QDialog):
 
         if filePath:
             self.ui.scriptPathLineEdit.setText(filePath)
+
+    def toggle_visibility(self, line_edit, checked, icon_show, icon_hide):
+        if checked:
+            # Show password (Normal makes text visible)
+            # Use NoEcho if you strictly want it invisible but still "active"
+            line_edit.setEchoMode(QLineEdit.EchoMode.Normal) 
+            self.toggle_action.setIcon(icon_hide)
+        else:
+            # Hide password
+            line_edit.setEchoMode(QLineEdit.EchoMode.Password)
+            self.toggle_action.setIcon(icon_show)
 
     def closeEvent(self, event):
         '''
