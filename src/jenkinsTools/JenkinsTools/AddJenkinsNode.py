@@ -59,7 +59,7 @@ class AddJenkinsNode():
             'port': str(self.args.port),
             'credentialsId': self.args.credentials_id,
             # Optional but commonly useful:
-            'jvmOptions': self.args.jvm_options or '',
+            #'jvmOptions': self.args.jvm_options or '',
             #'javaPath': '',
             #'prefixStartSlaveCmd': '',
             #'suffixStartSlaveCmd': '',
