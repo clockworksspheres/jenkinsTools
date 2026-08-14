@@ -13,6 +13,11 @@ from PySide6.QtWidgets import QApplication, QDialog, QLineEdit
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QIcon, QAction
 
+from lib.inputValidation.generalFieldsValidation import (isJenkinsUrlFieldGood,
+                                                         isJenkinsUsernameFieldGood,
+                                                         isJenkinsTokenFieldGood
+                                                        )
+
 # Important:
 # You need to run the following command to generate the ui_form.py file
 #     pyside6-uic form.ui -o ui_form.py
@@ -95,17 +100,37 @@ class nodesDialog(QDialog):
 
         action = {}
 
-        action["url"] = self.ui.UrlLineEdit.text()
-        action["user"] = self.ui.UsernameLineEdit.text()
-        action["token"] = self.ui.tokenLineEdit.text()
-
-        if action["url"] and \
-            action["user"] and \
-            action["token"]:
+        action["url"] = self.ui.UrlLineEdit.text().strip()
+        action["user"] = self.ui.UsernameLineEdit.text().strip()
+        action["token"] = self.ui.tokenLineEdit.text().strip()
+        
+        if isJenkinsUrlFieldGood(action["url"]):
+            print("Url acquired")
+        else:
+            raise ValueError("url field required.")
+        
+        if isJenkinsUsernameFieldGood(action["user"]):
+            print("Username acquired")
+        else:
+            raise ValueError("username field required.")
+        if isJenkinsTokenFieldGood(action["token"]):
+            print("Url acquired")
+        else:
+            raise ValueError("url field required.")
+             
+        """
+        if isJenkinsUrlFieldGood(action["url"]) and \
+            isJenkinsUsernameFieldGood(action["user"]) and \
+            isJenkinsTokenFieldGood(action["token"]):
+            print ("action acquired")
+        """
+        if action["url"]and \
+           action["user"] and \
+           action["token"]:
             print ("action acquired")
         else:
             raise ValueError("url, user and token fields required.")
-
+        
         if selected_text == "Add":
             action["method"] = self.ui.MethodComboBox.currentText()
 
