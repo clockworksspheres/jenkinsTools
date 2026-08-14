@@ -20,6 +20,6 @@ pytest
 python-jenkins
 pyinstaller
 requests
-django.core
+pydantic
 pyside6
 
