@@ -51,9 +51,6 @@ class nodesDialog(QDialog):
         # Set focus on the URL LineEdit
         self.ui.UrlLineEdit.setFocus()
 
-        # Setting tab focus on first stacked widget
-        self.ui.UrlLineEdit.setFocus()
-
         self.setTabOrder(self.ui.UrlLineEdit, self.ui.UsernameLineEdit)
         self.setTabOrder(self.ui.UsernameLineEdit, self.ui.tokenLineEdit)
         self.setTabOrder(self.ui.tokenLineEdit, self.ui.ActionComboBox)
