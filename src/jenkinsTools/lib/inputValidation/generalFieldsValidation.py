@@ -5,9 +5,6 @@ from urllib.parse import urlparse
 
 from pydantic import HttpUrl, ValidationError
 
-#from django.core.validators import URLValidator
-#from django.core.exceptions import ValidationError
-#from django.conf import settings
 
 def isJenkinsUrlFieldGood(urlField: str, timeout: int = 5) -> bool:
     print(str(urlField))
@@ -16,49 +13,8 @@ def isJenkinsUrlFieldGood(urlField: str, timeout: int = 5) -> bool:
         HttpUrl(urlField)
         return True
     except ValidationError:
-        return False
-
-""" no good for http://localhost:8080
-    if not settings.configured:
-        settings.configure(
-            USE_I18N=False,          # or False
-            USE_L10N=False,
-            USE_TZ=True,
-            # add anything else you need
-    )
-    ####
-    # Check for a valid URL using the dango.core library
-    validator = URLValidator(schemes=["http", "https"])
-    try:
-        validator(urlField)
-        print(f"URL field '{urlField}' ok...")
-    except ValidationError as e:
-        print(f"URL field '{urlField}' exception...")
-        print(f"FAIL: {urlField} -> {e}")
-        print(traceback.format_exc())
-        return False
-    except Exception as e:
-        print(f"URL field '{urlField}' exception...")
-        print(f"FAIL: {urlField} -> {e}")
-        print(traceback.format_exc())
-        return False
- 
-    ####
-    # Check if the url is available
-    try:
-        # Send a HEAD request to check connectivity
-        response = requests.head(urlField, timeout=timeout)
-    except requests.exceptions.ConnectionError:
-        return False
-    except requests.exceptions.Timeout:
-        return False
-    except requests.exceptions.RequestException:
+        #print(traceback.format_exc())
         return False    
-    else:
-        # Check if status code is 2xx or 3xx (successful or redirect)
-        return response.status_code < 400
-    """
-    
 
 def isJenkinsUsernameFieldGood(usernameField: str) -> bool:
     print(str(usernameField))
@@ -73,23 +29,11 @@ def isJenkinsTokenFieldGood(tokenField: str) -> bool:
     allowed_set = set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-")
     # if each of the characters is in the allowed set
     if set(tokenField).issubset(allowed_set):
-        return True    
-        ####
-        # remove the above return if you want to check if the token is valid with the server
-        try:
-            # The /whoAmI/ endpoint is lightweight and confirms auth status
-            response = requests.get(
-                f"{url}/whoAmI/", 
-                auth=HTTPBasicAuth(username, token),
-                timeout=5
-            )
-        except requests.exceptions.RequestException:
-            return False
-        else:
-            # 200 OK means the token is valid
-            return response.status_code == 200
+        status =  True    
     else:
-        return False
+        status =  False
+
+    return status
 
 
 if __name__=="__main__":
