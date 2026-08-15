@@ -53,7 +53,7 @@ class nodesDialog(QDialog):
         # by the user.  Primarily for QTextEdit rather than QTextBrowser as
         # QTextBrowser is inherently read-only.
         self.ui.GetNodesTextBrowser.setFocusPolicy(Qt.NoFocus)
-        self.ui.GetNodeTextBrowser.setFocusPolicy(Qt.NoFocus)
+        self.ui.getNodeTextBrowser.setFocusPolicy(Qt.NoFocus)
 
         # Set initial focus on the URL LineEdit
         self.ui.UrlLineEdit.setFocus()
