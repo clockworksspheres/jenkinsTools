@@ -103,31 +103,27 @@ class nodesDialog(QDialog):
         action["url"] = self.ui.UrlLineEdit.text().strip()
         action["user"] = self.ui.UsernameLineEdit.text().strip()
         action["token"] = self.ui.tokenLineEdit.text().strip()
-        
+
         if isJenkinsUrlFieldGood(action["url"]):
             print("Url acquired")
         else:
-            raise ValueError("url field required.")
+            raise ValueError("Valid url field required.")
         
         if isJenkinsUsernameFieldGood(action["user"]):
             print("Username acquired")
         else:
-            raise ValueError("username field required.")
+            raise ValueError("Valid username field required.")
+
         if isJenkinsTokenFieldGood(action["token"]):
-            print("Url acquired")
+            print("Token acquired")
         else:
-            raise ValueError("url field required.")
+            raise ValueError("Valid token field required.")
              
-        """
-        if isJenkinsUrlFieldGood(action["url"]) and \
-            isJenkinsUsernameFieldGood(action["user"]) and \
-            isJenkinsTokenFieldGood(action["token"]):
-            print ("action acquired")
-        """
         if action["url"]and \
            action["user"] and \
            action["token"]:
             print ("action acquired")
+            
         else:
             raise ValueError("url, user and token fields required.")
         
