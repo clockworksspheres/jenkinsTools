@@ -311,13 +311,10 @@ class Ui_Dialog(object):
 
         self.gridLayout_5.addWidget(self.VmNamelabel_3, 0, 0, 1, 1)
 
-        self.verticalSpacer_9 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+        self.getNodeTextBrowser = QTextBrowser(self.page_4)
+        self.getNodeTextBrowser.setObjectName(u"getNodeTextBrowser")
 
-        self.gridLayout_5.addItem(self.verticalSpacer_9, 1, 0, 1, 1)
-
-        self.verticalSpacer_10 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
-
-        self.gridLayout_5.addItem(self.verticalSpacer_10, 1, 1, 1, 1)
+        self.gridLayout_5.addWidget(self.getNodeTextBrowser, 1, 0, 1, 2)
 
         self.stackedWidget.addWidget(self.page_4)
 
