@@ -151,7 +151,11 @@ Notes:
 
     args = parser.parse_args()
 
-    if len(sys.argv) == 1 or args.gui:
+    if len(sys.argv) == 1:
+        parser.print_help() 
+        sys.exit(1)
+
+    elif  args.gui:
         from ux.sshCredsMain import SshCredsDialog
         app = QApplication(sys.argv)
         dlg = SshCredsDialog()
