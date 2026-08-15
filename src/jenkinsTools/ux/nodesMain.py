@@ -223,6 +223,20 @@ class nodesDialog(QDialog):
 
             from JenkinsTools.NodeStatus import NodeStatus
             ns = NodeStatus(args)
+
+            for node in ns.get_nodes():
+                name = node["name"]
+                offline = node["offline"]
+                state = ""
+                if offline == True:
+                    state = "Offline"
+                elif offline == False:
+                    state = "Online"
+                else:
+                    state = "Unknown"
+                self.ui.GetNodesTextBrowser.append(f"{name}: {state}")
+
+
             print(ns.get_nodes())            
 
         elif selected_text.strip() == "Get Node Info":
