@@ -48,9 +48,17 @@ class nodesDialog(QDialog):
         self.ui.closePushButton.clicked.connect(self.close)
         self.ui.RunPushButton.clicked.connect(self.runAction)
 
-        # Set focus on the URL LineEdit
+        # Set NoFocus on text-browsers, so they can't accept input
+        # focus to capture keystrokes - making this widget non-editable
+        # by the user.  Primarily for QTextEdit rather than QTextBrowser as
+        # QTextBrowser is inherently read-only.
+        self.ui.GetNodesTextBrowser.setFocusPolicy(Qt.NoFocus)
+        self.ui.GetNodeTextBrowser.setFocusPolicy(Qt.NoFocus)
+
+        # Set initial focus on the URL LineEdit
         self.ui.UrlLineEdit.setFocus()
 
+        # Setting up the initial tab order policy
         self.setTabOrder(self.ui.UrlLineEdit, self.ui.UsernameLineEdit)
         self.setTabOrder(self.ui.UsernameLineEdit, self.ui.tokenLineEdit)
         self.setTabOrder(self.ui.tokenLineEdit, self.ui.ActionComboBox)
