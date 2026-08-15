@@ -279,6 +279,9 @@ class nodesDialog(QDialog):
 
             from JenkinsTools.NodeStatus import NodeStatus
             ns = NodeStatus(args)
+
+            self.ui.getNodeTextBrowser.append(ns.get_node_config())
+
             print(ns.get_node_config())
 
         elif selected_text.strip() == "Node Exists":
