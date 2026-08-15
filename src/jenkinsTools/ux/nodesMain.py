@@ -236,7 +236,6 @@ class nodesDialog(QDialog):
                     state = "Unknown"
                 self.ui.GetNodesTextBrowser.append(f"{name}: {state}")
 
-
             print(ns.get_nodes())            
 
         elif selected_text.strip() == "Get Node Info":
@@ -256,6 +255,11 @@ class nodesDialog(QDialog):
 
             from JenkinsTools.NodeStatus import NodeStatus
             ns = NodeStatus(args)
+
+            node_report = json.dumps(ns.get_node_info(), indent=4)
+
+            self.ui.getNodeTextBrowser.append(node_report)
+
             print(json.dumps(ns.get_node_info(), indent=4))
 
         elif selected_text.strip() == "Get Node Config":
