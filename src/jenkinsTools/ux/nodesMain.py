@@ -220,7 +220,6 @@ class nodesDialog(QDialog):
             print(str(action))
 
             args = Namespace(**action)
-            print(f"Adding {args.url} for node <{args.name}>...")
 
             from JenkinsTools.NodeStatus import NodeStatus
             ns = NodeStatus(args)
