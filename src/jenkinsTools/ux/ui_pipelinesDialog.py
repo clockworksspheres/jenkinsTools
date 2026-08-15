@@ -253,10 +253,10 @@ class Ui_Dialog(object):
         self.page_2.setObjectName(u"page_2")
         self.gridLayout_4 = QGridLayout(self.page_2)
         self.gridLayout_4.setObjectName(u"gridLayout_4")
-        self.GetNodeTextBrowser = QTextBrowser(self.page_2)
-        self.GetNodeTextBrowser.setObjectName(u"GetNodeTextBrowser")
+        self.getPipelineTextBrowser = QTextBrowser(self.page_2)
+        self.getPipelineTextBrowser.setObjectName(u"getPipelineTextBrowser")
 
-        self.gridLayout_4.addWidget(self.GetNodeTextBrowser, 0, 0, 1, 1)
+        self.gridLayout_4.addWidget(self.getPipelineTextBrowser, 0, 0, 1, 1)
 
         self.stackedWidget.addWidget(self.page_2)
         self.page_3 = QWidget()

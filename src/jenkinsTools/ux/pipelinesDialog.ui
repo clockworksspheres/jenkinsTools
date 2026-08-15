@@ -342,7 +342,7 @@
      <widget class="QWidget" name="page_2">
       <layout class="QGridLayout" name="gridLayout_4">
        <item row="0" column="0">
-        <widget class="QTextBrowser" name="GetNodeTextBrowser"/>
+        <widget class="QTextBrowser" name="getPipelineTextBrowser"/>
        </item>
       </layout>
      </widget>

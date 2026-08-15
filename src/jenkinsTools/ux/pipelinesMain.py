@@ -50,6 +50,10 @@ class pipelinesDialog(QDialog):
         self.ui.scriptPathPushButton.hide()
         self.ui.scriptPathLineEdit.hide()
 
+        # Primarily for QTextEdits, setting here as an example if needed
+        # for a QTextEdit in the future
+        self.ui.getPipelineTextBrowser.setFocusPolicy(Qt.NoFocus)
+
         # Setting tab focus on first stacked widget
         self.ui.UrlLineEdit.setFocus()
 
@@ -71,7 +75,7 @@ class pipelinesDialog(QDialog):
         self.setTabOrder(self.ui.RunPushButton, self.ui.closePushButton)
         self.setTabOrder(self.ui.closePushButton, self.ui.UrlLineEdit)
 
-        #####
+        ################################################
         # set up the token dialog box as a password box
         self.ui.tokenLineEdit.setEchoMode(QLineEdit.EchoMode.Password)
 
