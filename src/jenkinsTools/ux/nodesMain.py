@@ -9,6 +9,8 @@ from pathlib import Path
 parent_dir = Path(__file__).parent.parent
 sys.path.append(str(parent_dir))
 
+from tabulate import tabulate
+
 from PySide6.QtWidgets import QApplication, QDialog, QLineEdit
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QIcon, QAction
@@ -225,11 +227,11 @@ class nodesDialog(QDialog):
             print(str(action))
 
             args = Namespace(**action)
-
+            '''
             from JenkinsTools.NodeStatus import NodeStatus
             ns = NodeStatus(args)
-
-            for node in ns.get_nodes():
+            data = ns.get_nodes()
+            for node in data:
                 name = node["name"]
                 offline = node["offline"]
                 state = ""
@@ -240,6 +242,9 @@ class nodesDialog(QDialog):
                 else:
                     state = "Unknown"
                 self.ui.GetNodesTextBrowser.append(f"{name}: {state}")
+            '''
+            #self.ui.GetNodesTextBrowser.append(tabulate(data, headers="keys", tablefmt="grid"))
+            self.ui.GetNodesTextBrowser.append(json.dumps(data, indent=4))
 
             print(ns.get_nodes())            
 
