@@ -268,6 +268,11 @@ class Ui_Dialog(object):
 
         self.gridLayout_5.addWidget(self.jobNameLabel_3, 0, 0, 1, 1)
 
+        self.xmlFilePushButton = QPushButton(self.page_3)
+        self.xmlFilePushButton.setObjectName(u"xmlFilePushButton")
+
+        self.gridLayout_5.addWidget(self.xmlFilePushButton, 0, 2, 1, 1)
+
         self.xmlFileLineEdit = QLineEdit(self.page_3)
         self.xmlFileLineEdit.setObjectName(u"xmlFileLineEdit")
 
@@ -278,18 +283,10 @@ class Ui_Dialog(object):
 
         self.gridLayout_5.addWidget(self.jobNameLineEdit_3, 0, 1, 1, 1)
 
-        self.xmlFilePushButton = QPushButton(self.page_3)
-        self.xmlFilePushButton.setObjectName(u"xmlFilePushButton")
+        self.jobTextBrowser = QTextBrowser(self.page_3)
+        self.jobTextBrowser.setObjectName(u"jobTextBrowser")
 
-        self.gridLayout_5.addWidget(self.xmlFilePushButton, 0, 2, 1, 1)
-
-        self.verticalSpacer_7 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
-
-        self.gridLayout_5.addItem(self.verticalSpacer_7, 1, 0, 1, 1)
-
-        self.verticalSpacer_8 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
-
-        self.gridLayout_5.addItem(self.verticalSpacer_8, 1, 2, 1, 1)
+        self.gridLayout_5.addWidget(self.jobTextBrowser, 1, 0, 1, 4)
 
         self.stackedWidget.addWidget(self.page_3)
 

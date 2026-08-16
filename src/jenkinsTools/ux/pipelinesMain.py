@@ -6,12 +6,14 @@ from argparse import Namespace
 
 from pathlib import Path
 
-parent_dir = Path(__file__).parent.parent
-sys.path.append(str(parent_dir))
+from tabulate import tabulate
 
 from PySide6.QtWidgets import QApplication, QDialog, QFileDialog, QLineEdit
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QIcon, QAction
+
+parent_dir = Path(__file__).parent.parent
+sys.path.append(str(parent_dir))
 
 # Important:
 # You need to run the following command to generate the ui_form.py file
@@ -52,7 +54,9 @@ class pipelinesDialog(QDialog):
 
         # Primarily for QTextEdits, setting here as an example if needed
         # for a QTextEdit in the future
+        # REQUIRED here to mask from tab order, at least on macOS
         self.ui.getPipelineTextBrowser.setFocusPolicy(Qt.NoFocus)
+        self.ui.jobTextBrowser.setFocusPolicy(Qt.NoFocus)
 
         # Setting tab focus on first stacked widget
         self.ui.UrlLineEdit.setFocus()
@@ -185,6 +189,8 @@ class pipelinesDialog(QDialog):
                 action['job'] = self.ui.jobNameLineEdit_3.text()
             else:
                 raise ValueError("job field required.")
+            action['verbose'] = True
+
             '''
             if self.ui.followComboBox.currentText() == "Yes":
                 action['follow'] = True
@@ -196,12 +202,14 @@ class pipelinesDialog(QDialog):
             print(str(action))
 
             args = Namespace(**action)
-            print(f"Adding {args.url} for node <{args.job}>...")
+            print(f"Checking {args.url} for pipeline <{args.job}>...")
             from JenkinsTools.CheckJenkinsPipelineRun import CheckJenkinsPipelineRun as checkPipeline
 
             ckpipeline = checkPipeline()
-            ckpipeline.get_full_run(args)
+            #ckpipeline.get_full_run(args)
+            data = ckpipeline.check_run(args)
 
+            self.ui.jobTextBrowser.append(json.dumps(data, indent=4))
             '''
             if args.get_full_run:
                 ckpipeline.get_full_run(args)
