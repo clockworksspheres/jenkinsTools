@@ -6,7 +6,7 @@ from argparse import Namespace
 
 from pathlib import Path
 
-from tabulate import tabulate
+#from tabulate import tabulate
 
 from PySide6.QtWidgets import QApplication, QDialog, QFileDialog, QLineEdit
 from PySide6.QtCore import Qt

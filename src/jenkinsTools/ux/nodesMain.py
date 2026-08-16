@@ -9,7 +9,7 @@ from pathlib import Path
 parent_dir = Path(__file__).parent.parent
 sys.path.append(str(parent_dir))
 
-from tabulate import tabulate
+#from tabulate import tabulate
 
 from PySide6.QtWidgets import QApplication, QDialog, QLineEdit
 from PySide6.QtCore import Qt
