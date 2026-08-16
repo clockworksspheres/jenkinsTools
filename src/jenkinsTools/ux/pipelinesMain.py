@@ -211,8 +211,8 @@ class pipelinesDialog(QDialog):
 
         elif selected_text == "get-config":
 
-            if self.ui.JobNameLineEdit_2.text():
-                action['job'] = self.ui.JobNameLineEdit_2.text()
+            if self.ui.jobNameLineEdit_3.text():
+                action['job'] = self.ui.jobNameLineEdit_3.text()
             else:
                 raise ValueError("job field required.")
 
