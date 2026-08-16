@@ -45,7 +45,7 @@ class CheckJenkinsPipelineRun():
         """
         """
         try:
-            server = jenkins.Jenkins(args.url, username=args.user, password=args.token)
+            server = jenkins.Jenkins(args.url, username=args.user, password=args.token, timeout=10)
 
             # Quick auth check
             server.get_whoami()
@@ -72,20 +72,27 @@ class CheckJenkinsPipelineRun():
     def check_run(self, args):
         """
         """
+        print("Check Run.")
         try:
-            server = jenkins.Jenkins(args.url, username=args.user, password=args.token)
+            server = jenkins.Jenkins(args.url, username=args.user, password=args.token, timeout=10)
+
+            print("Server connection made.")
 
             # Quick auth check
             server.get_whoami()
 
+            print("Got whoami...")
+
             # Get job information
             job_info = server.get_job_info(args.job, depth=1)
+
+            print("Job info collected, parsing...")
 
             # Find the last build
             last_build = job_info.get("lastBuild")
             if not last_build:
                 print(f"No builds found for job '{args.job}' yet.", file=sys.stderr)
-                sys.exit(1)
+                #sys.exit(1)
 
             build_number = last_build["number"]
             build_info = server.get_build_info(args.job, build_number)
@@ -103,6 +110,15 @@ class CheckJenkinsPipelineRun():
             print(f"Status       : {result}{' (still building)' if building else ''}")
             print(f"Started      : {started_at}")
 
+            data = {}
+            data["job"] = args.job
+            data["lastBuild"] = str(build_number)
+            data["status"] = build_info.get("result") or "RUNNING"
+            data["started"] = started_at
+            data["duration"] = ''
+            data["triggeredBy"] = ''
+            data["description"] = ''
+            
             if args.verbose:
                 duration_str = self.format_duration(duration_ms)
                 triggered_by = "—"
@@ -126,6 +142,12 @@ class CheckJenkinsPipelineRun():
                 print(f"Duration     : {duration_str}")
                 print(f"Triggered by : {triggered_by}")
                 print(f"Description  : {short_desc}")
+                data["duration"] = duration_str
+                data["triggeredBy"] = triggered_by
+                data["description"] = short_desc
+                return data
+            else:
+                return data
 
             # Exit code useful for scripts/CI
             if building:
@@ -138,10 +160,10 @@ class CheckJenkinsPipelineRun():
         except JenkinsException as e:
             print(f"\nJenkins API error: {e}", file=sys.stderr)
             print("→ Check --url (must include http:// or https://), --user, --token, job name", file=sys.stderr)
-            sys.exit(7)
+            #sys.exit(7)
         except Exception as e:
             print(f"\nUnexpected error: {e}", file=sys.stderr)
-            sys.exit(8)
+            #sys.exit(8)
 
   
 def parse_arguments():
