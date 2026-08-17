@@ -3,8 +3,6 @@
 import sys
 import argparse
 
-from PySide6.QtWidgets import QApplication
-
 
 if __name__=="__main__":
 
