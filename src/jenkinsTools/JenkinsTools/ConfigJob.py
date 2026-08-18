@@ -35,14 +35,11 @@ class ConfigJob():
                 print("  • Firewall / network issue")
                 print("  • Invalid --user or --token")
                 print(f"\nError detail: {e}", file=sys.stderr)
-                sys.exit(1)
 
         except jenkins.JenkinsException as e:
             print(f"\nJenkins API error: {e}", file=sys.stderr)
-            sys.exit(1)
         except Exception as e:
             print(f"\nUnexpected error: {e}", file=sys.stderr)
-            sys.exit(1)
 
     def cmd_get_config(self):
         """
@@ -54,7 +51,6 @@ class ConfigJob():
             print(xml)
         except jenkins.NotFoundException:
             print(f"Job '{self.args.job}' not found", file=sys.stderr)
-            sys.exit(1)
 
     def cmd_set_config(self):
         """
@@ -68,10 +64,8 @@ class ConfigJob():
             print(f"Updated job '{self.args.job}'")
         except FileNotFoundError:
             print(f"File '{self.args.file}' not found", file=sys.stderr)
-            sys.exit(1)
         except jenkins.NotFoundException:
             print(f"Job '{self.args.job}' not found", file=sys.stderr)
-            sys.exit(1)
 
 
 # -------------------------

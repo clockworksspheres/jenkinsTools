@@ -37,7 +37,6 @@ class RunJenkinsPipeline():
             for item in param_list:
                 if '=' not in item:
                     print(f"Invalid param: {item!r} — use KEY=VALUE", file=sys.stderr)
-                    sys.exit(1)
                 k, v = item.split("=", 1)
                 params[k.strip()] = v.strip()
                 print(str(params))
