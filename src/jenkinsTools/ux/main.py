@@ -61,8 +61,9 @@ class JenkinsToolsUi(QMainWindow):
         sys.stdout = self.stream
         sys.stderr = self.stream
 
-        if sys.platform.lower().startswith("win32"):
-            # non-modal on Windows11 only works if None is passed in rather than self.
+        if sys.platform.lower().startswith("win32") or \
+           sys.platform.lower().startswith("linux"):
+            # non-modal on Windows11 and linux only works if None is passed in rather than self.
             # problem is, all windows have to be closed separately...
             # fixed - check out closeEvent method - QApplication.closeAllWindows()
             self.conDialog = ConsoleDialog(None, title=f"Console #{len(self.console_dialogs) + 1}")
@@ -140,7 +141,8 @@ class JenkinsToolsUi(QMainWindow):
         self.raise_()
 
     def closeEvent(self, event):
-        if sys.platform.lower().startswith("win32"):
+        if sys.platform.lower().startswith("win32") or \
+           sys.platform.lower().startswith("linux"):
             # Required for the way the self.conDialog is instanciated on Windows
             QApplication.closeAllWindows()
         event.accept()  # Let the window close
