@@ -153,25 +153,30 @@ class pipelinesDialog(QDialog):
 
         elif selected_text == "run":
 
-            if self.ui.jobNameLineEdit_2.text():
-                action['job'] = self.ui.jobNameLineEdit_2.text()
+            if self.ui.JobNameLineEdit_2.text():
+                action['job'] = self.ui.JobNameLineEdit_2.text()
             else:
                 raise ValueError("job field required.")
 
+            """
             action['follow'] = self.ui.followComboBox.currentText()
-
             if self.ui.followComboBox.currentText() == "Yes":
                 action['follow'] = True
             elif self.ui.followComboBox.currentText() == "No":
                 action['follow'] = False
             else:
                 raise ValueError("follow variable out of bounds.")
+            """
 
             if self.ui.parametersLineEdit_2.text():
                 action['param'] = self.ui.parametersLineEdit_2.text()
+            else:
+                action['param'] = ''
 
             if self.ui.tokenBuildLineEdit_2.text():
-                action["token_build"] = self.ui.tokenBuildLineEdit_2.text()
+                action["build_token"] = self.ui.tokenBuildLineEdit_2.text()
+            else:
+                action["build_token"] = ''
         
             print(str(action))
 
