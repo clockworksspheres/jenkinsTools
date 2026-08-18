@@ -57,17 +57,14 @@ class CheckJenkinsPipelineRun():
             last_build = job_info.get("lastBuild")
             if not last_build:
                 print(f"No builds found for job '{args.job}' yet.", file=sys.stderr)
-                sys.exit(1)
 
             print(f"{json.dumps(last_build, indent=4)}")
 
         except JenkinsException as e:
             print(f"\nJenkins API error: {e}", file=sys.stderr)
             print("→ Check --url (must include http:// or https://), --user, --token, job name", file=sys.stderr)
-            sys.exit(3)
         except Exception as e:
             print(f"\nUnexpected error: {e}", file=sys.stderr)
-            sys.exit(4)
 
     def check_run(self, args):
         """
@@ -92,7 +89,6 @@ class CheckJenkinsPipelineRun():
             last_build = job_info.get("lastBuild")
             if not last_build:
                 print(f"No builds found for job '{args.job}' yet.", file=sys.stderr)
-                #sys.exit(1)
 
             build_number = last_build["number"]
             build_info = server.get_build_info(args.job, build_number)
@@ -149,22 +145,11 @@ class CheckJenkinsPipelineRun():
             else:
                 return data
 
-            # Exit code useful for scripts/CI
-            if building:
-                sys.exit(6)          # still running → special code
-            elif result == "SUCCESS":
-                sys.exit(0)
-            else:
-                sys.exit(5)          # FAILURE, ABORTED, UNSTABLE, etc.
-
         except JenkinsException as e:
             print(f"\nJenkins API error: {e}", file=sys.stderr)
             print("→ Check --url (must include http:// or https://), --user, --token, job name", file=sys.stderr)
-            #sys.exit(7)
         except Exception as e:
             print(f"\nUnexpected error: {e}", file=sys.stderr)
-            #sys.exit(8)
-
   
 def parse_arguments():
     parser = argparse.ArgumentParser(

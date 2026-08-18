@@ -31,14 +31,11 @@ class NodeStatus:
                 print("  • Firewall / network issue")
                 print("  • Invalid --user or --token")
                 print(f"\nError detail: {e}", file=sys.stderr)
-                sys.exit(1)
 
         except JenkinsException as e:
             print(f"\nJenkins API error: {e}", file=sys.stderr)
-            sys.exit(1)
         except Exception as e:
             print(f"\nUnexpected error: {e}", file=sys.stderr)
-            sys.exit(1)
 
     def get_nodes(self):
         return self.server.get_nodes()

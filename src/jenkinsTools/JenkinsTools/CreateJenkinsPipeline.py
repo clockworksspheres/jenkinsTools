@@ -28,10 +28,8 @@ class CreateJenkinsPipeline():
                     return f.read()
             except FileNotFoundError:
                 print(f"Error: Script file not found: {args.script_path}", file=sys.stderr)
-                sys.exit(1)
             except Exception as e:
                 print(f"Error reading script file: {e}", file=sys.stderr)
-                sys.exit(1)
         return None  # shouldn't reach here due to validation
 
     def build_inline_config(self, args, pipeline_script):
@@ -101,7 +99,6 @@ class CreateJenkinsPipeline():
                 print("  • Firewall / network issue", file=sys.stderr)
                 print("  • Invalid --user or --token", file=sys.stderr)
                 print(f"\nError detail: {e}", file=sys.stderr)
-                sys.exit(1)
 
             if server.job_exists(args.job_name):
                 print(f"Job '{args.job_name}' already exists → skipping creation.")
@@ -119,11 +116,8 @@ class CreateJenkinsPipeline():
 
         except JenkinsException as e:
             print(f"Jenkins error: {e}", file=sys.stderr)
-            sys.exit(1)
         except Exception as e:
             print(f"Unexpected error: {e}", file=sys.stderr)
-            sys.exit(1)
-
 
 def parse_arguments():
     parser = argparse.ArgumentParser(
