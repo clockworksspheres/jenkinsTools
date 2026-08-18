@@ -72,14 +72,20 @@ class JenkinsToolsUi(QMainWindow):
     def openSshCredsDialog(self):
         # show message box with mounted data
         msg = "stub for opening SSH creds window"
-        dlg = SshCredsDialog(self)
+        if sys.platform.lower().startswith("win32"):
+            dlg = SshCredsDialog(None)
+        else:
+            dlg = SshCredsDialog(self)
         dlg.show()
         self.raise_()
   
     def openNodesDialog(self):
 
         # 1.  Create a standard QDialog
-        nodes = nodesDialog(self)
+        if sys.platform.lower().startswith("win32"):
+            nodes = nodesDialog(None)
+        else:
+            nodes = nodesDialog(self)
         nodes.setWindowTitle("Work with Jenkins Nodes")
 
         # 2. show non-modally - Don't block until closed
@@ -96,7 +102,10 @@ class JenkinsToolsUi(QMainWindow):
     def openPipelinesDialog(self):
         # show message box with mounted data
         msg = "stub for opening pipelines window"
-        dlg = pipelinesDialog(self)
+        if sys.platform.lower().startswith("win32"):
+            dlg = pipelinesDialog(None)
+        else:
+            dlg = pipelinesDialog(self)
         dlg.show()
         self.raise_()
         """
