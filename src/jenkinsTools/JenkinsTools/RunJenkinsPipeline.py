@@ -87,7 +87,6 @@ class RunJenkinsPipeline():
 
             if not server.job_exists(args.job):
                 print(f"Job '{args.job}' not found – check name or permissions.", file=sys.stderr)
-                sys.exit(1)
 
             print(f"Triggering: {args.job}")
             if params:
@@ -100,7 +99,6 @@ class RunJenkinsPipeline():
 
             if "executable" not in queue_item or queue_item["executable"] is None:
                 print("Queued, but no build number yet – check Jenkins UI.")
-                sys.exit(0)
 
             build_number = queue_item["executable"]["number"]
             print(f"→ Started: #{build_number}")
@@ -109,15 +107,13 @@ class RunJenkinsPipeline():
             if args.follow:
                 success = self.follow_build_output(server, args.job, args.build_number, args.timeout)
                 if success is False:
-                    sys.exit(1)
+                    print("Not Successful")
 
         except jenkins.JenkinsException as e:
             print(f"\nJenkins error: {e}", file=sys.stderr)
             print("→ Double-check --url (include http:// or https://), --user, --token", file=sys.stderr)
-            sys.exit(1)
         except Exception as e:
             print(f"\nUnexpected: {e}", file=sys.stderr)
-            sys.exit(1)
 
 
 def parse_arguments():
