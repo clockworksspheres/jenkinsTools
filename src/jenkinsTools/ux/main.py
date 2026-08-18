@@ -48,7 +48,7 @@ class JenkinsToolsUi(QMainWindow):
         if existing_item:
             self.ui.gridLayout.removeItem(existing_item)
         self.adjustSize()
-
+        
         # Connect the debug button signal to slot
         self.ui.debugPushButton.clicked.connect(self.onDebugPushButtonClicked)
 
@@ -60,6 +60,8 @@ class JenkinsToolsUi(QMainWindow):
         # Redirect stdout & stderr to our stream
         sys.stdout = self.stream
         sys.stderr = self.stream
+
+        self.conDialog = ConsoleDialog(self, title=f"Console #{len(self.console_dialogs) + 1}")
 
     def openSshCredsDialog(self):
         # show message box with mounted data
@@ -100,24 +102,26 @@ class JenkinsToolsUi(QMainWindow):
         """
 
     def onDebugPushButtonClicked(self, checked):
-        dialog = ConsoleDialog(self, title=f"Console #{len(self.console_dialogs) + 1}")
 
         # Connect this dialog to the shared stream
-        self.stream.text_emitted.connect(dialog.append_html)
+        self.stream.text_emitted.connect(self.conDialog.append_html)
+
+        self.ui.debugPushButton.hide()
 
         # Disconnect when the dialog is closed (prevents errors later)
         def on_finished():
             try:
-                self.stream.text_emitted.disconnect(dialog.append_html)
+                self.stream.text_emitted.disconnect(self.conDialog.append_html)
+                self.ui.debugPushButton.show()
             except TypeError:
                 pass  # already disconnected
-            if dialog in self.console_dialogs:
-                self.console_dialogs.remove(dialog)
+            if self.conDialog in self.console_dialogs:
+                self.console_dialogs.remove(self.conDialog)
 
-        dialog.finished.connect(on_finished)
+        self.conDialog.finished.connect(on_finished)
 
-        self.console_dialogs.append(dialog)
-        dialog.show()
+        self.console_dialogs.append(self.conDialog)
+        self.conDialog.show()
         self.raise_()
 
 
