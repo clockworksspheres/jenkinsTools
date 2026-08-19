@@ -185,7 +185,8 @@ Notes:
             except Exception as e:
                 parser.print_help()
                 print(traceback.format_exc())
-                sys.exit(1)
+                if not args.gui:
+                    sys.exit(1)
             else:
                 print(f"Credential '{args.credential_id}' added to Jenkins successfully")
         else:

@@ -62,7 +62,8 @@ class TestRunJenkinsPipeline(unittest.TestCase):
             param=None,
             build_token=None,
             follow=False,
-            timeout=10
+            timeout=10,
+            gui=False
         )
 
         rp = RunJenkinsPipeline()
@@ -124,7 +125,8 @@ class TestRunJenkinsPipeline(unittest.TestCase):
             param=None,
             build_token=None,
             follow=False,
-            timeout=10
+            timeout=10,
+            gui=False
         )
 
         rp = RunJenkinsPipeline()
@@ -146,7 +148,8 @@ class TestRunJenkinsPipeline(unittest.TestCase):
             param=None,
             build_token=None,
             follow=False,
-            timeout=10
+            timeout=10,
+            gui=False
         )
 
         rp = RunJenkinsPipeline()
