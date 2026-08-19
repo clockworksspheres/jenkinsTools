@@ -40,7 +40,7 @@ class TestConfigJob(unittest.TestCase):
         mock_jenkins.return_value = server
         server.get_whoami.side_effect = Exception("Connection failed")
 
-        args = MagicMock(url="http://jenkins", user="admin", token="t")
+        args = MagicMock(url="http://jenkins", user="admin", token="t", gui=False)
         cj = ConfigJob(args)
 
         with self.assertRaises(SystemExit):
@@ -72,10 +72,10 @@ class TestConfigJob(unittest.TestCase):
         mock_jenkins.return_value = server
         server.get_whoami.return_value = {}
         mock_jenkins.NotFoundException = jenkins.NotFoundException("NotFound")
-        # server.get_job_config.side_effect = Exception("SystemExit")
+        server.get_job_config.side_effect = Exception("SystemExit")
         server.get_job_config.side_effect = jenkins.NotFoundException("Not Found")
 
-        args = MagicMock(url="u", user="x", token="t", job="MissingJob")
+        args = MagicMock(url="u", user="x", token="t", job="MissingJob", gui=False)
         cj = ConfigJob(args)
 
         with self.assertRaises(SystemExit):
@@ -111,7 +111,7 @@ class TestConfigJob(unittest.TestCase):
         mock_jenkins.return_value = server
         server.get_whoami.return_value = {}
 
-        args = MagicMock(url="u", user="x", token="t", job="MyJob", file="missing.xml")
+        args = MagicMock(url="u", user="x", token="t", job="MyJob", file="missing.xml", gui=False)
         cj = ConfigJob(args)
 
         with patch("builtins.open", side_effect=FileNotFoundError):
@@ -129,7 +129,7 @@ class TestConfigJob(unittest.TestCase):
         mock_jenkins.NotFoundException = jenkins.NotFoundException("Not Found")
         server.reconfig_job.side_effect = jenkins.NotFoundException("SystemExit")
 
-        args = MagicMock(url="u", user="x", token="t", job="MissingJob", file="config.xml")
+        args = MagicMock(url="u", user="x", token="t", job="MissingJob", file="config.xml", gui=False)
         cj = ConfigJob(args)
 
         with patch("builtins.open", mock_open(read_data="<xml/>")):

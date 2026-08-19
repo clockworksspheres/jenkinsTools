@@ -181,6 +181,7 @@ class TestAddJenkinsNode(unittest.TestCase):
         args.token = "token"
         args.name = "node"
         args.method = "jnlp"
+        args.gui = False
 
         node = AddJenkinsNode(args)
 

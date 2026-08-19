@@ -30,11 +30,17 @@ class NodeManage:
                 print("  • Firewall / network issue")
                 print("  • Invalid --user or --token")
                 print(f"\nError detail: {e}", file=sys.stderr)
+                if not self.args.gui:
+                    sys.exit(1)
 
         except JenkinsException as e:
             print(f"\nJenkins API error: {e}", file=sys.stderr)
+            if not self.args.gui:
+                sys.exit(1)
         except Exception as e:
             print(f"\nUnexpected error: {e}", file=sys.stderr)
+            if not self.args.gui:
+                sys.exit(1)
 
     def delete_node(self):
         self.server.delete_node(self.args.name)

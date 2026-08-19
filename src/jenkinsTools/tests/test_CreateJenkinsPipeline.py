@@ -35,7 +35,7 @@ class TestCreateJenkinsPipeline(unittest.TestCase):
         self.assertEqual(result, fake_script)
 
     def test_get_pipeline_script_file_not_found(self):
-        args = MagicMock(script=None, script_path="missing.groovy")
+        args = MagicMock(script=None, script_path="missing.groovy", gui=False)
         cp = CreateJenkinsPipeline()
 
         with patch("builtins.open", side_effect=FileNotFoundError):
@@ -43,7 +43,7 @@ class TestCreateJenkinsPipeline(unittest.TestCase):
                 cp.get_pipeline_script(args)
 
     def test_get_pipeline_script_file_read_error(self):
-        args = MagicMock(script=None, script_path="badfile")
+        args = MagicMock(script=None, script_path="badfile", gui=False)
         cp = CreateJenkinsPipeline()
 
         with patch("builtins.open", side_effect=Exception("read error")):
@@ -188,7 +188,8 @@ class TestCreateJenkinsPipeline(unittest.TestCase):
             type="inline",
             script="echo hi",
             script_path=None,
-            description="desc"
+            description="desc",
+            gui=False
         )
 
         cp = CreateJenkinsPipeline()
@@ -209,7 +210,8 @@ class TestCreateJenkinsPipeline(unittest.TestCase):
             type="inline",
             script="echo hi",
             script_path=None,
-            description="desc"
+            description="desc",
+            gui=False
         )
 
         cp = CreateJenkinsPipeline()

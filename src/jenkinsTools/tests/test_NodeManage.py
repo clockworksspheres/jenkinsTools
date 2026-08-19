@@ -16,7 +16,8 @@ class Args:
     url = "u"
     user = "x"
     token = "t"
-    name = "agent1" 
+    name = "agent1"
+    gui = False
 
 class TestNodeManage(unittest.TestCase):
 
@@ -45,7 +46,7 @@ class TestNodeManage(unittest.TestCase):
         mock_jenkins.return_value = server
         server.get_whoami.side_effect = Exception("conn error")
 
-        args = MagicMock(url="http://jenkins", user="admin", token="t")
+        args = MagicMock(url="http://jenkins", user="admin", token="t", gui=False)
 
         with self.assertRaises(SystemExit):
             NodeManage(args)
@@ -55,7 +56,7 @@ class TestNodeManage(unittest.TestCase):
     # ---------------------------
     @patch("jenkins.Jenkins", side_effect=Exception("boom"))
     def test_init_unexpected_error(self, mock_jenkins):
-        args = MagicMock(url="http://jenkins", user="admin", token="t")
+        args = MagicMock(url="http://jenkins", user="admin", token="t", gui=False)
 
         with self.assertRaises(SystemExit):
             NodeManage(args)

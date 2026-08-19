@@ -157,11 +157,10 @@ fakekeydataherebase64encoded
         self.assertIn("Failed to create credential", err_msg)
         self.assertIn("403", err_msg)
         self.assertIn("Authentication failed", err_msg)
-
+'''
     # ────────────────────────────────────────────────
     # main() / argparse smoke tests
     # ────────────────────────────────────────────────
-    '''
     @patch("sys.argv", ["AddSshKeyCredential.py", "--help"])
     @patch("sys.stdout", new_callable=StringIO)
     def test_main_help_flag(self, mock_stdout):
@@ -182,7 +181,8 @@ fakekeydataherebase64encoded
             main()
         self.assertNotEqual(cm.exception.code, 0)
         self.assertIn("the following arguments are required", mock_stderr.getvalue())
-    '''
+'''
+
 
 if __name__ == "__main__":
     unittest.main()
