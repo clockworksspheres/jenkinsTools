@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# highly modified version of:
-# https://www.pythonguis.com/tutorials/packaging-pyside6-applications-pyinstaller-macos-dmg/
-# amoung others... including
 # https://pyinstaller.org/en/stable/
 
 echo "----------===== ### =====----------"
@@ -45,7 +42,6 @@ pyinstaller -y build.deb-based.SshKeyWrangling.spec
 
 pyinstaller --clean -y build.deb-based.ToolsGui.spec
 pyinstaller -y build.deb-based.ToolsGui.spec
-
 
 rm build.deb-based.NodeTool.spec
 rm build.deb-based.PipelineTool.spec
