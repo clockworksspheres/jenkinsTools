@@ -43,7 +43,6 @@ rm build.macos.ToolsGui.spec
 rm build.macos.NodeTool.spec
 rm build.macos.PipelineTool.spec
 rm build.macos.SshKeyWrangling.spec
-rm AddSshKeyCredential.py
 
 popd
 popd
