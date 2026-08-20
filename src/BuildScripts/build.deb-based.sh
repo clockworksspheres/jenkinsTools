@@ -29,7 +29,7 @@ fi
 
 cp BuildScripts/build.deb-based.NodeTool.spec jenkinsTools
 cp BuildScripts/build.deb-based.PipelineTool.spec jenkinsTools
-cp BuildScripts/build.deb-based.AddSshKeyTool.spec jenkinsTools
+#cp BuildScripts/build.deb-based.AddSshKeyTool.spec jenkinsTools
 
 pushd jenkinsTools
 
