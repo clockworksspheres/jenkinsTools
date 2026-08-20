@@ -20,12 +20,14 @@ pyz = PYZ(a.pure)
 exe = EXE(
     pyz,
     a.scripts,
+    a.binaries,
+    a.datas,
     [],
     name='jenkinsNodeTool',
     debug=False,
     bootloader_ignore_signals=False,
-    strip=True,
-    upx=False,             # <-- No UPX = faster load
+    strip=False,
+    upx=True,             # <-- No UPX = faster load
     upx_exclude=[],
     runtime_tmpdir='/tmp',   # <-- Uses system temp (fastest)
     console=True,
