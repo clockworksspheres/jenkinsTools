@@ -29,7 +29,8 @@ fi
 
 cp BuildScripts/build.deb-based.NodeTool.spec jenkinsTools
 cp BuildScripts/build.deb-based.PipelineTool.spec jenkinsTools
-#cp BuildScripts/build.deb-based.AddSshKeyTool.spec jenkinsTools
+cp BuildScripts/build.deb-based.SshKeyWrangling.spec jenkinsTools
+cp BuildScripts/build.deb-based.ToolsGui.spec jenkinsTools
 
 pushd jenkinsTools
 
@@ -39,14 +40,17 @@ pyinstaller -y build.deb-based.NodeTool.spec
 pyinstaller --clean -y build.deb-based.PipelineTool.spec
 pyinstaller -y build.deb-based.PipelineTool.spec
 
-cp JenkinsTools/AddSshKeyCredential.py .
-pyinstaller --clean -y build.deb-based.AddSshKeyTool.spec
-pyinstaller -y build.deb-based.AddSshKeyTool.spec
+pyinstaller --clean -y build.deb-based.SshKeyWrangling.spec
+pyinstaller -y build.deb-based.SshKeyWrangling.spec
+
+pyinstaller --clean -y build.deb-based.ToolsGui.spec
+pyinstaller -y build.deb-based.ToolsGui.spec
+
 
 rm build.deb-based.NodeTool.spec
 rm build.deb-based.PipelineTool.spec
-rm build.macos.AddSshKeyTool.spec
-rm AddSshKeyCredential.py
+rm build.deb-based.SshKeyWrangling.spec
+rm build.deb-based.ToolsGui.spec
 
 popd
 popd
