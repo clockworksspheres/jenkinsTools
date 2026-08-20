@@ -3,10 +3,10 @@
 
 a = Analysis(
     ['jenkinsSshKeyWrangling.py'],
-    pathex=['.', 'lib', 'ui'],
+    pathex=['.', 'lib', 'ui', 'JenkinsTools'],
     binaries=[],
     datas=[],
-    hiddenimports=[ ],
+    hiddenimports=[],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
@@ -20,27 +20,22 @@ pyz = PYZ(a.pure)
 exe = EXE(
     pyz,
     a.scripts,
+    a.binaries,
+    a.datas,
     [],
-    exclude_binaries=True,
-    name='jenkinsNodeTool',
+    name='jenkinsSshKeyWrangling',
     debug=False,
     bootloader_ignore_signals=False,
-    strip=True,
-    upx=False,             # <-- No UPX = faster load
-    runtime_tmpdir="/tmp",   # <-- Uses system temp (fastest)
+    strip=False,
+    upx=True,             # <-- No UPX = faster load
+    upx_exclude=[],
+    runtime_tmpdir='/tmp',   # <-- Uses system temp (fastest)
     console=True,
     disable_windowed_traceback=False,
     argv_emulation=False,
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-)
-coll = COLLECT(
-    exe,
-    a.binaries,
-    a.datas,
-    strip=False,
-    upx=True,
-    upx_exclude=[],
-    name='jenkinsSshKeyWrangling',
+    onefile=True,          # <-- You requested onefile
+    noarchive=True,
 )
