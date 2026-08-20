@@ -2,7 +2,7 @@
 
 
 a = Analysis(
-    ['jenkinsNodeTool.py'],
+    ['jenkinsSshKeyWrangling.py'],
     pathex=['.', 'lib', 'ui', 'JenkinsTools'],
     binaries=[],
     datas=[],
@@ -23,7 +23,7 @@ exe = EXE(
     a.binaries,
     a.datas,
     [],
-    name='jenkinsNodeTool',
+    name='jenkinsSshKeyWrangling',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
