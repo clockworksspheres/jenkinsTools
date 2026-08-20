@@ -3,12 +3,10 @@
 
 a = Analysis(
     ['jenkinsToolsGui.py'],
-    pathex=['.', 'JenkinsTools', 'lib', 'ux'],
+    pathex=['.', 'lib', 'ui', 'JenkinsTools'],
     binaries=[],
     datas=[],
-    hiddenimports=[
-        'JenkinsTools',
-    ], 
+    hiddenimports=[],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
@@ -28,10 +26,10 @@ exe = EXE(
     name='jenkinsToolsGui',
     debug=False,
     bootloader_ignore_signals=False,
-    strip=True,
-    upx=False,             # <-- No UPX = faster load
+    strip=False,
+    upx=True,             # <-- No UPX = faster load
     upx_exclude=[],
-    runtime_tmpdir="/tmp",   # <-- Uses system temp (fastest)
+    runtime_tmpdir='/tmp',   # <-- Uses system temp (fastest)
     console=True,
     disable_windowed_traceback=False,
     argv_emulation=False,
