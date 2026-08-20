@@ -28,6 +28,7 @@ exe = EXE(
     bootloader_ignore_signals=False,
     strip=True,
     upx=False,             # <-- No UPX = faster load
+    upx_exclude=[],
     runtime_tmpdir="/tmp",   # <-- Uses system temp (fastest)
     console=True,
     disable_windowed_traceback=False,
