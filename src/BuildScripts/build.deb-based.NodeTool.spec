@@ -3,48 +3,40 @@
 
 a = Analysis(
     ['jenkinsNodeTool.py'],
-    pathex=['.', 'lib', 'ui'],
+    pathex=['.', 'lib', 'ui', 'JenkinsTools'],
     binaries=[],
     datas=[],
-    hiddenimports=[ 
-        'JenkinsTools.AddJenkinsNode.py',
-        'JenkinsTools.AddSshKeyCredential.py',
-        'JenkinsTools.CheckJenkinsPipelineRun.py',
-        'JenkinsTools.ConfigJob.py',
-        'JenkinsTools.CreateJenkinsPipeline.py',
-        'JenkinsTools.NodeManage_basic.py',
-        'JenkinsTools.NodeManage_name.py',
-        'JenkinsTools.NodeManage.py',
-        'JenkinsTools.NodeStatus_basic.py',
-        'JenkinsTools.NodeStatus.py',
-        'JenkinsTools.RunJenkinsPipeline.py',
-        'JenkinsTools.update_node.py',
+    hiddenimports=[
+        'JenkinsTools',
     ], 
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
     excludes=[],
-    noarchive=False,
-    optimize=0,
+    noarchive=True,        # <-- Faster import time
+    optimize=1,            # <-- Bytecode optimization
 )
+
 pyz = PYZ(a.pure)
 
 exe = EXE(
     pyz,
     a.scripts,
     [],
-    exclude_binaries=True,
     name='jenkinsNodeTool',
     debug=False,
     bootloader_ignore_signals=False,
-    strip=False,
-    upx=True,
+    strip=True,
+    upx=False,             # <-- No UPX = faster load
+    runtime_tmpdir="/tmp",   # <-- Uses system temp (fastest)
     console=True,
     disable_windowed_traceback=False,
     argv_emulation=False,
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
+    onefile=True,          # <-- You requested onefile
+    noarchive=True,
 )
 coll = COLLECT(
     exe,

@@ -3,7 +3,7 @@
 
 a = Analysis(
     ['jenkinsNodeTool.py'],
-    pathex=['.', 'JenkinsTools'],
+    pathex=['.', 'lib', 'ui', 'JenkinsTools'],
     binaries=[],
     datas=[],
     hiddenimports=[
