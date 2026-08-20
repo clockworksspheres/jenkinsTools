@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# highly modified version of:
-# https://www.pythonguis.com/tutorials/packaging-pyside6-applications-pyinstaller-macos-dmg/
-# amoung others... including
 # https://pyinstaller.org/en/stable/
 
 echo "----------===== ### =====----------"
@@ -27,7 +24,8 @@ fi
 
 cp BuildScripts/build.rh-based.NodeTool.spec jenkinsTools
 cp BuildScripts/build.rh-based.PipelineTool.spec jenkinsTools
-cp BuildScripts/build.rh-based.AddSshKeyTool.spec jenkinsTools
+cp BuildScripts/build.rh-based.SshKeyWrangling.spec jenkinsTools
+cp BuildScripts/build.rh-based.ToolsGui.spec jenkinsTools
 
 pushd jenkinsTools
 
@@ -37,14 +35,16 @@ pyinstaller -y build.rh-based.NodeTool.spec
 pyinstaller --clean -y build.rh-based.PipelineTool.spec
 pyinstaller -y build.rh-based.PipelineTool.spec
 
-cp JenkinsTools/AddSshKeyCredential.py .
-pyinstaller --clean -y build.rh-based.AddSshKeyTool.spec
-pyinstaller -y build.rh-based.AddSshKeyTool.spec
+pyinstaller --clean -y build.rh-based.SshKeyWrangling.spec
+pyinstaller -y build.rh-based.SshKeyWrangling.spec
+
+pyinstaller --clean -y build.rh-based.ToolsGui.spec
+pyinstaller -y build.rh-based.ToolsGui.spec
 
 rm build.rh-based.NodeTool.spec
 rm build.rh-based.PipelineTool.spec
-rm build.rh-based.AddSshKeyTool.spec
-rm AddSshKeyCredential.py
+rm build.rh-based.SshKeyWrangling.spec
+rm build.rh-based.ToolsGui.spec
 
 popd
 popd
