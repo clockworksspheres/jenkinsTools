@@ -1,6 +1,4 @@
-# highly modified version of:
-# https://www.pythonguis.com/tutorials/packaging-pyside6-applications-windows-pyinstaller-installforge/
-# amoung others... including
+
 # https://pyinstaller.org/en/stable/
 
 # before script is run:
@@ -28,11 +26,15 @@ if (!(Test-Path -Path $directory -PathType Container)) {
 # proper license can be found
 # cp .\resources\icons\Barkerbaggies-Bag-O-Tiles-E.ico .\resources\icons\E.ico
 
+cp BuildScripts/build.windows11.ToolsGui.spec jenkinsTools
 cp BuildScripts/build.windows11.NodeTool.spec jenkinsTools
 cp BuildScripts/build.windows11.PipelineTool.spec jenkinsTools
-cp BuildScripts/build.windows11.AddSshKeyTool.spec jenkinsTools
+cp BuildScripts/build.windows11.SshKeyWrangling.spec jenkinsTools
 
 pushd jenkinsTools
+
+pyinstaller --clean -y build.windows11.ToolsGui.spec
+pyinstaller -y build.windows11.ToolsGui.spec
 
 pyinstaller --clean -y build.windows11.NodeTool.spec
 pyinstaller -y build.windows11.NodeTool.spec
@@ -40,18 +42,15 @@ pyinstaller -y build.windows11.NodeTool.spec
 pyinstaller --clean -y build.windows11.PipelineTool.spec
 pyinstaller -y build.windows11.PipelineTool.spec
 
-cp JenkinsTools/AddSshKeyCredential.py .
-pyinstaller --clean -y build.windows11.AddSshKeyTool.spec
-pyinstaller -y build.windows11.AddSshKeyTool.spec
+pyinstaller --clean -y build.windows11.SshKeyWrangling.spec
+pyinstaller -y build.windows11.SshKeyWrangling.spec
 
+rm build.windows11.ToolsGui.spec
 rm build.windows11.NodeTool.spec
 rm build.windows11.PipelineTool.spec
-rm build.windows11.AddSshKeyTool.spec
-rm AddSshKeyCredential.py
+rm build.windows11.SshKeyWrangling.spec
 
 popd
 popd
-
-
 
 

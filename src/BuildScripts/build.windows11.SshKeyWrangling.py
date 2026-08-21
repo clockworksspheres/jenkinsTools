@@ -1,7 +1,7 @@
 # -*- mode: python ; coding: utf-8 -*-
 
 a = Analysis(
-    ['jenkinsNodeTool.py'],
+    ['jenkinsSshKeyWrangling.py'],
     pathex=['.', 'lib', 'ui', 'JenkinsTools'],
     binaries=[],
     datas=[],
@@ -22,7 +22,7 @@ exe = EXE(
     a.binaries,
     a.datas,
     [],
-    name='jenkinsNodeTool',
+    name='jenkinsSshKeyWrangling',
     debug=False,
     bootloader_ignore_signals=False,
     strip=True,
@@ -38,4 +38,3 @@ exe = EXE(
     onefile=True,          # <-- You requested onefile
     noarchive=True,
 )
-
