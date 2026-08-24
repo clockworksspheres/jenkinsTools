@@ -2,7 +2,7 @@
 # https://pyinstaller.org/en/stable/
 
 # before script is run:
-# Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+# Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
 # powershell -File ".\build.windows.ps1"
 
 pushd ..
