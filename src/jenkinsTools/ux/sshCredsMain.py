@@ -109,6 +109,9 @@ class SshCredsDialog(QDialog):
         else:
             raise ValueError("url, user and token fields required.")
 
+        action['key_passphrase'] = ''
+        action['description'] = ''
+
         if self.ui.credsIdLineEdit.text():
             action["credential_id"] = self.ui.credsIdLineEdit.text()
         if self.ui.sshUserLineEdit.text():
