@@ -140,7 +140,7 @@ pipeline {
                                 dir('src/jenkinsTools/tests') {
                                     echo '----------=====### Starting Tests ###=====----------'
                                     powershell """
-                                        ls -l
+                                        ls
                                         ${VENV}/Scripts/Activate.ps1
                                         ${VENV}/bin/python -m pytest -v --junit-xml test-reports/results.xml
                                     """
