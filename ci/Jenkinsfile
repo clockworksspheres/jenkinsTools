@@ -129,6 +129,28 @@ pipeline {
                         }
                     }
                 }
+                stage('Windows Pipeline') {
+                    agent { label 'windows' }
+                    environment {
+                        VENV = "../../projEnv"
+                    }
+                    stages {
+                        stage('Windows Test') { 
+                            steps {
+                                dir('src/jenkinsTools/tests') {
+                                    echo '----------=====### Starting Tests ###=====----------'
+                                    powershell """
+                                        ls -l
+                                        ${VENV}/Scripts/Activate.ps1
+                                        ${VENV}/bin/python -m pytest -v --junit-xml test-reports/results.xml
+                                    """
+                                    echo '----------=====### Finished Tests ###=====----------'
+                                    junit 'test-reports/results.xml'
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
         stage('post-parallel') {
