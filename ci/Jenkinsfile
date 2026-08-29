@@ -142,7 +142,7 @@ pipeline {
                                     powershell """
                                         ls
                                         ${VENV}/Scripts/Activate.ps1
-                                        ${VENV}/bin/python -m pytest -v --junit-xml test-reports/results.xml
+                                        ${VENV}/Scripts/python -m pytest -v --junit-xml test-reports/results.xml
                                     """
                                     echo '----------=====### Finished Tests ###=====----------'
                                     junit 'test-reports/results.xml'
