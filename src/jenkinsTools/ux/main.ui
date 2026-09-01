@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>249</width>
-    <height>272</height>
+    <height>278</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,28 +15,28 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="2" column="0">
+    <item row="3" column="0">
      <widget class="QPushButton" name="pipelinesPushButton">
       <property name="text">
        <string>Working with Jenkins Pipelines</string>
       </property>
      </widget>
     </item>
-    <item row="1" column="0">
-     <widget class="QPushButton" name="nodesPushButton">
-      <property name="text">
-       <string>Working with Jenkins Nodes</string>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="0">
+    <item row="4" column="0">
      <widget class="QPushButton" name="debugPushButton">
       <property name="text">
        <string>show debug messages</string>
       </property>
      </widget>
     </item>
-    <item row="0" column="0">
+    <item row="5" column="0">
+     <widget class="QPushButton" name="quitPushButton">
+      <property name="text">
+       <string>Quit</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
      <widget class="QPushButton" name="sshCredsPushButton">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
@@ -49,10 +49,25 @@
       </property>
      </widget>
     </item>
-    <item row="4" column="0">
-     <widget class="QPushButton" name="quitPushButton">
+    <item row="2" column="0">
+     <widget class="QPushButton" name="nodesPushButton">
       <property name="text">
-       <string>Quit</string>
+       <string>Working with Jenkins Nodes</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="label">
+      <property name="font">
+       <font>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Jenkins Tools Gui</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
       </property>
      </widget>
     </item>
@@ -64,7 +79,7 @@
      <x>0</x>
      <y>0</y>
      <width>249</width>
-     <height>30</height>
+     <height>39</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuAction">

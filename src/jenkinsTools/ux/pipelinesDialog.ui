@@ -14,45 +14,6 @@
    <string>Dialog</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="1">
-    <widget class="QLabel" name="label">
-     <property name="font">
-      <font>
-       <pointsize>20</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>jenkins Pipeline Tool</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0">
-    <widget class="QLabel" name="UrlLabel">
-     <property name="text">
-      <string>URL</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="1">
-    <widget class="QLineEdit" name="UrlLineEdit"/>
-   </item>
-   <item row="2" column="0">
-    <widget class="QLabel" name="UsernameLabel">
-     <property name="text">
-      <string>Username</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="1">
-    <widget class="QLineEdit" name="UsernameLineEdit"/>
-   </item>
-   <item row="3" column="0">
-    <widget class="QLabel" name="tokenLabel">
-     <property name="text">
-      <string>Token/Password</string>
-     </property>
-    </widget>
-   </item>
    <item row="3" column="1">
     <widget class="QLineEdit" name="tokenLineEdit"/>
    </item>
@@ -61,6 +22,34 @@
      <property name="text">
       <string>Action</string>
      </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLabel" name="tokenLabel">
+     <property name="text">
+      <string>Token/Password</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="2">
+    <widget class="QLabel" name="MethodLabel">
+     <property name="text">
+      <string>Type</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="3">
+    <widget class="QComboBox" name="MethodComboBox">
+     <item>
+      <property name="text">
+       <string>scm</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>inline</string>
+      </property>
+     </item>
     </widget>
    </item>
    <item row="4" column="1">
@@ -92,25 +81,24 @@
      </item>
     </widget>
    </item>
-   <item row="4" column="2">
-    <widget class="QLabel" name="MethodLabel">
+   <item row="2" column="1">
+    <widget class="QLineEdit" name="UsernameLineEdit"/>
+   </item>
+   <item row="1" column="1">
+    <widget class="QLineEdit" name="UrlLineEdit"/>
+   </item>
+   <item row="6" column="3">
+    <widget class="QPushButton" name="closePushButton">
      <property name="text">
-      <string>Type</string>
+      <string>close</string>
      </property>
     </widget>
    </item>
-   <item row="4" column="3">
-    <widget class="QComboBox" name="MethodComboBox">
-     <item>
-      <property name="text">
-       <string>scm</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>inline</string>
-      </property>
-     </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="UsernameLabel">
+     <property name="text">
+      <string>Username</string>
+     </property>
     </widget>
    </item>
    <item row="5" column="0" colspan="5">
@@ -375,17 +363,32 @@
      </widget>
     </widget>
    </item>
-   <item row="6" column="3">
-    <widget class="QPushButton" name="closePushButton">
-     <property name="text">
-      <string>close</string>
-     </property>
-    </widget>
-   </item>
    <item row="6" column="4">
     <widget class="QPushButton" name="RunPushButton">
      <property name="text">
       <string>run command</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="UrlLabel">
+     <property name="text">
+      <string>URL</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0" colspan="2">
+    <widget class="QLabel" name="label">
+     <property name="font">
+      <font>
+       <pointsize>20</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Jenkins Pipeline Tool</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignmentFlag::AlignCenter</set>
      </property>
     </widget>
    </item>

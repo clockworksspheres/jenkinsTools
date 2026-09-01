@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'nodesDialog.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.11.1
+## Created by: Qt User Interface Compiler version 6.11.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -330,8 +330,9 @@ class Ui_Dialog(object):
         font = QFont()
         font.setPointSize(20)
         self.label.setFont(font)
+        self.label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-        self.gridLayout.addWidget(self.label, 0, 1, 1, 1)
+        self.gridLayout.addWidget(self.label, 0, 0, 1, 2)
 
 
         self.retranslateUi(Dialog)
@@ -381,6 +382,6 @@ class Ui_Dialog(object):
         self.DescriptionLabel_2.setText(QCoreApplication.translate("Dialog", u"Description", None))
         self.RemoteFsLlabel_2.setText(QCoreApplication.translate("Dialog", u"Remote Filesystem", None))
         self.VmNamelabel_3.setText(QCoreApplication.translate("Dialog", u"VM Name", None))
-        self.label.setText("")
+        self.label.setText(QCoreApplication.translate("Dialog", u"Jenkins Node Tool", None))
     # retranslateUi
 

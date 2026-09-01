@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'main.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.11.1
+## Created by: Qt User Interface Compiler version 6.11.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -16,15 +16,15 @@ from PySide6.QtGui import (QAction, QBrush, QColor, QConicalGradient,
     QIcon, QImage, QKeySequence, QLinearGradient,
     QPainter, QPalette, QPixmap, QRadialGradient,
     QTransform)
-from PySide6.QtWidgets import (QApplication, QGridLayout, QMainWindow, QMenu,
-    QMenuBar, QPushButton, QSizePolicy, QStatusBar,
-    QWidget)
+from PySide6.QtWidgets import (QApplication, QGridLayout, QLabel, QMainWindow,
+    QMenu, QMenuBar, QPushButton, QSizePolicy,
+    QStatusBar, QWidget)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(249, 272)
+        MainWindow.resize(249, 278)
         self.actionSSH_creds_wrangling = QAction(MainWindow)
         self.actionSSH_creds_wrangling.setObjectName(u"actionSSH_creds_wrangling")
         self.actionWorking_with_Jenkins_Nodes = QAction(MainWindow)
@@ -40,17 +40,17 @@ class Ui_MainWindow(object):
         self.pipelinesPushButton = QPushButton(self.centralwidget)
         self.pipelinesPushButton.setObjectName(u"pipelinesPushButton")
 
-        self.gridLayout.addWidget(self.pipelinesPushButton, 2, 0, 1, 1)
-
-        self.nodesPushButton = QPushButton(self.centralwidget)
-        self.nodesPushButton.setObjectName(u"nodesPushButton")
-
-        self.gridLayout.addWidget(self.nodesPushButton, 1, 0, 1, 1)
+        self.gridLayout.addWidget(self.pipelinesPushButton, 3, 0, 1, 1)
 
         self.debugPushButton = QPushButton(self.centralwidget)
         self.debugPushButton.setObjectName(u"debugPushButton")
 
-        self.gridLayout.addWidget(self.debugPushButton, 3, 0, 1, 1)
+        self.gridLayout.addWidget(self.debugPushButton, 4, 0, 1, 1)
+
+        self.quitPushButton = QPushButton(self.centralwidget)
+        self.quitPushButton.setObjectName(u"quitPushButton")
+
+        self.gridLayout.addWidget(self.quitPushButton, 5, 0, 1, 1)
 
         self.sshCredsPushButton = QPushButton(self.centralwidget)
         self.sshCredsPushButton.setObjectName(u"sshCredsPushButton")
@@ -60,17 +60,26 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.sshCredsPushButton.sizePolicy().hasHeightForWidth())
         self.sshCredsPushButton.setSizePolicy(sizePolicy)
 
-        self.gridLayout.addWidget(self.sshCredsPushButton, 0, 0, 1, 1)
+        self.gridLayout.addWidget(self.sshCredsPushButton, 1, 0, 1, 1)
 
-        self.quitPushButton = QPushButton(self.centralwidget)
-        self.quitPushButton.setObjectName(u"quitPushButton")
+        self.nodesPushButton = QPushButton(self.centralwidget)
+        self.nodesPushButton.setObjectName(u"nodesPushButton")
 
-        self.gridLayout.addWidget(self.quitPushButton, 4, 0, 1, 1)
+        self.gridLayout.addWidget(self.nodesPushButton, 2, 0, 1, 1)
+
+        self.label = QLabel(self.centralwidget)
+        self.label.setObjectName(u"label")
+        font = QFont()
+        font.setPointSize(20)
+        self.label.setFont(font)
+        self.label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        self.gridLayout.addWidget(self.label, 0, 0, 1, 1)
 
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 249, 30))
+        self.menubar.setGeometry(QRect(0, 0, 249, 39))
         self.menuAction = QMenu(self.menubar)
         self.menuAction.setObjectName(u"menuAction")
         MainWindow.setMenuBar(self.menubar)
@@ -97,10 +106,11 @@ class Ui_MainWindow(object):
         self.actionWorking_with_Jenkins_Pipelines.setText(QCoreApplication.translate("MainWindow", u"Working with Jenkins Pipelines", None))
         self.actionQuit.setText(QCoreApplication.translate("MainWindow", u"Quit", None))
         self.pipelinesPushButton.setText(QCoreApplication.translate("MainWindow", u"Working with Jenkins Pipelines", None))
-        self.nodesPushButton.setText(QCoreApplication.translate("MainWindow", u"Working with Jenkins Nodes", None))
         self.debugPushButton.setText(QCoreApplication.translate("MainWindow", u"show debug messages", None))
-        self.sshCredsPushButton.setText(QCoreApplication.translate("MainWindow", u"Add SSH creds", None))
         self.quitPushButton.setText(QCoreApplication.translate("MainWindow", u"Quit", None))
+        self.sshCredsPushButton.setText(QCoreApplication.translate("MainWindow", u"Add SSH creds", None))
+        self.nodesPushButton.setText(QCoreApplication.translate("MainWindow", u"Working with Jenkins Nodes", None))
+        self.label.setText(QCoreApplication.translate("MainWindow", u"Jenkins Tools Gui", None))
         self.menuAction.setTitle(QCoreApplication.translate("MainWindow", u"Action", None))
     # retranslateUi
 

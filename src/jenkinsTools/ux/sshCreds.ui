@@ -7,24 +7,103 @@
     <x>0</x>
     <y>0</y>
     <width>460</width>
-    <height>363</height>
+    <height>368</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="1" column="0">
+   <item row="5" column="0">
+    <widget class="QLabel" name="credsIdLabel">
+     <property name="text">
+      <string>credentials ID</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="1">
+    <widget class="QLineEdit" name="sshUserLineEdit"/>
+   </item>
+   <item row="7" column="0">
+    <widget class="QLabel" name="descriptionLabel">
+     <property name="text">
+      <string>description</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0">
     <widget class="QLabel" name="UsernameLabel">
      <property name="text">
       <string>Jenkins username</string>
      </property>
     </widget>
    </item>
-   <item row="4" column="1">
-    <widget class="QLineEdit" name="credsIdLineEdit"/>
+   <item row="4" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Method</string>
+     </property>
+    </widget>
    </item>
    <item row="3" column="1">
+    <widget class="QLineEdit" name="tokenLineEdit">
+     <property name="echoMode">
+      <enum>QLineEdit::EchoMode::PasswordEchoOnEdit</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="9" column="0">
+    <widget class="QLabel" name="keyPassphraseLabel">
+     <property name="text">
+      <string>key passphrase</string>
+     </property>
+    </widget>
+   </item>
+   <item row="10" column="1">
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="standardButtons">
+      <set>QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::Ok</set>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLabel" name="tokenLabel">
+     <property name="text">
+      <string>token/password</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="UrlLabel">
+     <property name="text">
+      <string>URL</string>
+     </property>
+    </widget>
+   </item>
+   <item row="8" column="1">
+    <widget class="QLineEdit" name="privateKeyLineEdit">
+     <property name="echoMode">
+      <enum>QLineEdit::EchoMode::PasswordEchoOnEdit</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="1">
+    <widget class="QLineEdit" name="descriptionLineEdit"/>
+   </item>
+   <item row="5" column="1">
+    <widget class="QLineEdit" name="credsIdLineEdit"/>
+   </item>
+   <item row="8" column="0">
+    <widget class="QPushButton" name="privateKeyPushButton">
+     <property name="text">
+      <string>Private Key File</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QLineEdit" name="UsernameLineEdit"/>
+   </item>
+   <item row="4" column="1">
     <widget class="QComboBox" name="comboBox">
      <property name="layoutDirection">
       <enum>Qt::LayoutDirection::LeftToRight</enum>
@@ -41,95 +120,31 @@
      </item>
     </widget>
    </item>
-   <item row="5" column="0">
+   <item row="9" column="1">
+    <widget class="QLineEdit" name="keyPassphraseLineEdit"/>
+   </item>
+   <item row="6" column="0">
     <widget class="QLabel" name="sshUserLabel">
      <property name="text">
       <string>ssh user</string>
      </property>
     </widget>
    </item>
-   <item row="6" column="0">
-    <widget class="QLabel" name="descriptionLabel">
-     <property name="text">
-      <string>description</string>
-     </property>
-    </widget>
-   </item>
-   <item row="9" column="1">
-    <widget class="QDialogButtonBox" name="buttonBox">
-     <property name="standardButtons">
-      <set>QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::Ok</set>
-     </property>
-    </widget>
-   </item>
-   <item row="8" column="1">
-    <widget class="QLineEdit" name="keyPassphraseLineEdit"/>
-   </item>
-   <item row="0" column="1">
+   <item row="1" column="1">
     <widget class="QLineEdit" name="UrlLineEdit"/>
    </item>
-   <item row="3" column="0">
-    <widget class="QLabel" name="label">
+   <item row="0" column="0" colspan="2">
+    <widget class="QLabel" name="label_2">
+     <property name="font">
+      <font>
+       <pointsize>20</pointsize>
+      </font>
+     </property>
      <property name="text">
-      <string>Method</string>
+      <string>Jenkins Ssh Key Wrangling</string>
      </property>
-    </widget>
-   </item>
-   <item row="2" column="0">
-    <widget class="QLabel" name="tokenLabel">
-     <property name="text">
-      <string>token/password</string>
-     </property>
-    </widget>
-   </item>
-   <item row="7" column="1">
-    <widget class="QLineEdit" name="privateKeyLineEdit">
-     <property name="echoMode">
-      <enum>QLineEdit::EchoMode::PasswordEchoOnEdit</enum>
-     </property>
-    </widget>
-   </item>
-   <item row="8" column="0">
-    <widget class="QLabel" name="keyPassphraseLabel">
-     <property name="text">
-      <string>key passphrase</string>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="1">
-    <widget class="QLineEdit" name="sshUserLineEdit"/>
-   </item>
-   <item row="0" column="0">
-    <widget class="QLabel" name="UrlLabel">
-     <property name="text">
-      <string>URL</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="0">
-    <widget class="QLabel" name="credsIdLabel">
-     <property name="text">
-      <string>credentials ID</string>
-     </property>
-    </widget>
-   </item>
-   <item row="6" column="1">
-    <widget class="QLineEdit" name="descriptionLineEdit"/>
-   </item>
-   <item row="1" column="1">
-    <widget class="QLineEdit" name="UsernameLineEdit"/>
-   </item>
-   <item row="2" column="1">
-    <widget class="QLineEdit" name="tokenLineEdit">
-     <property name="echoMode">
-      <enum>QLineEdit::EchoMode::PasswordEchoOnEdit</enum>
-     </property>
-    </widget>
-   </item>
-   <item row="7" column="0">
-    <widget class="QPushButton" name="privateKeyPushButton">
-     <property name="text">
-      <string>Private Key File</string>
+     <property name="alignment">
+      <set>Qt::AlignmentFlag::AlignCenter</set>
      </property>
     </widget>
    </item>
