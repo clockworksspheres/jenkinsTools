@@ -13,8 +13,8 @@ if (!(Test-Path -Path $directory -PathType Container)) {
    #if (!(Test-Path -Path ".\packenv" -PathType Container)) {
    
    python -m venv $directory
-   $actfile
-
+   #$actfile
+   .\projEnv\Scripts\Activate.ps1
    #pip install --upgrade pip
    pip install -r requirements.txt
 } else {
