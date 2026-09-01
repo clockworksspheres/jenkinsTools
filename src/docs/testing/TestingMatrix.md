@@ -76,6 +76,24 @@ Virtualbox - Debian
 
 ## As a Guest on Linux
 
-Time has allowed for the following - project doesn't have hardware to put Linux on to test guest OSs.  Linux Guest OS's on a Linux Host have to be tested in a hyperV provided Linux OS, where the guest inside the Linux OS being emulated rather than virtualized.
+Time has allowed for the following - project doesn't have hardware to put Linux on to test guest OSs.  Linux Guest OS's on a Linux Host have to be tested in a hyperV provided Linux OS, where the guest inside the Linux OS being emulated rather than virtualized.ssssss
 
 Virtualbox - Debian
+
+## Jenkins CI testing
+
+Jenkinsfile:
+ - Windows guest on macOS host
+ - Debian 3 guest on macOS host
+ - Ubuntu 24.04 on macOS host
+ - Windows  on macOS host
+
+Jenkinsfile.debbased
+ - Debian 13 on macOS host
+ - Ubuntu 24.04 on macOS host
+ - Ubuntu 26.04 on macOS host
+
+Jenkinsfile.rhelbased
+ - Rocky 9 on macOS host
+ - Rocky 10 on macOS host
+ - Alma 10 on macOS host

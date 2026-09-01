@@ -5,6 +5,11 @@
 # Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
 # powershell -File ".\build.windows.ps1"
 
+#####
+# If used in Jenkins, in the Jenkins node, under ssh, advanced - 
+# put the "Set-ExecutionPolicy" line above (with a semi-colon at 
+# the end) in the "Prefix Start Agent Command" field.
+
 pushd ..
 
 $directory = ".\projEnv"
@@ -13,9 +18,9 @@ if (!(Test-Path -Path $directory -PathType Container)) {
    #if (!(Test-Path -Path ".\packenv" -PathType Container)) {
    
    python -m venv $directory
-   #$actfile
+
    .\projEnv\Scripts\Activate.ps1
-   #pip install --upgrade pip
+
    pip install -r requirements.txt
 } else {
    powershell -File $actfile

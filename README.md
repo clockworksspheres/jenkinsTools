@@ -18,7 +18,7 @@ JenkinsPipelineTool.py
 Pipeline actions:  Create, run, check, get-config, set-config
 
 jenkinsSshKeyWrangling.py
-Add an existing SSH private key as a Jenkins credential
+Add an existing SSH private key as a Jenkins credential on a Jenkins server
 
 Command line tools used with the -g or -gui switch will run a graphical version of the tool.
 
