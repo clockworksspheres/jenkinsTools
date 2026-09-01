@@ -101,7 +101,7 @@ pipeline {
                 stage('Alma Pipeline') {
                     agent { label 'alma' }
                     environment {
-                        VENV = "../../projEnvs"
+                        VENV = "../../projEnv"
                         QT_QPA_PLATFORM = "offscreen"
                     }   
                     stages {
