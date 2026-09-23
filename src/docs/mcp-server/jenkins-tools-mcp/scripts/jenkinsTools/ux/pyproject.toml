@@ -1,5 +1,0 @@
-[project]
-name = "jenkinsTools GUI project"
-
-[tool.pyside6-project]
-files = ["main.ui", "nodesDialog.ui", "pipelinesDialog.ui", "sshCreds.ui"]
