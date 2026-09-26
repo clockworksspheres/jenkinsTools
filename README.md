@@ -26,6 +26,14 @@ The jenkinsToolsGUI.py is a small meta wrapper around all the GUI's.
 
 -----
 
+# Tracking - Eisenban - Kanban board for the project
+
+src/ramdiskBoard is a Kanban based project management board created by and managed by eisenban.
+
+eisenban package can be found at:  https://github.com/clockworksspheres/eisenban
+
+-----
+
 A [clockworksspheres](https://clockworksspheres.github.io/) project.
 
 Can work in hand with the [clockworksspheres/mvm](https://clockworksspheres/mvm.git) project to manage test VM's for testing the cross platform nature of the tools
