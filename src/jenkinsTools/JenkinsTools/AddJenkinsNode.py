@@ -22,8 +22,6 @@ from requests import ConnectionError
 
 class AddJenkinsNode():
     def __init__(self, args):
-        """
-        """
         self.args = args
         print("Finished init...\n\n")
 
@@ -88,8 +86,6 @@ class AddJenkinsNode():
         print("Leaving creation of the ssh node...")
 
     def add_jenkins_node(self):
-        """
-        """
         print(f"Connecting to: {self.args.url}")
 
         try:
@@ -106,7 +102,7 @@ class AddJenkinsNode():
                 print("  • Jenkins not running / wrong port", file=sys.stderr)
                 print("  • Firewall / network issue", file=sys.stderr)
 
-            except Exception as e:
+            except (jenkins.JenkinsException, jenkins.NotFoundException, jenkins.EmptyResponseException, jenkins.BadHTTPException, jenkins.TimeoutException) as e:
                 print("\nCannot connect to Jenkins!", file=sys.stderr)
                 print("Common causes:", file=sys.stderr)
                 print("  • Wrong --url (must be real address – not jenkins.example.com)", file=sys.stderr)
@@ -146,11 +142,14 @@ class AddJenkinsNode():
             print(f"\nJenkins API error: {e}", file=sys.stderr)
             if not self.args.gui:
                 sys.exit(1)
+
+        """ Removing, let exceptions raise... if they are identifiable specifically
+            catch and exit applicably
         except Exception as e:
             print(f"\nUnexpected error: {e}", file=sys.stderr)
             if not self.args.gui:
                 sys.exit(1)
-
+        """
 
 def parse_arguments():
     parser = argparse.ArgumentParser(

@@ -9,19 +9,13 @@ Requires:
 import argparse
 import json
 import sys
-import time
-from datetime import datetime
+from datetime import datetime, timezone
 import jenkins
 from jenkins import JenkinsException
-import requests
 
 
-class CheckJenkinsPipelineRun():
-    """
-    """
+class CheckJenkinsPipelineRun:
     def __init__(self, **kwargs):
-        """
-        """
         print("Initialized class")
 
     def format_duration(self, ms: int) -> str:
@@ -42,8 +36,6 @@ class CheckJenkinsPipelineRun():
         return f"{seconds}s"
 
     def get_full_run(self, args):
-        """
-        """
         try:
             server = jenkins.Jenkins(args.url, username=args.user, password=args.token, timeout=10)
 
@@ -63,12 +55,8 @@ class CheckJenkinsPipelineRun():
         except JenkinsException as e:
             print(f"\nJenkins API error: {e}", file=sys.stderr)
             print("→ Check --url (must include http:// or https://), --user, --token, job name", file=sys.stderr)
-        except Exception as e:
-            print(f"\nUnexpected error: {e}", file=sys.stderr)
 
     def check_run(self, args):
-        """
-        """
         print("Check Run.")
         try:
             server = jenkins.Jenkins(args.url, username=args.user, password=args.token, timeout=10)
@@ -99,7 +87,7 @@ class CheckJenkinsPipelineRun():
             timestamp_ms = build_info.get("timestamp", 0)
             duration_ms = build_info.get("duration", 0)
 
-            started_at = datetime.fromtimestamp(timestamp_ms / 1000).strftime("%Y-%m-%d %H:%M:%S") if timestamp_ms else "—"
+            started_at = datetime.fromtimestamp(timestamp_ms / 1000, tz=timezone.utc).astimezone().strftime("%Y-%m-%d %H:%M:%S") if timestamp_ms else "—"
 
             print(f"Job          : {args.job}")
             print(f"Last build   : #{build_number}")
@@ -148,8 +136,7 @@ class CheckJenkinsPipelineRun():
         except JenkinsException as e:
             print(f"\nJenkins API error: {e}", file=sys.stderr)
             print("→ Check --url (must include http:// or https://), --user, --token, job name", file=sys.stderr)
-        except Exception as e:
-            print(f"\nUnexpected error: {e}", file=sys.stderr)
+
   
 def parse_arguments():
     parser = argparse.ArgumentParser(

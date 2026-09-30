@@ -20,7 +20,7 @@ class NodeManage():
             # Quick connectivity check
             try:
                 self.server.get_whoami()
-            except Exception as e:
+            except JenkinsException as e:
                 print("\nCannot connect to Jenkins!", file=sys.stderr)
                 print("Common causes:", file=sys.stderr)
                 print("  • Wrong --url")
@@ -31,37 +31,21 @@ class NodeManage():
 
         except JenkinsException as e:
             print(f"\nJenkins API error: {e}", file=sys.stderr)
-        except Exception as e:
-            print(f"\nUnexpected error: {e}", file=sys.stderr)
 
     def delete_node(self):
-        """
-        """
         self.server.delete_node(self.args.name)
 
     def disable_node(self):
-        """
-        """
         self.server.disable_node(self.args.name)
 
     def enable_node(self):
-        """
-        """
         self.server.enable_node(self.args.name)
 
     def add_node(self):
-        """
-        """
         from jenkinsTools.JenkinsTools.AddJenkinsNode import AddJenkinsNode
         jnode = AddJenkinsNode(self.args)
         jnode.add_jenkins_node()
 
     def update_node(self):
-        """
-        """
         from jenkinsTools.JenkinsTools.update_node import cmd_update_node
         cmd_update_node(self.args)
-
-        
-
-

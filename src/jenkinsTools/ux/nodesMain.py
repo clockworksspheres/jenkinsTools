@@ -227,9 +227,10 @@ class nodesDialog(QDialog):
             print(str(action))
 
             args = Namespace(**action)
-            '''
+            
             from JenkinsTools.NodeStatus import NodeStatus
             ns = NodeStatus(args)
+            '''
             data = ns.get_nodes()
             for node in data:
                 name = node["name"]
@@ -243,8 +244,8 @@ class nodesDialog(QDialog):
                     state = "Unknown"
                 self.ui.GetNodesTextBrowser.append(f"{name}: {state}")
             '''
-            #self.ui.GetNodesTextBrowser.append(tabulate(data, headers="keys", tablefmt="grid"))
-            self.ui.GetNodesTextBrowser.append(json.dumps(data, indent=4))
+            # self.ui.GetNodesTextBrowser.append(tabulate(data, headers="keys", tablefmt="grid"))
+            # self.ui.GetNodesTextBrowser.append(json.dumps(data, indent=4))
 
             print(ns.get_nodes())            
 

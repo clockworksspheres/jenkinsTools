@@ -19,35 +19,23 @@ def gitRepoFieldValidation(repoField):
     pass
 
 def gitBranchFieldValidation(gitBranchFieldValidation):
-    """
-    """
     pass
 
 def jenkinsfilePathFieldValidation(jenkinsfileField):
-    """
-    """
     pass
 
 def jenkinsCredentialsIdFieldValidation(credsIdField):
-    """
-    """
     pass
 
 ####
 # Specific to the Run Action
 def runParametersFieldValidation(paramsField):
-    """
-    """
     pass
 
 def tokenBuildFieldValidation(tokenBuildField):
-    """
-    """
     pass
 
 ####
 # specific to set-config field
 def xmlFilePathFieldValidation(xmlField):
-    """
-    """
     pass

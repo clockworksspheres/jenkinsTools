@@ -7,6 +7,8 @@ from pathlib import Path
 parent_dir = Path(__file__).parent.parent
 sys.path.append(str(parent_dir))
 
+import jenkins
+
 from PySide6.QtWidgets import QApplication, QDialog, QDialogButtonBox, QFileDialog, QLineEdit
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QIcon, QAction
@@ -145,7 +147,7 @@ class SshCredsDialog(QDialog):
         keyWrangling = SshKeyWrangling()
 
         try:
-            private_key = keyWrangling.load_private_key(args.private_key)
+            keyWrangling.load_private_key(args.private_key)
             keyWrangling.add_ssh_private_key_credential(
                 jenkins_url=args.url,
                 jenkins_user=args.jenkins_user,
@@ -156,7 +158,7 @@ class SshCredsDialog(QDialog):
                 passphrase=args.key_passphrase,
                 description=args.description,
             )
-        except Exception:
+        except jenkins.JenkinsException:
             print(traceback.format_exc())
         else:
             print(f"Credential '{args.credential_id}' added to Jenkins successfully")

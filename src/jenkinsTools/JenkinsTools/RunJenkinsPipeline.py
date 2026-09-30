@@ -13,12 +13,9 @@ import jenkins
 from jenkins import JenkinsException
 
 
-class RunJenkinsPipeline():
-    """
-    """
+class RunJenkinsPipeline:
+
     def __init__(self):
-        """
-        """
         print(f"Initializing {self.__class__.__name__} class")
 
     def normalize_url(self, url: str) -> str:
@@ -66,7 +63,7 @@ class RunJenkinsPipeline():
             except KeyboardInterrupt:
                 print("\nStopped watching – build continues in Jenkins.")
                 return None
-            except Exception as e:
+            except JenkinsException as e:
                 print(f"\nFollow error: {e}", file=sys.stderr)
                 return False
 
@@ -116,10 +113,6 @@ class RunJenkinsPipeline():
         except jenkins.JenkinsException as e:
             print(f"\nJenkins error: {e}", file=sys.stderr)
             print("→ Double-check --url (include http:// or https://), --user, --token", file=sys.stderr)
-            if not args.gui:
-                sys.exit(1)
-        except Exception as e:
-            print(f"\nUnexpected: {e}", file=sys.stderr)
             if not args.gui:
                 sys.exit(1)
 

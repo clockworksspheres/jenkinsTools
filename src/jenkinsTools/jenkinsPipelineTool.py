@@ -9,9 +9,6 @@ from PySide6.QtWidgets import QApplication
 
 
 def parse_arguments():
-    """
-    """
-
     # Parent parser with shared arguments
     parent_parser = argparse.ArgumentParser(add_help=False)
     parent_parser.add_argument(
@@ -211,7 +208,7 @@ if __name__=="__main__":
 
     try:
         required = args.user and args.token and args.url
-    except:
+    except (ValueError, argparse.ArgumentError):
         required = False
     
     if args.gui:

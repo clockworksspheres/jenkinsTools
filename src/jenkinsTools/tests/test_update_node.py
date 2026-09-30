@@ -1,7 +1,6 @@
 import unittest
 from unittest.mock import patch, MagicMock
 import xml.etree.ElementTree as ET
-import os
 import sys
 from pathlib import Path
 

@@ -21,25 +21,16 @@ class NodeStatus:
             # print("Instantiated server...")
 
             # Quick connectivity check
-            try:
-                self.server.get_whoami()
-            except Exception as e:
-                print("\nCannot connect to Jenkins!", file=sys.stderr)
-                print("Common causes:", file=sys.stderr)
-                print("  • Wrong --url")
-                print("  • Jenkins not running / wrong port")
-                print("  • Firewall / network issue")
-                print("  • Invalid --user or --token")
-                print(f"\nError detail: {e}", file=sys.stderr)
-                if not self.args.gui:
-                    sys.exit(1)
+            self.server.get_whoami()
 
         except JenkinsException as e:
+            print("\nCannot connect to Jenkins!", file=sys.stderr)
+            print("Common causes:", file=sys.stderr)
+            print("  • Wrong --url")
+            print("  • Jenkins not running / wrong port")
+            print("  • Firewall / network issue")
+            print("  • Invalid --user or --token")
             print(f"\nJenkins API error: {e}", file=sys.stderr)
-            if not self.args.gui:
-                sys.exit(1)
-        except Exception as e:
-            print(f"\nUnexpected error: {e}", file=sys.stderr)
             if not self.args.gui:
                 sys.exit(1)
 

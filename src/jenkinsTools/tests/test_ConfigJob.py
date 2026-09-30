@@ -1,7 +1,6 @@
 import unittest
 from unittest.mock import patch, MagicMock, mock_open
 import sys
-import os
 import jenkins
 from pathlib import Path
 

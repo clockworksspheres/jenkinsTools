@@ -12,12 +12,9 @@ from jenkins import JenkinsException
 
 
 class CreateJenkinsPipeline():
-    """
-    """
+
     def __init__(self):
-        """
-        """
-        # print("Initializing class")
+        print("Initializing class")
 
     def get_pipeline_script(self, args):
         if args.script:
@@ -28,10 +25,6 @@ class CreateJenkinsPipeline():
                     return f.read()
             except FileNotFoundError:
                 print(f"Error: Script file not found: {args.script_path}", file=sys.stderr)
-                if not args.gui:
-                    sys.exit(1)
-            except Exception as e:
-                print(f"Error reading script file: {e}", file=sys.stderr)
                 if not args.gui:
                     sys.exit(1)
         return None  # shouldn't reach here due to validation
@@ -51,8 +44,6 @@ class CreateJenkinsPipeline():
 </flow-definition>"""
 
     def build_scm_config(self, args):
-        """
-        """
         credentials_xml = f"<credentialsId>{args.credentials_id}</credentialsId>" if args.credentials_id else ""
         
         return f"""<?xml version='1.1' encoding='UTF-8'?>
@@ -86,16 +77,13 @@ class CreateJenkinsPipeline():
 </flow-definition>"""
 
     def create_jenkins_pipeline(self, args):
-        """
-        """
-
         try:
             server = jenkins.Jenkins(args.url, username=args.user, password=args.token)
 
             # Quick connectivity check
             try:
                 server.get_whoami()
-            except Exception as e:
+            except jenkins.JenkinsException as e:
                 print("\nCannot connect to Jenkins!", file=sys.stderr)
                 print("Common causes:", file=sys.stderr)
                 print("  • Wrong --url (must be real address – not jenkins.example.com)", file=sys.stderr)
@@ -124,11 +112,6 @@ class CreateJenkinsPipeline():
             print(f"Jenkins error: {e}", file=sys.stderr)
             if not args.gui:
                 sys.exit(1)
-        except Exception as e:
-            print(f"Unexpected error: {e}", file=sys.stderr)
-            if not args.gui:
-                sys.exit(1)
-
 
 def parse_arguments():
     parser = argparse.ArgumentParser(

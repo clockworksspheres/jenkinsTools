@@ -22,7 +22,7 @@ class NodeManage:
             # Quick connectivity check
             try:
                 self.server.get_whoami()
-            except Exception as e:
+            except JenkinsException as e:
                 print("\nCannot connect to Jenkins!", file=sys.stderr)
                 print("Common causes:", file=sys.stderr)
                 print("  • Wrong --url")
@@ -35,10 +35,6 @@ class NodeManage:
 
         except JenkinsException as e:
             print(f"\nJenkins API error: {e}", file=sys.stderr)
-            if not self.args.gui:
-                sys.exit(1)
-        except Exception as e:
-            print(f"\nUnexpected error: {e}", file=sys.stderr)
             if not self.args.gui:
                 sys.exit(1)
 

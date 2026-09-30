@@ -16,17 +16,12 @@ from PySide6.QtWidgets import QApplication
 from ux.sshCredsMain import SshCredsDialog
 
 
-class SshKeyWrangling():
-    """
-    """
+class SshKeyWrangling:
+
     def __init__(self):
-        """
-        """
-        # print(f"Initializing {self.__class__.__name__} class")
+        print(f"Initializing {self.__class__.__name__} class")
 
     def load_private_key(self, path):
-        """
-        """
         if not os.path.isfile(path):
             raise FileNotFoundError(f"Private key not found: {path}")
         with open(path, "r") as f:
@@ -168,27 +163,18 @@ Notes:
 
         if args.url and args.jenkins_user and args.jenkins_token and args.credential_id and args.ssh_user and args.private_key:
 
-            try:
-
-
-                private_key = keyWrangling.load_private_key(args.private_key)
-                keyWrangling.add_ssh_private_key_credential(
-                    jenkins_url=args.url,
-                    jenkins_user=args.jenkins_user,
-                    jenkins_token=args.jenkins_token,
-                    credential_id=args.credential_id,
-                    ssh_username=args.ssh_user,
-                    private_key=private_key,
-                    passphrase=args.key_passphrase,
-                    description=args.description,
-                )
-            except Exception as e:
-                parser.print_help()
-                print(traceback.format_exc())
-                if not args.gui:
-                    sys.exit(1)
-            else:
-                print(f"Credential '{args.credential_id}' added to Jenkins successfully")
+            private_key = keyWrangling.load_private_key(args.private_key)
+            keyWrangling.add_ssh_private_key_credential(
+                jenkins_url=args.url,
+                jenkins_user=args.jenkins_user,
+                jenkins_token=args.jenkins_token,
+                credential_id=args.credential_id,
+                ssh_username=args.ssh_user,
+                private_key=private_key,
+                passphrase=args.key_passphrase,
+                description=args.description,
+            )
+            print(f"Credential '{args.credential_id}' added to Jenkins successfully")
         else:
             parser.print_help()
 

@@ -57,10 +57,8 @@ class AjsonReporter(JSONReporter):
         self.messages.clear()
         try:
             self.out.write("")
-        except Exception:
+        except OSError:
             pass
-        return None
-
 
 # ---------------------------------------------------------------------------
 # Shared Pylint argument list
@@ -92,7 +90,7 @@ def processFile(filename, compiledPackages="PySide6,PyQt5,PyQt4"):
             Run(args, reporter=reporter, exit=False)
         except astroid.exceptions.AstroidError:
             reporter.messages.clear()
-        except Exception:
+        except OSError:
             msgs = reporter.get_messages()
             if any(m["msg_id"].startswith("F") for m in msgs):
                 pass  # real fatal lint message
@@ -138,7 +136,7 @@ class PylintIface:
                 Run(args, reporter=reporter, exit=False)
             except astroid.exceptions.AstroidError:
                 reporter.messages.clear()
-            except Exception:
+            except OSError:
                 msgs = reporter.get_messages()
                 if any(m["msg_id"].startswith("F") for m in msgs):
                     pass

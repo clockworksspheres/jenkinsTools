@@ -22,7 +22,7 @@ class NodeManage:
             # Quick connectivity check
             try:
                 self.server.get_whoami()
-            except Exception as e:
+            except JenkinsException as e:
                 print("\nCannot connect to Jenkins!", file=sys.stderr)
                 print("Common causes:", file=sys.stderr)
                 print("  • Wrong --url")
@@ -33,8 +33,6 @@ class NodeManage:
 
         except JenkinsException as e:
             print(f"\nJenkins API error: {e}", file=sys.stderr)
-        except Exception as e:
-            print(f"\nUnexpected error: {e}", file=sys.stderr)
 
     def delete_node(self):
         self.server.delete_node(self.args.name)
@@ -81,7 +79,6 @@ Examples:
   Update a node:
     jenkins_node_manage.py update --name agent1 --url http://jenkins:8080 --user admin --token 1234
 """
-
     parser = argparse.ArgumentParser(
         description="Manage Jenkins nodes via CLI",
         formatter_class=argparse.RawDescriptionHelpFormatter,

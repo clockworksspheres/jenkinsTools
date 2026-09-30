@@ -5,7 +5,7 @@ import ConfigParser
 from pathlib import Path
 
 
-class ConfigFile():
+class ConfigFile:
     """
     Class to manage a config file for the project.
     """    
@@ -24,8 +24,6 @@ class ConfigFile():
         self.userHome = str(self.getUserHome())
 
     def saveConfig(self):
-        """
-        """
         if not self.filename.exists():
             with open(self.filename, "w") as f:
                 f.write(f"JENKINS_SERVER={self.jenkinsServer}")
@@ -33,28 +31,20 @@ class ConfigFile():
                 f.write(f"JENKINS_TOKEN={self.jenkinsToken}")
 
     def loadConfig(self):
-        """
-        """
         pass
         
 
     def useConfig(self):
-        """
-        """
         pass
 
     def getUserHome(self):
-        """
-        """
         # Path.home is a cross platform way to get the user's home
         self.userHome = str(Path.home()).strip()
 
         return self.userHome
 
     def getDefaultConfigPath(self):
-        """
-        """
-        userHome = self.getUserHome()
+        self.userHome = self.getUserHome()
 
         if sys.platform.lower().startswith("win"):
             self.configFilePath = self.userHome + r'\\.local\\config\\jenkinsTools'
@@ -66,38 +56,26 @@ class ConfigFile():
         print(str(self.configFile))
 
     def createConfig(self):
-        """
-        """
         Path(self.configFilePath).mkdir(parents=True, exist_ok=True)
         Path(self.configFile).touch() 
         configFile = Path(self.configFile)
         configFile.chmod(0o600)
 
     def getJenkinsServer(self):
-        """
-        """
         return self.jenkinsServer
 
     def setJenkinsServer(self, server=""):
-        """
-        """
         if server and isinstance(server, str):
             self.jenkinsServer = server
 
     def getJenkinsUser(self):
-        """
-        """
         return self.jenkinsUser
 
     def setJenkinsUser(self, user=""):
-        """
-        """
         if user and isinstance(user, str):
             self.jenkinsUser = user
 
     def getJenkinsToken(self):
-        """
-        """
         return ""
     '''
     def setJenkinsServer(self, token=""):
@@ -115,6 +93,3 @@ class ConfigFile():
         # overwrite variables with class variables that have been set
 
         # write the file
-
-
-

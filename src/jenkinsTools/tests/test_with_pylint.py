@@ -63,28 +63,24 @@ def genTestData(fileList, excludeFiles, excludeFromLines):
         if not myfile.endswith(".py"):
             continue
 
-        try:
-            jsonData = PylintIface().processFile(myfile)
+        jsonData = PylintIface().processFile(myfile)
 
-            for item in jsonData:
-                try:
-                    if item["category"] in ("error", "fatal"):
-                        message = item["message"]
-                        message = re.sub("'", "", message)
-                        message = re.sub("/", "_", message)
-                        message = re.sub("::", "_", message)
+        for item in jsonData:
+            try:
+                if item["category"] in ("error", "fatal"):
+                    message = item["message"]
+                    message = re.sub("'", "", message)
+                    message = re.sub("/", "_", message)
+                    message = re.sub("::", "_", message)
 
-                        if any(re.search(pattern, message) for pattern in excludeFromLines):
-                            continue
+                    if any(re.search(pattern, message) for pattern in excludeFromLines):
+                        continue
 
-                        test_case_data.append((myfile, item["line"], message))
+                    test_case_data.append((myfile, item["line"], message))
 
-                except KeyError:
-                    print(traceback.format_exc())
+            except KeyError:
+                print(traceback.format_exc())
 
-        except Exception:
-            print(f"Unexpected exception while processing {myfile}")
-            print(traceback.format_exc())
 
     return test_case_data
 
