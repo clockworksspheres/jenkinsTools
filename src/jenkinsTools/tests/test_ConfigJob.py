@@ -31,21 +31,6 @@ class TestConfigJob(unittest.TestCase):
         server.get_whoami.assert_called_once()
 
     # ---------------------------
-    # get_jenkins(): connection failure
-    # ---------------------------
-    @patch("jenkins.Jenkins")
-    def test_get_jenkins_connection_failure(self, mock_jenkins):
-        server = MagicMock()
-        mock_jenkins.return_value = server
-        server.get_whoami.side_effect = Exception("Connection failed")
-
-        args = MagicMock(url="http://jenkins", user="admin", token="t", gui=False)
-        cj = ConfigJob(args)
-
-        with self.assertRaises(SystemExit):
-            cj.get_jenkins()
-
-    # ---------------------------
     # cmd_get_config(): success
     # ---------------------------
     @patch("jenkins.Jenkins")

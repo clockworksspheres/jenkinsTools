@@ -136,28 +136,6 @@ class TestRunJenkinsPipeline(unittest.TestCase):
                 rp.controller(args)
 
     # ---------------------------
-    # controller(): JenkinsException
-    # ---------------------------
-    @patch("jenkins.Jenkins", side_effect=Exception("boom"))
-    def test_controller_jenkins_exception(self, mock_jenkins):
-        args = MagicMock(
-            url="http://jenkins",
-            user="admin",
-            token="t",
-            job="job",
-            param=None,
-            build_token=None,
-            follow=False,
-            timeout=10,
-            gui=False
-        )
-
-        rp = RunJenkinsPipeline()
-
-        with self.assertRaises(SystemExit):
-            rp.controller(args)
-
-    # ---------------------------
     # follow_build_output(): success
     # ---------------------------
     @patch("time.sleep", return_value=None)

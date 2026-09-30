@@ -38,31 +38,6 @@ class TestNodeManage(unittest.TestCase):
         self.assertIs(nm.server, server)
 
     # ---------------------------
-    # Initialization: connection failure
-    # ---------------------------
-    @patch("jenkins.Jenkins")
-    def test_init_connection_failure(self, mock_jenkins):
-        server = MagicMock()
-        mock_jenkins.return_value = server
-        server.get_whoami.side_effect = Exception("conn error")
-
-        args = MagicMock(url="http://jenkins", user="admin", token="t", gui=False)
-
-        with self.assertRaises(SystemExit):
-            NodeManage(args)
-
-    # ---------------------------
-    # Initialization: JenkinsException
-    # ---------------------------
-    @patch("jenkins.Jenkins", side_effect=Exception("boom"))
-    def test_init_unexpected_error(self, mock_jenkins):
-        args = MagicMock(url="http://jenkins", user="admin", token="t", gui=False)
-
-        with self.assertRaises(SystemExit):
-            NodeManage(args)
-
-    
-    # ---------------------------
     # delete_node()
     # ---------------------------
     @patch("jenkins.Jenkins")

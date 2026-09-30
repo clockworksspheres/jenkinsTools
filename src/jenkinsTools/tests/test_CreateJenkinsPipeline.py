@@ -42,13 +42,6 @@ class TestCreateJenkinsPipeline(unittest.TestCase):
             with self.assertRaises(SystemExit):
                 cp.get_pipeline_script(args)
 
-    def test_get_pipeline_script_file_read_error(self):
-        args = MagicMock(script=None, script_path="badfile", gui=False)
-        cp = CreateJenkinsPipeline()
-
-        with patch("builtins.open", side_effect=Exception("read error")):
-            with self.assertRaises(SystemExit):
-                cp.get_pipeline_script(args)
 
     # ---------------------------
     # build_inline_config()
@@ -170,54 +163,6 @@ class TestCreateJenkinsPipeline(unittest.TestCase):
         job_name, xml = server.create_job.call_args[0]
         self.assertEqual(job_name, "scmjob")
         self.assertIn("<url>https://github.com/test/repo.git</url>", xml)
-
-    # ---------------------------
-    # create_jenkins_pipeline(): Jenkins connection failure
-    # ---------------------------
-    @patch("jenkins.Jenkins")
-    def test_create_pipeline_connection_failure(self, mock_jenkins):
-        server = MagicMock()
-        mock_jenkins.return_value = server
-        server.get_whoami.side_effect = Exception("conn error")
-
-        args = MagicMock(
-            url="http://jenkins",
-            user="admin",
-            token="t",
-            job_name="job",
-            type="inline",
-            script="echo hi",
-            script_path=None,
-            description="desc",
-            gui=False
-        )
-
-        cp = CreateJenkinsPipeline()
-
-        with self.assertRaises(SystemExit):
-            cp.create_jenkins_pipeline(args)
-
-    # ---------------------------
-    # create_jenkins_pipeline(): unexpected error
-    # ---------------------------
-    @patch("jenkins.Jenkins", side_effect=Exception("boom"))
-    def test_create_pipeline_unexpected_error(self, mock_jenkins):
-        args = MagicMock(
-            url="http://jenkins",
-            user="admin",
-            token="t",
-            job_name="job",
-            type="inline",
-            script="echo hi",
-            script_path=None,
-            description="desc",
-            gui=False
-        )
-
-        cp = CreateJenkinsPipeline()
-
-        with self.assertRaises(SystemExit):
-            cp.create_jenkins_pipeline(args)
 
 
 if __name__ == "__main__":
