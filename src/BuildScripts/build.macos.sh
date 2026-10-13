@@ -12,13 +12,10 @@ directory="./projEnv"
 actfile="$directory/bin/activate"
 if [ ! -d "$directory" ]  || [ ! -f "$actfile" ] ; then
    python3 -m venv $directory
-   source $actfile
 
-   pip install -r requirements.txt
-
-else
-   source $actfile
 fi
+source $actfile
+pip install -r requirements.txt
 
 cp BuildScripts/build.macos.ToolsGui.spec jenkinsTools
 cp BuildScripts/build.macos.NodeTool.spec jenkinsTools
