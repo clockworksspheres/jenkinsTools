@@ -78,6 +78,10 @@ class nodesDialog(QDialog):
         self.setTabOrder(self.ui.closePushButton, self.ui.UrlLineEdit)
 
         #####
+        # Tooltips
+        self.ui.JenkinsCredsIdLineEdit.setToolTip("Must be the value that is the label in the Jenkins server credentials to the stored credentials.  Not the name attached to the credentials.")
+
+        #####
         # set up the token dialog box as a password box
         self.ui.tokenLineEdit.setEchoMode(QLineEdit.EchoMode.Password)
 
