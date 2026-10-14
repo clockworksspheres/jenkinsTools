@@ -129,7 +129,7 @@ class pipelinesDialog(QDialog):
 
             # if validateJobNameLineEdit(self.ui.jobNameLineEdit.text()):
             if self.ui.jobNameLineEdit.text():
-                action['job'] = self.ui.jobNameLineEdit.text()
+                action['job_name'] = self.ui.jobNameLineEdit.text()
             if self.ui.repoLineEdit.text():
                 action['repo'] = self.ui.repoLineEdit.text()
             if self.ui.branchLineEdit.text():
@@ -140,11 +140,14 @@ class pipelinesDialog(QDialog):
                 action['credentials_id'] = self.ui.credsIdLineEdit.text()
             if self.ui.descriptionLineEdit.text():
                 action['description'] = self.ui.descriptionLineEdit.text()
+            #####
+            # Need to add to GUI???
+            action['type'] = 'scm'
 
             print(str(action))
 
             args = Namespace(**action)
-            print(f"Adding {args.url} for node <{args.job}>...")
+            print(f"Adding {args.url} for pipeline <{args.job_name}>...")
 
             from JenkinsTools.CreateJenkinsPipeline import CreateJenkinsPipeline as createPipeline
 
