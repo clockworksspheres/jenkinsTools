@@ -93,23 +93,33 @@ class RunJenkinsPipeline:
 
             queue_id = server.build_job(args.job, parameters=params, token=args.build_token)
 
-            time.sleep(2)
-            queue_item = server.get_queue_item(queue_id)
+            timeout = 12
+            poll_interval = 1
+            deadline = time.monotonic() + timeout
 
-            if "executable" not in queue_item or queue_item["executable"] is None:
-                print("Queued, but no build number yet – check Jenkins UI.")
-                if not args.gui:
-                    sys.exit(0)
+            while time.monotonic() < deadline:
+                queue_item = server.get_queue_item(queue_id)
+                executable = queue_item.get("executable")
 
-            build_number = queue_item["executable"]["number"]
-            print(f"→ Started: #{build_number}")
-            print(f"→ View: {args.url}/job/{args.job.replace('/', '/job/')}/{build_number}")
+                if executable and executable.get("number") is not None:
+                    build_number = executable["number"]
+                    print(f"→ Started: #{build_number}")
+                    print(f"→ View: {args.url}/job/{args.job.replace('/', '/job/')}/{build_number}")
+                    break
 
+                if queue_item.get("canceled"):
+                    raise RuntimeError("Jenkins canceled the queued buld.")
+
+                time.sleep(poll_interval)
+            else:
+                print(f"Build is still queued after {timeout} seconds; check Jenkins UI.")
+                sys.exit(1)
+            """
             if args.follow:
                 success = self.follow_build_output(server, args.job, args.build_number, args.timeout)
                 if success is False and not args.gui:
                     sys.exit(1)
-
+            """
         except jenkins.JenkinsException as e:
             print(f"\nJenkins error: {e}", file=sys.stderr)
             print("→ Double-check --url (include http:// or https://), --user, --token", file=sys.stderr)
