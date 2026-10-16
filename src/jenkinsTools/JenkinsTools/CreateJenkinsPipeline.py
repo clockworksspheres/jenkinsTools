@@ -44,11 +44,19 @@ class CreateJenkinsPipeline():
 </flow-definition>"""
 
     def build_scm_config(self, args):
-        credentials_xml = f"<credentialsId>{args.credentials_id}</credentialsId>" if args.credentials_id else ""
-        
+        try:
+            credentials_xml = f"<credentialsId>{args.credentials_id}</credentialsId>" if args.credentials_id else ""
+        except AttributeError:
+            credentials_xml = ""
+
+        try:
+            description = args.description
+        except AttributeError:
+            description = ""
+
         return f"""<?xml version='1.1' encoding='UTF-8'?>
 <flow-definition plugin="workflow-job">
-  <description>{args.description}</description>
+  <description>{description}</description>
   <keepDependencies>false</keepDependencies>
   <properties/>
   <definition class="org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition" plugin="workflow-cps">
