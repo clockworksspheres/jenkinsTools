@@ -109,18 +109,18 @@ class pipelinesDialog(QDialog):
         icon_hide = QIcon("icons/eye_closed.png")
 
         # Create the toggle action
-        self.toggle_action = QAction(icon_hide, "Toggle Password", self.ui.tokenBuildLineEdit_2)
-        self.toggle_action.setCheckable(True)
+        self.toggle_action_2 = QAction(icon_hide, "Toggle Password", self.ui.tokenBuildLineEdit_2)
+        self.toggle_action_2.setCheckable(True)
 
         # Add to the RIGHT side of the EXISTING line edit
-        self.ui.tokenBuildLineEdit_2.addAction(self.toggle_action, QLineEdit.TrailingPosition)
+        self.ui.tokenBuildLineEdit_2.addAction(self.toggle_action_2, QLineEdit.TrailingPosition)
 
         # Set the tokenLineEdit to 
         self.ui.tokenBuildLineEdit_2.setEchoMode(QLineEdit.EchoMode.Password)
 
         # Connect the signal
-        self.toggle_action.toggled.connect(lambda checked: self.toggle_visibility(self.ui.tokenBuildLineEdit_2, checked, icon_hide, icon_show))
-        # end setup of token password lineedit            
+        self.toggle_action_2.toggled.connect(lambda checked: self.toggle_visibility(self.ui.tokenBuildLineEdit_2, checked, icon_hide, icon_show))
+        # end setup of token password lineedit
         ################################################
 
     def runAction(self):
