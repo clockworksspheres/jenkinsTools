@@ -98,7 +98,7 @@ class pipelinesDialog(QDialog):
         self.ui.tokenLineEdit.setEchoMode(QLineEdit.EchoMode.Password)
 
         # Connect the signal
-        self.toggle_action.toggled.connect(lambda checked: self.toggle_visibility(self.ui.tokenLineEdit, checked, icon_hide, icon_show))
+        self.toggle_action.toggled.connect(lambda checked: self.toggle_visibility(self.ui.tokenLineEdit, self.toggle_action, checked, icon_hide, icon_show))
 
         ################################################
         # set up the token dialog box as a password box
@@ -119,7 +119,7 @@ class pipelinesDialog(QDialog):
         self.ui.tokenBuildLineEdit_2.setEchoMode(QLineEdit.EchoMode.Password)
 
         # Connect the signal
-        self.toggle_action_2.toggled.connect(lambda checked: self.toggle_visibility(self.ui.tokenBuildLineEdit_2, checked, icon_hide, icon_show))
+        self.toggle_action_2.toggled.connect(lambda checked: self.toggle_visibility(self.ui.tokenBuildLineEdit_2, self.toggle_action_2, checked, icon_hide, icon_show))
         # end setup of token password lineedit
         ################################################
 
@@ -438,16 +438,16 @@ class pipelinesDialog(QDialog):
         if filePath:
             self.ui.scriptPathLineEdit.setText(filePath)
 
-    def toggle_visibility(self, line_edit, checked, icon_show, icon_hide):
+    def toggle_visibility(self, line_edit, toggle_action, checked, icon_show, icon_hide):
         if checked:
             # Show password (Normal makes text visible)
             # Use NoEcho if you strictly want it invisible but still "active"
             line_edit.setEchoMode(QLineEdit.EchoMode.Normal) 
-            self.toggle_action.setIcon(icon_hide)
+            toggle_action.setIcon(icon_hide)
         else:
             # Hide password
             line_edit.setEchoMode(QLineEdit.EchoMode.Password)
-            self.toggle_action.setIcon(icon_show)
+            toggle_action.setIcon(icon_show)
 
     def closeEvent(self, event):
         '''
