@@ -11,5 +11,6 @@ build
 packenv
 .obsidian/workspace.json
 *obsidian/workspace.json
+jenkinsTools.egg-info
 # test-reports
 
