@@ -31,4 +31,8 @@ eisenban -t jenkinsToolsBoard
 ```
 
 
+# packaging:
+
+https://machinelearningmastery.com/a-first-course-on-deploying-python-projects/
+
 
