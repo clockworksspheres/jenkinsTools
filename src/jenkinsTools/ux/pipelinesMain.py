@@ -5,6 +5,11 @@ import json
 from argparse import Namespace
 
 from pathlib import Path
+#from importlib.resources import files
+#
+#_icon_dir = files("jenkinsTools.icons")
+
+# import resources
 
 #from tabulate import tabulate
 
@@ -84,8 +89,8 @@ class pipelinesDialog(QDialog):
         self.ui.tokenLineEdit.setEchoMode(QLineEdit.EchoMode.Password)
 
         # load icons (ensure these files exist in your project)
-        icon_show = QIcon("icons/eye_open.png")
-        icon_hide = QIcon("icons/eye_closed.png")
+        icon_show = QIcon("eye_open.png")
+        icon_hide = QIcon("eye_closed.png")
 
         # Create the toggle action
         self.toggle_action = QAction(icon_hide, "Toggle Password", self.ui.tokenLineEdit)
@@ -105,8 +110,8 @@ class pipelinesDialog(QDialog):
         self.ui.tokenBuildLineEdit_2.setEchoMode(QLineEdit.EchoMode.Password)
 
         # load icons (ensure these files exist in your project)
-        icon_show = QIcon("icons/eye_open.png")
-        icon_hide = QIcon("icons/eye_closed.png")
+        icon_show = QIcon("eye_open.png")
+        icon_hide = QIcon("eye_closed.png")
 
         # Create the toggle action
         self.toggle_action_2 = QAction(icon_hide, "Toggle Password", self.ui.tokenBuildLineEdit_2)
