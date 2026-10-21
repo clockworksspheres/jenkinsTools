@@ -183,7 +183,7 @@ def parse_arguments():
     return args
 
 
-if __name__=="__main__":
+def main():
     args = parse_arguments()
 
     args_dict = vars(args)
@@ -254,3 +254,6 @@ if __name__=="__main__":
 
     else:
         print("Either launch the GUI (-g or --gui) or use required parameters --url, --user, and --token")
+
+if __name__=="__main__":
+    main()

@@ -13,3 +13,7 @@ requires-python = ">=3.10"
 where = ["."]
 include = ["jenkinsTools*"]
 
+[project.scripts]
+jenkinsNodeTool = "jenkinsTools.jenkinsNodeTool:main"
+jenkinsPipelineTool = "jenkinsTools.jenkinsPipelineTool:main"
+
