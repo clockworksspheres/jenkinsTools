@@ -1,38 +1,38 @@
-# README.md
+# jenkinsTools
 
-# Building
+Command line tools for interfacing with Jenkins
 
-To build the example standalone binaries that leverage this codebase, please go into the BuildScripts directory and run the script appropriate to your operating system.
+Relies on the python-jenkins library to interface with a Jenkins server.
 
-Install the requirements.txt dependancies to leverage the jenkinsTools scripts directly.
+Command line tools to:
+ * manage nodes
+ * work with a simple pipeline
+ * add previously created ssh credential to Jenkins.
 
-# Directories
+Command line tools:
 
-## BuildScripts
+JenkinsNodeTool.py
+Node actions: add, update, delete, enable, disable, get-nodes, get-node-info, get-node-config 
 
-pyinstaller scripts to build standalone binaries.  Once a build script is run, the resulting binaries can be found in the jenkinsTools/dist directory.
+JenkinsPipelineTool.py
+Pipeline actions:  Create, run, check, get-config, set-config
 
-## docs
+jenkinsSshKeyWrangling.py
+Add an existing SSH private key as a Jenkins credential on a Jenkins server
 
-Supporting documentation and notes that may be useful.
+Command line tools used with the -g or -gui switch will run a graphical version of the tool.
 
-## jenkinsTools
+The jenkinsToolsGUI.py is a small meta wrapper around all the GUI's.
 
-source code root directory
+-----
 
-## jenkinsToolsBoard
+# Tracking - Eisenban - Kanban board for the project
 
-A kanban board made with eisenban to track progress.
+src/ramdiskBoard is a Kanban based project management board created by and managed by [eisenban](https://github.com/clockworksspheres/eisenban).
 
-after installing eisenban:
+-----
 
-``` bash
-eisenban -t jenkinsToolsBoard
-```
+A [clockworksspheres](https://clockworksspheres.github.io/) project.
 
-
-# packaging:
-
-https://machinelearningmastery.com/a-first-course-on-deploying-python-projects/
-
+Can work in hand with the [clockworksspheres/mvm](https://clockworksspheres/mvm.git) project to manage test VM's for testing the cross platform nature of the tools
 
