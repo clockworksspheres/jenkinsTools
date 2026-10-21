@@ -6,8 +6,7 @@ import argparse
 from PySide6.QtWidgets import QApplication
 
 
-if __name__=="__main__":
-
+def main():
     parser = argparse.ArgumentParser()
 
     parser.add_argument("-g", "--gui", action='store_true', help="Start the main GUI")
@@ -19,7 +18,7 @@ if __name__=="__main__":
 
     if len(sys.argv) == 1 or args.gui:
 
-        from ux.main import JenkinsToolsUi
+        from jenkinsTools.ux.main import JenkinsToolsUi
 
         app = QApplication(sys.argv)
         widget = JenkinsToolsUi()
@@ -27,24 +26,26 @@ if __name__=="__main__":
         sys.exit(app.exec())
 
     elif args.ssh_creds:
-        from ux.sshCredsMain import SshCredsDialog
+        from jenkinsTools.ux.sshCredsMain import SshCredsDialog
         app = QApplication(sys.argv)
         dlg = SshCredsDialog()
         dlg.show()
         sys.exit(app.exec()) 
 
     elif args.nodes:
-        from ux.nodesMain import nodesDialog
+        from jenkinsTools.ux.nodesMain import nodesDialog
         app = QApplication(sys.argv)
         dlg = nodesDialog()
         dlg.show()
         sys.exit(app.exec()) 
 
     elif args.pipelines:
-        from ux.pipelinesMain import pipelinesDialog
+        from jenkinsTools.ux.pipelinesMain import pipelinesDialog
         app = QApplication(sys.argv)
         dlg = pipelinesDialog()
         dlg.show()
         sys.exit(app.exec()) 
 
 
+if __name__=="__main__":
+    main()
