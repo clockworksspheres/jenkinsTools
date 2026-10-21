@@ -189,6 +189,14 @@ def main():
     args_dict = vars(args)
     print(str(args_dict))
 
+    if args.gui and not args.command:
+        from jenkinsTools.ux.nodesMain import nodesDialog
+
+        app = QApplication(sys.argv)
+        widget = nodesDialog()
+        widget.show()
+        sys.exit(app.exec())
+
     try:
         required = args.user and args.token and args.url
     except (ValueError, argparse.ArgumentError):
@@ -243,14 +251,6 @@ def main():
             from JenkinsTools.NodeManage import NodeManage
             nm = NodeManage(args)
             print(nm.enable_node())
-
-    elif args.gui and not args.command:
-        from ux.nodesMain import nodesDialog
-
-        app = QApplication(sys.argv)
-        widget = nodesDialog()
-        widget.show()
-        sys.exit(app.exec())
 
     else:
         print("Either launch the GUI (-g or --gui) or use required parameters --url, --user, and --token")

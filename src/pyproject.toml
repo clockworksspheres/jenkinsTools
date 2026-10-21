@@ -8,6 +8,8 @@ version = "2.0.34"
 description = "RAM disk utilities"
 readme = "README.md"
 requires-python = ">=3.10"
+dynamic = ["dependencies"]
+# dynamic = ["dependencies", "optional-dependencies"]
 
 [tool.setuptools.packages.find]
 where = ["."]
@@ -16,4 +18,8 @@ include = ["jenkinsTools*"]
 [project.scripts]
 jenkinsNodeTool = "jenkinsTools.jenkinsNodeTool:main"
 jenkinsPipelineTool = "jenkinsTools.jenkinsPipelineTool:main"
+
+[tool.setuptools.dynamic]
+dependencies = { file = ["requirements.txt"] }
+# optional-dependencies = { dev = { file = ["requirements-dev.txt"] } }
 
