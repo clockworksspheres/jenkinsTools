@@ -48,6 +48,7 @@ class ConfigJob():
         Subcommand: get-config
         """
         self.get_jenkins()
+        xml = "....."
         try:
             xml = self.server.get_job_config(self.args.job)
             print(xml)
@@ -55,6 +56,8 @@ class ConfigJob():
             print(f"Job '{self.args.job}' not found", file=sys.stderr)
             if not self.args.gui:
                 sys.exit(1)
+
+        return(xml)
 
     def cmd_set_config(self):
         """
