@@ -14,42 +14,18 @@
    <string>Dialog</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="3" column="1">
-    <widget class="QLineEdit" name="tokenLineEdit"/>
-   </item>
-   <item row="4" column="0">
-    <widget class="QLabel" name="ActionLabel">
+   <item row="2" column="0">
+    <widget class="QLabel" name="UsernameLabel">
      <property name="text">
-      <string>Action</string>
+      <string>Username</string>
      </property>
     </widget>
    </item>
-   <item row="3" column="0">
-    <widget class="QLabel" name="tokenLabel">
+   <item row="6" column="4">
+    <widget class="QPushButton" name="RunPushButton">
      <property name="text">
-      <string>Token/Password</string>
+      <string>run command</string>
      </property>
-    </widget>
-   </item>
-   <item row="4" column="2">
-    <widget class="QLabel" name="MethodLabel">
-     <property name="text">
-      <string>Type</string>
-     </property>
-    </widget>
-   </item>
-   <item row="4" column="3">
-    <widget class="QComboBox" name="MethodComboBox">
-     <item>
-      <property name="text">
-       <string>scm</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>inline</string>
-      </property>
-     </item>
     </widget>
    </item>
    <item row="4" column="1">
@@ -81,8 +57,58 @@
      </item>
     </widget>
    </item>
-   <item row="2" column="1">
-    <widget class="QLineEdit" name="UsernameLineEdit"/>
+   <item row="4" column="2">
+    <widget class="QLabel" name="MethodLabel">
+     <property name="text">
+      <string>Type</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="0" colspan="2">
+    <widget class="QLabel" name="label">
+     <property name="font">
+      <font>
+       <pointsize>20</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Jenkins Pipeline Tool</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignmentFlag::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1">
+    <widget class="QLineEdit" name="tokenLineEdit"/>
+   </item>
+   <item row="4" column="3">
+    <widget class="QComboBox" name="MethodComboBox">
+     <item>
+      <property name="text">
+       <string>scm</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>inline</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="4" column="0">
+    <widget class="QLabel" name="ActionLabel">
+     <property name="text">
+      <string>Action</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="UrlLabel">
+     <property name="text">
+      <string>URL</string>
+     </property>
+    </widget>
    </item>
    <item row="1" column="1">
     <widget class="QLineEdit" name="UrlLineEdit"/>
@@ -94,12 +120,15 @@
      </property>
     </widget>
    </item>
-   <item row="2" column="0">
-    <widget class="QLabel" name="UsernameLabel">
+   <item row="3" column="0">
+    <widget class="QLabel" name="tokenLabel">
      <property name="text">
-      <string>Username</string>
+      <string>Token/Password</string>
      </property>
     </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QLineEdit" name="UsernameLineEdit"/>
    </item>
    <item row="5" column="0" colspan="5">
     <widget class="QStackedWidget" name="stackedWidget">
@@ -256,7 +285,7 @@
         </widget>
        </item>
        <item row="0" column="0">
-        <widget class="QLabel" name="JobNameLabel_2">
+        <widget class="QLabel" name="JobNameLabel_1">
          <property name="text">
           <string>Job Name</string>
          </property>
@@ -277,27 +306,27 @@
         </widget>
        </item>
        <item row="3" column="0">
-        <widget class="QLabel" name="tokenBuildLabel_2">
+        <widget class="QLabel" name="tokenBuildLabel_1">
          <property name="text">
           <string>Token Build</string>
          </property>
         </widget>
        </item>
        <item row="2" column="0">
-        <widget class="QLabel" name="parametersLabel_2">
+        <widget class="QLabel" name="parametersLabel_1">
          <property name="text">
           <string>Parameters</string>
          </property>
         </widget>
        </item>
        <item row="3" column="1">
-        <widget class="QLineEdit" name="tokenBuildLineEdit_2"/>
+        <widget class="QLineEdit" name="tokenBuildLineEdit_1"/>
        </item>
        <item row="2" column="1">
-        <widget class="QLineEdit" name="parametersLineEdit_2"/>
+        <widget class="QLineEdit" name="parametersLineEdit_1"/>
        </item>
        <item row="0" column="1">
-        <widget class="QLineEdit" name="JobNameLineEdit_2"/>
+        <widget class="QLineEdit" name="JobNameLineEdit_1"/>
        </item>
        <item row="4" column="0">
         <spacer name="verticalSpacer_5">
@@ -330,7 +359,17 @@
      <widget class="QWidget" name="page_2">
       <layout class="QGridLayout" name="gridLayout_4">
        <item row="0" column="0">
-        <widget class="QTextBrowser" name="getPipelineTextBrowser"/>
+        <widget class="QLabel" name="JobNameLabel_2">
+         <property name="text">
+          <string>Job Name</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="JobNameLineEdit_2"/>
+       </item>
+       <item row="1" column="0" colspan="2">
+        <widget class="QTextBrowser" name="checkTextBrowser"/>
        </item>
       </layout>
      </widget>
@@ -361,35 +400,6 @@
        </item>
       </layout>
      </widget>
-    </widget>
-   </item>
-   <item row="6" column="4">
-    <widget class="QPushButton" name="RunPushButton">
-     <property name="text">
-      <string>run command</string>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="0">
-    <widget class="QLabel" name="UrlLabel">
-     <property name="text">
-      <string>URL</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="0" colspan="2">
-    <widget class="QLabel" name="label">
-     <property name="font">
-      <font>
-       <pointsize>20</pointsize>
-      </font>
-     </property>
-     <property name="text">
-      <string>Jenkins Pipeline Tool</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignmentFlag::AlignCenter</set>
-     </property>
     </widget>
    </item>
   </layout>
