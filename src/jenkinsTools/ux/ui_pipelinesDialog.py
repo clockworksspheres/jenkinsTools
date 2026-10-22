@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'pipelinesDialog.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.11.2
+## Created by: Qt User Interface Compiler version 6.12.0
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -26,32 +26,15 @@ class Ui_Dialog(object):
         Dialog.resize(834, 559)
         self.gridLayout = QGridLayout(Dialog)
         self.gridLayout.setObjectName(u"gridLayout")
-        self.tokenLineEdit = QLineEdit(Dialog)
-        self.tokenLineEdit.setObjectName(u"tokenLineEdit")
+        self.UsernameLabel = QLabel(Dialog)
+        self.UsernameLabel.setObjectName(u"UsernameLabel")
 
-        self.gridLayout.addWidget(self.tokenLineEdit, 3, 1, 1, 1)
+        self.gridLayout.addWidget(self.UsernameLabel, 2, 0, 1, 1)
 
-        self.ActionLabel = QLabel(Dialog)
-        self.ActionLabel.setObjectName(u"ActionLabel")
+        self.RunPushButton = QPushButton(Dialog)
+        self.RunPushButton.setObjectName(u"RunPushButton")
 
-        self.gridLayout.addWidget(self.ActionLabel, 4, 0, 1, 1)
-
-        self.tokenLabel = QLabel(Dialog)
-        self.tokenLabel.setObjectName(u"tokenLabel")
-
-        self.gridLayout.addWidget(self.tokenLabel, 3, 0, 1, 1)
-
-        self.MethodLabel = QLabel(Dialog)
-        self.MethodLabel.setObjectName(u"MethodLabel")
-
-        self.gridLayout.addWidget(self.MethodLabel, 4, 2, 1, 1)
-
-        self.MethodComboBox = QComboBox(Dialog)
-        self.MethodComboBox.addItem("")
-        self.MethodComboBox.addItem("")
-        self.MethodComboBox.setObjectName(u"MethodComboBox")
-
-        self.gridLayout.addWidget(self.MethodComboBox, 4, 3, 1, 1)
+        self.gridLayout.addWidget(self.RunPushButton, 6, 4, 1, 1)
 
         self.ActionComboBox = QComboBox(Dialog)
         self.ActionComboBox.addItem("")
@@ -63,10 +46,41 @@ class Ui_Dialog(object):
 
         self.gridLayout.addWidget(self.ActionComboBox, 4, 1, 1, 1)
 
-        self.UsernameLineEdit = QLineEdit(Dialog)
-        self.UsernameLineEdit.setObjectName(u"UsernameLineEdit")
+        self.MethodLabel = QLabel(Dialog)
+        self.MethodLabel.setObjectName(u"MethodLabel")
 
-        self.gridLayout.addWidget(self.UsernameLineEdit, 2, 1, 1, 1)
+        self.gridLayout.addWidget(self.MethodLabel, 4, 2, 1, 1)
+
+        self.label = QLabel(Dialog)
+        self.label.setObjectName(u"label")
+        font = QFont()
+        font.setPointSize(20)
+        self.label.setFont(font)
+        self.label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        self.gridLayout.addWidget(self.label, 0, 0, 1, 2)
+
+        self.tokenLineEdit = QLineEdit(Dialog)
+        self.tokenLineEdit.setObjectName(u"tokenLineEdit")
+
+        self.gridLayout.addWidget(self.tokenLineEdit, 3, 1, 1, 1)
+
+        self.MethodComboBox = QComboBox(Dialog)
+        self.MethodComboBox.addItem("")
+        self.MethodComboBox.addItem("")
+        self.MethodComboBox.setObjectName(u"MethodComboBox")
+
+        self.gridLayout.addWidget(self.MethodComboBox, 4, 3, 1, 1)
+
+        self.ActionLabel = QLabel(Dialog)
+        self.ActionLabel.setObjectName(u"ActionLabel")
+
+        self.gridLayout.addWidget(self.ActionLabel, 4, 0, 1, 1)
+
+        self.UrlLabel = QLabel(Dialog)
+        self.UrlLabel.setObjectName(u"UrlLabel")
+
+        self.gridLayout.addWidget(self.UrlLabel, 1, 0, 1, 1)
 
         self.UrlLineEdit = QLineEdit(Dialog)
         self.UrlLineEdit.setObjectName(u"UrlLineEdit")
@@ -78,10 +92,15 @@ class Ui_Dialog(object):
 
         self.gridLayout.addWidget(self.closePushButton, 6, 3, 1, 1)
 
-        self.UsernameLabel = QLabel(Dialog)
-        self.UsernameLabel.setObjectName(u"UsernameLabel")
+        self.tokenLabel = QLabel(Dialog)
+        self.tokenLabel.setObjectName(u"tokenLabel")
 
-        self.gridLayout.addWidget(self.UsernameLabel, 2, 0, 1, 1)
+        self.gridLayout.addWidget(self.tokenLabel, 3, 0, 1, 1)
+
+        self.UsernameLineEdit = QLineEdit(Dialog)
+        self.UsernameLineEdit.setObjectName(u"UsernameLineEdit")
+
+        self.gridLayout.addWidget(self.UsernameLineEdit, 2, 1, 1, 1)
 
         self.stackedWidget = QStackedWidget(Dialog)
         self.stackedWidget.setObjectName(u"stackedWidget")
@@ -195,10 +214,10 @@ class Ui_Dialog(object):
 
         self.gridLayout_3.addWidget(self.followLabel, 1, 0, 1, 1)
 
-        self.JobNameLabel_2 = QLabel(self.page1)
-        self.JobNameLabel_2.setObjectName(u"JobNameLabel_2")
+        self.JobNameLabel_1 = QLabel(self.page1)
+        self.JobNameLabel_1.setObjectName(u"JobNameLabel_1")
 
-        self.gridLayout_3.addWidget(self.JobNameLabel_2, 0, 0, 1, 1)
+        self.gridLayout_3.addWidget(self.JobNameLabel_1, 0, 0, 1, 1)
 
         self.followComboBox = QComboBox(self.page1)
         self.followComboBox.addItem("")
@@ -207,30 +226,30 @@ class Ui_Dialog(object):
 
         self.gridLayout_3.addWidget(self.followComboBox, 1, 1, 1, 1)
 
-        self.tokenBuildLabel_2 = QLabel(self.page1)
-        self.tokenBuildLabel_2.setObjectName(u"tokenBuildLabel_2")
+        self.tokenBuildLabel_1 = QLabel(self.page1)
+        self.tokenBuildLabel_1.setObjectName(u"tokenBuildLabel_1")
 
-        self.gridLayout_3.addWidget(self.tokenBuildLabel_2, 3, 0, 1, 1)
+        self.gridLayout_3.addWidget(self.tokenBuildLabel_1, 3, 0, 1, 1)
 
-        self.parametersLabel_2 = QLabel(self.page1)
-        self.parametersLabel_2.setObjectName(u"parametersLabel_2")
+        self.parametersLabel_1 = QLabel(self.page1)
+        self.parametersLabel_1.setObjectName(u"parametersLabel_1")
 
-        self.gridLayout_3.addWidget(self.parametersLabel_2, 2, 0, 1, 1)
+        self.gridLayout_3.addWidget(self.parametersLabel_1, 2, 0, 1, 1)
 
-        self.tokenBuildLineEdit_2 = QLineEdit(self.page1)
-        self.tokenBuildLineEdit_2.setObjectName(u"tokenBuildLineEdit_2")
+        self.tokenBuildLineEdit_1 = QLineEdit(self.page1)
+        self.tokenBuildLineEdit_1.setObjectName(u"tokenBuildLineEdit_1")
 
-        self.gridLayout_3.addWidget(self.tokenBuildLineEdit_2, 3, 1, 1, 1)
+        self.gridLayout_3.addWidget(self.tokenBuildLineEdit_1, 3, 1, 1, 1)
 
-        self.parametersLineEdit_2 = QLineEdit(self.page1)
-        self.parametersLineEdit_2.setObjectName(u"parametersLineEdit_2")
+        self.parametersLineEdit_1 = QLineEdit(self.page1)
+        self.parametersLineEdit_1.setObjectName(u"parametersLineEdit_1")
 
-        self.gridLayout_3.addWidget(self.parametersLineEdit_2, 2, 1, 1, 1)
+        self.gridLayout_3.addWidget(self.parametersLineEdit_1, 2, 1, 1, 1)
 
-        self.JobNameLineEdit_2 = QLineEdit(self.page1)
-        self.JobNameLineEdit_2.setObjectName(u"JobNameLineEdit_2")
+        self.JobNameLineEdit_1 = QLineEdit(self.page1)
+        self.JobNameLineEdit_1.setObjectName(u"JobNameLineEdit_1")
 
-        self.gridLayout_3.addWidget(self.JobNameLineEdit_2, 0, 1, 1, 1)
+        self.gridLayout_3.addWidget(self.JobNameLineEdit_1, 0, 1, 1, 1)
 
         self.verticalSpacer_5 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
@@ -245,10 +264,20 @@ class Ui_Dialog(object):
         self.page_2.setObjectName(u"page_2")
         self.gridLayout_4 = QGridLayout(self.page_2)
         self.gridLayout_4.setObjectName(u"gridLayout_4")
-        self.getPipelineTextBrowser = QTextBrowser(self.page_2)
-        self.getPipelineTextBrowser.setObjectName(u"getPipelineTextBrowser")
+        self.JobNameLabel_2 = QLabel(self.page_2)
+        self.JobNameLabel_2.setObjectName(u"JobNameLabel_2")
 
-        self.gridLayout_4.addWidget(self.getPipelineTextBrowser, 0, 0, 1, 1)
+        self.gridLayout_4.addWidget(self.JobNameLabel_2, 0, 0, 1, 1)
+
+        self.JobNameLineEdit_2 = QLineEdit(self.page_2)
+        self.JobNameLineEdit_2.setObjectName(u"JobNameLineEdit_2")
+
+        self.gridLayout_4.addWidget(self.JobNameLineEdit_2, 0, 1, 1, 1)
+
+        self.checkTextBrowser = QTextBrowser(self.page_2)
+        self.checkTextBrowser.setObjectName(u"checkTextBrowser")
+
+        self.gridLayout_4.addWidget(self.checkTextBrowser, 1, 0, 1, 2)
 
         self.stackedWidget.addWidget(self.page_2)
         self.page_3 = QWidget()
@@ -284,25 +313,6 @@ class Ui_Dialog(object):
 
         self.gridLayout.addWidget(self.stackedWidget, 5, 0, 1, 5)
 
-        self.RunPushButton = QPushButton(Dialog)
-        self.RunPushButton.setObjectName(u"RunPushButton")
-
-        self.gridLayout.addWidget(self.RunPushButton, 6, 4, 1, 1)
-
-        self.UrlLabel = QLabel(Dialog)
-        self.UrlLabel.setObjectName(u"UrlLabel")
-
-        self.gridLayout.addWidget(self.UrlLabel, 1, 0, 1, 1)
-
-        self.label = QLabel(Dialog)
-        self.label.setObjectName(u"label")
-        font = QFont()
-        font.setPointSize(20)
-        self.label.setFont(font)
-        self.label.setAlignment(Qt.AlignmentFlag.AlignCenter)
-
-        self.gridLayout.addWidget(self.label, 0, 0, 1, 2)
-
 
         self.retranslateUi(Dialog)
 
@@ -314,20 +324,23 @@ class Ui_Dialog(object):
 
     def retranslateUi(self, Dialog):
         Dialog.setWindowTitle(QCoreApplication.translate("Dialog", u"Dialog", None))
-        self.ActionLabel.setText(QCoreApplication.translate("Dialog", u"Action", None))
-        self.tokenLabel.setText(QCoreApplication.translate("Dialog", u"Token/Password", None))
-        self.MethodLabel.setText(QCoreApplication.translate("Dialog", u"Type", None))
-        self.MethodComboBox.setItemText(0, QCoreApplication.translate("Dialog", u"scm", None))
-        self.MethodComboBox.setItemText(1, QCoreApplication.translate("Dialog", u"inline", None))
-
+        self.UsernameLabel.setText(QCoreApplication.translate("Dialog", u"Username", None))
+        self.RunPushButton.setText(QCoreApplication.translate("Dialog", u"run command", None))
         self.ActionComboBox.setItemText(0, QCoreApplication.translate("Dialog", u"create", None))
         self.ActionComboBox.setItemText(1, QCoreApplication.translate("Dialog", u"run", None))
         self.ActionComboBox.setItemText(2, QCoreApplication.translate("Dialog", u"check", None))
         self.ActionComboBox.setItemText(3, QCoreApplication.translate("Dialog", u"get-config", None))
         self.ActionComboBox.setItemText(4, QCoreApplication.translate("Dialog", u"set-config", None))
 
+        self.MethodLabel.setText(QCoreApplication.translate("Dialog", u"Type", None))
+        self.label.setText(QCoreApplication.translate("Dialog", u"Jenkins Pipeline Tool", None))
+        self.MethodComboBox.setItemText(0, QCoreApplication.translate("Dialog", u"scm", None))
+        self.MethodComboBox.setItemText(1, QCoreApplication.translate("Dialog", u"inline", None))
+
+        self.ActionLabel.setText(QCoreApplication.translate("Dialog", u"Action", None))
+        self.UrlLabel.setText(QCoreApplication.translate("Dialog", u"URL", None))
         self.closePushButton.setText(QCoreApplication.translate("Dialog", u"close", None))
-        self.UsernameLabel.setText(QCoreApplication.translate("Dialog", u"Username", None))
+        self.tokenLabel.setText(QCoreApplication.translate("Dialog", u"Token/Password", None))
         self.scriptLabel.setText(QCoreApplication.translate("Dialog", u"Script", None))
         self.jenkinsfileLabel.setText(QCoreApplication.translate("Dialog", u"Jenkinsfile", None))
         self.descriptionLineEdit.setText("")
@@ -338,16 +351,14 @@ class Ui_Dialog(object):
         self.jobNamelabel.setText(QCoreApplication.translate("Dialog", u"Job Name", None))
         self.scriptPathPushButton.setText(QCoreApplication.translate("Dialog", u"Script Path", None))
         self.followLabel.setText(QCoreApplication.translate("Dialog", u"Follow console output", None))
-        self.JobNameLabel_2.setText(QCoreApplication.translate("Dialog", u"Job Name", None))
+        self.JobNameLabel_1.setText(QCoreApplication.translate("Dialog", u"Job Name", None))
         self.followComboBox.setItemText(0, QCoreApplication.translate("Dialog", u"no", None))
         self.followComboBox.setItemText(1, QCoreApplication.translate("Dialog", u"yes", None))
 
-        self.tokenBuildLabel_2.setText(QCoreApplication.translate("Dialog", u"Token Build", None))
-        self.parametersLabel_2.setText(QCoreApplication.translate("Dialog", u"Parameters", None))
+        self.tokenBuildLabel_1.setText(QCoreApplication.translate("Dialog", u"Token Build", None))
+        self.parametersLabel_1.setText(QCoreApplication.translate("Dialog", u"Parameters", None))
+        self.JobNameLabel_2.setText(QCoreApplication.translate("Dialog", u"Job Name", None))
         self.jobNameLabel_3.setText(QCoreApplication.translate("Dialog", u"Job Name", None))
         self.xmlFilePushButton.setText(QCoreApplication.translate("Dialog", u"xml file to upload", None))
-        self.RunPushButton.setText(QCoreApplication.translate("Dialog", u"run command", None))
-        self.UrlLabel.setText(QCoreApplication.translate("Dialog", u"URL", None))
-        self.label.setText(QCoreApplication.translate("Dialog", u"Jenkins Pipeline Tool", None))
     # retranslateUi
 

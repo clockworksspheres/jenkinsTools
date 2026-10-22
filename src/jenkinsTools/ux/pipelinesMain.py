@@ -5,17 +5,11 @@ import json
 from argparse import Namespace
 
 from pathlib import Path
-#from importlib.resources import files
-#
-#_icon_dir = files("jenkinsTools.icons")
-
-# import resources
-
-#from tabulate import tabulate
+from importlib.resources import files
 
 from PySide6.QtWidgets import QApplication, QDialog, QFileDialog, QLineEdit
 from PySide6.QtCore import Qt
-from PySide6.QtGui import QIcon, QAction
+from PySide6.QtGui import QIcon, QPixmap, QAction
 
 parent_dir = Path(__file__).parent.parent
 sys.path.append(str(parent_dir))
@@ -24,6 +18,15 @@ sys.path.append(str(parent_dir))
 # You need to run the following command to generate the ui_form.py file
 #     pyside6-uic pipelinesDialog.ui -o ui_pipelinesDialog.py
 from ux.ui_pipelinesDialog import Ui_Dialog
+
+
+def _load_icon(name: str) -> QIcon:
+    """Load a PNG from the jenkinsTools.icons package (works after pip install)."""
+    data = files("jenkinsTools.icons").joinpath(name).read_bytes()
+    pixmap = QPixmap()
+    pixmap.loadFromData(data)
+    return QIcon(pixmap)
+
 
 class pipelinesDialog(QDialog):
     def __init__(self, parent=None):
@@ -60,7 +63,7 @@ class pipelinesDialog(QDialog):
         # Primarily for QTextEdits, setting here as an example if needed
         # for a QTextEdit in the future
         # REQUIRED here to mask from tab order, at least on macOS
-        self.ui.getPipelineTextBrowser.setFocusPolicy(Qt.NoFocus)
+        self.ui.checkTextBrowser.setFocusPolicy(Qt.NoFocus)
         self.ui.jobTextBrowser.setFocusPolicy(Qt.NoFocus)
 
         # Setting tab focus on first stacked widget
@@ -88,9 +91,9 @@ class pipelinesDialog(QDialog):
         # set up the token dialog box as a password box
         self.ui.tokenLineEdit.setEchoMode(QLineEdit.EchoMode.Password)
 
-        # load icons (ensure these files exist in your project)
-        icon_show = QIcon("eye_open.png")
-        icon_hide = QIcon("eye_closed.png")
+        # load icons (works after pip install)
+        icon_show = _load_icon("eye_open.png")
+        icon_hide = _load_icon("eye_closed.png")
 
         # Create the toggle action
         self.toggle_action = QAction(icon_hide, "Toggle Password", self.ui.tokenLineEdit)
@@ -103,28 +106,36 @@ class pipelinesDialog(QDialog):
         self.ui.tokenLineEdit.setEchoMode(QLineEdit.EchoMode.Password)
 
         # Connect the signal
-        self.toggle_action.toggled.connect(lambda checked: self.toggle_visibility(self.ui.tokenLineEdit, self.toggle_action, checked, icon_hide, icon_show))
+        self.toggle_action.toggled.connect(
+            lambda checked: self.toggle_visibility(
+                self.ui.tokenLineEdit, self.toggle_action, checked, icon_hide, icon_show
+            )
+        )
 
         ################################################
         # set up the token dialog box as a password box
-        self.ui.tokenBuildLineEdit_2.setEchoMode(QLineEdit.EchoMode.Password)
+        self.ui.tokenBuildLineEdit_1.setEchoMode(QLineEdit.EchoMode.Password)
 
-        # load icons (ensure these files exist in your project)
-        icon_show = QIcon("eye_open.png")
-        icon_hide = QIcon("eye_closed.png")
+        # load icons (works after pip install)
+        icon_show = _load_icon("eye_open.png")
+        icon_hide = _load_icon("eye_closed.png")
 
         # Create the toggle action
-        self.toggle_action_2 = QAction(icon_hide, "Toggle Password", self.ui.tokenBuildLineEdit_2)
+        self.toggle_action_2 = QAction(icon_hide, "Toggle Password", self.ui.tokenBuildLineEdit_1)
         self.toggle_action_2.setCheckable(True)
 
         # Add to the RIGHT side of the EXISTING line edit
-        self.ui.tokenBuildLineEdit_2.addAction(self.toggle_action_2, QLineEdit.TrailingPosition)
+        self.ui.tokenBuildLineEdit_1.addAction(self.toggle_action_2, QLineEdit.TrailingPosition)
 
         # Set the tokenLineEdit to 
-        self.ui.tokenBuildLineEdit_2.setEchoMode(QLineEdit.EchoMode.Password)
+        self.ui.tokenBuildLineEdit_1.setEchoMode(QLineEdit.EchoMode.Password)
 
         # Connect the signal
-        self.toggle_action_2.toggled.connect(lambda checked: self.toggle_visibility(self.ui.tokenBuildLineEdit_2, self.toggle_action_2, checked, icon_hide, icon_show))
+        self.toggle_action_2.toggled.connect(
+            lambda checked: self.toggle_visibility(
+                self.ui.tokenBuildLineEdit_1, self.toggle_action_2, checked, icon_hide, icon_show
+            )
+        )
         # end setup of token password lineedit
         ################################################
 
@@ -184,8 +195,8 @@ class pipelinesDialog(QDialog):
 
         elif selected_text == "run":
 
-            if self.ui.JobNameLineEdit_2.text():
-                action['job'] = self.ui.JobNameLineEdit_2.text()
+            if self.ui.JobNameLineEdit_1.text():
+                action['job'] = self.ui.JobNameLineEdit_1.text()
             else:
                 raise ValueError("job field required.")
 
@@ -201,13 +212,13 @@ class pipelinesDialog(QDialog):
 
             action['gui'] = True
 
-            if self.ui.parametersLineEdit_2.text():
-                action['param'] = self.ui.parametersLineEdit_2.text()
+            if self.ui.parametersLineEdit_1.text():
+                action['param'] = self.ui.parametersLineEdit_1.text()
             else:
                 action['param'] = ''
 
-            if self.ui.tokenBuildLineEdit_2.text():
-                action["build_token"] = self.ui.tokenBuildLineEdit_2.text()
+            if self.ui.tokenBuildLineEdit_1.text():
+                action["build_token"] = self.ui.tokenBuildLineEdit_1.text()
             else:
                 action["build_token"] = ''
         
@@ -223,8 +234,8 @@ class pipelinesDialog(QDialog):
 
         elif selected_text == "check":
 
-            if self.ui.jobNameLineEdit_3.text():
-                action['job'] = self.ui.jobNameLineEdit_3.text()
+            if self.ui.JobNameLineEdit_2.text():
+                action['job'] = self.ui.JobNameLineEdit_2.text()
             else:
                 raise ValueError("job field required.")
             action['verbose'] = True
@@ -247,7 +258,7 @@ class pipelinesDialog(QDialog):
             #ckpipeline.get_full_run(args)
             data = ckpipeline.check_run(args)
 
-            self.ui.jobTextBrowser.append(json.dumps(data, indent=4))
+            self.ui.checkTextBrowser.append(json.dumps(data, indent=4))
             '''
             if args.get_full_run:
                 ckpipeline.get_full_run(args)
@@ -269,7 +280,12 @@ class pipelinesDialog(QDialog):
             from JenkinsTools.ConfigJob import ConfigJob
 
             config_job = ConfigJob(args)
-            config_job.cmd_get_config()
+            xml = "..."
+            xml = config_job.cmd_get_config()
+
+            # use .setText(text) to erase and replace the text
+            # use .append(text) add more text
+            self.ui.jobTextBrowser.setText(str(xml))
 
         elif selected_text == "set-config":
 
@@ -338,16 +354,15 @@ class pipelinesDialog(QDialog):
             self.setTabOrder(self.ui.UrlLineEdit, self.ui.UsernameLineEdit)
             self.setTabOrder(self.ui.UsernameLineEdit, self.ui.tokenLineEdit)
             self.setTabOrder(self.ui.tokenLineEdit, self.ui.ActionComboBox)
-            self.setTabOrder(self.ui.ActionComboBox, self.ui.JobNameLineEdit_2)
-            self.setTabOrder(self.ui.JobNameLineEdit_2, self.ui.followComboBox)
-            self.setTabOrder(self.ui.followComboBox, self.ui.parametersLineEdit_2)
-            self.setTabOrder(self.ui.parametersLineEdit_2, self.ui.tokenBuildLineEdit_2)
-            self.setTabOrder(self.ui.tokenBuildLineEdit_2, self.ui.RunPushButton)
+            self.setTabOrder(self.ui.ActionComboBox, self.ui.JobNameLineEdit_1)
+            self.setTabOrder(self.ui.JobNameLineEdit_1, self.ui.parametersLineEdit_1)
+            self.setTabOrder(self.ui.parametersLineEdit_1, self.ui.tokenBuildLineEdit_1)
+            self.setTabOrder(self.ui.tokenBuildLineEdit_1, self.ui.RunPushButton)
             self.setTabOrder(self.ui.RunPushButton, self.ui.closePushButton)
             self.setTabOrder(self.ui.closePushButton, self.ui.UrlLineEdit)
 
         elif selected_text == "check":
-            self.ui.stackedWidget.setCurrentIndex(3)
+            self.ui.stackedWidget.setCurrentIndex(2)
             self.ui.MethodLabel.hide()
             self.ui.MethodComboBox.hide()
             self.ui.xmlFilePushButton.hide()
@@ -355,7 +370,6 @@ class pipelinesDialog(QDialog):
 
             # Setting tab focus on first stacked widget
             self.ui.UrlLineEdit.setFocus()
-            #self.ui.GetNodeTextEdit.setFocusPolicy(Qt.NoFocus)
 
             self.setTabOrder(self.ui.UrlLineEdit, self.ui.UsernameLineEdit)
             self.setTabOrder(self.ui.UsernameLineEdit, self.ui.tokenLineEdit)
@@ -364,7 +378,6 @@ class pipelinesDialog(QDialog):
             self.setTabOrder(self.ui.jobNameLineEdit_3, self.ui.RunPushButton)
             self.setTabOrder(self.ui.RunPushButton, self.ui.closePushButton)
             self.setTabOrder(self.ui.closePushButton, self.ui.UrlLineEdit)
-
 
         elif selected_text == "get-config":
             self.ui.stackedWidget.setCurrentIndex(3)
@@ -375,13 +388,14 @@ class pipelinesDialog(QDialog):
 
             # Setting tab focus on first stacked widget
             self.ui.UrlLineEdit.setFocus()
-            #self.ui.GetNodeTextEdit.setFocusPolicy(Qt.NoFocus)
 
             self.setTabOrder(self.ui.UrlLineEdit, self.ui.UsernameLineEdit)
             self.setTabOrder(self.ui.UsernameLineEdit, self.ui.tokenLineEdit)
             self.setTabOrder(self.ui.tokenLineEdit, self.ui.ActionComboBox)
             self.setTabOrder(self.ui.ActionComboBox, self.ui.jobNameLineEdit_3)
-            self.setTabOrder(self.ui.jobNameLineEdit_3, self.ui.RunPushButton)
+            self.setTabOrder(self.ui.jobNameLineEdit_3, self.ui.xmlFilePushButton)
+            self.setTabOrder(self.ui.xmlFilePushButton, self.ui.xmlFileLineEdit)
+            self.setTabOrder(self.ui.xmlFileLineEdit, self.ui.RunPushButton)
             self.setTabOrder(self.ui.RunPushButton, self.ui.closePushButton)
             self.setTabOrder(self.ui.closePushButton, self.ui.UrlLineEdit)
 
@@ -394,7 +408,6 @@ class pipelinesDialog(QDialog):
 
             # Setting tab focus on first stacked widget
             self.ui.UrlLineEdit.setFocus()
-            #self.ui.GetNodeTextEdit.setFocusPolicy(Qt.NoFocus)
 
             self.setTabOrder(self.ui.UrlLineEdit, self.ui.UsernameLineEdit)
             self.setTabOrder(self.ui.UsernameLineEdit, self.ui.tokenLineEdit)
@@ -468,7 +481,3 @@ if __name__ == "__main__":
     dialog = pipelinesDialog()
     dialog.show()
     sys.exit(app.exec())
-
-
-
-
