@@ -249,7 +249,8 @@ class nodesDialog(QDialog):
                 self.ui.GetNodesTextBrowser.append(f"{name}: {state}")
             '''
             # self.ui.GetNodesTextBrowser.append(tabulate(data, headers="keys", tablefmt="grid"))
-            # self.ui.GetNodesTextBrowser.append(json.dumps(data, indent=4))
+            self.ui.GetNodesTextBrowser.clear()
+            self.ui.GetNodesTextBrowser.append(json.dumps(ns.get_nodes(), sort_keys=True, indent=4))
 
             print(ns.get_nodes())            
 
@@ -273,6 +274,7 @@ class nodesDialog(QDialog):
 
             node_report = json.dumps(ns.get_node_info(), indent=4)
 
+            self.ui.getNodeTextBrowser.clear()
             self.ui.getNodeTextBrowser.append(node_report)
 
             print(json.dumps(ns.get_node_info(), indent=4))
@@ -295,6 +297,7 @@ class nodesDialog(QDialog):
             from JenkinsTools.NodeStatus import NodeStatus
             ns = NodeStatus(args)
 
+            self.ui.getNodeTextBrowser.clear()
             self.ui.getNodeTextBrowser.append(ns.get_node_config())
 
             print(ns.get_node_config())
