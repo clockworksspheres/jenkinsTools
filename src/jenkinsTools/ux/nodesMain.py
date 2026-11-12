@@ -175,7 +175,7 @@ class nodesDialog(QDialog):
                 action["description"] = self.ui.DescriptionLineEdit_2.text()
                 action["remote_fs"] = self.ui.RemoteFsLineEdit_2.text()
 
-            print(str(action))
+            # print(str(action))
 
             args = Namespace(**action)
             print(f"Adding {args.url} for node <{args.name}>...")
@@ -213,7 +213,7 @@ class nodesDialog(QDialog):
             action["description"] = self.ui.DescriptionLineEdit.text()
             action["remote_fs"] = self.ui.RemoteFsLineEdit.text()
 
-            print(str(action))
+            # print(str(action))
 
             args = Namespace(**action)
             print(f"Adding {args.url} for node <{args.name}>...")
@@ -228,7 +228,7 @@ class nodesDialog(QDialog):
             self.ui.DescriptionLineEdit.hide()
             self.ui.MethodLabel.hide()
 
-            print(str(action))
+            # print(str(action))
 
             args = Namespace(**action)
             
@@ -264,7 +264,7 @@ class nodesDialog(QDialog):
             else:
                 raise ValueError("name field required for this action.")
             
-            print(str(action))
+            # print(str(action))
 
             args = Namespace(**action)
             print(f"Adding {args.url} for node <{args.name}>...")
@@ -289,7 +289,7 @@ class nodesDialog(QDialog):
             else:
                 raise ValueError("name field required for this action.")
             
-            print(str(action))
+            # print(str(action))
 
             args = Namespace(**action)
             print(f"Adding {args.url} for node <{args.name}>...")
@@ -312,7 +312,7 @@ class nodesDialog(QDialog):
             else:
                 raise ValueError("name field required for this action.")
             
-            print(str(action))
+            # print(str(action))
 
             args = Namespace(**action)
             print(f"Adding {args.url} for node <{args.name}>...")
@@ -331,7 +331,7 @@ class nodesDialog(QDialog):
             else:
                 raise ValueError("name field required for this action.")
             
-            print(str(action))
+            # print(str(action))
 
             args = Namespace(**action)
             print(f"Adding {args.url} for node <{args.name}>...")
@@ -350,7 +350,7 @@ class nodesDialog(QDialog):
             else:
                 raise ValueError("name field required for this action.")
             
-            print(str(action))
+            # print(str(action))
 
             args = Namespace(**action)
             print(f"Adding {args.url} for node <{args.name}>...")
@@ -369,7 +369,7 @@ class nodesDialog(QDialog):
             else:
                 raise ValueError("name field required for this action.")
             
-            print(str(action))
+            # print(str(action))
 
             args = Namespace(**action)
             print(f"Adding {args.url} for node <{args.name}>...")
@@ -502,7 +502,7 @@ class nodesDialog(QDialog):
             self.setTabOrder(self.ui.closePushButton, self.ui.UrlLineEdit)
 
         elif selected_text.strip() == "Get Node Config":
-           # Set focus on the URL LineEdit
+            # Set focus on the URL LineEdit
             self.ui.UrlLineEdit.setFocus()
 
             self.ui.stackedWidget.setCurrentIndex(3)
@@ -521,7 +521,7 @@ class nodesDialog(QDialog):
             self.setTabOrder(self.ui.closePushButton, self.ui.UrlLineEdit)
 
         elif selected_text.strip() == "Node Exists":
-           # Set focus on the URL LineEdit
+            # Set focus on the URL LineEdit
             self.ui.UrlLineEdit.setFocus()
 
             self.ui.stackedWidget.setCurrentIndex(3)
@@ -558,7 +558,7 @@ class nodesDialog(QDialog):
             self.setTabOrder(self.ui.closePushButton, self.ui.UrlLineEdit)
 
         elif selected_text.strip() == "Disable":
-           # Set focus on the URL LineEdit
+            # Set focus on the URL LineEdit
             self.ui.UrlLineEdit.setFocus()
 
             self.ui.stackedWidget.setCurrentIndex(3)
@@ -577,7 +577,7 @@ class nodesDialog(QDialog):
             self.setTabOrder(self.ui.closePushButton, self.ui.UrlLineEdit)
 
         elif selected_text.strip() == "Enable":
-           # Set focus on the URL LineEdit
+            # Set focus on the URL LineEdit
             self.ui.UrlLineEdit.setFocus()
 
             self.ui.stackedWidget.setCurrentIndex(3)
@@ -605,7 +605,7 @@ class nodesDialog(QDialog):
         print(f"selected text: '{selected_text}'")
 
         if re.match("ssh", selected_text):
-           # Set focus on the URL LineEdit
+            # Set focus on the URL LineEdit
             self.ui.UrlLineEdit.setFocus()
 
             self.ui.stackedWidget.setCurrentIndex(0)
@@ -627,7 +627,7 @@ class nodesDialog(QDialog):
             self.setTabOrder(self.ui.closePushButton, self.ui.UrlLineEdit)
 
         elif re.match("jnlp", selected_text):
-           # Set focus on the URL LineEdit
+            # Set focus on the URL LineEdit
             self.ui.UrlLineEdit.setFocus()
 
             self.ui.stackedWidget.setCurrentIndex(1)
