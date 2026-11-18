@@ -3,7 +3,7 @@
 ################################################################################
 ## Form generated from reading UI file 'nodesDialog.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.11.2
+## Created by: Qt User Interface Compiler version 6.12.0
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
@@ -301,20 +301,25 @@ class Ui_Dialog(object):
         self.page_4.setObjectName(u"page_4")
         self.gridLayout_5 = QGridLayout(self.page_4)
         self.gridLayout_5.setObjectName(u"gridLayout_5")
-        self.VmNameLineEdit_3 = QLineEdit(self.page_4)
-        self.VmNameLineEdit_3.setObjectName(u"VmNameLineEdit_3")
-
-        self.gridLayout_5.addWidget(self.VmNameLineEdit_3, 0, 1, 1, 1)
-
         self.VmNamelabel_3 = QLabel(self.page_4)
         self.VmNamelabel_3.setObjectName(u"VmNamelabel_3")
 
         self.gridLayout_5.addWidget(self.VmNamelabel_3, 0, 0, 1, 1)
 
+        self.VmNameLineEdit_3 = QLineEdit(self.page_4)
+        self.VmNameLineEdit_3.setObjectName(u"VmNameLineEdit_3")
+
+        self.gridLayout_5.addWidget(self.VmNameLineEdit_3, 0, 1, 1, 1)
+
+        self.filePushButton = QPushButton(self.page_4)
+        self.filePushButton.setObjectName(u"filePushButton")
+
+        self.gridLayout_5.addWidget(self.filePushButton, 0, 2, 1, 1)
+
         self.getNodeTextBrowser = QTextBrowser(self.page_4)
         self.getNodeTextBrowser.setObjectName(u"getNodeTextBrowser")
 
-        self.gridLayout_5.addWidget(self.getNodeTextBrowser, 1, 0, 1, 2)
+        self.gridLayout_5.addWidget(self.getNodeTextBrowser, 1, 0, 1, 3)
 
         self.stackedWidget.addWidget(self.page_4)
 
@@ -337,7 +342,7 @@ class Ui_Dialog(object):
 
         self.retranslateUi(Dialog)
 
-        self.stackedWidget.setCurrentIndex(3)
+        self.stackedWidget.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(Dialog)
@@ -382,6 +387,7 @@ class Ui_Dialog(object):
         self.DescriptionLabel_2.setText(QCoreApplication.translate("Dialog", u"Description", None))
         self.RemoteFsLlabel_2.setText(QCoreApplication.translate("Dialog", u"Remote Filesystem", None))
         self.VmNamelabel_3.setText(QCoreApplication.translate("Dialog", u"VM Name", None))
+        self.filePushButton.setText(QCoreApplication.translate("Dialog", u"File Button", None))
         self.label.setText(QCoreApplication.translate("Dialog", u"Jenkins Node Tool", None))
     # retranslateUi
 

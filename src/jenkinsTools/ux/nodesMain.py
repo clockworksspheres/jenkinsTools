@@ -11,7 +11,7 @@ sys.path.append(str(parent_dir))
 
 #from tabulate import tabulate
 
-from PySide6.QtWidgets import QApplication, QDialog, QLineEdit
+from PySide6.QtWidgets import QApplication, QDialog, QLineEdit, QFileDialog
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QIcon, QAction
 
@@ -49,6 +49,10 @@ class nodesDialog(QDialog):
         # Button actions
         self.ui.closePushButton.clicked.connect(self.close)
         self.ui.RunPushButton.clicked.connect(self.runAction)
+        self.ui.filePushButton.clicked.connect(self.handleFileAction)
+
+        # Set default text on save/load button
+        self.ui.filePushButton.setText("Save")
 
         # Set NoFocus on text-browsers, so they can't accept input
         # focus to capture keystrokes - making this widget non-editable
@@ -101,6 +105,30 @@ class nodesDialog(QDialog):
 
         # Connect the signal
         self.toggle_action.toggled.connect(lambda checked: self.toggle_visibility(self.ui.tokenLineEdit, checked, icon_hide, icon_show))
+
+    def handleFileAction(self):
+        if self.ui.ActionComboBox.currentText() == "Get Node Config":
+            path, _ = QFileDialog.getSaveFileName(
+                self, "Save", "", "JSON Files (*.xml);;All Files (*)"
+            )
+            if path:
+                with open(path, "w") as f:
+                    f.write(self.ui.getNodeTextBrowser.toPlainText())
+                print(f"Saved: {path}")
+            
+        elif self.ui.ActionComboBox.currentText() == "Get Node Info":
+            path, _ = QFileDialog.getSaveFileName(
+                self, "Save", "", "JSON Files (*.json);;All Files (*)"
+            )
+            if path:
+                with open(path, "w") as f:
+                    f.write(self.ui.getNodeTextBrowser.toPlainText())
+                print(f"Saved: {path}")
+
+        elif self.ui.ActionComboBox.currentText() == "Submit Node Change":
+            pass
+        else:
+            pass
 
     def runAction(self):
         print(f"Running command '{self.ui.ActionComboBox.currentText()}'")
