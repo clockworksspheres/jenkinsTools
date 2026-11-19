@@ -107,9 +107,13 @@ class nodesDialog(QDialog):
         self.toggle_action.toggled.connect(lambda checked: self.toggle_visibility(self.ui.tokenLineEdit, checked, icon_hide, icon_show))
 
     def handleFileAction(self):
+        home = str(Path.home())
+        ###
+        # current working directory
+        # cwd = str(Path.cwd())
         if self.ui.ActionComboBox.currentText() == "Get Node Config":
             path, _ = QFileDialog.getSaveFileName(
-                self, "Save", "", "JSON Files (*.xml);;All Files (*)"
+                self, "Save", home, "JSON Files (*.xml);;All Files (*)"
             )
             if path:
                 with open(path, "w") as f:
@@ -118,7 +122,7 @@ class nodesDialog(QDialog):
             
         elif self.ui.ActionComboBox.currentText() == "Get Node Info":
             path, _ = QFileDialog.getSaveFileName(
-                self, "Save", "", "JSON Files (*.json);;All Files (*)"
+                self, "Save", home, "JSON Files (*.json);;All Files (*)"
             )
             if path:
                 with open(path, "w") as f:
