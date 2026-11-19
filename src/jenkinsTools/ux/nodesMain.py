@@ -53,6 +53,7 @@ class nodesDialog(QDialog):
 
         # Set default text on save/load button
         self.ui.filePushButton.setText("Save")
+        self.ui.RunPushButton.setDefault(True)
 
         # Set NoFocus on text-browsers, so they can't accept input
         # focus to capture keystrokes - making this widget non-editable
@@ -378,7 +379,7 @@ class nodesDialog(QDialog):
             action['name'] = self.ui.VmNameLineEdit_3.text()
 
             if action["name"]:
-                print ("action acquired")
+                print("action acquired")
             else:
                 raise ValueError("name field required for this action.")
             

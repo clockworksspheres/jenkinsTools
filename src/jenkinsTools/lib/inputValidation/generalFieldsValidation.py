@@ -20,7 +20,7 @@ def isJenkinsUsernameFieldGood(usernameField: str) -> bool:
     return set(usernameField).issubset(allowed_set)
 
 def isJenkinsTokenFieldGood(tokenField: str) -> bool:
-    print(str(tokenField))
+    print("*"*20)
     # create an allowed set of characters
     allowed_set = set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-")
     # if each of the characters is in the allowed set
